@@ -662,7 +662,7 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
             aria-label={mobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
             aria-expanded={mobileMenuOpen}
           >
-            <IconGlyph glyph={mobileMenuOpen ? uiGlyphs.close : uiGlyphs.menu} />
+            {mobileMenuOpen ? <IconClose size={20} /> : <IconMenu size={20} />}
           </button>
           <button className="navbar-brand" onClick={() => handleNavClick('home')}>
             <span className="navbar-brand-lockup">
@@ -702,7 +702,7 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
                 onClick={() => setActiveDropdown(activeDropdown === groupIndex ? null : groupIndex)}
                 aria-expanded={activeDropdown === groupIndex}
               >
-                {group.label} <IconGlyph glyph={uiGlyphs.chevronDown} className="nav-chevron" />
+                {group.label} <IconChevronDown size={14} className="nav-chevron" />
               </button>
               {activeDropdown === groupIndex && (
                 <div className="nav-dropdown">
@@ -734,14 +734,14 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
               aria-label={searchOpen ? 'Закрыть поиск' : 'Открыть поиск'}
               aria-expanded={searchOpen}
             >
-              <IconGlyph glyph={uiGlyphs.search} />
+              <IconSearch size={18} />
             </button>
             {searchOpen && (
               <div className="search-dropdown" role="dialog" aria-label="Поиск по заболеваниям">
                 <div className="search-header-row">
                   <span className="search-title">Клинический поиск</span>
                   <button className="search-close-btn" onClick={closeSearch} aria-label="Закрыть поиск">
-                    <IconGlyph glyph={uiGlyphs.close} />
+                    <IconClose size={16} />
                   </button>
                 </div>
                 <input
@@ -931,7 +931,7 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
               title={`Избранное (${favCount})`}
               aria-label={`Избранное: ${favCount} нозологий`}
             >
-              <IconGlyph glyph={uiGlyphs.star} />
+              <IconStar size={18} />
               <span className="fav-badge">{favCount}</span>
             </button>
           )}
@@ -942,7 +942,7 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
             aria-label={darkMode ? 'Светлая тема' : 'Тёмная тема'}
             title={darkMode ? 'Светлая тема' : 'Тёмная тема'}
           >
-            <IconGlyph glyph={darkMode ? uiGlyphs.sun : uiGlyphs.moon} />
+            {darkMode ? <IconSun size={18} /> : <IconMoon size={18} />}
           </button>
         </div>
       </nav>
@@ -966,10 +966,10 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
             </div>
             <div className="mobile-menu-actions">
               <button className="mobile-menu-utility" onClick={toggleSearch}>
-                <IconGlyph glyph={uiGlyphs.search} /> Поиск
+                <IconSearch size={18} /> Поиск
               </button>
               <button className="mobile-menu-utility" onClick={handleFavoritesClick}>
-                <IconGlyph glyph={uiGlyphs.star} /> Избранное{favCount > 0 ? ` (${favCount})` : ''}
+                <IconStar size={18} /> Избранное{favCount > 0 ? ` (${favCount})` : ''}
               </button>
             </div>
           </div>

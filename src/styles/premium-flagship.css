@@ -320,6 +320,37 @@ body.light-mode .modal-glass {
   animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* ─── Search dropdown premium ──────────────────────────── */
+.search-dropdown {
+  background: rgba(11, 20, 34, 0.96) !important;
+  backdrop-filter: blur(40px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+  border: 0.5px solid var(--glass-premium-border) !important;
+  box-shadow:
+    0 8px 32px rgba(3, 7, 18, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+  animation: modalSlideUp 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+body.light-mode .search-dropdown {
+  background: rgba(255, 252, 247, 0.96) !important;
+}
+
+.search-input {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 0.5px solid var(--border) !important;
+  border-radius: 10px !important;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.search-input:focus {
+  border-color: var(--teal) !important;
+  box-shadow: 0 0 0 2px rgba(88, 224, 193, 0.15) !important;
+  outline: none !important;
+}
+body.light-mode .search-input {
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
 /* ─── Reduced motion ─────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .stagger-enter > * {

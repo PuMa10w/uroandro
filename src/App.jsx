@@ -15,6 +15,7 @@ import { useFavorites, useViewHistory } from './hooks/useLocalStorage';
 import useAppNavigationState from './hooks/useAppNavigationState';
 import ErrorBoundary from './components/ErrorBoundary';
 import { trackModal } from './utils/analytics';
+import { IconBack, IconHome, IconStar, IconArrowUp } from './icons';
 
 function App() {
   const showDebugPanel = process.env.NODE_ENV === 'development'
@@ -303,7 +304,7 @@ function App() {
           {isMobileShell && activeSection !== 'home' && !selectedDiseaseId && (
             <div className="mobile-shell-nav" role="navigation" aria-label="Быстрая навигация">
               <button className="mobile-shell-btn" onClick={handleMobileBack} aria-label="Назад">
-                <span className="mobile-shell-icon" aria-hidden="true">‹</span>
+                <IconBack className="mobile-shell-icon" size={18} />
                 <span className="mobile-shell-label">Назад</span>
               </button>
               <button
@@ -311,7 +312,7 @@ function App() {
                 onClick={() => handleNavigate('home', null, null, { skipHistory: true })}
                 aria-label="Главная"
               >
-                <span className="mobile-shell-icon" aria-hidden="true">⌂</span>
+                <IconHome className="mobile-shell-icon" size={18} />
                 <span className="mobile-shell-label">Домой</span>
               </button>
               <button
@@ -319,17 +320,17 @@ function App() {
                 onClick={() => handleNavigate('favorites', null, null, { skipHistory: true })}
                 aria-label="Избранное"
               >
-                <span className="mobile-shell-icon" aria-hidden="true">★</span>
+                <IconStar className="mobile-shell-icon" size={18} />
                 <span className="mobile-shell-label">Сохранено</span>
               </button>
               <button className="mobile-shell-btn" onClick={scrollToTop} aria-label="Наверх">
-                <span className="mobile-shell-icon" aria-hidden="true">↑</span>
+                <IconArrowUp className="mobile-shell-icon" size={18} />
                 <span className="mobile-shell-label">Вверх</span>
               </button>
             </div>
           )}
           {showScrollTop && (
-            <button className="scroll-top-btn" onClick={scrollToTop} aria-label="Наверх">↑</button>
+            <button className="scroll-top-btn" onClick={scrollToTop} aria-label="Наверх"><IconArrowUp size={20} /></button>
           )}
         </div>
       </ErrorBoundary>

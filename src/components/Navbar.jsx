@@ -2,6 +2,14 @@ import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react'
 import PropTypes from 'prop-types';
 import { useDarkMode, useSearchHistory } from '../hooks/useLocalStorage';
 import { trackSearch, trackSearchSelect, trackSymptomRoute } from '../utils/analytics';
+import {
+  IconSearch, IconMoon, IconSun, IconMenu, IconClose,
+  IconStar, IconClock, IconArrowUp, IconArrowDown,
+  IconStarFilled, IconFavorites, IconChevronDown, IconChevronRight,
+  IconPediatric, IconEmergency, IconSurgery, IconTools,
+  IconCalculators, IconDrugs, IconAtlas, IconSitemap,
+  IconInfo, IconHome, IconBack,
+} from '../icons';
 
 const propTypes = {
   activeSection: PropTypes.string.isRequired,
@@ -21,50 +29,42 @@ const defaultProps = {
   viewHistory: [],
 };
 
-const uiGlyphs = {
-  search: '⌕',
-  moon: '◐',
-  sun: '☼',
-  menu: '☰',
-  close: '×',
-  star: '★',
-  chevronDown: '▾',
-  clock: '◷',
-  arrowUp: '↑',
-  arrowDown: '↓',
+const navIconMap = {
+  pediatric: IconPediatric,
+  emergency: IconEmergency,
+  favorites: IconFavorites,
+  surgery: IconSurgery,
+  metaphylaxis: IconClipboard, // will import later, use generic
+  calculators: IconCalculators,
+  tools: IconTools,
+  drugs: IconDrugs,
+  atlas: IconAtlas,
+  sitemap: IconSitemap,
 };
 
-function IconGlyph({ glyph, className = '', ...restProps }) {
-  return (
-    <span className={className} aria-hidden="true" {...restProps}>
-      {glyph}
-    </span>
-  );
-}
-
-const FaClock = (props) => <IconGlyph glyph={uiGlyphs.clock} {...props} />;
-const FaArrowUp = (props) => <IconGlyph glyph={uiGlyphs.arrowUp} {...props} />;
-const FaArrowDown = (props) => <IconGlyph glyph={uiGlyphs.arrowDown} {...props} />;
+const FaClock = (props) => <IconClock {...props} />;
+const FaArrowUp = (props) => <IconArrowUp {...props} />;
+const FaArrowDown = (props) => <IconArrowDown {...props} />;
 
 const navGroups = [
   {
     label: 'Ещё разделы',
     items: [
-      { id: 'pediatric', label: 'Детская', icon: '👶' },
-      { id: 'emergency', label: 'Экстренные', icon: '🚨' },
+      { id: 'pediatric', label: 'Детская', icon: IconPediatric },
+      { id: 'emergency', label: 'Экстренные', icon: IconEmergency },
     ],
   },
   {
     label: 'Инструменты',
     items: [
-      { id: 'favorites', label: 'Избранное', icon: '★' },
-      { id: 'surgery', label: 'Хирургия', icon: '🔪' },
-      { id: 'metaphylaxis', label: 'Диеты при МКБ', icon: '🥗' },
-      { id: 'calculators', label: 'Калькуляторы', icon: '🧮' },
-      { id: 'tools', label: 'Опросники', icon: '📊' },
-      { id: 'drugs', label: 'Препараты', icon: '💊' },
-      { id: 'atlas', label: '3D Атлас', icon: '◈' },
-      { id: 'sitemap', label: 'Карта сайта', icon: '🗺️' },
+      { id: 'favorites', label: 'Избранное', icon: IconFavorites },
+      { id: 'surgery', label: 'Хирургия', icon: IconSurgery },
+      { id: 'metaphylaxis', label: 'Диеты при МКБ', icon: IconClipboard },
+      { id: 'calculators', label: 'Калькуляторы', icon: IconCalculators },
+      { id: 'tools', label: 'Опросники', icon: IconTools },
+      { id: 'drugs', label: 'Препараты', icon: IconDrugs },
+      { id: 'atlas', label: '3D Атлас', icon: IconAtlas },
+      { id: 'sitemap', label: 'Карта сайта', icon: IconSitemap },
     ],
   },
 ];
@@ -714,7 +714,9 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
                       role="menuitem"
                       aria-current={activeSection === item.id ? 'page' : undefined}
                     >
-                      <span className="nav-dropdown-icon">{item.icon}</span>
+                      <span className="nav-dropdown-icon">
+                        {typeof item.icon === 'function' ? <item.icon size={16} /> : item.icon}
+                      </span>
                       {item.label}
                     </button>
                   ))}
@@ -785,8 +787,10 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
                                   data-risk-level={item.riskLevel}
                                   aria-describedby={`command-next-step-${item.id}`}
                                 >
-                                  <span className="search-command-index">{item.icon}</span>
-                                  <span className="search-command-copy">
+                                  <span className="search-command-index">
+                                  {typeof item.icon === 'function' ? <item.icon size={16} /> : item.icon}
+                                </span>
+                                <span className="search-command-copy">
                                     <span className="search-result-name">{item.label}</span>
                                     <span className="search-result-meta">{item.meta}</span>
                                     <span id={`command-next-step-${item.id}`} className="search-result-next-step">
@@ -979,7 +983,9 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
                     className={`mobile-menu-item ${activeSection === item.id ? 'active' : ''}`}
                     onClick={() => handleNavClick(item.id)}
                   >
-                    <span className="mobile-menu-icon">{item.icon}</span>
+                    <span className="mobile-menu-icon">
+                      {typeof item.icon === 'function' ? <item.icon size={18} /> : item.icon}
+                    </span>
                     {item.label}
                     {activeSection === item.id && <span className="mobile-menu-active-dot" />}
                   </button>

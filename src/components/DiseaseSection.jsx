@@ -6,6 +6,7 @@ import { LoadingSpinner } from './FeedbackComponents';
 import { preloadDiseaseData } from '../data/lazyData';
 import { getCardDescription, getCardTags } from '../utils/cardMetadata';
 import { trackSectionPathway } from '../utils/analytics';
+import { IconStar, IconStarFilled } from '../icons';
 
 // react-window grid currently causes runtime crashes for some sections in production;
 // keep classic grid rendering until virtualization is stabilized.
@@ -268,7 +269,7 @@ const DiseaseSection = React.memo(({
                 }}
                 aria-label={favorites[disease.id] ? 'Убрать из избранного' : 'Добавить в избранное'}
               >
-                {favorites[disease.id] ? '★' : '☆'}
+                {favorites[disease.id] ? <IconStarFilled size={14} /> : <IconStar size={14} />}
               </button>
 
               <div className="card-header">

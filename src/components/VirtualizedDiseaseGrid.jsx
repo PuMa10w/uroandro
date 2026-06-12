@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid } from 'react-window';
 import { diseaseIcons } from './diseaseIcons';
 import { getCardDescription, getCardTags } from '../utils/cardMetadata';
+import { IconStar, IconStarFilled } from '../icons';
 
 const CARD_WIDTH = 280;
 const CARD_HEIGHT = 280;
@@ -40,7 +41,7 @@ const DiseaseCard = React.memo(({
         }}
         aria-label={favorites[disease.id] ? 'Убрать из избранного' : 'Добавить в избранное'}
       >
-        {favorites[disease.id] ? '★' : '☆'}
+        {favorites[disease.id] ? <IconStarFilled size={14} /> : <IconStar size={14} />}
       </button>
 
       <div className="card-header">

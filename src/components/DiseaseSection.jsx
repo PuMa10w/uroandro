@@ -244,7 +244,7 @@ const DiseaseSection = React.memo(({
           onCardPrefetch={handleCardPrefetch}
         />
       ) : (
-        <div className="cards-grid" role="list">
+        <div className="cards-grid stagger-enter" role="list">
           {sortedData.map((disease, index) => (
             <div
               key={disease.id}

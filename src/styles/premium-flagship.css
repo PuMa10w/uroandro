@@ -1,0 +1,327 @@
+/* ============================================================
+   UroAndro Premium Flagship — Design System Override
+   Импортируется ПОСЛЕДНИМ в App.jsx для cascade override
+   ============================================================ */
+
+/* ─── Glass Tokens ────────────────────────────────────────── */
+:root {
+  --glass-premium-bg: rgba(11, 20, 34, 0.85);
+  --glass-premium-border: rgba(140, 170, 210, 0.12);
+}
+body.light-mode {
+  --glass-premium-bg: rgba(255, 252, 247, 0.85);
+  --glass-premium-border: rgba(73, 98, 128, 0.12);
+}
+
+/* ─── Glass 2.0 — Deep Layer System ─────────────────────── */
+.glass-premium {
+  background: var(--glass-premium-bg);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 0.5px solid var(--glass-premium-border);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all var(--transition-base);
+}
+
+.glass-premium:hover {
+  background: rgba(11, 20, 34, 0.92);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Light mode glass override */
+body.light-mode .glass-premium {
+  background: rgba(255, 252, 247, 0.85);
+  box-shadow:
+    0 8px 32px rgba(73, 58, 34, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+body.light-mode .glass-premium:hover {
+  background: rgba(255, 254, 251, 0.95);
+}
+
+/* ─── Premium Navbar Override ────────────────────────────── */
+.navbar {
+  background: rgba(11, 20, 34, 0.88) !important;
+  backdrop-filter: blur(40px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+  border: 0.5px solid var(--glass-premium-border) !important;
+  box-shadow:
+    0 8px 32px rgba(3, 7, 18, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+body.light-mode .navbar {
+  background: rgba(255, 252, 247, 0.88) !important;
+  border: 0.5px solid rgba(73, 98, 128, 0.12) !important;
+}
+
+/* ─── Premium Card Override ──────────────────────────────── */
+.premium-card {
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.premium-card:hover {
+  transform: translateY(-3px) !important;
+  border-color: var(--teal) !important;
+}
+
+.premium-card:active {
+  transform: translateY(0) scale(0.985) !important;
+}
+
+/* ─── Premium Buttons ────────────────────────────────────── */
+.btn-premium {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.625rem 1.25rem;
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.25s ease;
+}
+
+.btn-premium:active {
+  transform: scale(0.97);
+}
+
+.btn-premium:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(88, 224, 193, 0.3);
+}
+
+/* Primary */
+.btn-premium-primary {
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(88, 224, 193, 0.25);
+}
+.btn-premium-primary:hover {
+  box-shadow: 0 6px 24px rgba(88, 224, 193, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Gold */
+.btn-premium-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: #080f1a;
+  box-shadow: 0 4px 16px rgba(241, 204, 122, 0.25);
+}
+.btn-premium-gold:hover {
+  box-shadow: 0 6px 24px rgba(241, 204, 122, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Ghost */
+.btn-premium-ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+.btn-premium-ghost:hover {
+  background: var(--bg-card);
+  border-color: var(--border-strong);
+}
+
+/* ─── SVG Icon styling ───────────────────────────────────── */
+.navbar svg,
+.mobile-shell-nav svg,
+.mobile-menu-icon svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.nav-dropdown-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.search-result-icon svg,
+.search-command-index svg {
+  display: block;
+}
+
+/* ─── Haptic feedback — touch interactions ───────────────── */
+.haptic:active {
+  transform: scale(0.97);
+  transition: transform 0.08s ease;
+}
+
+/* ─── Scroll-aware utility classes ───────────────────────── */
+.scroll-hide {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.scroll-show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ─── Skeleton shimmer ───────────────────────────────────── */
+@keyframes skeletonShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-card) 25%,
+    var(--bg-card-hover) 50%,
+    var(--bg-card) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.8s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+/* ─── Premium page transition ────────────────────────────── */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: pageEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ─── Staggered card entrance ────────────────────────────── */
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-enter > * {
+  opacity: 0;
+  animation: cardEnter 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.stagger-enter > *:nth-child(1)  { animation-delay: 0ms; }
+.stagger-enter > *:nth-child(2)  { animation-delay: 60ms; }
+.stagger-enter > *:nth-child(3)  { animation-delay: 120ms; }
+.stagger-enter > *:nth-child(4)  { animation-delay: 180ms; }
+.stagger-enter > *:nth-child(5)  { animation-delay: 240ms; }
+.stagger-enter > *:nth-child(6)  { animation-delay: 300ms; }
+.stagger-enter > *:nth-child(7)  { animation-delay: 360ms; }
+.stagger-enter > *:nth-child(8)  { animation-delay: 420ms; }
+.stagger-enter > *:nth-child(9)  { animation-delay: 480ms; }
+.stagger-enter > *:nth-child(10) { animation-delay: 540ms; }
+
+/* ─── Glow pulse (active nav indicator) ──────────────────── */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(88, 224, 193, 0.2); }
+  50% { box-shadow: 0 0 16px rgba(88, 224, 193, 0.4); }
+}
+
+.glow-pulse {
+  animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+/* ─── Modal glass (premium depth) ────────────────────────── */
+.modal-glass {
+  background: rgba(8, 15, 26, 0.96);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+}
+
+body.light-mode .modal-glass {
+  background: rgba(244, 239, 230, 0.96);
+}
+
+/* ─── Premium mobile bottom sheet ────────────────────────── */
+.premium-sheet {
+  background: var(--bg-panel);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border-top: 0.5px solid var(--border);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* ─── Floating action button ─────────────────────────────── */
+.floating-action {
+  position: fixed;
+  bottom: calc(var(--sab) + 1.5rem);
+  right: 1.5rem;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(88, 224, 193, 0.3);
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s ease;
+  z-index: var(--z-fixed);
+}
+.floating-action:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px rgba(88, 224, 193, 0.4);
+}
+.floating-action:active {
+  transform: scale(0.95);
+}
+
+/* ─── Reduced motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .stagger-enter > * {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  .page-enter {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  .skeleton {
+    animation: none !important;
+  }
+  .glow-pulse {
+    animation: none !important;
+  }
+}
+
+/* ─── iPhone SE optimization ─────────────────────────────── */
+@media (max-width: 375px) {
+  .premium-card {
+    border-radius: 16px !important;
+  }
+  .btn-premium {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+  }
+}

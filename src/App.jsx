@@ -4,6 +4,7 @@ import './App.css';
 import './styles/ultraPremiumContract.css';
 import './styles/v22WorkbenchLock.css';
 import './styles/v23ClinicalWorkbench.css';
+import './styles/premium-flagship.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import SeoHelmet from './components/SeoHelmet';

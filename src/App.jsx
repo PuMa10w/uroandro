@@ -42,6 +42,26 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Scroll-aware mobile nav bar
+  const lastScrollY = useRef(0);
+  const [navVisible, setNavVisible] = useState(true);
+
+  useEffect(() => {
+    if (!isMobileShell) return;
+    const handleScrollNav = () => {
+      const currentY = window.scrollY;
+      const delta = currentY - lastScrollY.current;
+      if (delta > 10 && currentY > 100) {
+        setNavVisible(false);
+      } else if (delta < -5) {
+        setNavVisible(true);
+      }
+      lastScrollY.current = currentY;
+    };
+    window.addEventListener('scroll', handleScrollNav, { passive: true });
+    return () => window.removeEventListener('scroll', handleScrollNav);
+  }, [isMobileShell]);
+
   useEffect(() => {
     const handleResize = () => setIsMobileShell(window.innerWidth <= 900);
     window.addEventListener('resize', handleResize, { passive: true });
@@ -303,7 +323,7 @@ function App() {
             />
           )}
           {isMobileShell && activeSection !== 'home' && !selectedDiseaseId && (
-            <div className="mobile-shell-nav" role="navigation" aria-label="Быстрая навигация">
+            <div className={`mobile-shell-nav ${!navVisible ? 'scroll-hide' : ''}`} role="navigation" aria-label="Быстрая навигация">
               <button className="mobile-shell-btn" onClick={handleMobileBack} aria-label="Назад">
                 <IconBack className="mobile-shell-icon" size={18} />
                 <span className="mobile-shell-label">Назад</span>

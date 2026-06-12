@@ -351,6 +351,90 @@ body.light-mode .search-input {
   background: rgba(0, 0, 0, 0.04) !important;
 }
 
+/* ─── Premium Mobile Shell Nav ─────────────────────────── */
+.mobile-shell-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.5rem calc(0.5rem + var(--sal)) calc(0.5rem + var(--sab)) calc(0.5rem + var(--sar));
+  background: rgba(11, 20, 34, 0.92);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border-top: 0.5px solid var(--border);
+  box-shadow: 0 -4px 24px rgba(3, 7, 18, 0.3);
+  z-index: var(--z-fixed);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.light-mode .mobile-shell-nav {
+  background: rgba(255, 252, 247, 0.92);
+}
+
+.mobile-shell-nav.scroll-hide {
+  transform: translateY(100%);
+}
+
+.mobile-shell-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 60px;
+  padding: 6px 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast),
+    transform 0.15s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-shell-btn:hover {
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.mobile-shell-btn:active {
+  transform: scale(0.93);
+}
+
+.mobile-shell-btn.active {
+  color: var(--teal);
+}
+
+.mobile-shell-btn.active svg {
+  filter: drop-shadow(0 0 6px rgba(88, 224, 193, 0.4));
+}
+
+.mobile-shell-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-shell-label {
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.light-mode .mobile-shell-btn:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
 /* ─── Reduced motion ─────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .stagger-enter > * {

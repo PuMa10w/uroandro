@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { IconStar, IconStarFilled, IconChevronRight } from '../icons';
 
 const EmptyState = ({ 
   icon = '📭', 
@@ -183,7 +184,96 @@ Toast.defaultProps = {
   duration: 5000,
 };
 
-export { EmptyState, LoadingSpinner, Toast };
+/* ─── PremiumButton ────────────────────────────────────── */
+const PremiumButton = ({
+  variant = 'primary',
+  size = 'md',
+  children,
+  onClick,
+  disabled = false,
+  loading = false,
+  icon = null,
+  className = '',
+  ...props
+}) => {
+  const variantClass = {
+    primary: 'btn-premium-primary',
+    gold: 'btn-premium-gold',
+    ghost: 'btn-premium-ghost',
+  }[variant] || 'btn-premium-primary';
+
+  const sizeClass = size === 'sm' ? 'py-1.5 px-3 text-xs' : size === 'lg' ? 'py-3 px-6 text-base' : '';
+
+  return (
+    <button
+      className={`btn-premium ${variantClass} ${sizeClass} ${className}`}
+      onClick={onClick}
+      disabled={disabled || loading}
+      {...props}
+    >
+      {loading ? (
+        <span className="loading-spinner-inline" style={{
+          width: 16, height: 16,
+          border: '2px solid rgba(255,255,255,0.2)',
+          borderTopColor: '#fff',
+          borderRadius: '50%',
+          animation: 'spin 0.8s linear infinite',
+          display: 'inline-block',
+        }} />
+      ) : icon ? (
+        <span style={{ display: 'flex', alignItems: 'center' }}>{icon}</span>
+      ) : null}
+      {children}
+    </button>
+  );
+};
+
+PremiumButton.propTypes = {
+  variant: PropTypes.oneOf(['primary', 'gold', 'ghost']),
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  children: PropTypes.node,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  loading: PropTypes.bool,
+  icon: PropTypes.node,
+  className: PropTypes.string,
+};
+
+/* ─── SkeletonCard ──────────────────────────────────────── */
+const SkeletonCard = ({ count = 1 }) => {
+  return (
+    <>
+      {Array.from({ length: count }).map((_, i) => (
+        <div
+          key={i}
+          className="premium-card skeleton"
+          style={{
+            height: 200,
+            padding: '1.25rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '0.75rem',
+          }}
+          aria-hidden="true"
+        >
+          <div className="skeleton" style={{ width: '40%', height: 16, borderRadius: 6 }} />
+          <div className="skeleton" style={{ width: '80%', height: 12, borderRadius: 6 }} />
+          <div className="skeleton" style={{ width: '60%', height: 12, borderRadius: 6 }} />
+          <div style={{ marginTop: 'auto', display: 'flex', gap: '0.5rem' }}>
+            <div className="skeleton" style={{ width: 60, height: 24, borderRadius: 12 }} />
+            <div className="skeleton" style={{ width: 80, height: 24, borderRadius: 12 }} />
+          </div>
+        </div>
+      ))}
+    </>
+  );
+};
+
+SkeletonCard.propTypes = {
+  count: PropTypes.number,
+};
+
+export { EmptyState, LoadingSpinner, Toast, PremiumButton, SkeletonCard };
 
 const FeedbackComponents = {
   EmptyState,

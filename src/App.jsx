@@ -10,7 +10,6 @@ import Footer from './components/Footer';
 import SeoHelmet from './components/SeoHelmet';
 import SectionRenderer from './components/SectionRenderer';
 import DebugPanel from './components/DebugPanel';
-import ClinicalOperatingSystem from './components/ClinicalOperatingSystem';
 import { sectionNames, subsectionLabels } from './data/navigationMeta';
 import { useFavorites, useViewHistory } from './hooks/useLocalStorage';
 import useAppNavigationState from './hooks/useAppNavigationState';
@@ -243,15 +242,6 @@ function App() {
             viewHistory={viewHistory}
           />
           {renderBreadcrumbs()}
-          {!selectedDiseaseId && (
-            <ClinicalOperatingSystem
-              activeSection={activeSection}
-              activeSubsection={activeSubsection}
-              favoritesCount={Object.values(favorites).filter(Boolean).length}
-              historyCount={viewHistory.length}
-              onNavigate={handleNavigate}
-            />
-          )}
           <div
             aria-live="polite"
             aria-atomic="true"

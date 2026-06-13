@@ -446,6 +446,121 @@ body.light-mode .mobile-shell-nav {
   background: rgba(0, 0, 0, 0.04);
 }
 
+/* ─── Quick access grid (2x4) instead of horizontal scroll ─ */
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.75rem;
+}
+@media (max-width: 640px) {
+  .quick-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+}
+
+/* ─── Guideline card with update date ────────────────────── */
+.guideline-updated {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* ─── Recent cards — micro-context ────────────────────────── */
+.home-workbench-recent-card {
+  min-width: 180px;
+  min-height: 70px;
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  background: var(--up-card-bg);
+  border: var(--up-card-border);
+  box-shadow: var(--shadow-card), var(--up-card-inset-shadow);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  touch-action: manipulation;
+}
+.home-workbench-recent-card:hover {
+  background: var(--up-card-bg-hover);
+  box-shadow: var(--shadow-card-hover), var(--up-card-inset-shadow), var(--up-card-hover-glow);
+  transform: translateY(-2px);
+}
+.home-workbench-recent-card:active {
+  transform: scale(0.98);
+}
+.home-workbench-recent-card strong {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.home-workbench-recent-card span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ─── Homepage Sans-serif for action labels ──────────────── */
+.home-workbench-action,
+.quick-btn,
+.guideline-card,
+.home-workbench-recent-card {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ─── Home workbench color coding ───────────────────────── */
+/* Urology card glow — cool teal-blue */
+.home-section-card[data-section="urology"] {
+  border-color: rgba(88, 224, 193, 0.3) !important;
+}
+.home-section-card[data-section="urology"]:hover {
+  box-shadow: 0 0 30px rgba(88, 224, 193, 0.08) !important;
+}
+
+/* Andrology card glow — warm gold */
+.home-section-card[data-section="andrology"] {
+  border-color: rgba(241, 204, 122, 0.3) !important;
+}
+.home-section-card[data-section="andrology"]:hover {
+  box-shadow: 0 0 30px rgba(241, 204, 122, 0.08) !important;
+}
+
+/* Urgent action — amber/coral accent */
+.home-workbench-action[data-action="urgent"] {
+  color: #fbbf24 !important;
+  border-color: rgba(251, 191, 36, 0.3) !important;
+}
+.home-workbench-action[data-action="urgent"]:hover {
+  background: rgba(251, 191, 36, 0.08) !important;
+  border-color: rgba(251, 191, 36, 0.5) !important;
+}
+
+/* Workbench lane badges — interactive */
+.workbench-point {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: rgba(88, 224, 193, 0.08);
+  border: 0.5px solid rgba(88, 224, 193, 0.15);
+  color: var(--text-secondary);
+  cursor: default;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+.workbench-point:hover {
+  background: rgba(88, 224, 193, 0.14);
+  border-color: rgba(88, 224, 193, 0.25);
+  color: var(--text-primary);
+}
+
 /* ─── Reduced motion ─────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .stagger-enter > * {

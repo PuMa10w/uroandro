@@ -69,9 +69,9 @@
 
   /* Text */
   --text-primary: #f4f9ff;
-  --text-secondary: #c8d6e8;
-  --text-muted: #8899b4;
-  --text-disabled: #55657d;
+  --text-secondary: #dce6f2;
+  --text-muted: #94a3b8;
+  --text-disabled: #5b6a82;
 
   /* Borders */
   --border: rgba(140, 170, 210, 0.14);

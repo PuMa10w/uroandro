@@ -11,9 +11,9 @@ const quickAccess = [
 ];
 
 const guidelines = [
-  { name: 'EAU', full: 'European Association of Urology', url: 'https://uroweb.org/guidelines', accent: 'eau' },
-  { name: 'AUA', full: 'American Urological Association', url: 'https://www.auanet.org/guidelines', accent: 'aua' },
-  { name: 'РКР', full: 'Российские клинические рекомендации', url: 'https://cr.minzdrav.gov.ru', accent: 'rkr' },
+  { name: 'EAU', full: 'European Association of Urology', url: 'https://uroweb.org/guidelines', accent: 'eau', updated: '2026' },
+  { name: 'AUA', full: 'American Urological Association', url: 'https://www.auanet.org/guidelines', accent: 'aua', updated: '2025' },
+  { name: 'РКР', full: 'Российские клинические рекомендации', url: 'https://cr.minzdrav.gov.ru', accent: 'rkr', updated: '2025' },
 ];
 
 const workbenchActions = [
@@ -43,7 +43,7 @@ const workbenchLanes = [
     index: '03',
     title: 'Поддержать расчётом',
     text: 'Калькуляторы, препараты и 3D-модели связаны с клиническим маршрутом, а не живут отдельно.',
-    points: ['Local-only', 'iPhone-safe', 'Reduced motion'],
+    points: ['Калькуляторы IPSS, IIEF', 'Дозировки препаратов', '3D-модели анатомии'],
   },
 ];
 
@@ -65,7 +65,6 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
           <div className="home-workbench-status" data-v20-start="true">
             <span><strong>{favoriteCount}</strong> избранных</span>
             <span><strong>{recentItems.length}</strong> последних</span>
-            <span>Strict iPhone visual QA</span>
           </div>
         </div>
         <div className="home-workbench-actions" aria-label="Быстрые действия врача" data-scrollable="x">
@@ -74,6 +73,7 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
               key={action.id}
               type="button"
               className="home-workbench-action"
+              data-action={action.id}
               onClick={() => onNavigate(action.target, null, null, {
                 source: 'v19_clinical_workbench',
                 tool: action.tool,
@@ -91,7 +91,7 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
               <h2>{lane.title}</h2>
               <p>{lane.text}</p>
               <div className="home-workbench-points">
-                {lane.points.map((point) => <span key={point}>{point}</span>)}
+                {lane.points.map((point) => <span key={point} className="workbench-point">{point}</span>)}
               </div>
             </article>
           ))}
@@ -124,6 +124,7 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
         <button
           type="button"
           className="home-destination-card is-urology"
+          data-section="urology"
           onClick={() => onNavigate('urology')}
         >
           <div className="destination-head">
@@ -154,6 +155,7 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
         <button
           type="button"
           className="home-destination-card is-andrology"
+          data-section="andrology"
           onClick={() => onNavigate('andrology')}
         >
           <div className="destination-head">
@@ -227,6 +229,7 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
             >
               <span className="guideline-badge">{g.name}</span>
               <span className="guideline-name">{g.full}</span>
+              <span className="guideline-updated">Обновлено: {g.updated}</span>
             </a>
           ))}
         </div>

@@ -438,12 +438,39 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
     }
 
     setSearchLoading(true);
-    import('../data')
-      .then(({ searchDiseases }) => {
+    Promise.all([
+      import('../data'),
+      import('../data/drugReferenceData.js'),
+    ])
+      .then(([dataModule, drugModule]) => {
         if (!cancelled) {
+          const { searchDiseases } = dataModule;
           const results = searchDiseases(debouncedQuery) || [];
-          setSearchResults(results.slice(0, 15));
-          trackSearch(debouncedQuery, results.length);
+
+          // Поиск по препаратам
+          const drugList = drugModule.coreDrugList || [];
+          const matchedDrugs = drugList
+            .filter(drug => {
+              const q = debouncedQuery.toLowerCase();
+              return drug.name.toLowerCase().includes(q)
+                || (drug.aliases || []).some(a => a.toLowerCase().includes(q))
+                || (drug.tags || []).some(t => t.toLowerCase().includes(q))
+                || (drug.indications || '').toLowerCase().includes(q);
+            })
+            .slice(0, 5)
+            .map(drug => ({
+              id: `drug-${drug.name}`,
+              name: drug.name,
+              icd: drug.className || '',
+              section: 'drugs',
+              subsection: null,
+              icon: '💊',
+              isDrug: true,
+              drugAliases: drug.aliases || [],
+              drugIndications: drug.indications || '',
+            }));
+
+          setSearchResults([...results.slice(0, 15), ...matchedDrugs]);
           setSearchLoading(false);
         }
       })

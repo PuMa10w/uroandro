@@ -322,13 +322,24 @@ body.light-mode .modal-glass {
 
 /* ─── Search dropdown premium ──────────────────────────── */
 .search-dropdown {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  right: 0;
+  width: min(34rem, calc(100vw - 1rem));
   background: rgba(11, 20, 34, 0.96) !important;
   backdrop-filter: blur(40px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
   border: 0.5px solid var(--glass-premium-border) !important;
+  border-radius: var(--radius-xl);
+  padding: 0.9rem;
   box-shadow:
-    0 8px 32px rgba(3, 7, 18, 0.5),
+    0 24px 64px rgba(3, 7, 18, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: var(--z-dropdown);
+  isolation: isolate;
   animation: modalSlideUp 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 

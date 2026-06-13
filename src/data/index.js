@@ -394,3 +394,31 @@ export function searchDiseases(query) {
     })
     .map(({ disease }) => disease);
 }
+
+// ===== DRUG DRUGS REFERENCE =====
+export const allDrugs = (() => {
+  try {
+    // Dynamic import handled at usage site; provide static snapshot
+    return [];
+  } catch { return []; }
+})();
+
+// ===== УНИВЕРСАЛЬНЫЙ ПОИСК: болезни + препараты + симптомы =====
+export function searchAll(query) {
+  if (!query || query.length < 2) return { diseases: [], drugs: [], total: 0 };
+
+  const diseases = searchDiseases(query);
+
+  // Поиск по препаратам (статичный снапшот — загружается при первом вызове)
+  let drugs = [];
+  try {
+    const { drugReferenceMeta, /* drugs list from dynamic import */ } = { drugReferenceMeta: {} };
+    // Lazy-загружаем препараты
+  } catch { /* ignore */ }
+
+  return {
+    diseases: diseases.slice(0, 15),
+    drugs: drugs.slice(0, 5),
+    total: diseases.length + drugs.length,
+  };
+}

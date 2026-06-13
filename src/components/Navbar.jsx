@@ -448,7 +448,7 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
           const results = searchDiseases(debouncedQuery) || [];
 
           // Поиск по препаратам
-          const drugList = drugModule.coreDrugList || [];
+          const drugList = drugModule.drugList || [];
           const matchedDrugs = drugList
             .filter(drug => {
               const q = debouncedQuery.toLowerCase();

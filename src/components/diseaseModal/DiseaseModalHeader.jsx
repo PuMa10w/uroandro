@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { diseaseIcons } from '../diseaseIcons';
 import { getHeaderTags } from '../../utils/cardMetadata';
 import { sectionNames, subsectionLabels } from '../../data';
+import ExportDiseaseCard from '../ExportDiseaseCard';
 
 const getLeadText = (disease) => {
   const source =
@@ -205,6 +206,20 @@ export default function DiseaseModalHeader({
           </>
         )}
         <button className="modal-close" onClick={onClose} aria-label="Закрыть">✕</button>
+      </div>
+      
+      {/* Export actions */}
+      <div className="modal-export-actions">
+        <ExportDiseaseCard disease={disease} />
+        {disease.subsection === 'functional' && (
+          <button 
+            type="button" 
+            className="btn-premium btn-premium-ghost"
+            onClick={() => window.location.hash = '#/compare/tamsulosin_silodosin'}
+          >
+            Сравнить α1-блокаторы
+          </button>
+        )}
       </div>
     </div>
   );

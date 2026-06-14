@@ -446,7 +446,51 @@ body.light-mode .mobile-shell-nav {
   background: rgba(0, 0, 0, 0.04);
 }
 
-/* ─── Quick access grid (2x4) instead of horizontal scroll ─ */
+/* ─── Hero Search on Homepage ───────────────────────────── */
+.home-hero-search {
+  margin: 1.5rem 0 1rem;
+  padding: 0 1rem;
+}
+
+.hero-search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.hero-search-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.hero-search-input {
+  width: 100%;
+  padding: 0.875rem 1rem 0.875rem 2.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(140, 170, 210, 0.18);
+  background: rgba(11, 20, 34, 0.7);
+  backdrop-filter: blur(40px) saturate(180%);
+  color: var(--text-primary);
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all var(--transition-base);
+}
+.hero-search-input::placeholder {
+  color: var(--text-muted);
+}
+.hero-search-input:focus {
+  outline: none;
+  border-color: rgba(88, 224, 193, 0.4);
+  box-shadow: 0 0 0 3px rgba(88, 224, 193, 0.1), var(--shadow-card);
+  background: rgba(11, 20, 34, 0.85);
+}
+
+/* Quick access grid (2x4) instead of horizontal scroll ─ */
 .quick-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));

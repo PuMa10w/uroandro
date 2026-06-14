@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { IconSearch, IconStar, IconArrowUp, IconClose, IconStarFilled } from '../icons';
 
 const quickAccess = [
   { id: 'urolithiasis', name: 'Мочекаменная болезнь', icon: '01', meta: 'камни и колика', section: 'urology', subsection: 'stones' },
@@ -48,6 +49,10 @@ const workbenchLanes = [
 ];
 
 const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
+  const [searchQuery, setSearchQuery] = React.useState('');
+  const [searchResults, setSearchResults] = React.useState([]);
+  const [searchOpen, setSearchOpen] = React.useState(false);
+  
   const recentItems = viewHistory
     .filter((item) => item?.id && item?.section)
     .slice(0, 4);
@@ -67,6 +72,26 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
             <span><strong>{recentItems.length}</strong> последних</span>
           </div>
         </div>
+        
+        {/* Hero Search */}
+        <div className="home-hero-search">
+          <div className="hero-search-wrapper">
+            <IconSearch size={20} className="hero-search-icon" />
+            <input
+              type="text"
+              placeholder="Поиск по МКБ, диагнозу, симптому или лекарству (Например: N30)..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && searchQuery.trim()) {
+                  setSearchOpen(true);
+                }
+              }}
+              className="hero-search-input"
+            />
+          </div>
+        </div>
+        
         <div className="home-workbench-actions" aria-label="Быстрые действия врача" data-scrollable="x">
           {workbenchActions.map((action) => (
             <button

@@ -261,7 +261,7 @@ function App() {
           </div>
           <div
             id="main-content"
-            className="page-content page-enter"
+            className="page-content page-enter page-transition-enter"
             key={activeSection + '-' + activeSubsection}
             role="region"
             aria-label={sectionNames[activeSection] || activeSection}

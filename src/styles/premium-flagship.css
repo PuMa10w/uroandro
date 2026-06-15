@@ -490,6 +490,41 @@ body.light-mode .mobile-shell-nav {
   background: rgba(11, 20, 34, 0.85);
 }
 
+.hero-search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 0.5rem;
+  background: rgba(11, 20, 34, 0.95);
+  backdrop-filter: blur(40px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  max-height: 320px;
+  overflow-y: auto;
+  z-index: 10;
+}
+.hero-search-result-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: none;
+  background: none;
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+.hero-search-result-item:hover {
+  background: rgba(88, 224, 193, 0.08);
+}
+.hero-search-result-item .result-name {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
 /* Quick access grid (2x4) instead of horizontal scroll ─ */
 .quick-grid {
   display: grid;

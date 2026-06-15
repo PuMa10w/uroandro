@@ -53,6 +53,33 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
   const [searchResults, setSearchResults] = React.useState([]);
   const [searchOpen, setSearchOpen] = React.useState(false);
   
+  // Debounce search like in Navbar
+  React.useEffect(() => {
+    if (!searchQuery.trim()) {
+      setSearchResults([]);
+      return;
+    }
+    const timer = setTimeout(async () => {
+      try {
+        const [dataModule, drugModule] = await Promise.all([
+          import('../data'),
+          import('../data/drugReferenceData.js'),
+        ]);
+        const results = [
+          ...(dataModule.searchDiseases(searchQuery) || []),
+          ...(drugModule.drugList || []).filter(d => 
+            d.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            d.aliases?.some(a => a.toLowerCase().includes(searchQuery.toLowerCase()))
+          ).map(d => ({ ...d, isDrug: true })),
+        ];
+        setSearchResults(results);
+      } catch (e) {
+        console.error('Search error', e);
+      }
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
+  
   const recentItems = viewHistory
     .filter((item) => item?.id && item?.section)
     .slice(0, 4);
@@ -90,6 +117,29 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
               className="hero-search-input"
             />
           </div>
+          {searchResults.length > 0 && (
+            <div className="hero-search-results">
+              {searchResults.slice(0, 6).map((result) => (
+                <button
+                  key={result.id || result.name}
+                  type="button"
+                  className="hero-search-result-item"
+                  onClick={() => {
+                    if (result.isDrug) {
+                      onNavigate('drugs', null, null, { drugId: result.id });
+                    } else {
+                      onNavigate(result.section, result.subsection, result.id);
+                    }
+                    setSearchQuery('');
+                    setSearchResults([]);
+                  }}
+                >
+                  <span className="result-name">{result.name || result.title}</span>
+                  <small>{result.icd ? `МКБ: ${result.icd}` : result.isDrug ? 'Препарат' : result.meta}</small>
+                </button>
+              ))}
+            </div>
+          )}
         </div>
         
         <div className="home-workbench-actions" aria-label="Быстрые действия врача" data-scrollable="x">

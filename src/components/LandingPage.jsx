@@ -52,6 +52,38 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
   const [searchQuery, setSearchQuery] = React.useState('');
   const [searchResults, setSearchResults] = React.useState([]);
   const [searchOpen, setSearchOpen] = React.useState(false);
+  const [resultsStyle, setResultsStyle] = React.useState({});
+  const searchRef = React.useRef(null);
+  
+  // Position results dropdown below input
+  React.useEffect(() => {
+    if (searchResults.length > 0 && searchRef.current) {
+      const rect = searchRef.current.getBoundingClientRect();
+      setResultsStyle({
+        top: (rect.bottom + 8) + 'px',
+        left: Math.max(16, rect.left) + 'px',
+        width: Math.min(rect.width, window.innerWidth - 32) + 'px',
+      });
+    } else {
+      setResultsStyle({});
+    }
+  }, [searchResults]);
+  
+  // Click outside to close results
+  React.useEffect(() => {
+    if (searchResults.length === 0) return;
+    const handler = (e) => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        const dropdown = document.querySelector('.hero-search-results');
+        if (dropdown && !dropdown.contains(e.target)) {
+          setSearchResults([]);
+          setSearchQuery('');
+        }
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [searchResults]);
   
   // Debounce search like in Navbar
   React.useEffect(() => {
@@ -102,23 +134,18 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
         
         {/* Hero Search */}
         <div className="home-hero-search">
-          <div className="hero-search-wrapper">
+          <div className="hero-search-wrapper" ref={searchRef}>
             <IconSearch size={20} className="hero-search-icon" />
             <input
               type="text"
               placeholder="Поиск по МКБ, диагнозу, симптому или лекарству (Например: N30)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' && searchQuery.trim()) {
-                  setSearchOpen(true);
-                }
-              }}
               className="hero-search-input"
             />
           </div>
           {searchResults.length > 0 && (
-            <div className="hero-search-results">
+            <div className="hero-search-results" style={resultsStyle}>
               {searchResults.slice(0, 6).map((result) => {
                           const hit = result.disease || result;
                           return (

@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
-import { useSafeAreaInsets } from '../hooks/useSafeAreaInsets';
+import useSafeAreaInsets from '../../hooks/useSafeAreaInsets';
 
 /**
  * Bottom navigation bar for iPhone‑first UI.

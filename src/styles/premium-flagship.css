@@ -830,3 +830,13 @@ body.light-mode .mobile-shell-nav {
     font-size: 0.8125rem;
   }
 }
+
+/* Modal export actions - fallback styles */
+.modal-export-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem 1.25rem;
+  border-top: 1px solid var(--border);
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}

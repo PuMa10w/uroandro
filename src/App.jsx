@@ -5,6 +5,7 @@ import './styles/ultraPremiumContract.css';
 import './styles/v22WorkbenchLock.css';
 import './styles/v23ClinicalWorkbench.css';
 import './styles/premium-flagship.css';
+import BottomNav from './components/ui/BottomNav';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import SeoHelmet from './components/SeoHelmet';
@@ -343,6 +344,7 @@ function App() {
           {showScrollTop && (
             <button className="scroll-top-btn" onClick={scrollToTop} aria-label="Наверх"><IconArrowUp size={20} /></button>
           )}
+          {isMobileShell && <BottomNav />}
         </div>
       </ErrorBoundary>
     </HelmetProvider>

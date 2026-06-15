@@ -194,6 +194,17 @@ export default function DiseaseModalHeader({
                 <p>{clinicalFocus}</p>
               </div>
             </div>
+            {/* Compact summary pills for mobile */}
+            <div className="modal-summary-pills">
+              <span className="modal-summary-pill is-primary">
+                <span className="modal-summary-pill-kicker">КРАТКО</span>
+                {patientSummary}
+              </span>
+              <span className="modal-summary-pill is-accent">
+                <span className="modal-summary-pill-kicker">ФОКУС</span>
+                {clinicalFocus}
+              </span>
+            </div>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react'
 import PropTypes from 'prop-types';
 import { useDarkMode, useSearchHistory } from '../hooks/useLocalStorage';
 import { trackSearch, trackSearchSelect, trackSymptomRoute } from '../utils/analytics';
+import { searchDiseases } from '../data';
 import {
   IconSearch, IconMoon, IconSun, IconMenu, IconClose,
   IconStar, IconClock, IconArrowUp, IconArrowDown,
@@ -459,16 +460,17 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
     }
 
     setSearchLoading(true);
-    Promise.all([
-      import('../data'),
-      import('../data/drugReferenceData.js'),
-    ])
-      .then(([dataModule, drugModule]) => {
-        if (!cancelled) {
-          const { searchDiseases } = dataModule;
-          const results = searchDiseases(debouncedQuery) || [];
 
-          // Поиск по препаратам
+    // Используем статический импорт searchDiseases (работает с моками в тестах)
+    const results = searchDiseases(debouncedQuery) || [];
+
+    // Трекинг поиска (синхронно, до асинхронной загрузки препаратов)
+    trackSearch(debouncedQuery, results.length);
+
+    // Поиск по препаратам (динамический импорт для code splitting)
+    import('../data/drugReferenceData.js')
+      .then((drugModule) => {
+        if (!cancelled) {
           const drugList = drugModule.drugList || [];
           const matchedDrugs = drugList
             .filter(drug => {
@@ -491,13 +493,15 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
               drugIndications: drug.indications || '',
             }));
 
-          setSearchResults([...results.slice(0, 15), ...matchedDrugs]);
+          const combinedResults = [...results.slice(0, 15), ...matchedDrugs];
+          setSearchResults(combinedResults);
           setSearchLoading(false);
         }
       })
       .catch(() => {
         if (!cancelled) {
-          setSearchResults([]);
+          // Если загрузка препаратов упала — показываем хотя бы результаты болезней
+          setSearchResults(results.slice(0, 15));
           setSearchLoading(false);
         }
       });
@@ -960,7 +964,7 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
                     ))}
                   </div>
                 )}
-                {hasTypedSearch && !isSearchPending && !hasAnySearchSurface && (
+                {hasTypedSearch && !isSearchPending && displayItems.length === 0 && (
                   <div className="search-no-results" role="status">Ничего не найдено</div>
                 )}
                 {hasAnySearchSurface && (

@@ -119,25 +119,28 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
           </div>
           {searchResults.length > 0 && (
             <div className="hero-search-results">
-              {searchResults.slice(0, 6).map((result) => (
-                <button
-                  key={result.id || result.name}
-                  type="button"
-                  className="hero-search-result-item"
-                  onClick={() => {
-                    if (result.isDrug) {
-                      onNavigate('drugs', null, null, { drugId: result.id });
-                    } else {
-                      onNavigate(result.section, result.subsection, result.id);
-                    }
-                    setSearchQuery('');
-                    setSearchResults([]);
-                  }}
-                >
-                  <span className="result-name">{result.name || result.title}</span>
-                  <small>{result.icd ? `МКБ: ${result.icd}` : result.isDrug ? 'Препарат' : result.meta}</small>
-                </button>
-              ))}
+              {searchResults.slice(0, 6).map((result) => {
+                          const hit = result.disease || result;
+                          return (
+                            <button
+                              key={result.id || result.name || hit.id}
+                              type="button"
+                              className="hero-search-result-item"
+                              onClick={() => {
+                                if (result.isDrug) {
+                                  onNavigate('drugs', null, null, { drugId: result.id });
+                                } else {
+                                  onNavigate(hit.section, hit.subsection, hit.id);
+                                }
+                                setSearchQuery('');
+                                setSearchResults([]);
+                              }}
+                            >
+                              <span className="result-name">{hit.nameRu || hit.nameEn || hit.name || result.title}</span>
+                              <small>{hit.icd ? `МКБ: ${hit.icd}` : result.isDrug ? 'Препарат' : result.meta || hit.subsection}</small>
+                            </button>
+                          );
+                        })}
             </div>
           )}
         </div>

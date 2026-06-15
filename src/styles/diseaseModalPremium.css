@@ -5402,3 +5402,84 @@ body.modal-open .scroll-top-btn {
     border-radius: 0.95rem !important;
   }
 }
+
+
+/* ===== FORCE PREMIUM TABS FINAL OVERRIDE ===== */
+.tabs-shell .tabs {
+  display: flex !important;
+  width: 100% !important;
+  padding: 0.22rem 0 0.62rem !important;
+  gap: 0.42rem !important;
+  overflow-x: auto !important;
+  overscroll-behavior-x: contain !important;
+  scroll-snap-type: x proximity !important;
+  scrollbar-width: none !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.tabs-shell .tabs::-webkit-scrollbar {
+  display: none !important;
+}
+
+.tabs-shell .tab {
+  position: relative !important;
+  flex: 0 0 auto !important;
+  min-width: auto !important;
+  max-width: min(9.4rem, 52vw) !important;
+  min-height: 2.25rem !important;
+  padding: 0.36rem 0.62rem 0.36rem 0.42rem !important;
+  border-radius: 999px !important;
+  border: 0.5px solid rgba(140, 170, 210, 0.12) !important;
+  background: rgba(255, 255, 255, 0.045) !important;
+  color: var(--text-secondary) !important;
+  font-size: 0.74rem !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  scroll-snap-align: start !important;
+}
+
+.tabs-shell .tab:hover {
+  background: rgba(61, 214, 189, 0.08) !important;
+  border-color: rgba(61, 214, 189, 0.16) !important;
+  color: var(--text-primary) !important;
+  transform: translateY(-1px) !important;
+}
+
+.tabs-shell .tab.active {
+  background: linear-gradient(135deg, rgba(61, 214, 189, 0.95), rgba(110, 168, 255, 0.88)) !important;
+  border-color: rgba(61, 214, 189, 0.34) !important;
+  color: #052136 !important;
+  box-shadow:
+    0 12px 28px rgba(61, 214, 189, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+}
+
+.tab-index {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 auto !important;
+  width: 1.28rem !important;
+  height: 1.28rem !important;
+  border-radius: 999px !important;
+  color: rgba(203, 214, 229, 0.82) !important;
+  background: rgba(255, 255, 255, 0.045) !important;
+  font-size: 0.58rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.04em !important;
+}
+
+.tabs-shell .tab.active .tab-index {
+  color: #052136 !important;
+  background: rgba(7, 17, 31, 0.1) !important;
+}
+
+.tab-label {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}

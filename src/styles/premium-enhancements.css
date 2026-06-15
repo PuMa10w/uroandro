@@ -1,6 +1,35 @@
 /* src/styles/premium-enhancements.css */
 /* Ultra-premium enhancements using design system tokens */
 
+/* === iOS / Mobile Optimizations === */
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* === Dynamic Island / Notch safe area for modals === */
+.modal-content {
+  padding-top: max(env(safe-area-inset-top), 16px);
+  padding-bottom: max(env(safe-area-inset-bottom), 16px);
+}
+
+/* === Bottom Nav iOS safe area === */
+.bottom-nav {
+  padding-bottom: max(env(safe-area-inset-bottom), 8px);
+}
+
 /* === Glassmorphism Navbar === */
 .navbar {
   backdrop-filter: blur(20px) saturate(180%);

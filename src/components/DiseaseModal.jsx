@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
+import '../styles/diseaseModalPremium.css';
+import '../styles/v21ModalVisualLock.css';
+import '../styles/v22WorkbenchLock.css';
+import '../styles/v23ClinicalWorkbench.css';
 import { IconClose, IconDownload, IconStar, IconStarFilled } from '../icons';
 import { normalizeDisease } from './diseaseModal/normalizeDisease';
 import { getDiseaseModalTabs, DEFAULT_TAB } from './diseaseModal/tabs';

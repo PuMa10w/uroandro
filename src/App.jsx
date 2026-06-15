@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import './App.css';
+import './styles/ultraPremiumContract.css';
+import './styles/v22WorkbenchLock.css';
+import './styles/v23ClinicalWorkbench.css';
 import './styles/premium-flagship.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';

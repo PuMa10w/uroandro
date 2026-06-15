@@ -5,12 +5,12 @@
 
 /* ─── Glass Tokens ────────────────────────────────────────── */
 :root {
-  --glass-premium-bg: rgba(11, 20, 34, 0.85);
-  --glass-premium-border: rgba(140, 170, 210, 0.12);
+  --glass-premium-bg: rgba(9, 20, 36, 0.88);
+  --glass-premium-border: rgba(110, 168, 255, 0.14);
 }
 body.light-mode {
-  --glass-premium-bg: rgba(255, 252, 247, 0.85);
-  --glass-premium-border: rgba(73, 98, 128, 0.12);
+  --glass-premium-bg: rgba(255, 252, 247, 0.88);
+  --glass-premium-border: rgba(73, 98, 128, 0.14);
 }
 
 /* ─── Glass 2.0 — Deep Layer System ─────────────────────── */

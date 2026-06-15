@@ -42,30 +42,42 @@
   --sab: env(safe-area-inset-bottom, 0px);
   --sal: env(safe-area-inset-left, 0px);
 
-  /* Colors — Dark Premium */
-  --bg-primary: #080f1a;
-  --bg-secondary: #0e1827;
-  --bg-card: rgba(13, 22, 38, 0.78);
-  --bg-card-hover: rgba(18, 29, 48, 0.92);
-  --bg-elevated: rgba(15, 24, 41, 0.88);
-  --bg-panel: rgba(11, 19, 33, 0.94);
+  /* Colors — Dark Premium 2.0 */
+  --bg-primary: #07111f;
+  --bg-secondary: #0d1b2f;
+  --bg-tertiary: #12263f;
+  --bg-card: rgba(13, 25, 44, 0.82);
+  --bg-card-hover: rgba(18, 32, 54, 0.94);
+  --bg-elevated: rgba(15, 29, 50, 0.90);
+  --bg-panel: rgba(9, 20, 36, 0.96);
+  --bg-overlay: rgba(3, 7, 18, 0.88);
 
-  /* Accent — Teal (Urology) + Gold (Andrology) */
-  --gold: #f1cc7a;
-  --gold-light: #ffe5a8;
-  --gold-dark: #be9543;
-  --teal: #58e0c1;
-  --teal-light: #8af7de;
-  --teal-dark: #2fb193;
-  --cyan: #7bb8ff;
+  /* Accent — Refined Teal (Urology) + Champagne Gold (Andrology) */
+  --gold: #d4af37;
+  --gold-light: #f3d97a;
+  --gold-dark: #9f7f2a;
+  --teal: #3dd6bd;
+  --teal-light: #7bf4e2;
+  --teal-dark: #1fa895;
+  --cyan: #6ea8ff;
   --danger: #ef4444;
   --danger-light: #fca5a5;
+  --warning: #f59e0b;
+  --warning-light: #fbbf24;
+  --success: #22c55e;
+  --success-light: #86efac;
+  --info: #38bdf8;
+  --info-light: #7dd3fc;
 
   /* Section Colors */
-  --section-urology: #58e0c1;
-  --section-andrology: #f1cc7a;
-  --section-pediatric: #7bb8ff;
+  --section-urology: #3dd6bd;
+  --section-andrology: #d4af37;
+  --section-pediatric: #6ea8ff;
   --section-emergency: #ef4444;
+  --section-surgery: #f59e0b;
+  --section-diet: #22c55e;
+  --section-tools: #38bdf8;
+  --section-glossary: #a78bfa;
 
   /* Text */
   --text-primary: #f4f9ff;
@@ -79,14 +91,14 @@
   --border-strong: rgba(88, 224, 193, 0.24);
 
   /* Gradients */
-  --gradient-gold: linear-gradient(135deg, #fff1bf 0%, #f1cc7a 40%, #d79f4b 100%);
-  --gradient-teal: linear-gradient(135deg, #72f0d4 0%, #58e0c1 50%, #3db8a0 100%);
-  --gradient-card: linear-gradient(180deg, rgba(15, 26, 44, 0.82), rgba(9, 17, 31, 0.96));
+  --gradient-gold: linear-gradient(135deg, #fff1bf 0%, #d4af37 40%, #9f7f2a 100%);
+  --gradient-teal: linear-gradient(135deg, #7bf4e2 0%, #3dd6bd 50%, #1fa895 100%);
+  --gradient-card: linear-gradient(180deg, rgba(15, 30, 52, 0.84), rgba(7, 17, 31, 0.96));
   --gradient-hero:
-    radial-gradient(circle at 20% 10%, rgba(88, 224, 193, 0.12), transparent 30%),
-    radial-gradient(circle at 80% 0%, rgba(123, 184, 255, 0.10), transparent 25%),
-    radial-gradient(circle at 50% 90%, rgba(241, 204, 122, 0.06), transparent 28%),
-    linear-gradient(180deg, #080f1a 0%, #0c1726 48%, #09121e 100%);
+    radial-gradient(circle at 20% 10%, rgba(61, 214, 189, 0.14), transparent 30%),
+    radial-gradient(circle at 80% 0%, rgba(110, 168, 255, 0.11), transparent 25%),
+    radial-gradient(circle at 50% 90%, rgba(212, 175, 55, 0.08), transparent 28%),
+    linear-gradient(180deg, #07111f 0%, #0d1b2f 48%, #07111f 100%);
 
   /* Shadows */
   --shadow-card: 0 18px 44px rgba(3, 7, 18, 0.34);

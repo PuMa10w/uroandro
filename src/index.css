@@ -101,11 +101,14 @@
     radial-gradient(circle at 50% 90%, rgba(212, 175, 55, 0.08), transparent 28%),
     linear-gradient(180deg, #07111f 0%, #0d1b2f 48%, #07111f 100%);
 
-  /* Shadows */
-  --shadow-card: 0 18px 44px rgba(3, 7, 18, 0.34);
-  --shadow-card-hover: 0 24px 56px rgba(3, 7, 18, 0.44);
-  --shadow-gold: 0 0 0 1px rgba(241, 204, 122, 0.14), 0 14px 42px rgba(241, 204, 122, 0.10);
-  --shadow-teal: 0 0 0 1px rgba(88, 224, 193, 0.14), 0 14px 42px rgba(88, 224, 193, 0.10);
+  /* Shadows — Premium Depth */
+  --shadow-sm: 0 4px 12px rgba(3, 7, 18, 0.12);
+  --shadow-card: 0 24px 70px rgba(3, 7, 18, 0.38);
+  --shadow-card-hover: 0 32px 90px rgba(3, 7, 18, 0.52);
+  --shadow-soft: 0 12px 40px rgba(3, 7, 18, 0.18);
+  --shadow-glow-teal: 0 0 40px rgba(61, 214, 189, 0.22);
+  --shadow-glow-gold: 0 0 40px rgba(212, 175, 55, 0.18);
+  --shadow-floating: 0 30px 100px rgba(3, 7, 18, 0.45);
   --shadow-navbar: 0 8px 32px rgba(3, 7, 18, 0.48), 0 0 0 0.5px rgba(140, 170, 210, 0.12);
 
   /* Transitions */

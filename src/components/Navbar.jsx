@@ -467,7 +467,9 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
     // Трекинг поиска (синхронно, до асинхронной загрузки препаратов)
     trackSearch(debouncedQuery, results.length);
 
-    // Сбрасываем лоадер сразу — результаты болезней уже есть
+    // Устанавливаем результаты болезней сразу (синхронно)
+    const diseaseResults = results.slice(0, 15);
+    setSearchResults(diseaseResults);
     setSearchLoading(false);
 
     // Поиск по препаратам (динамический импорт для code splitting)
@@ -496,14 +498,13 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
               drugIndications: drug.indications || '',
             }));
 
-          const combinedResults = [...results.slice(0, 15), ...matchedDrugs];
+          const combinedResults = [...diseaseResults, ...matchedDrugs];
           setSearchResults(combinedResults);
         }
       })
       .catch(() => {
         if (!cancelled) {
-          // Если загрузка препаратов упала — показываем хотя бы результаты болезней
-          setSearchResults(results.slice(0, 15));
+          // Если загрузка препаратов упала — результаты болезней уже есть
         }
       });
 

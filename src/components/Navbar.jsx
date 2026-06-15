@@ -368,6 +368,7 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [searchResults, setSearchResults] = useState([]);
   const [debouncedQuery, setDebouncedQuery] = useState('');
+  const [searchLoading, setSearchLoading] = useState(false);
   const searchRef = useRef(null);
   const inputRef = useRef(null);
   const searchButtonRef = useRef(null);

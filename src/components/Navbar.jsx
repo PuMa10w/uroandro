@@ -405,16 +405,22 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
   }, [searchOpen]);
 
   useEffect(() => {
-    if (searchOpen && searchButtonRef.current) {
-      const rect = searchButtonRef.current.getBoundingClientRect();
-      setSearchDropdownStyle({
-        top: (rect.bottom + 8) + 'px',
-        left: Math.max(16, rect.left - 300) + 'px',
-        width: Math.min(544, window.innerWidth - 32) + 'px',
-      });
-    } else {
-      setSearchDropdownStyle({});
-    }
+    if (!searchOpen) return;
+    const updatePosition = () => {
+      if (searchButtonRef.current) {
+        const rect = searchButtonRef.current.getBoundingClientRect();
+        const dropdownWidth = Math.min(544, window.innerWidth - 32);
+        const maxLeft = window.innerWidth - dropdownWidth - 16;
+        setSearchDropdownStyle({
+          top: (rect.bottom + 8) + 'px',
+          left: Math.max(16, Math.min(rect.left - 300, maxLeft)) + 'px',
+          width: dropdownWidth + 'px',
+        });
+      }
+    };
+    updatePosition();
+    window.addEventListener('resize', updatePosition);
+    return () => window.removeEventListener('resize', updatePosition);
   }, [searchOpen]);
 
   useEffect(() => {

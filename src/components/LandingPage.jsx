@@ -57,16 +57,24 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
   
   // Position results dropdown below input
   React.useEffect(() => {
-    if (searchResults.length > 0 && searchRef.current) {
-      const rect = searchRef.current.getBoundingClientRect();
-      setResultsStyle({
-        top: (rect.bottom + 8) + 'px',
-        left: Math.max(16, rect.left) + 'px',
-        width: Math.min(rect.width, window.innerWidth - 32) + 'px',
-      });
-    } else {
-      setResultsStyle({});
-    }
+    if (searchResults.length === 0) return;
+    const updatePosition = () => {
+      if (searchRef.current) {
+        const rect = searchRef.current.getBoundingClientRect();
+        setResultsStyle({
+          top: (rect.bottom + 8) + 'px',
+          left: Math.max(16, rect.left) + 'px',
+          width: Math.min(rect.width, window.innerWidth - 32) + 'px',
+        });
+      }
+    };
+    updatePosition();
+    window.addEventListener('resize', updatePosition);
+    window.addEventListener('scroll', updatePosition, true);
+    return () => {
+      window.removeEventListener('resize', updatePosition);
+      window.removeEventListener('scroll', updatePosition, true);
+    };
   }, [searchResults]);
   
   // Click outside to close results

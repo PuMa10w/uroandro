@@ -321,6 +321,10 @@ body.light-mode .modal-glass {
 }
 
 /* ─── Search dropdown premium ──────────────────────────── */
+.search-container {
+  position: relative;
+}
+
 .search-dropdown {
   position: absolute;
   top: calc(100% + 0.75rem);

@@ -325,11 +325,18 @@ body.light-mode .modal-glass {
   position: relative;
 }
 
+.navbar-right {
+  position: relative;
+}
+
 .search-dropdown {
-  position: absolute;
-  top: calc(100% + 0.75rem);
-  right: 0;
-  width: min(34rem, calc(100vw - 1rem));
+  position: fixed;
+  top: auto;
+  left: auto;
+  right: auto;
+  width: min(34rem, calc(100vw - 2rem));
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
   background: rgba(11, 20, 34, 0.96) !important;
   backdrop-filter: blur(40px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(40px) saturate(180%) !important;

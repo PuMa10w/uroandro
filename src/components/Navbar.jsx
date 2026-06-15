@@ -359,6 +359,7 @@ function getRetainedSearchClusters(viewHistory = []) {
 const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNavigate, favorites = {}, viewHistory = [] }) => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchDropdownStyle, setSearchDropdownStyle] = useState({});
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [darkMode, toggleDarkMode] = useDarkMode();
@@ -367,9 +368,9 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [searchResults, setSearchResults] = useState([]);
   const [debouncedQuery, setDebouncedQuery] = useState('');
-  const [searchLoading, setSearchLoading] = useState(false);
   const searchRef = useRef(null);
   const inputRef = useRef(null);
+  const searchButtonRef = useRef(null);
   const dropdownRef = useRef(null);
   const activeSectionLabel = sectionMeta[activeSection] || 'Навигация';
   const isPrimarySection = activeSection === 'urology' || activeSection === 'andrology';
@@ -399,6 +400,19 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
   useEffect(() => {
     if (searchOpen && inputRef.current) {
       inputRef.current.focus();
+    }
+  }, [searchOpen]);
+
+  useEffect(() => {
+    if (searchOpen && searchButtonRef.current) {
+      const rect = searchButtonRef.current.getBoundingClientRect();
+      setSearchDropdownStyle({
+        top: (rect.bottom + 8) + 'px',
+        left: Math.max(16, rect.left - 300) + 'px',
+        width: Math.min(544, window.innerWidth - 32) + 'px',
+      });
+    } else {
+      setSearchDropdownStyle({});
     }
   }, [searchOpen]);
 
@@ -757,6 +771,7 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
         <div className="navbar-right">
           <div className="search-container" ref={searchRef} role="search" aria-label="Поиск болезней">
             <button
+              ref={searchButtonRef}
               className="search-toggle"
               onClick={toggleSearch}
               aria-label={searchOpen ? 'Закрыть поиск' : 'Открыть поиск'}
@@ -765,7 +780,7 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
               <IconSearch size={18} />
             </button>
             {searchOpen && (
-              <div className="search-dropdown" role="dialog" aria-label="Поиск по заболеваниям">
+              <div className="search-dropdown" style={searchDropdownStyle} role="dialog" aria-label="Поиск по заболеваниям">
                 <div className="search-header-row">
                   <span className="search-title">Клинический поиск</span>
                   <button className="search-close-btn" onClick={closeSearch} aria-label="Закрыть поиск">

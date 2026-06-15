@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './design/tokens.css';
+import './design/typography.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { initSentry } from './utils/sentry';

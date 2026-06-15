@@ -59,6 +59,60 @@ body.light-mode .navbar {
   border: 0.5px solid rgba(73, 98, 128, 0.12) !important;
 }
 
+/* ─── Premium Dropdown ───────────────────────────────────── */
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  min-width: 16rem;
+  max-width: min(20rem, calc(100vw - 1rem));
+  padding: 0.5rem;
+  background: rgba(9, 20, 36, 0.96) !important;
+  border: 1px solid rgba(110, 168, 255, 0.16) !important;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(3, 7, 18, 0.55) !important;
+  backdrop-filter: blur(40px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+  transform-origin: top right;
+  animation: dropdownSlideIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dropdownSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.nav-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 10px;
+  color: var(--text-secondary) !important;
+  font-size: var(--font-md) !important;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.nav-dropdown-item:hover {
+  background: rgba(61, 214, 189, 0.10) !important;
+  color: var(--text-primary) !important;
+  transform: translateX(2px);
+}
+
+.nav-dropdown-item.active {
+  background: rgba(61, 214, 189, 0.14) !important;
+  color: var(--teal-light) !important;
+}
+
 /* ─── Premium Card Override ──────────────────────────────── */
 .premium-card {
   transition:

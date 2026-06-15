@@ -71,9 +71,13 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
     updatePosition();
     window.addEventListener('resize', updatePosition);
     window.addEventListener('scroll', updatePosition, true);
+    const timer = setTimeout(updatePosition, 150);
+    const timer2 = setTimeout(updatePosition, 500);
     return () => {
       window.removeEventListener('resize', updatePosition);
       window.removeEventListener('scroll', updatePosition, true);
+      clearTimeout(timer);
+      clearTimeout(timer2);
     };
   }, [searchResults]);
   

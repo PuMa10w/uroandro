@@ -1,0 +1,360 @@
+/* src/styles/premium-enhancements.css */
+/* Ultra-premium enhancements using design system tokens */
+
+/* === Glassmorphism Navbar === */
+.navbar {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-bottom: 1px solid rgba(0, 87, 184, 0.08);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .navbar {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* === Premium Disease Cards === */
+.disease-card {
+  background: var(--color-card-bg, #ffffff);
+  border: 1px solid var(--color-border, rgba(0, 0, 0, 0.06));
+  border-radius: 16px;
+  padding: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.disease-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.disease-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 87, 184, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 87, 184, 0.2);
+}
+
+.disease-card:hover::before {
+  opacity: 1;
+}
+
+.disease-card:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 87, 184, 0.1);
+}
+
+.dark .disease-card {
+  background: var(--color-card-bg-dark, #1e293b);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark .disease-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* === Card Icon Premium === */
+.card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(0, 87, 184, 0.08), rgba(0, 31, 77, 0.04));
+  font-size: 1.25rem;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.disease-card:hover .card-icon {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, rgba(0, 87, 184, 0.15), rgba(0, 31, 77, 0.08));
+}
+
+/* === Card Title Premium === */
+.card-title {
+  font-family: 'SF Pro Display', 'Inter', -apple-system, sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--color-text, #0f172a);
+}
+
+.dark .card-title {
+  color: #f1f5f9;
+}
+
+/* === Card Tags Premium === */
+.card-tags .tag {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background: rgba(0, 87, 184, 0.06);
+  color: var(--color-primary);
+  border: 1px solid rgba(0, 87, 184, 0.1);
+}
+
+.card-tags .tag.eau {
+  background: linear-gradient(135deg, rgba(0, 87, 184, 0.1), rgba(0, 31, 77, 0.06));
+  border-color: rgba(0, 87, 184, 0.2);
+}
+
+/* === Bottom Navigation Premium === */
+.bottom-nav {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  transition: background 0.3s ease;
+}
+
+.dark .bottom-nav {
+  background: rgba(15, 23, 42, 0.9) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.bottom-nav-btn {
+  transition: all 0.2s ease;
+  border-radius: 12px;
+  padding: 6px 12px;
+}
+
+.bottom-nav-btn.active {
+  background: rgba(0, 87, 184, 0.1);
+  color: var(--color-primary);
+}
+
+.dark .bottom-nav-btn.active {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+
+/* === Search Dropdown Premium === */
+.search-dropdown {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+.dark .search-dropdown {
+  background: rgba(30, 41, 59, 0.95) !important;
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* === Hero Search Premium === */
+.hero-search-wrapper {
+  border-radius: 16px;
+  border: 2px solid rgba(0, 87, 184, 0.15);
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+}
+
+.hero-search-wrapper:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(0, 87, 184, 0.1);
+  transform: translateY(-1px);
+}
+
+.dark .hero-search-wrapper {
+  background: rgba(30, 41, 59, 0.9);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.dark .hero-search-wrapper:focus-within {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+/* === Destination Cards Premium === */
+.home-destination-card {
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  position: relative;
+}
+
+.home-destination-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.05));
+  pointer-events: none;
+}
+
+.home-destination-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
+}
+
+.home-destination-card:active {
+  transform: translateY(-2px) scale(1.005);
+}
+
+/* === Quick Access Premium === */
+.quick-btn {
+  border-radius: 14px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: var(--color-card-bg, #ffffff);
+}
+
+.quick-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 87, 184, 0.1);
+  border-color: rgba(0, 87, 184, 0.15);
+}
+
+.dark .quick-btn {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark .quick-btn:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+/* === Smooth Page Transitions === */
+.home-shell,
+.section {
+  animation: fadeSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Stagger Animation for Cards === */
+.stagger-enter > * {
+  animation: cardEnter 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.stagger-enter > *:nth-child(1) { animation-delay: 0.02s; }
+.stagger-enter > *:nth-child(2) { animation-delay: 0.04s; }
+.stagger-enter > *:nth-child(3) { animation-delay: 0.06s; }
+.stagger-enter > *:nth-child(4) { animation-delay: 0.08s; }
+.stagger-enter > *:nth-child(5) { animation-delay: 0.10s; }
+.stagger-enter > *:nth-child(6) { animation-delay: 0.12s; }
+.stagger-enter > *:nth-child(7) { animation-delay: 0.14s; }
+.stagger-enter > *:nth-child(8) { animation-delay: 0.16s; }
+.stagger-enter > *:nth-child(9) { animation-delay: 0.18s; }
+.stagger-enter > *:nth-child(10) { animation-delay: 0.20s; }
+.stagger-enter > *:nth-child(11) { animation-delay: 0.22s; }
+.stagger-enter > *:nth-child(12) { animation-delay: 0.24s; }
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* === Modal Premium === */
+.modal-overlay {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.4);
+  animation: overlayIn 0.2s ease;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  animation: modalIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 20px;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* === Scrollbar Premium === */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 87, 184, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 87, 184, 0.35);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.35);
+}
+
+/* === Selection Premium === */
+::selection {
+  background: rgba(0, 87, 184, 0.15);
+  color: var(--color-primary-dark);
+}
+
+.dark ::selection {
+  background: rgba(59, 130, 246, 0.25);
+  color: #f1f5f9;
+}
+
+/* === Focus Ring Premium === */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 87, 184, 0.25);
+  border-radius: 4px;
+}
+
+.dark *:focus-visible {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}

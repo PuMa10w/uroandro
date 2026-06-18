@@ -1,5 +1,6 @@
 import React from 'react';
 import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
+import { vi } from 'vitest';
 import DiseaseSection from './DiseaseSection';
 import { preloadDiseaseData } from '../data/lazyData';
 import { trackSectionPathway } from '../utils/analytics';

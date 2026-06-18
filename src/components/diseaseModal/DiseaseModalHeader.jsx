@@ -184,27 +184,29 @@ export default function DiseaseModalHeader({
               </div>
             )}
             {leadText && <p className="modal-header-lead">{leadText}</p>}
-            <div className="modal-summary-grid">
-              <div className="modal-summary-card">
-                <span className="modal-summary-kicker">КРАТКО</span>
-                <p>{patientSummary}</p>
-              </div>
-              <div className="modal-summary-card modal-summary-card-accent">
-                <span className="modal-summary-kicker">ФОКУС</span>
-                <p>{clinicalFocus}</p>
-              </div>
-            </div>
-            {/* Compact summary pills for mobile */}
-            <div className="modal-summary-pills">
-              <span className="modal-summary-pill is-primary">
-                <span className="modal-summary-pill-kicker">КРАТКО</span>
-                {patientSummary}
-              </span>
-              <span className="modal-summary-pill is-accent">
-                <span className="modal-summary-pill-kicker">ФОКУС</span>
-                {clinicalFocus}
-              </span>
-            </div>
+                        <div className="modal-summary-grid">
+                          <div className="modal-summary-card">
+                            <span className="modal-summary-kicker">КРАТКО</span>
+                            <p>{patientSummary}</p>
+                          </div>
+                          <div className="modal-summary-card modal-summary-card-accent">
+                            <span className="modal-summary-kicker">ФОКУС</span>
+                            <p>{clinicalFocus}</p>
+                          </div>
+                        </div>
+                        {/* Compact summary pills for mobile */}
+                        {isMobile && (
+                                        <div className="modal-summary-pills">
+                                          <span className="modal-summary-pill is-primary">
+                                            <span className="modal-summary-pill-kicker">КРАТКО</span>
+                                            {patientSummary}
+                                          </span>
+                                          <span className="modal-summary-pill is-accent">
+                                            <span className="modal-summary-pill-kicker">ФОКУС</span>
+                                            {clinicalFocus}
+                                          </span>
+                                        </div>
+                                      )}
           </div>
         </div>
       </div>

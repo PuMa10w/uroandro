@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen, waitFor, cleanup } from '@testing-library/react';
+import { vi } from 'vitest';
 import App from './App';
 
 const routeSamples = [

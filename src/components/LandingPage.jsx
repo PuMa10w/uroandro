@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { IconSearch, IconStar, IconArrowUp, IconClose, IconStarFilled } from '../icons';
+import { IconSearch } from '../icons';
 
 const quickAccess = [
   { id: 'urolithiasis', name: 'Мочекаменная болезнь', icon: '01', meta: 'камни и колика', section: 'urology', subsection: 'stones' },

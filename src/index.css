@@ -544,3 +544,406 @@ button {
 .app-update-confirm:hover {
   opacity: 0.9;
 }
+
+.safe-area-bottom {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
+}
+
+.backdrop-blur-xl {
+  backdrop-filter: blur(24px) saturate(1.3);
+  -webkit-backdrop-filter: blur(24px) saturate(1.3);
+}
+
+
+/* ===== iPhone 15/16/17 Pro Max Optimizations ===== */
+
+/* Fluid typography for dynamic island */
+@media (max-width: 940px) {
+  :root {
+    --font-xs: clamp(0.72rem, 0.68rem + 0.18vw, 0.78rem);
+    --font-sm: clamp(0.82rem, 0.78rem + 0.20vw, 0.90rem);
+    --font-md: clamp(0.92rem, 0.88rem + 0.22vw, 1.02rem);
+    --font-base: clamp(1rem, 0.96rem + 0.24vw, 1.12rem);
+    --font-lg: clamp(1.12rem, 1.08rem + 0.26vw, 1.26rem);
+    --font-xl: clamp(1.32rem, 1.24rem + 0.38vw, 1.52rem);
+    --font-2xl: clamp(1.62rem, 1.50rem + 0.58vw, 1.82rem);
+    --font-3xl: clamp(2.0rem, 1.80rem + 0.98vw, 2.4rem);
+    --font-4xl: clamp(2.5rem, 2.15rem + 1.7vw, 3.0rem);
+  }
+}
+
+/* True black for OLED displays */
+@media (color-gamut: p3) and (dynamic-range: high) {
+  :root {
+    --bg-primary: #000000;
+    --bg-secondary: #030712;
+    --bg-tertiary: #050a1a;
+  }
+}
+
+/* Dynamic Island safe area for iPhone 15 Pro */
+@supports (padding: env(safe-area-inset-top, 0px) + 47px) {
+  @media (max-width: 940px) {
+    :root {
+      --sat: max(env(safe-area-inset-top), 47px);
+    }
+  }
+}
+
+/* Landscape optimizations for Pro Max */
+@media (max-width: 940px) and (orientation: landscape) {
+  :root {
+    --up-mobile-gutter: 0.56rem;
+    --up-density-gap: 0.56rem;
+  }
+  
+  .modal-content {
+    padding-left: max(0.56rem, var(--sal)) !important;
+    padding-right: max(0.56rem, var(--sar)) !important;
+  }
+  
+  .disease-card {
+    margin-left: 0.28rem;
+    margin-right: 0.28rem;
+  }
+}
+
+/* Action button with haptic feedback */
+.disease-card:active {
+  transform: scale(0.98);
+  transition: transform 80ms ease-out;
+}
+
+/* Glass morphism for iPhone */
+.glass-card {
+  background: rgba(13, 25, 44, 0.72);
+  backdrop-filter: blur(24px) saturate(1.3);
+  -webkit-backdrop-filter: blur(24px) saturate(1.3);
+  border: 1px solid rgba(100, 150, 200, 0.18);
+  box-shadow: var(--shadow-card);
+}
+
+/* Touch feedback ripple */
+.touch-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.touch-ripple::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s;
+}
+
+.touch-ripple:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Navigation improvements */
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 4px;
+  transition: transform var(--transition-fast);
+}
+
+.bottom-nav-item.active {
+  transform: translateY(-2px);
+}
+
+.bottom-nav-icon {
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.bottom-nav-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+
+/* ===== Disease Card Premium Enhancements ===== */
+
+/* Severity indicator — визуальная индикация серьёзности */
+.disease-card.severity-low {
+  --card-accent: var(--success);
+  --card-accent-bg: rgba(34, 197, 94, 0.12);
+}
+
+.disease-card.severity-moderate {
+  --card-accent: var(--warning);
+  --card-accent-bg: rgba(245, 158, 11, 0.12);
+}
+
+.disease-card.severity-high {
+  --card-accent: var(--danger);
+  --card-accent-bg: rgba(239, 68, 68, 0.12);
+}
+
+.disease-card.severity-critical {
+  --card-accent: #ff4444;
+  --card-accent-bg: rgba(255, 68, 68, 0.18);
+}
+
+/* Улучшенный стиль карточки */
+.disease-card {
+  background: var(--up-card-bg);
+  border-radius: var(--up-card-radius);
+  padding: 1rem;
+  margin: 0.5rem;
+  transition: all 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+}
+
+.disease-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-accent, var(--teal));
+  opacity: 0.7;
+}
+
+.disease-card:hover {
+  background: var(--up-card-bg-hover);
+  box-shadow: var(--up-card-hover-glow);
+  transform: translateY(-2px);
+}
+
+.disease-card:active {
+  transform: scale(0.98);
+}
+
+/* Карточка с иллюстрацией */
+.disease-card.has-illustration {
+  padding-top: 0;
+}
+
+.disease-card-illustration {
+  width: 100%;
+  height: 120px;
+  border-radius: 18px 18px 0 0;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.disease-card-illustration svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Тёмная тема для карточек */
+.dark .disease-card {
+  background: rgba(13, 25, 44, 0.85);
+}
+
+/* Карточки в grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.75rem;
+  padding: 0.75rem;
+}
+
+@media (max-width: 940px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+}
+
+/* Badge для серьёзности */
+.severity-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-left: auto;
+}
+
+.severity-badge.low { background: var(--success-light); color: #000; }
+.severity-badge.moderate { background: var(--warning-light); color: #000; }
+.severity-badge.high { background: var(--danger-light); color: #000; }
+
+
+/* ===== Premium Table Styles for iPhone ===== */
+
+/* Таблицы с горизонтальным скроллом */
+.disease-table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem -1rem;
+  padding: 0 1rem;
+  border-radius: 12px;
+}
+
+.disease-table-wrapper::-webkit-scrollbar {
+  height: 4px;
+}
+
+.disease-table-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 2px;
+}
+
+/* Основные таблицы */
+.disease-table {
+  min-width: 600px;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.disease-table th,
+.disease-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.disease-table th {
+  background: rgba(13, 25, 44, 0.6);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.disease-table tr:hover {
+  background: rgba(13, 25, 44, 0.4);
+}
+
+.disease-table tr:nth-child(even) {
+  background: rgba(13, 25, 44, 0.2);
+}
+
+/* Tabular numbers для цифр */
+.disease-table .numeric,
+.disease-table td.numeric {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  text-align: right;
+}
+
+/* Цвета для значений */
+.disease-table .value-normal { color: var(--success); }
+.disease-table .value-high { color: var(--warning); }
+.disease-table .value-critical { color: var(--danger); }
+
+/* Мобильные таблицы */
+@media (max-width: 940px) {
+  .disease-table {
+    font-size: 0.8rem;
+  }
+  
+  .disease-table th,
+  .disease-table td {
+    padding: 8px 10px;
+  }
+}
+
+/* ===== Definition List для диагнозов ===== */
+.diagnosis-definition dt {
+  font-weight: 600;
+  color: var(--teal);
+  margin-top: 1rem;
+}
+
+.diagnosis-definition dd {
+  margin-left: 0;
+  margin-top: 0.25rem;
+  color: var(--text-secondary);
+}
+
+.diagnosis-definition dd p {
+  margin: 0 0 0.5rem 0;
+}
+
+
+/* ===== ActionSheet Styles ===== */
+.action-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.action-sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.action-sheet-content {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border-radius: 20px 20px 0 0;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+}
+
+/* ===== Toast Styles ===== */
+.toast-container {
+  position: fixed;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 80px);
+  left: 1rem;
+  right: 1rem;
+  margin: 0 auto;
+  max-width: 22rem;
+  z-index: 500;
+}
+
+/* ===== Voice Search Styles ===== */
+.voice-search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: var(--teal);
+  transition: all 0.2s;
+}
+
+.voice-search-btn:hover {
+  background: var(--teal-dark);
+}
+
+.voice-search-btn.listening {
+  background: var(--danger);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}

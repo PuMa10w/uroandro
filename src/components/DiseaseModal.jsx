@@ -232,27 +232,49 @@ const DiseaseModal = ({ disease, allDiseases = [], currentIndex = 0, onNavigate 
     const startTarget = e.target;
     const startedFromHeader = startTarget instanceof HTMLElement && Boolean(startTarget.closest('.modal-header'));
     touchStartY.current = e.touches[0].clientY;
+    touchStartX.current = e.touches[0].clientX;
     canDragClose.current = Boolean(isMobile && startedFromHeader && modalRef.current?.scrollTop === 0);
   };
 
   const handleTouchMove = (e) => {
-    if (!canDragClose.current) return;
-
-    const currentY = e.touches[0].clientY;
-    touchDeltaY.current = currentY - touchStartY.current;
-    if (touchDeltaY.current > 0 && modalRef.current) {
-      const scrollTop = modalRef.current.scrollTop;
-      if (scrollTop === 0) setDragOffset(touchDeltaY.current * 0.5);
+    // Vertical drag for close
+    if (canDragClose.current) {
+      const currentY = e.touches[0].clientY;
+      touchDeltaY.current = currentY - touchStartY.current;
+      if (touchDeltaY.current > 0 && modalRef.current) {
+        const scrollTop = modalRef.current.scrollTop;
+        if (scrollTop === 0) setDragOffset(touchDeltaY.current * 0.5);
+      }
     }
+    // Horizontal swipe for navigation
+    const currentX = e.touches[0].clientX;
+    touchDeltaX.current = currentX - touchStartX.current;
   };
 
   const handleTouchEnd = () => {
-    if (dragOffset > DRAG_CLOSE_THRESHOLD) onClose();
+    // Swipe navigation (horizontal)
+    if (Math.abs(touchDeltaX.current) > 50) {
+      if (touchDeltaX.current > 0 && currentIndex > 0) {
+        onNavigate(-1);
+      } else if (touchDeltaX.current < 0 && currentIndex < allDiseases.length - 1) {
+        onNavigate(1);
+      }
+    }
+    // Pull to close (vertical)
+    else if (dragOffset > DRAG_CLOSE_THRESHOLD) {
+      onClose();
+    }
     setDragOffset(0);
     touchStartY.current = 0;
+    touchStartX.current = 0;
     touchDeltaY.current = 0;
+    touchDeltaX.current = 0;
     canDragClose.current = false;
   };
+
+  // Horizontal swipe for disease navigation
+  const touchStartX = useRef(0);
+  const touchDeltaX = useRef(0);
 
   const modalNode = (
     <div

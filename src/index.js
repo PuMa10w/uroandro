@@ -124,7 +124,7 @@ function registerProductionServiceWorker() {
 
   window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register('/service-worker.js')
+      .register('/sw.js')
       .then((registration) => {
         if (registration.waiting) {
           pendingWorker = registration.waiting;

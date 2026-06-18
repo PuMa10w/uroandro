@@ -1,5 +1,6 @@
 import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { vi } from 'vitest';
 import DebugPanel, { buildTelemetryExport, compareTelemetryExports, formatTelemetrySummary, getCompareVerdict } from './DebugPanel';
 import { clearTelemetryEvents, getTelemetrySnapshot } from '../utils/analytics';
 

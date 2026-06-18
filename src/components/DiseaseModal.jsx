@@ -5,7 +5,6 @@ import '../styles/diseaseModalPremium.css';
 import '../styles/v21ModalVisualLock.css';
 import '../styles/v22WorkbenchLock.css';
 import '../styles/v23ClinicalWorkbench.css';
-import { IconClose, IconDownload, IconStar, IconStarFilled } from '../icons';
 import { normalizeDisease } from './diseaseModal/normalizeDisease';
 import { getDiseaseModalTabs, DEFAULT_TAB } from './diseaseModal/tabs';
 import DiseaseModalHeader from './diseaseModal/DiseaseModalHeader';
@@ -259,15 +258,18 @@ const DiseaseModal = ({ disease, allDiseases = [], currentIndex = 0, onNavigate 
     <div
       className="modal-overlay"
       onClick={onClose}
+      onKeyDown={(e) => e.key === 'Enter' && onClose()}
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
+      tabIndex={-1}
     >
       <div
         ref={modalRef}
         className="modal-content"
         style={isMobile && dragOffset > 0 ? { transform: `translateY(${dragOffset}px)` } : undefined}
         onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => e.key === 'Escape' && onClose()}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -306,7 +308,7 @@ const DiseaseModal = ({ disease, allDiseases = [], currentIndex = 0, onNavigate 
       </div>
 
       {isMobile && (
-        <div className="modal-mobile-quickbar is-fixed" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-mobile-quickbar is-fixed" onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.key === 'Escape' && onClose()} tabIndex={-1}>
           <button className="modal-mobile-quickbtn" onClick={handleScrollToTop} aria-label="Наверх">
             Наверх
           </button>

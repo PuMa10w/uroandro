@@ -478,3 +478,69 @@ button {
     box-shadow: var(--shadow-card-hover);
   }
 }
+
+/* === App Update Banner === */
+.app-update-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 12px;
+  padding: 16px;
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+  box-shadow: var(--shadow-md);
+}
+
+.app-update-banner .app-update-copy strong {
+  display: block;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.app-update-banner .app-update-copy span {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.app-update-banner .app-update-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.app-update-dismiss,
+.app-update-confirm {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.app-update-dismiss {
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+}
+
+.app-update-dismiss:hover {
+  opacity: 0.8;
+}
+
+.app-update-confirm {
+  background: var(--gradient-teal);
+  color: #000;
+  border: none;
+}
+
+.app-update-confirm:hover {
+  opacity: 0.9;
+}

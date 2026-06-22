@@ -596,6 +596,7 @@ body.light-mode .mobile-shell-nav {
   background: rgba(11, 20, 34, 0.85);
 }
 
+/* Hero search results - dark mode */
 .hero-search-results {
   position: fixed;
   margin-top: 0.5rem;
@@ -609,6 +610,14 @@ body.light-mode .mobile-shell-nav {
   z-index: 100;
   box-shadow: 0 8px 40px rgba(3, 7, 18, 0.5);
 }
+
+/* Hero search results - LIGHT MODE PREMIUM */
+body.light-mode .hero-search-results {
+  background: linear-gradient(135deg, rgba(248, 251, 255, 0.98), rgba(238, 246, 255, 0.96));
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-card);
+}
+
 .hero-search-result-item {
   display: flex;
   flex-direction: column;
@@ -616,14 +625,25 @@ body.light-mode .mobile-shell-nav {
   width: 100%;
   padding: 0.875rem 1rem;
   border: none;
-  background: none;
+  background: rgba(13, 22, 38, 0.6);
   color: var(--text-primary);
   text-align: left;
   cursor: pointer;
   transition: background var(--transition-fast);
 }
+
 .hero-search-result-item:hover {
-  background: rgba(88, 224, 193, 0.08);
+  background: rgba(88, 224, 193, 0.12);
+}
+
+/* Hero search results - LIGHT MODE PREMIUM */
+body.light-mode .hero-search-result-item {
+  background: rgba(242, 248, 255, 0.8);
+  color: var(--text-primary);
+}
+
+body.light-mode .hero-search-result-item:hover {
+  background: rgba(12, 139, 118, 0.08);
 }
 .hero-search-result-item .result-name {
   font-weight: 500;
@@ -799,6 +819,44 @@ body.light-mode .mobile-shell-nav {
   background: rgba(88, 224, 193, 0.14);
   border-color: rgba(88, 224, 193, 0.25);
   color: var(--text-primary);
+}
+
+/* Workbench badges - LIGHT MODE PREMIUM */
+body.light-mode .workbench-point {
+  background: rgba(12, 139, 118, 0.08);
+  border: 0.5px solid rgba(45, 119, 210, 0.2);
+  color: var(--text-secondary);
+}
+
+body.light-mode .workbench-point:hover {
+  background: rgba(12, 139, 118, 0.14);
+  border-color: rgba(12, 139, 118, 0.3);
+  color: var(--text-primary);
+}
+
+/* Recent cards - LIGHT MODE PREMIUM */
+body.light-mode .home-workbench-recent-card {
+  background: var(--up-card-bg);
+  border: var(--up-card-border);
+  box-shadow: var(--shadow-card);
+}
+
+body.light-mode .home-workbench-recent-card:hover {
+  background: var(--up-card-bg-hover);
+  box-shadow: var(--shadow-card-hover), var(--up-card-inset-shadow), var(--up-card-hover-glow);
+}
+
+/* Action cards - LIGHT MODE PREMIUM */
+body.light-mode .home-workbench-action,
+body.light-mode .home-section-card {
+  background: var(--up-card-bg);
+  border: var(--up-card-border);
+  box-shadow: var(--shadow-card);
+}
+
+body.light-mode .home-workbench-action:hover {
+  background: var(--up-card-bg-hover);
+  box-shadow: var(--shadow-card-hover);
 }
 
 /* ─── Reduced motion ─────────────────────────────────────── */

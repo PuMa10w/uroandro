@@ -17,7 +17,7 @@
   --radius-2xl: 34px;
   --radius-full: 9999px;
 
-  /* Font Sizes */
+  /* Font Sizes — Responsive Scale */
   --font-xs: clamp(0.68rem, 0.64rem + 0.16vw, 0.72rem);
   --font-sm: clamp(0.78rem, 0.74rem + 0.18vw, 0.82rem);
   --font-md: clamp(0.88rem, 0.84rem + 0.20vw, 0.92rem);
@@ -43,7 +43,7 @@
   --sab: env(safe-area-inset-bottom, 0px);
   --sal: env(safe-area-inset-left, 0px);
 
-  /* Colors - Dark */
+  /* Colors — Dark Premium 2.0 */
   --bg-primary: #07111f;
   --bg-secondary: #0d1b2f;
   --bg-tertiary: #12263f;
@@ -53,7 +53,7 @@
   --bg-panel: rgba(9, 20, 36, 0.96);
   --bg-overlay: rgba(3, 7, 18, 0.88);
 
-  /* Accent */
+  /* Accent — Refined Teal (Urology) + Champagne Gold (Andrology) */
   --gold: #d4af37;
   --gold-light: #f3d97a;
   --gold-dark: #9f7f2a;
@@ -91,7 +91,17 @@
   --border-light: rgba(140, 170, 210, 0.08);
   --border-strong: rgba(88, 224, 193, 0.24);
 
-  /* Shadows */
+  /* Gradients */
+  --gradient-gold: linear-gradient(135deg, #fff1bf 0%, #d4af37 40%, #9f7f2a 100%);
+  --gradient-teal: linear-gradient(135deg, #7bf4e2 0%, #3dd6bd 50%, #1fa895 100%);
+  --gradient-card: linear-gradient(180deg, rgba(15, 30, 52, 0.84), rgba(7, 17, 31, 0.96));
+  --gradient-hero:
+    radial-gradient(circle at 20% 10%, rgba(61, 214, 189, 0.14), transparent 30%),
+    radial-gradient(circle at 80% 0%, rgba(110, 168, 255, 0.11), transparent 25%),
+    radial-gradient(circle at 50% 90%, rgba(212, 175, 55, 0.08), transparent 28%),
+    linear-gradient(180deg, #07111f 0%, #0d1b2f 48%, #07111f 100%);
+
+  /* Shadows — Premium Depth */
   --shadow-sm: 0 4px 12px rgba(3, 7, 18, 0.12);
   --shadow-card: 0 24px 70px rgba(3, 7, 18, 0.38);
   --shadow-card-hover: 0 32px 90px rgba(3, 7, 18, 0.52);
@@ -106,7 +116,8 @@
   --transition-base: 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
   --transition-slow: 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
 
-  /* iPhone Metrics */
+  /* ===== iPhone‑first Premium Metrics (`--up-*`) ===== */
+  /* Touch & Accessibility */
   --up-touch-target: 44px;
   --up-touch-target-min: 2.75rem;
   --up-control-min-width: 2.75rem;
@@ -120,19 +131,19 @@
   --up-density-gap: clamp(0.72rem, 2.6vw, 1.05rem);
   --up-card-radius: 24px;
 
-  /* Widths */
+  /* Reading & Content Widths */
   --up-reading-width: 68ch;
   --up-section-max-width: 74rem;
   --up-service-max-width: 40rem;
 
-  /* Positioning */
+  /* Sticky & Fixed Positioning (safe‑area aware) */
   --up-sticky-tabs-top: calc(var(--sat) + 4.8rem);
   --up-bottom-nav-space: calc(var(--sab) + 7.4rem);
   --up-fixed-action-bottom: calc(var(--sab) + 0.68rem);
   --up-modal-offset-top: calc(var(--sat) + 0.75rem);
   --up-modal-offset-bottom: calc(var(--sab) + 0.75rem);
 
-  /* Cards */
+  /* Card & Surface Refinements */
   --up-card-bg: rgba(13, 22, 38, 0.84);
   --up-card-bg-hover: rgba(17, 28, 47, 0.94);
   --up-card-border: 1px solid var(--border-strong);
@@ -167,12 +178,20 @@ body.light-mode {
   --border-light: rgba(73, 98, 128, 0.1);
   --border-strong: rgba(12, 139, 118, 0.22);
 
+  --gradient-card: linear-gradient(180deg, rgba(255, 252, 247, 0.96), rgba(244, 238, 228, 0.98));
+  --gradient-hero:
+    radial-gradient(circle at 18% 12%, rgba(12, 139, 118, 0.08), transparent 28%),
+    radial-gradient(circle at 86% 8%, rgba(45, 119, 210, 0.08), transparent 24%),
+    radial-gradient(circle at 50% 92%, rgba(196, 141, 47, 0.08), transparent 26%),
+    linear-gradient(180deg, #f6f2ea 0%, #f2ede3 52%, #ece6dc 100%);
+
   --shadow-card: 0 18px 42px rgba(106, 86, 51, 0.08);
   --shadow-card-hover: 0 24px 56px rgba(106, 86, 51, 0.12);
   --shadow-gold: 0 0 0 1px rgba(196, 141, 47, 0.12), 0 14px 30px rgba(196, 141, 47, 0.08);
   --shadow-teal: 0 0 0 1px rgba(12, 139, 118, 0.12), 0 14px 30px rgba(12, 139, 118, 0.08);
   --shadow-navbar: 0 12px 34px rgba(104, 82, 47, 0.12), 0 0 0 0.5px rgba(73, 98, 128, 0.08);
 
+  /* iPhone‑first Premium — Light */
   --up-focus-ring: 0 0 0 3px rgba(12, 139, 118, 0.16);
   --up-focus-ring-gold: 0 0 0 3px rgba(196, 141, 47, 0.18);
   --up-hairline: 0.5px solid rgba(140, 130, 110, 0.2);
@@ -183,7 +202,7 @@ body.light-mode {
   --up-card-hover-glow: 0 0 20px rgba(12, 139, 118, 0.06);
 }
 
-/* Reset */
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -232,94 +251,111 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
-/* Reading Width */
-.reading-width {
-  max-width: var(--up-reading-width);
-  margin-left: auto;
-  margin-right: auto;
+/* ===== iPhone 15/16/17 Pro Max Optimizations ===== */
+
+/* Fluid typography for dynamic island */
+@media (max-width: 940px) {
+  :root {
+    --font-xs: clamp(0.72rem, 0.68rem + 0.18vw, 0.78rem);
+    --font-sm: clamp(0.82rem, 0.78rem + 0.20vw, 0.90rem);
+    --font-md: clamp(0.92rem, 0.88rem + 0.22vw, 1.02rem);
+    --font-base: clamp(1rem, 0.96rem + 0.24vw, 1.12rem);
+    --font-lg: clamp(1.12rem, 1.08rem + 0.26vw, 1.26rem);
+    --font-xl: clamp(1.32rem, 1.24rem + 0.38vw, 1.52rem);
+    --font-2xl: clamp(1.62rem, 1.50rem + 0.58vw, 1.82rem);
+    --font-3xl: clamp(2.0rem, 1.80rem + 0.98vw, 2.4rem);
+    --font-4xl: clamp(2.5rem, 2.15rem + 1.7vw, 3.0rem);
+  }
 }
 
-.section-max {
-  max-width: var(--up-section-max-width);
-  margin-left: auto;
-  margin-right: auto;
+/* True black for OLED displays */
+@media (color-gamut: p3) and (dynamic-range: high) {
+  :root {
+    --bg-primary: #000000;
+    --bg-secondary: #030712;
+    --bg-tertiary: #050a1a;
+  }
 }
 
-.service-max {
-  max-width: var(--up-service-max-width);
-  margin-left: auto;
-  margin-right: auto;
+/* Dynamic Island safe area for iPhone 15 Pro */
+@supports (padding: env(safe-area-inset-top, 0px) + 47px) {
+  @media (max-width: 940px) {
+    :root {
+      --sat: max(env(safe-area-inset-top), 47px);
+    }
+  }
 }
 
-/* Premium table structure */
-.table.premium-card {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  background: var(--bg-card);
+/* Landscape optimizations for Pro Max */
+@media (max-width: 940px) and (orientation: landscape) {
+  :root {
+    --up-mobile-gutter: 0.56rem;
+    --up-density-gap: 0.56rem;
+  }
+  
+  .modal-content {
+    padding-left: max(0.56rem, var(--sal)) !important;
+    padding-right: max(0.56rem, var(--sar)) !important;
+  }
+  
+  .disease-card {
+    margin-left: 0.28rem;
+    margin-right: 0.28rem;
+  }
 }
 
-/* Component Theme Classes */
-.theme-container {
-  background: var(--bg-primary, #07111f);
-  color: var(--text-primary, #f4f9ff);
-  border-color: var(--border, rgba(140, 170, 210, 0.14));
+/* Touch feedback for iPhone */
+.disease-card:active {
+  transform: scale(0.98);
+  transition: transform 80ms ease-out;
 }
 
-body.light-mode .theme-container {
-  background: var(--bg-primary, #f4efe6);
-  color: var(--text-primary, #1b2430);
-  border-color: var(--border, rgba(73, 98, 128, 0.18));
+/* ===== Premium Card & Component System ===== */
+
+/* Premium Cards */
+.premium-card {
+  background: var(--up-card-bg);
+  border: var(--up-card-border);
+  border-radius: var(--up-card-radius);
+  box-shadow: var(--shadow-card), var(--up-card-inset-shadow);
+  transition: 
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+  cursor: pointer;
+  touch-action: manipulation;
+  --webkit-tap-highlight-color: transparent;
 }
 
-.theme-card {
-  background: var(--bg-card, rgba(13, 25, 44, 0.82));
-  border: 1px solid var(--border, rgba(140, 170, 210, 0.14));
-  box-shadow: var(--shadow-card, 0 24px 70px rgba(3, 7, 18, 0.38));
-  color: var(--text-primary, #f4f9ff);
+.premium-card:hover,
+.premium-card:focus-visible {
+  background: var(--up-card-bg-hover);
+  box-shadow: var(--shadow-card-hover), var(--up-card-inset-shadow), var(--up-card-hover-glow);
+  transform: translateY(-2px);
 }
 
-body.light-mode .theme-card {
-  background: var(--bg-card, rgba(255, 252, 247, 0.9));
-  border-color: var(--border, rgba(73, 98, 128, 0.18));
-  box-shadow: var(--shadow-card, 0 18px 42px rgba(106, 86, 51, 0.08));
-  color: var(--text-primary, #1b2430);
+.premium-card:active {
+  transform: translateY(0) scale(0.985);
 }
 
-.theme-nav {
-  background: var(--bg-card, rgba(13, 25, 44, 0.82));
-  border-color: var(--border, rgba(140, 170, 210, 0.14));
-  backdrop-filter: blur(20px);
+/* Touch‑friendly buttons */
+.touch-btn {
+  min-height: var(--up-touch-target);
+  min-width: var(--up-touch-target-min);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--up-control-radius);
 }
 
-body.light-mode .theme-nav {
-  background: var(--bg-card, rgba(255, 252, 247, 0.9));
-  border-color: var(--border, rgba(73, 98, 128, 0.18));
+.touch-btn-sm {
+  min-height: var(--up-touch-target);
+  min-width: var(--up-touch-target-min);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--up-control-radius);
 }
 
-.theme-table {
-  background: var(--bg-card, rgba(13, 25, 44, 0.82));
-  border: 1px solid var(--border, rgba(140, 170, 210, 0.14));
-  color: var(--text-primary, #f4f9ff);
-}
+/* ===== Premium Table System ===== */
 
-body.light-mode .theme-table {
-  background: var(--bg-card, rgba(255, 252, 247, 0.9));
-  border-color: var(--border, rgba(73, 98, 128, 0.18));
-  color: var(--text-primary, #1b2430);
-}
-
-.theme-interactive {
-  color: var(--text-primary, #f4f9ff);
-  border-color: var(--border, rgba(140, 170, 210, 0.14));
-}
-
-body.light-mode .theme-interactive {
-  color: var(--text-primary, #1b2430);
-  border-color: var(--border, rgba(73, 98, 128, 0.18));
-}
-
-/* Tables */
+/* Premium tables with card-like appearance */
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -366,7 +402,167 @@ body.light-mode .theme-interactive {
   cursor: pointer;
 }
 
-/* iPhone optimizations */
+/* ===== Premium Component System ===== */
+
+/* Premium Container System */
+.theme-container {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--border);
+  padding: var(--up-mobile-gutter);
+  border-radius: var(--radius-lg);
+}
+
+/* Premium Cards System */
+.theme-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-base);
+  color: var(--text-primary);
+}
+
+.theme-card:hover {
+  background: var(--bg-card-hover);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+/* Premium Navigation System */
+.theme-nav {
+  background: var(--bg-card);
+  border-color: var(--border);
+  backdrop-filter: blur(20px);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
+}
+
+/* Premium Table System */
+.theme-table {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  overflow-x: auto;
+}
+
+.theme-table th,
+.theme-table td {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.theme-table th {
+  background: var(--bg-secondary);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.theme-table tr:hover {
+  background: var(--bg-card-hover);
+}
+
+/* Premium Interactive Elements */
+.theme-interactive {
+  color: var(--text-primary);
+  border-color: var(--border);
+  transition: all var(--transition-fast);
+}
+
+.theme-interactive:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-strong);
+}
+
+/* ===== Premium Sidebar System ===== */
+.sidebar {
+  background: var(--bg-card);
+  border-right: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: var(--spacing-md);
+}
+
+.sidebar-item {
+  color: var(--text-secondary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.sidebar-item:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+
+.sidebar-item.active {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-left: 3px solid var(--teal);
+}
+
+/* ===== Enhanced Light Theme Specifics ===== */
+body.light-mode .theme-card {
+  background: rgba(255, 252, 247, 0.9);
+  border-color: rgba(73, 98, 128, 0.18);
+  box-shadow: 0 18px 42px rgba(106, 86, 51, 0.08);
+}
+
+body.light-mode .theme-nav {
+  background: rgba(255, 252, 247, 0.9);
+  border-color: rgba(73, 98, 128, 0.18);
+}
+
+body.light-mode .theme-table {
+  background: rgba(255, 252, 247, 0.9);
+  border-color: rgba(73, 98, 128, 0.18);
+}
+
+body.light-mode .theme-interactive {
+  color: var(--text-primary);
+  border-color: rgba(73, 98, 128, 0.18);
+}
+
+body.light-mode .sidebar {
+  background: rgba(255, 252, 247, 0.9);
+  border-right-color: rgba(73, 98, 128, 0.18);
+}
+
+body.light-mode .sidebar-item {
+  color: #465568;
+}
+
+body.light-mode .sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.98);
+}
+
+body.light-mode .sidebar-item.active {
+  background: #f2ede3;
+  color: var(--text-primary);
+  border-left-color: #0c8b76;
+}
+
+/* ===== Enhanced Typography & UI ===== */
+.reading-width {
+  max-width: var(--up-reading-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-max {
+  max-width: var(--up-section-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-max {
+  max-width: var(--up-service-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== iPhone‑first Breakpoints ===== */
 @media (max-width: 940px) {
   .reading-width { max-width: 52ch; }
   .service-max { max-width: 100%; }
@@ -374,12 +570,10 @@ body.light-mode .theme-interactive {
   
   .theme-card { padding: var(--spacing-md); }
   .theme-nav { padding: var(--spacing-sm); }
-  
-  .table { margin: var(--spacing-sm) 0; }
-  .table th, .table td { padding: var(--spacing-xs) var(--spacing-sm); }
+  .sidebar { padding: var(--spacing-sm); }
 }
 
-/* Touch optimization */
+/* ===== Touch‑Optimized Elements ===== */
 @media (hover: none) and (pointer: coarse) {
   .theme-card:hover { transform: none; }
   .sidebar-item:hover { background: none; }
@@ -387,23 +581,18 @@ body.light-mode .theme-interactive {
   .sidebar-item { min-height: 44px; }
 }
 
-/* High contrast support */
+/* ===== High‑Contrast Mode ===== */
 @media (prefers-contrast: high) {
   .theme-card { border: 2px solid var(--border); }
   .theme-table { border: 2px solid var(--border); }
   .sidebar { border-right: 2px solid var(--border); }
-  
-  body.light-mode .theme-card { border-color: var(--border-strong); }
-  body.light-mode .theme-table { border-color: var(--border-strong); }
-  body.light-mode .sidebar { border-right-color: var(--border-strong); }
 }
 
-/* Print styles */
+/* ===== Print Styles ===== */
 @media print {
   .theme-container { background: #fff; color: #000; }
-  .theme-card { border: 1px solid #ccc; box-shadow: none; }
+  .theme-card { border: 1px solid #ccc; }
   .theme-nav { display: none; }
   .sidebar { display: none; }
   .no-print { display: none; }
-  .page-break { page-break-before: always; }
 }

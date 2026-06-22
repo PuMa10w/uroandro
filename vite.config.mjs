@@ -23,9 +23,6 @@ export default defineConfig(({ mode }) => {
     plugins: [
       react({
         include: /src\/.*\.(jsx?|mjs)$/,
-        babel: {
-          plugins: [],
-        },
       }),
       VitePWA({
         registerType: 'autoUpdate',
@@ -67,65 +64,24 @@ export default defineConfig(({ mode }) => {
       outDir: 'build',
       sourcemap: false,
       cssCodeSplit: true,
+      minify: 'esbuild',
       rollupOptions: {
         output: {
           manualChunks(id) {
             const normalizedId = id.replace(/\\/g, '/');
 
-            if (
-              normalizedId.endsWith('/drugReferenceData.js')
-            ) {
-              return 'drug-data-core';
-            }
-
-            if (
-              normalizedId.endsWith('/extraDrugReferenceData.js')
-            ) {
-              return 'drug-data-extra';
-            }
-
-            if (
-              normalizedId.endsWith('/v15DrugExpansionData.js')
-            ) {
-              return 'drug-data-v15';
-            }
-
+            // CRITICAL: Put all disease data in ONE chunk for better caching
             if (
               normalizedId.includes('/src/data/')
               && /Data\.js$/.test(normalizedId)
               && !normalizedId.endsWith('/sectionData.js')
               && !normalizedId.endsWith('/clinicalAtlasData.js')
             ) {
-              const filename = normalizedId.split('/').pop() || '';
-              const prefix = filename
-                .slice(0, 5)
-                .toLowerCase()
-                .replace(/[^a-z0-9]/g, 'x');
-
-              return `disease-data-${prefix}`;
-            }
-
-            if (!id.includes('node_modules')) {
-              return undefined;
+              return 'disease-data-core';
             }
 
             if (id.includes('react') || id.includes('scheduler')) {
               return 'vendor-react';
-            }
-
-            if (id.includes('framer-motion')) {
-              return 'vendor-motion';
-            }
-
-            if (
-              id.includes('bootstrap')
-              || id.includes('react-bootstrap')
-            ) {
-              return 'vendor-ui';
-            }
-
-            if (id.includes('@sentry/browser')) {
-              return 'vendor-sentry';
             }
 
             return undefined;

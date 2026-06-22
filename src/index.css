@@ -101,6 +101,12 @@
   --shadow-floating: 0 30px 100px rgba(3, 7, 18, 0.45);
   --shadow-navbar: 0 8px 32px rgba(3, 7, 18, 0.48), 0 0 0 0.5px rgba(140, 170, 210, 0.12);
 
+  /* Gradients */
+  --gradient-teal: linear-gradient(135deg, #7bf4e2 0%, #3dd6bd 50%, #1fa895 100%);
+  --gradient-gold: linear-gradient(135deg, #fff1bf 0%, #d4af37 40%, #9f7f2a 100%);
+  --gradient-card: linear-gradient(180deg, rgba(15, 30, 52, 0.84), rgba(7, 17, 31, 0.96));
+  --gradient-hero: linear-gradient(135deg, rgba(7, 17, 31, 0.95), rgba(11, 20, 38, 0.92));
+
   /* Transitions */
   --transition-fast: 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
   --transition-base: 320ms cubic-bezier(0.2, 0.8, 0.2, 1);

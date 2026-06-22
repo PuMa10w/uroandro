@@ -98,6 +98,13 @@
   background-clip: text;
 }
 
+/* Light mode fallback - градиент на светлом фоне */
+body.light-mode .navbar-brand-uro {
+  -webkit-text-fill-color: #0fa895;
+  color: #0fa895;
+  background: none;
+}
+
 .navbar-brand-accent {
   font-family: 'Playfair Display', serif;
   font-size: 1.25rem;

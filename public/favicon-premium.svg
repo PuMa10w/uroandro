@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="faviconGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7bf4e2"/>
+      <stop offset="50%" stop-color="#3dd6bd"/>
+      <stop offset="100%" stop-color="#1fa895"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Dark background -->
+  <rect width="32" height="32" rx="6" fill="#07111f"/>
+  
+  <!-- Stylized medical symbol -->
+  <ellipse cx="16" cy="12" rx="10" ry="12" fill="url(#faviconGrad)" opacity="0.9"/>
+  <ellipse cx="16" cy="12" rx="7" ry="8" fill="#0d1b2f"/>
+  
+  <!-- Initials -->
+  <text x="16" y="26" font-family="Manrope, sans-serif" font-size="12" font-weight="600" fill="#f4f9ff" text-anchor="middle">UM</text>
+</svg>

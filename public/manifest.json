@@ -19,6 +19,12 @@
       "purpose": "any"
     },
     {
+      "src": "logo-premium.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
       "src": "logo192.png",
       "type": "image/png",
       "sizes": "192x192",

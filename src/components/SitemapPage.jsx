@@ -13,16 +13,15 @@ const serviceLinks = [
   { id: 'glossary', name: 'Глоссарий', meta: 'Короткие определения и термины', icon: '📖' },
 ];
 
-const SitemapPage = ({ onNavigate }) => {
+const SitemapPage = ({ onNavigate, allDiseases: propDiseases = [] }) => {
   const [search, setSearch] = useState('');
-  const [allDiseases, setAllDiseases] = useState([]);
+  const [allDiseases, setAllDiseases] = useState(propDiseases);
   
-  // Lazy load disease data only when needed
+  // Lazy load disease data only when needed (dev/test override via prop)
   useEffect(() => {
-    import('../data').then(module => {
-      setAllDiseases(module.allDiseases || []);
-    });
-  }, []);
+    if (propDiseases.length > 0) return;
+    import('../data').then(module => setAllDiseases(module.allDiseases || []));
+  }, [propDiseases.length]);
   
   const allDiseasesNav = allDiseases.map((disease) => ({
     id: disease.id,

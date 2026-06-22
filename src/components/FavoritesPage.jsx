@@ -4,13 +4,14 @@ import { diseaseIcons } from './diseaseIcons';
 import { sectionNames, sectionIcons } from '../data/navigationMeta';
 import { getFavoriteDescription, getFavoriteTags } from '../utils/cardMetadata';
 
-const FavoritesPage = ({ favorites = {}, onNavigate }) => {
-  const [allDiseases, setAllDiseases] = useState([]);
+const FavoritesPage = ({ favorites = {}, allDiseases: propDiseases = [], onNavigate }) => {
+  const [allDiseases, setAllDiseases] = useState(propDiseases);
   
-  // Lazy load disease data only when needed
+  // Lazy load disease data only when needed (dev/test override via prop)
   useEffect(() => {
+    if (propDiseases.length > 0) return; // Use prop if provided
     import('../data').then(module => setAllDiseases(module.allDiseases || []));
-  }, []);
+  }, [propDiseases.length]);
   
   const favoriteIds = Object.keys(favorites).filter((id) => favorites[id]);
   const favoriteDiseases = favoriteIds

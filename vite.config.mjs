@@ -70,14 +70,14 @@ export default defineConfig(({ mode }) => {
           manualChunks(id) {
             const normalizedId = id.replace(/\\/g, '/');
 
-            // CRITICAL: Put all disease data in ONE chunk for better caching
+            // CRITICAL: Dynamic import for lazy-loaded data
             if (
               normalizedId.includes('/src/data/')
               && /Data\.js$/.test(normalizedId)
               && !normalizedId.endsWith('/sectionData.js')
-              && !normalizedId.endsWith('/clinicalAtlasData.js')
             ) {
-              return 'disease-data-core';
+              const filename = normalizedId.split('/').pop() || '';
+              return `data-${filename.replace('.js', '').toLowerCase()}`;
             }
 
             if (id.includes('react') || id.includes('scheduler')) {

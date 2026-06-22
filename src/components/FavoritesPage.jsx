@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/servicePages.css';
 import { diseaseIcons } from './diseaseIcons';
-import { allDiseases } from '../data';
 import { sectionNames, sectionIcons } from '../data/navigationMeta';
 import { getFavoriteDescription, getFavoriteTags } from '../utils/cardMetadata';
 
 const FavoritesPage = ({ favorites = {}, onNavigate }) => {
+  const [allDiseases, setAllDiseases] = useState([]);
+  
+  // Lazy load disease data only when needed
+  useEffect(() => {
+    import('../data').then(module => setAllDiseases(module.allDiseases || []));
+  }, []);
+  
   const favoriteIds = Object.keys(favorites).filter((id) => favorites[id]);
   const favoriteDiseases = favoriteIds
     .map((id) => allDiseases.find((disease) => disease.id === id))

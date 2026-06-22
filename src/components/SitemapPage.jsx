@@ -1,16 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/servicePages.css';
-import { allDiseases, searchDiseases } from '../data';
 import { sectionNames, sectionIcons } from '../data/navigationMeta';
-
-const allDiseasesNav = allDiseases.map((disease) => ({
-  id: disease.id,
-  name: disease.name,
-  icd: disease.icd,
-  section: disease.section,
-  subsection: disease.subsection,
-  icon: disease.icon,
-}));
 
 const serviceLinks = [
   { id: 'drugs', name: 'Справочник препаратов', meta: 'Поиск по препаратам, фармакодинамике, рискам и мониторингу', icon: '💊' },
@@ -25,8 +15,25 @@ const serviceLinks = [
 
 const SitemapPage = ({ onNavigate }) => {
   const [search, setSearch] = useState('');
-
-  const filtered = search.trim().length >= 2 ? searchDiseases(search) : allDiseasesNav;
+  const [allDiseases, setAllDiseases] = useState([]);
+  
+  // Lazy load disease data only when needed
+  useEffect(() => {
+    import('../data').then(module => {
+      setAllDiseases(module.allDiseases || []);
+    });
+  }, []);
+  
+  const allDiseasesNav = allDiseases.map((disease) => ({
+    id: disease.id,
+    name: disease.name,
+    icd: disease.icd,
+    section: disease.section,
+    subsection: disease.subsection,
+    icon: disease.icon,
+  }));
+  
+  const filtered = allDiseasesNav;
   const filteredServiceLinks = serviceLinks.filter((item) => (
     [item.name, item.meta].join(' ').toLowerCase().includes(search.trim().toLowerCase())
   ));

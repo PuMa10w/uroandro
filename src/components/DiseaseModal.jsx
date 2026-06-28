@@ -78,6 +78,8 @@ const DiseaseModal = ({ disease, allDiseases = [], currentIndex = 0, onNavigate 
   const previousFocusRef = useRef(null);
   const touchStartY = useRef(0);
   const touchDeltaY = useRef(0);
+  const touchStartX = useRef(0);
+  const touchDeltaX = useRef(0);
   const canDragClose = useRef(false);
   const [dragOffset, setDragOffset] = useState(0);
   const [readingProgress, setReadingProgress] = useState(0);
@@ -237,7 +239,6 @@ const DiseaseModal = ({ disease, allDiseases = [], currentIndex = 0, onNavigate 
   };
 
   const handleTouchMove = (e) => {
-    // Vertical drag for close
     if (canDragClose.current) {
       const currentY = e.touches[0].clientY;
       touchDeltaY.current = currentY - touchStartY.current;
@@ -246,13 +247,11 @@ const DiseaseModal = ({ disease, allDiseases = [], currentIndex = 0, onNavigate 
         if (scrollTop === 0) setDragOffset(touchDeltaY.current * 0.5);
       }
     }
-    // Horizontal swipe for navigation
     const currentX = e.touches[0].clientX;
     touchDeltaX.current = currentX - touchStartX.current;
   };
 
   const handleTouchEnd = () => {
-    // Swipe navigation (horizontal)
     if (Math.abs(touchDeltaX.current) > 50) {
       if (touchDeltaX.current > 0 && currentIndex > 0) {
         onNavigate(-1);
@@ -260,7 +259,6 @@ const DiseaseModal = ({ disease, allDiseases = [], currentIndex = 0, onNavigate 
         onNavigate(1);
       }
     }
-    // Pull to close (vertical)
     else if (dragOffset > DRAG_CLOSE_THRESHOLD) {
       onClose();
     }
@@ -271,10 +269,6 @@ const DiseaseModal = ({ disease, allDiseases = [], currentIndex = 0, onNavigate 
     touchDeltaX.current = 0;
     canDragClose.current = false;
   };
-
-  // Horizontal swipe for disease navigation
-  const touchStartX = useRef(0);
-  const touchDeltaX = useRef(0);
 
   const modalNode = (
     <div

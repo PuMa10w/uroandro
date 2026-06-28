@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { IconSearch } from '../icons';
-
 const quickAccess = [
   { id: 'urolithiasis', name: 'Мочекаменная болезнь', icon: '01', meta: 'камни и колика', section: 'urology', subsection: 'stones' },
   { id: 'bph', name: 'ДГПЖ', icon: '02', meta: 'симптомы нижних мочевых путей', section: 'urology', subsection: 'functional' },

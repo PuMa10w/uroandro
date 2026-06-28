@@ -10,7 +10,6 @@ import {
   IconPediatric, IconEmergency, IconSurgery, IconTools,
   IconCalculators, IconDrugs, IconAtlas, IconSitemap,
   IconClipboard,
-  IconInfo, IconHome, IconBack,
 } from '../icons';
 
 const propTypes = {

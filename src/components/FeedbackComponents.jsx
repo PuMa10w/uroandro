@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { IconStar, IconStarFilled, IconChevronRight } from '../icons';
 
 const EmptyState = ({ 
   icon = '📭', 

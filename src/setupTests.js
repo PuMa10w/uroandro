@@ -3,6 +3,7 @@ import '@testing-library/jest-dom/vitest';
 // Jest → vitest compatibility shim
 import { vi } from 'vitest';
 global.jest = vi;
+global.vi = vi;
 
 class MockIntersectionObserver {
   constructor(callback = () => {}) {

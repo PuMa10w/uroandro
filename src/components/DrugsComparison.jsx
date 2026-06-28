@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { IconX, IconPlus } from '../icons';
+import React from 'react';
+import { IconX } from '../icons';
 
 /**
  * DrugsComparison — таблица сравнения препаратов

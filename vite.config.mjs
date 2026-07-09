@@ -63,8 +63,18 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: 'build',
       sourcemap: false,
+      target: 'es2020',
       cssCodeSplit: true,
+      cssMinify: true,
       minify: 'esbuild',
+      chunkSizeWarningLimit: 700,
+      reportCompressedSize: false,
+      esbuild: {
+        legalComments: 'none',
+      },
+      modulePreload: {
+        polyfill: true,
+      },
       rollupOptions: {
         output: {
           manualChunks(id) {

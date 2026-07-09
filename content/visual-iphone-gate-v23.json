@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "updated_at": "2026-05-31T17:24:40.377Z",
+  "updated_at": "2026-07-09T06:08:17.880Z",
   "visual_iPhone_gate_v23": {
     "name": "visual_iPhone_gate_v23",
     "status": "pass",
@@ -89,12 +89,12 @@
             "height": 122
           },
           "title": {
-            "top": 1615,
+            "top": 1561,
             "left": 22,
             "right": 298,
-            "bottom": 1943,
+            "bottom": 1858,
             "width": 277,
-            "height": 328
+            "height": 296
           },
           "modal": null,
           "tabs": null,
@@ -127,10 +127,10 @@
             "height": 122
           },
           "title": {
-            "top": 301,
+            "top": 143,
             "left": 22,
             "right": 298,
-            "bottom": 338,
+            "bottom": 180,
             "width": 277,
             "height": 37
           },
@@ -138,11 +138,11 @@
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 494,
-            "left": 11,
-            "right": 309,
-            "bottom": 558,
-            "width": 298,
+            "top": 493,
+            "left": 13,
+            "right": 307,
+            "bottom": 556,
+            "width": 294,
             "height": 63
           }
         },
@@ -172,22 +172,22 @@
             "height": 122
           },
           "title": {
-            "top": 301,
+            "top": 143,
             "left": 22,
             "right": 298,
-            "bottom": 376,
+            "bottom": 181,
             "width": 277,
-            "height": 75
+            "height": 37
           },
           "modal": null,
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 494,
-            "left": 11,
-            "right": 309,
-            "bottom": 558,
-            "width": 298,
+            "top": 493,
+            "left": 13,
+            "right": 307,
+            "bottom": 556,
+            "width": 294,
             "height": 63
           }
         },
@@ -217,22 +217,22 @@
             "height": 122
           },
           "title": {
-            "top": 264,
+            "top": 129,
             "left": 22,
             "right": 298,
-            "bottom": 414,
+            "bottom": 241,
             "width": 277,
-            "height": 150
+            "height": 112
           },
           "modal": null,
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 494,
-            "left": 11,
-            "right": 309,
-            "bottom": 558,
-            "width": 298,
+            "top": 493,
+            "left": 13,
+            "right": 307,
+            "bottom": 556,
+            "width": 294,
             "height": 63
           }
         },
@@ -262,10 +262,10 @@
             "height": 122
           },
           "title": {
-            "top": 340,
+            "top": 181,
             "left": 37,
             "right": 283,
-            "bottom": 406,
+            "bottom": 247,
             "width": 246,
             "height": 66
           },
@@ -273,11 +273,11 @@
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 494,
-            "left": 11,
-            "right": 309,
-            "bottom": 558,
-            "width": 298,
+            "top": 493,
+            "left": 13,
+            "right": 307,
+            "bottom": 556,
+            "width": 294,
             "height": 63
           }
         },
@@ -311,11 +311,11 @@
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 494,
-            "left": 11,
-            "right": 309,
-            "bottom": 558,
-            "width": 298,
+            "top": 493,
+            "left": 13,
+            "right": 307,
+            "bottom": 556,
+            "width": 294,
             "height": 63
           }
         },
@@ -345,10 +345,10 @@
             "height": 122
           },
           "title": {
-            "top": 345,
+            "top": 185,
             "left": 40,
             "right": 280,
-            "bottom": 413,
+            "bottom": 252,
             "width": 241,
             "height": 67
           },
@@ -356,11 +356,11 @@
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 494,
-            "left": 11,
-            "right": 309,
-            "bottom": 558,
-            "width": 298,
+            "top": 493,
+            "left": 13,
+            "right": 307,
+            "bottom": 556,
+            "width": 294,
             "height": 63
           }
         },
@@ -390,10 +390,10 @@
             "height": 122
           },
           "title": {
-            "top": 354,
+            "top": 195,
             "left": 40,
             "right": 280,
-            "bottom": 466,
+            "bottom": 307,
             "width": 240,
             "height": 112
           },
@@ -401,11 +401,11 @@
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 494,
-            "left": 11,
-            "right": 309,
-            "bottom": 558,
-            "width": 298,
+            "top": 493,
+            "left": 13,
+            "right": 307,
+            "bottom": 556,
+            "width": 294,
             "height": 63
           }
         },
@@ -435,10 +435,10 @@
             "height": 122
           },
           "title": {
-            "top": 328,
+            "top": 195,
             "left": 40,
             "right": 280,
-            "bottom": 402,
+            "bottom": 270,
             "width": 240,
             "height": 75
           },
@@ -446,11 +446,11 @@
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 494,
-            "left": 11,
-            "right": 309,
-            "bottom": 558,
-            "width": 298,
+            "top": 493,
+            "left": 13,
+            "right": 307,
+            "bottom": 556,
+            "width": 294,
             "height": 63
           }
         },
@@ -484,11 +484,11 @@
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 494,
-            "left": 11,
-            "right": 309,
-            "bottom": 558,
-            "width": 298,
+            "top": 493,
+            "left": 13,
+            "right": 307,
+            "bottom": 556,
+            "width": 294,
             "height": 63
           }
         },
@@ -518,10 +518,10 @@
             "height": 122
           },
           "title": {
-            "top": 354,
+            "top": 195,
             "left": 40,
             "right": 280,
-            "bottom": 429,
+            "bottom": 270,
             "width": 240,
             "height": 75
           },
@@ -529,11 +529,11 @@
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 494,
-            "left": 11,
-            "right": 309,
-            "bottom": 558,
-            "width": 298,
+            "top": 493,
+            "left": 13,
+            "right": 307,
+            "bottom": 556,
+            "width": 294,
             "height": 63
           }
         },
@@ -563,10 +563,10 @@
             "height": 122
           },
           "title": {
-            "top": 320,
+            "top": 161,
             "left": 22,
             "right": 298,
-            "bottom": 358,
+            "bottom": 199,
             "width": 277,
             "height": 37
           },
@@ -574,11 +574,11 @@
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 494,
-            "left": 11,
-            "right": 309,
-            "bottom": 558,
-            "width": 298,
+            "top": 493,
+            "left": 13,
+            "right": 307,
+            "bottom": 556,
+            "width": 294,
             "height": 63
           }
         },
@@ -608,22 +608,22 @@
             "height": 122
           },
           "title": {
-            "top": 294,
-            "left": 61,
-            "right": 259,
-            "bottom": 331,
-            "width": 197,
+            "top": 132,
+            "left": 63,
+            "right": 257,
+            "bottom": 169,
+            "width": 194,
             "height": 37
           },
           "modal": null,
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 494,
-            "left": 11,
-            "right": 309,
-            "bottom": 558,
-            "width": 298,
+            "top": 493,
+            "left": 13,
+            "right": 307,
+            "bottom": 556,
+            "width": 294,
             "height": 63
           }
         },
@@ -653,10 +653,10 @@
             "height": 122
           },
           "title": {
-            "top": 294,
+            "top": 132,
             "left": 22,
             "right": 298,
-            "bottom": 369,
+            "bottom": 207,
             "width": 277,
             "height": 75
           },
@@ -664,11 +664,11 @@
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 494,
-            "left": 11,
-            "right": 309,
-            "bottom": 558,
-            "width": 298,
+            "top": 493,
+            "left": 13,
+            "right": 307,
+            "bottom": 556,
+            "width": 294,
             "height": 63
           }
         },
@@ -698,10 +698,10 @@
             "height": 122
           },
           "title": {
-            "top": 264,
+            "top": 129,
             "left": 22,
             "right": 298,
-            "bottom": 339,
+            "bottom": 204,
             "width": 277,
             "height": 75
           },
@@ -709,11 +709,11 @@
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 494,
-            "left": 11,
-            "right": 309,
-            "bottom": 558,
-            "width": 298,
+            "top": 493,
+            "left": 13,
+            "right": 307,
+            "bottom": 556,
+            "width": 294,
             "height": 63
           }
         },
@@ -1277,9 +1277,9 @@
             "top": 129,
             "left": 22,
             "right": 298,
-            "bottom": 278,
+            "bottom": 241,
             "width": 277,
-            "height": 150
+            "height": 112
           },
           "modal": {
             "top": 0,

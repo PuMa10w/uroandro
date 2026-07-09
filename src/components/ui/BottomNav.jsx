@@ -40,27 +40,25 @@ export default function BottomNav({ activeSection = 'home', onNavigate = () => {
 
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 bg-bg-card border-t border-border backdrop-blur-xl safe-area-bottom"
+      className="bottom-nav"
       style={{ paddingBottom: `${Math.max(8, insets.bottom)}px` }}
     >
-      <div className="flex justify-around items-center h-16 px-2">
+      <div className="bottom-nav-container">
         {items.map((item) => {
           const isActive = activeSection === item.path;
-          const activeClass = isActive 
-            ? item.variant === 'emergency' ? 'text-danger' : 'text-teal' 
+          const activeClass = isActive
+            ? item.variant === 'emergency' ? 'text-danger' : 'text-teal'
             : 'text-text-secondary';
-          
+
           return (
             <button
               key={item.path}
               onClick={() => handleClick(item.path)}
-              className={`flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 py-1 transition-all duration-200 ${activeClass}`}
+              className={`bottom-nav-btn ${activeClass}`}
               aria-label={item.label}
             >
-              <span className="text-lg mb-0.5">{item.icon}</span>
-              <span className="text-[10px] font-medium leading-none">
-                {item.label}
-              </span>
+              <span className="bottom-nav-icon">{item.icon}</span>
+              <span className="bottom-nav-label">{item.label}</span>
             </button>
           );
         })}

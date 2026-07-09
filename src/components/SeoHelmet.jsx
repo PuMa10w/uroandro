@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet-async';
 
-const SITE_URL = 'https://uromed.app';
+const SITE_URL = 'https://uroandro.pages.dev';
 
 function buildCanonicalPath(activeSection, activeSubsection, selectedDisease) {
   if (selectedDisease?.id) {

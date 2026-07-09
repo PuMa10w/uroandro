@@ -47,6 +47,7 @@ const lazyLoadMap = new Map(Object.entries({
   cystinuria: () => import('./cystinuriaData.js'),
   cystitis: () => import('./cystitisData.js'),
   'delayed-ejaculation': () => import('./delayedEjaculationData.js'),
+  'catheter-complication-mechanical': () => import('./catheterComplicationData.js'),
   'device-associated-uti': () => import('./deviceAssociatedUtiData.js'),
   'diabetic-nephropathy': () => import('./diabeticNephropathyData.js'),
   'ejaculatory-duct-obstruction': () => import('./ejaculatoryDuctObstructionData.js'),

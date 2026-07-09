@@ -145,11 +145,16 @@ body {
 
 /* === Bottom Navigation Premium === */
 .bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   background: rgba(255, 255, 255, 0.9) !important;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   transition: background 0.3s ease;
+  z-index: var(--z-fixed);
 }
 
 .dark .bottom-nav {
@@ -157,15 +162,55 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+.bottom-nav-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 64px;
+  padding: 8px 4px;
+}
+
 .bottom-nav-btn {
-  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 6px 8px;
   border-radius: 12px;
-  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .bottom-nav-btn.active {
   background: rgba(0, 87, 184, 0.1);
-  color: var(--color-primary);
+  color: var(--teal);
+}
+
+.bottom-nav-icon {
+  font-size: 1.125rem;
+  margin-bottom: 2px;
+}
+
+.bottom-nav-label {
+  font-size: 0.625rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.bottom-nav-btn.text-teal {
+  color: var(--teal);
+}
+
+.bottom-nav-btn.text-danger {
+  color: var(--danger);
+}
+
+.bottom-nav-btn.text-text-secondary {
+  color: var(--text-secondary);
 }
 
 .dark .bottom-nav-btn.active {
@@ -251,6 +296,21 @@ body {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(0, 87, 184, 0.1);
   border-color: rgba(0, 87, 184, 0.15);
+}
+
+/* Premium Sheet (mobile bottom sheet) */
+.premium-sheet {
+  background: var(--bg-panel);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-top: 0.5px solid var(--border);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode .premium-sheet {
+  background: rgba(248, 251, 247, 0.98);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .dark .quick-btn {

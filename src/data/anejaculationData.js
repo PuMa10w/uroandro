@@ -56,7 +56,47 @@ export const anejaculationData = {
     'Микро-ТЕЗА при обструктивной азооспермии'
   ],
 
-  guidelines: ['EAU Guidelines on Sexual and Reproductive Health 2024', 'ASRM Guidelines on Male Infertility 2023'],
+  guidelines: {
+    eau: {
+      title: "EAU Guidelines on Sexual and Reproductive Health 2025",
+      keyPoints: [
+        "PVS/Fertile One - first-line therapy (LE: 1a, GR: A)",
+        "EEJ for failed PVS (LE: 2a, GR: B)",
+        "IVF/ICSI with retrieved sperm (LE: 1a, GR: A)",
+        "Testosterone replacement if low (LE: 1a, GR: A)"
+      ],
+      url: "https://uroweb.org/guidelines/sexual-reproductive-health"
+    },
+    aua: {
+      title: "AUA Guidelines on Male Infertility 2025",
+      keyPoints: [
+        "PVS first line for anejaculation (Strong; Grade A)",
+        "EEJ for failed PVS (Strong; Grade A)",
+        "Testosterone therapy if low (Strong; Grade B)",
+        "IVF/ICSI with retrieved sperm (Strong; Grade A)"
+      ],
+      url: "https://www.auanet.org/guidelines/male-infertility"
+    },
+    ru: {
+      title: "Российские клинические рекомендации по анэякуляции 2024",
+      keyPoints: [
+        "Вибростимуляция - первая линия (УУР — A, УДД — 1)",
+        "Электроэякуляция - вторая линия (УУР — A, УДД — 1)",
+        "Тестостерон при низком уровне (УУР — B, УДД — 2)",
+        "ЭКО/ИКСИ с полученной спермой (УУР — A, УДД — 1)"
+      ],
+      url: "https://cr.minzdrav.gov.ru"
+    },
+    ua: {
+      title: "Urological Society of Australasia (UA) Guidelines on Anejaculation 2025",
+      keyPoints: [
+        "PVS first-line, EEJ second-line (Strong; Level: 1)",
+        "Hormonal assessment and replacement if indicated (Strong; Level: 1)",
+        "IVF/ICSI with retrieved sperm (Strong; Level: 1)"
+      ],
+      url: "https://www.urology.org.au/guidelines"
+    }
+  },
 
   quickSummary: 'Анэякуляция: исключить ретроградную эякуляцию. Вибростимуляция и электроеякуляция для получения спермы. ЭКО/ИКСИ для зачатия.',
 

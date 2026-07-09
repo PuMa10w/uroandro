@@ -51,11 +51,38 @@ const asymptomaticBacteriuriaData = {
     eau: {
       title: 'EAU Urological Infections 2026',
       keyPoints: [
-        'ASB обычно не требует антибактериальной терапии.',
-        'Исключения: беременность и подготовка к урологическим вмешательствам, нарушающим слизистую.',
+        'ASB обычно не требует антибактериальной терапии (LE: 1a, GR: A).',
+        'Исключения: беременность и подготовка к урологическим вмешательствам, нарушающим слизистую (LE: 1a, GR: A).',
       ],
       url: 'https://uroweb.org/guidelines/urological-infections',
     },
+    aua: {
+      title: 'AUA Guidelines on Asymptomatic Bacteriuria 2025',
+      keyPoints: [
+        'Do NOT screen or treat ASB in nonpregnant adults (Strong; Grade A).',
+        'Screen and treat before invasive urologic procedures (Strong; Grade A).',
+        'Screen and treat in pregnancy (Strong; Grade A).',
+      ],
+      url: 'https://www.auanet.org/guidelines/asymptomatic-bacteriuria',
+    },
+    ru: {
+      title: 'Российские клинические рекомендации по бессимптомной бактериурии 2024',
+      keyPoints: [
+        'Не лечить без показания (УУР — A, УДД — 1).',
+        'Лечить при беременности (УУР — A, УДД — 1).',
+        'Лечить перед инвазивными вмешательствами (УУР — A, УДД — 1).',
+      ],
+      url: 'https://cr.minzdrav.gov.ru',
+    },
+    ua: {
+      title: 'Urological Society of Australasia (UA) Guidelines on ASB 2025',
+      keyPoints: [
+        'No screening or treatment in nonpregnant adults (Strong; Level: 1).',
+        'Treatment before urologic procedures with mucosal disruption (Strong; Level: 1).',
+        'Treatment in pregnancy mandatory (Strong; Level: 1).',
+      ],
+      url: 'https://www.urology.org.au/guidelines',
+    }
   },
 };
 

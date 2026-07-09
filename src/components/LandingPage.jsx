@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { IconSearch } from '../icons';
 const quickAccess = [
   { id: 'urolithiasis', name: 'Мочекаменная болезнь', icon: '01', meta: 'камни и колика', section: 'urology', subsection: 'stones' },
@@ -50,7 +50,6 @@ const workbenchLanes = [
 const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
   const [searchQuery, setSearchQuery] = React.useState('');
   const [searchResults, setSearchResults] = React.useState([]);
-  const [searchOpen, setSearchOpen] = React.useState(false);
   const [resultsStyle, setResultsStyle] = React.useState({});
   const searchRef = React.useRef(null);
   

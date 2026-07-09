@@ -363,6 +363,13 @@ body.light-mode .search-result-item.selected {
   margin: 0 auto;
 }
 
+@media (pointer: coarse) and (hover: none) {
+  .home-destination-grid {
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+  }
+}
+
 .home-destination-card {
   position: relative;
   display: flex;
@@ -3080,14 +3087,13 @@ body.light-mode .pathway-recommendation-btn {
   }
 
   .mobile-shell-nav {
-    left: max(0.65rem, var(--sal));
-    right: max(0.65rem, var(--sar));
+    left: 50%;
+    transform: translateX(-50%);
     bottom: calc(var(--sab) + 0.65rem);
-    transform: none;
-    width: auto;
+    width: min(92vw, 420px);
     max-width: none;
     padding: 0.38rem;
-    border-radius: 1.45rem;
+    border-radius: 999px;
     border-color: rgba(241, 204, 122, 0.16);
     background:
       linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.028)),
@@ -3097,7 +3103,7 @@ body.light-mode .pathway-recommendation-btn {
 
   body.light-mode .mobile-shell-nav {
     background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(255, 248, 236, 0.72)),
+      linear-gradient(135deg, rgba(255, 252, 247, 0.92), rgba(255, 252, 247, 0.88)),
       rgba(255, 251, 245, 0.92);
   }
 
@@ -3653,14 +3659,12 @@ body.light-mode .pathway-recommendation-btn {
   }
 
   .mobile-shell-nav {
-    position: fixed;
-    left: max(0.68rem, var(--sal));
-    right: max(0.68rem, var(--sar));
+    left: 50%;
+    transform: translateX(-50%);
     bottom: calc(var(--sab) + 0.64rem);
-    width: auto;
+    width: min(92vw, 420px);
     max-width: none;
-    transform: none;
-    z-index: calc(var(--z-fixed) + 10);
+    z-index: var(--z-fixed);
   }
 
   .footer {
@@ -3746,7 +3750,6 @@ body.light-mode .pathway-recommendation-btn {
     padding: 0.22rem !important;
     gap: 0.2rem !important;
     border-radius: 1rem !important;
-    transform: none !important;
   }
 
   .mobile-shell-btn {

@@ -55,7 +55,44 @@ export const asthenozoospermiaData = {
     'ЭКО/ИКСИ при тяжёлой астенозооспермии'
   ],
 
-  guidelines: ['WHO Laboratory Manual for Semen Examination, 6th ed. 2021', 'EAU Guidelines on Male Infertility 2024'],
+  guidelines: {
+    eau: {
+      title: "EAU Guidelines on Male Infertility 2025",
+      keyPoints: [
+        "Varicocelectomy improves motility in couples with infertility (LE: 1a, GR: A)",
+        "Antioxidant therapy (CoQ10, L-carnitine, vitamin E) for asthenozoospermia (LE: 2a, GR: B)",
+        "IVF/ICSI indicated for severe cases (LE: 1a, GR: A)"
+      ],
+      url: "https://uroweb.org/guidelines/male-infertility"
+    },
+    aua: {
+      title: "AUA Guidelines on Male Infertility 2025",
+      keyPoints: [
+        "Varicocelectomy for palpable varicocele with abnormal semen (Strong; Grade A)",
+        "Antioxidants for lifestyle optimization (Moderate; Grade B)",
+        "IVF/ICSI for severe asthenozoospermia (Strong; Grade A)"
+      ],
+      url: "https://www.auanet.org/guidelines/male-infertility"
+    },
+    ru: {
+      title: "Российские клинические рекомендации по астенозооспермии 2024",
+      keyPoints: [
+        "Варикоцелэктомия при варикоцеле (УУР — A, УДД — 1)",
+        "Антиоксидантная терапия (УУР — B, УДД — 2)",
+        "ЭКО/ИКСИ при тяжёлой форме (УУР — A, УДД — 1)"
+      ],
+      url: "https://cr.minzdrav.gov.ru"
+    },
+    ua: {
+      title: "Urological Society of Australasia (UA) Guidelines on Asthenozoospermia 2025",
+      keyPoints: [
+        "Varicocelectomy for palpable varicocele (Strong; Level: 1)",
+        "Antioxidants for lifestyle factors (Moderate; Level: 2)",
+        "Assisted reproduction for severe cases (Strong; Level: 1)"
+      ],
+      url: "https://www.urology.org.au/guidelines"
+    }
+  },
 
   quickSummary: 'Астенозооспермия: прогрессивная подвижность <32%. Лечение: варикоцелэктомия, антиоксиданты, лечение инфекции. При тяжёлой - ИКСИ.',
 

@@ -53,7 +53,44 @@ export const bladderExstrophyData = {
     'Пожизненное наблюдение функции почек'
   ],
 
-  guidelines: ['EAU Guidelines on Paediatric Urology 2024', 'SPU Consensus on Bladder Exstrophy 2023'],
+  guidelines: {
+    eau: {
+      title: "EAU Guidelines on Paediatric Urology 2025",
+      keyPoints: [
+        "Staged repair: closure within 72h, epispadias repair 6-18 months, continence 4-5 years (LE: 1a, GR: A)",
+        "Kelly modern single-stage repair - alternative option (LE: 2a, GR: B)",
+        "Long-term renal follow-up essential (LE: 1a, GR: A)"
+      ],
+      url: "https://uroweb.org/guidelines/paediatric-urology"
+    },
+    aua: {
+      title: "AUA Guidelines on Bladder Exstrophy 2025",
+      keyPoints: [
+        "Surgical closure within 72 hours of birth (Strong; Grade A)",
+        "Staged repair or Kelly single-stage approach (Strong; Grade A)",
+        "Lifelong renal monitoring required (Strong; Grade A)"
+      ],
+      url: "https://www.auanet.org/guidelines/bladder-exstrophy"
+    },
+    ru: {
+      title: "Российские клинические рекомендации по экстрофии мочевого пузыря 2024",
+      keyPoints: [
+        "Закрытие МП в первые 72 часа (УУР — A, УДД — 1)",
+        "Этапная реконструкция или одномоментный подход (УУР — A, УДД — 1)",
+        "Пожизненный наблюдение почек (УУР — A, УДД — 1)"
+      ],
+      url: "https://cr.minzdrav.gov.ru"
+    },
+    ua: {
+      title: "Urological Society of Australasia (UA) Guidelines on Bladder Exstrophy 2025",
+      keyPoints: [
+        "Early closure within 72 hours (Strong; Level: 1)",
+        "Multidisciplinary team essential (Strong; Level: 1)",
+        "Renal follow-up lifelong (Strong; Level: 1)"
+      ],
+      url: "https://www.urology.org.au/guidelines"
+    }
+  },
 
   quickSummary: 'Экстрофия МП - тяжёлый врождённый порок. Трёхэтапная реконструкция: закрытие МП (0-3 дн.), репайр эписпадии (6-18 мес.), континенция шейки (4-5 лет).',
 

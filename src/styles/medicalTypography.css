@@ -1,0 +1,255 @@
+/* ============================================================
+   Medical Typography — Improved hierarchy for clinical content
+   Подключается ПОСЛЕ App.css
+============================================================ */
+
+/* Modal content headings — fluid scale */
+.modal-body h1 { font-size: var(--font-2xl); }
+.modal-body h2 { font-size: var(--font-xl); }
+.modal-body h3 { font-size: var(--font-lg); }
+.modal-body h4 { 
+  font-size: var(--font-md); 
+  margin: 1.25rem 0 0.5rem; 
+}
+.modal-body h5 { 
+  font-size: var(--font-base); 
+  font-weight: 600;
+  margin: 1rem 0 0.4rem;
+}
+.modal-body h6 { 
+  font-size: var(--font-sm); 
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0.75rem 0 0.25rem;
+}
+
+/* Modal body paragraph improvements */
+.modal-body p {
+  line-height: 1.7; /* Enhanced readability */
+  margin-bottom: 0.85rem;
+}
+
+/* List styling for medical content */
+.modal-body ul,
+.modal-body ol {
+  margin: 0.75rem 0 1rem 1.5rem;
+  line-height: 1.7;
+}
+
+.modal-body li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+/* Content cards inside modal */
+.modal-body .content-card,
+.modal-body .q-card {
+  padding: 1rem 1.15rem;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  margin-bottom: 0.85rem;
+}
+
+/* Inline code / medication names */
+.modal-body code {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  font-size: 0.875em;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.15em 0.4em;
+  border-radius: 0.3em;
+}
+
+/* Clinical table improvements */
+.premium-clinical-table th {
+  background: rgba(8, 127, 123, 0.12);
+  color: #0a1629;
+  font-weight: 600;
+}
+
+.premium-clinical-table td {
+  border-bottom: 1px solid var(--border);
+}
+
+.premium-clinical-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Light mode table overrides — better contrast */
+body.light-mode .premium-clinical-table th {
+  background: rgba(12, 139, 118, 0.12);
+  color: #0a1629;
+}
+
+/* Disease card typography refinements */
+.disease-card .card-title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.disease-card .card-description {
+  line-height: 1.6;
+  -webkit-line-clamp: 2;
+}
+
+/* Section header refinements */
+.section-title {
+  font-size: var(--font-3xl);
+  letter-spacing: -0.03em;
+}
+
+.section-subtitle {
+  font-size: var(--font-md);
+  line-height: 1.6;
+  max-width: 42rem;
+}
+
+/* Kicker / Eyebrow typography */
+.card-kicker,
+.modal-header-section,
+.destination-kicker,
+.service-eyebrow {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* Tag typography */
+.card-tags .tag,
+.nav-dropdown-item {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Light mode overrides for better contrast */
+body.light-mode .modal-body h1,
+body.light-mode .modal-body h2,
+body.light-mode .modal-body h3,
+body.light-mode .modal-body h4,
+body.light-mode .modal-body h5,
+body.light-mode .modal-body h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+body.light-mode .premium-clinical-table th {
+  color: #0a1629;
+}
+
+/* Mobile typography adjustments */
+@media (max-width: 600px) {
+  .modal-body h1 { font-size: var(--font-xl); }
+  .modal-body h2 { font-size: var(--font-lg); }
+  .modal-body h3 { font-size: var(--font-md); }
+  
+  .section-title {
+    font-size: var(--font-2xl);
+  }
+  
+  .disease-card .card-title {
+    font-size: var(--font-sm);
+  }
+}
+
+/* Print optimization for medical content */
+@media print {
+  .modal-body p,
+  .modal-body li {
+    line-height: 1.5;
+    color: #000;
+  }
+  
+  .premium-clinical-table th {
+    color: #333;
+    background: #eee;
+  }
+}
+
+/* ─── iPhone Safe Area & Swipe Zones ────────────────────── */
+/* Prevent scroll-chaining on iOS */
+.modal-body,
+.search-results,
+.content-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Smooth scroll for anchor links on iOS */
+@media (hover: none) and (pointer: coarse) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Swipe hint for horizontal scroll areas */
+[data-scrollable="x"] {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+[data-scrollable="x"]::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Micro-interactions for iPhone ────────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+  .premium-card:hover {
+    transform: none;
+  }
+  
+  .premium-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+  
+  .btn-premium-primary:hover {
+    transform: none;
+    box-shadow: 0 4px 16px rgba(88, 224, 193, 0.25);
+  }
+  
+  .btn-premium-primary:active {
+    transform: scale(0.97);
+  }
+}
+
+/* ─── iPhone 16 Pro Dynamic Viewport Safety ─────────────────── */
+/* Account for dynamic islands and notches */
+@supports (height: 100dvh) and (width: 100svw) {
+  .mobile-shell-nav {
+    bottom: max(0.75rem, calc(var(--sab) + 0.75rem));
+  }
+  
+  .modal-content {
+    max-height: calc(100dvh - var(--sat) - var(--sab) - 2rem);
+  }
+  
+  .page-content {
+    min-height: 100dvh;
+  }
+}
+
+/* ─── Horizontal scroll swipe hint for iPhone ─────────────── */
+[data-scrollable="x"]::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  background: linear-gradient(90deg, transparent, var(--bg-primary));
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+[data-scrollable="x"]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  background: linear-gradient(270deg, transparent, var(--bg-primary));
+  pointer-events: none;
+  opacity: 0.4;
+}

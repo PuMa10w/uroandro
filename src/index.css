@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
 
+/* ============================================================
+   DESIGN TOKENS (consolidated)
+============================================================ */
 :root {
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -17,7 +20,7 @@
   --radius-2xl: 34px;
   --radius-full: 9999px;
 
-  /* Font Sizes */
+  /* Font Sizes — fluid scale */
   --font-xs: clamp(0.68rem, 0.64rem + 0.16vw, 0.72rem);
   --font-sm: clamp(0.78rem, 0.74rem + 0.18vw, 0.82rem);
   --font-md: clamp(0.88rem, 0.84rem + 0.20vw, 0.92rem);
@@ -43,7 +46,7 @@
   --sab: env(safe-area-inset-bottom, 0px);
   --sal: env(safe-area-inset-left, 0px);
 
-  /* Colors - Dark */
+  /* Colors — Dark theme (primary design) */
   --bg-primary: #07111f;
   --bg-secondary: #0d1b2f;
   --bg-tertiary: #12263f;
@@ -53,13 +56,13 @@
   --bg-panel: rgba(9, 20, 36, 0.96);
   --bg-overlay: rgba(3, 7, 18, 0.88);
 
-  /* Accent */
-  --gold: #d4af37;
-  --gold-light: #f3d97a;
-  --gold-dark: #9f7f2a;
+  /* Accent gradient scale */
   --teal: #3dd6bd;
   --teal-light: #7bf4e2;
   --teal-dark: #1fa895;
+  --gold: #d4af37;
+  --gold-light: #f3d97a;
+  --gold-dark: #9f7f2a;
   --cyan: #6ea8ff;
   --danger: #ef4444;
   --danger-light: #fca5a5;
@@ -107,7 +110,7 @@
   --gradient-card: linear-gradient(180deg, rgba(15, 30, 52, 0.84), rgba(7, 17, 31, 0.96));
   --gradient-hero: linear-gradient(135deg, rgba(7, 17, 31, 0.95), rgba(11, 20, 38, 0.92));
 
-  /* Transitions */
+  /* Transitions — iOS-spring easing */
   --transition-fast: 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
   --transition-base: 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
   --transition-slow: 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -144,9 +147,12 @@
   --up-card-border: 1px solid var(--border-strong);
   --up-card-inset-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.04) inset;
   --up-card-hover-glow: 0 0 20px rgba(88, 224, 193, 0.06);
+  --skeleton: linear-gradient(90deg, var(--bg-tertiary), var(--border), var(--bg-tertiary));
 }
 
-/* ============ LIGHT THEME - ULTRAMARINE & CYAN PREMIUM ============ */
+/* ============================================================
+   LIGHT THEME — ULTRAMARINE & CYAN PREMIUM
+============================================================ */
 body.light-mode {
   --bg-primary: #f8fbff;
   --bg-secondary: #eef4fa;
@@ -155,16 +161,16 @@ body.light-mode {
   --bg-card-hover: rgba(242, 248, 255, 0.99);
   --bg-elevated: rgba(240, 248, 255, 0.96);
   --bg-panel: rgba(238, 246, 255, 0.97);
-  
+
   --text-primary: #0a1629;
   --text-secondary: #2d3e50;
   --text-muted: #5a6b7c;
   --text-disabled: #8a9bad;
-  
+
   --border: rgba(45, 119, 210, 0.18);
   --border-light: rgba(45, 119, 210, 0.12);
   --border-strong: rgba(12, 139, 118, 0.25);
-  
+
   --shadow-card: 0 20px 48px rgba(45, 119, 210, 0.12);
   --shadow-card-hover: 0 28px 64px rgba(45, 119, 210, 0.18);
   --shadow-teal: 0 0 0 1px rgba(12, 139, 118, 0.15), 0 14px 30px rgba(12, 139, 118, 0.08);
@@ -176,20 +182,9 @@ body.light-mode {
   --up-card-hover-glow: 0 0 24px rgba(12, 139, 118, 0.08);
 }
 
-/* Premium light theme card styling */
-body.light-mode .theme-card {
-  background: linear-gradient(135deg, rgba(248, 251, 255, 0.98), rgba(238, 246, 255, 0.96));
-  border: 1px solid var(--border-strong);
-  box-shadow: var(--shadow-card);
-  color: var(--text-primary);
-}
-
-/* Premium light theme table styling */
-body.light-mode .theme-table {
-  background: linear-gradient(135deg, rgba(248, 251, 255, 0.98), rgba(238, 246, 255, 0.96));
-  border: 1px solid var(--border-strong);
-  color: var(--text-primary);
-}
+/* ============================================================
+   GLOBAL RESET & BASE STYLES
+============================================================ */
 
 /* Reset */
 * {
@@ -199,6 +194,7 @@ body.light-mode .theme-table {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Root & Body */
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
@@ -206,6 +202,7 @@ html {
   overflow-x: hidden;
   overflow-y: auto;
   height: 100%;
+  font-size: 100%;
 }
 
 html.modal-open,
@@ -217,7 +214,7 @@ body.modal-open {
 body {
   font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: var(--font-base);
-  line-height: 1.5;
+  line-height: 1.6; /* Improved for medical reading */
   background: var(--bg-primary);
   color: var(--text-primary);
   overflow-x: hidden;
@@ -226,108 +223,170 @@ body {
   min-height: 100dvh;
   padding-bottom: var(--sab);
   overscroll-behavior-y: auto;
-  transition:
-    background var(--transition-base),
-    color var(--transition-base);
+  transition: background var(--transition-base), color var(--transition-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
+/* ============================================================
+   TYPOGRAPHY HIERARCHY — Medical Content
+============================================================ */
+
+/* Headings — Playfair Display with enhanced hierarchy */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif;
+  font-weight: 600;
   line-height: 1.15;
   margin: 0;
   letter-spacing: -0.02em;
 }
 
-/* Reading Width */
-.reading-width {
+/* h1 — Hero titles, landing page */
+h1 { font-size: var(--font-hero); }
+
+/* h2 — Section titles, modal main heading */
+h2 { 
+  font-size: var(--font-3xl); 
+  margin-bottom: 0.5rem;
+}
+
+/* h3 — Card titles, subsections */
+h3 { 
+  font-size: var(--font-xl); 
+  margin-bottom: 0.35rem;
+}
+
+/* h4 — Modal content sections, diagnostic headings */
+h4 { 
+  font-size: var(--font-lg); 
+  font-weight: 600;
+  margin: 1.25rem 0 0.5rem;
+}
+
+/* h5 — Minor sections */
+h5 { 
+  font-size: var(--font-base); 
+  font-weight: 600;
+  margin: 1rem 0 0.4rem;
+}
+
+/* h6 — Captions, labels */
+h6 { 
+  font-size: var(--font-sm); 
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Body text styles */
+.body-sm { 
+  font-size: var(--font-xs); 
+  line-height: 1.5; 
+}
+
+.body-md { 
+  font-size: var(--font-base); 
+  line-height: 1.6; 
+}
+
+.body-lg { 
+  font-size: var(--font-md); 
+  line-height: 1.7; 
+}
+
+.reading-content {
   max-width: var(--up-reading-width);
-  margin-left: auto;
-  margin-right: auto;
+  line-height: 1.7;
 }
 
-.section-max {
-  max-width: var(--up-section-max-width);
-  margin-left: auto;
-  margin-right: auto;
+.reading-content p {
+  margin-bottom: 1rem;
 }
 
-.service-max {
-  max-width: var(--up-service-max-width);
-  margin-left: auto;
-  margin-right: auto;
+.reading-content ul,
+.reading-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
 }
 
-/* Premium table structure */
-.table.premium-card {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  background: var(--bg-card);
+.reading-content li {
+  margin-bottom: 0.5rem;
 }
 
-/* Component Theme Classes */
+/* ============================================================
+   TYPOGRAPHY TRACKING — Consistent letter-spacing system
+============================================================ */
+:where(.kicker, .eyebrow, .label) {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: var(--font-xs);
+  font-weight: 700;
+}
+
+:where(.title, .heading-1, .heading-2, .heading-3) {
+  letter-spacing: -0.02em;
+}
+
+/* ============================================================
+   COMPONENT THEME CLASSES (used throughout app)
+============================================================ */
+
+/* Container */
 .theme-container {
-  background: var(--bg-primary, #07111f);
-  color: var(--text-primary, #f4f9ff);
-  border-color: var(--border, rgba(140, 170, 210, 0.14));
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--border);
 }
 
-body.light-mode .theme-container {
-  background: var(--bg-primary, #f4efe6);
-  color: var(--text-primary, #1b2430);
-  border-color: var(--border, rgba(73, 98, 128, 0.18));
-}
-
+/* Card — reusable surface */
 .theme-card {
-  background: var(--bg-card, rgba(13, 25, 44, 0.82));
-  border: 1px solid var(--border, rgba(140, 170, 210, 0.14));
-  box-shadow: var(--shadow-card, 0 24px 70px rgba(3, 7, 18, 0.38));
-  color: var(--text-primary, #f4f9ff);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  color: var(--text-primary);
+  border-radius: var(--radius-lg);
 }
 
+/* Premium light theme card styling */
 body.light-mode .theme-card {
-  background: var(--bg-card, rgba(255, 252, 247, 0.9));
-  border-color: var(--border, rgba(73, 98, 128, 0.18));
-  box-shadow: var(--shadow-card, 0 18px 42px rgba(106, 86, 51, 0.08));
-  color: var(--text-primary, #1b2430);
+  background: linear-gradient(135deg, rgba(248, 251, 255, 0.98), rgba(238, 246, 255, 0.96));
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-card);
+  color: var(--text-primary);
 }
 
+/* Navigation */
 .theme-nav {
-  background: var(--bg-card, rgba(13, 25, 44, 0.82));
-  border-color: var(--border, rgba(140, 170, 210, 0.14));
-  backdrop-filter: blur(20px);
+  background: var(--bg-card);
+  border-color: var(--border);
 }
 
 body.light-mode .theme-nav {
-  background: var(--bg-card, rgba(255, 252, 247, 0.9));
-  border-color: var(--border, rgba(73, 98, 128, 0.18));
+  background: rgba(255, 250, 242, 0.96);
+  border-color: var(--border);
 }
 
+/* Interactive elements */
+.theme-interactive {
+  color: var(--text-primary);
+  border-color: var(--border);
+}
+
+/* Table styling */
 .theme-table {
-  background: var(--bg-card, rgba(13, 25, 44, 0.82));
-  border: 1px solid var(--border, rgba(140, 170, 210, 0.14));
-  color: var(--text-primary, #f4f9ff);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
 }
 
 body.light-mode .theme-table {
-  background: var(--bg-card, rgba(255, 252, 247, 0.9));
-  border-color: var(--border, rgba(73, 98, 128, 0.18));
-  color: var(--text-primary, #1b2430);
+  background: rgba(255, 252, 247, 0.9);
+  border-color: var(--border);
+  color: var(--text-primary);
 }
 
-.theme-interactive {
-  color: var(--text-primary, #f4f9ff);
-  border-color: var(--border, rgba(140, 170, 210, 0.14));
-}
-
-body.light-mode .theme-interactive {
-  color: var(--text-primary, #1b2430);
-  border-color: var(--border, rgba(73, 98, 128, 0.18));
-}
-
-/* Tables */
+/* Table component */
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -349,69 +408,115 @@ body.light-mode .theme-interactive {
   background: var(--bg-secondary);
   font-weight: 600;
   color: var(--text-primary);
-  font-size: 0.875rem;
+  font-size: var(--font-sm);
   position: sticky;
   top: 0;
   z-index: 10;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.table td {
-  color: var(--text-primary);
 }
 
 .table tr:hover {
   background: var(--bg-card-hover);
 }
 
-.table tr.active-row {
-  background: var(--bg-card-hover);
-  border-left: 3px solid var(--teal);
+/* ============================================================
+   APP SHELL
+============================================================ */
+.App {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
-.table tr.selectable {
-  cursor: pointer;
+/* ============================================================
+   READING WIDTH UTILITIES
+============================================================ */
+.reading-width {
+  max-width: var(--up-reading-width);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* iPhone optimizations */
-@media (max-width: 940px) {
-  .reading-width { max-width: 52ch; }
-  .service-max { max-width: 100%; }
-  .section-max { max-width: 100%; }
-  
-  .theme-card { padding: var(--spacing-md); }
-  .theme-nav { padding: var(--spacing-sm); }
-  
-  .table { margin: var(--spacing-sm) 0; }
-  .table th, .table td { padding: var(--spacing-xs) var(--spacing-sm); }
+.section-max {
+  max-width: var(--up-section-max-width);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Touch optimization */
-@media (hover: none) and (pointer: coarse) {
-  .theme-card:hover { transform: none; }
-  .sidebar-item:hover { background: none; }
-  
-  .sidebar-item { min-height: 44px; }
+.service-max {
+  max-width: var(--up-service-max-width);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* High contrast support */
+/* ============================================================
+   PREMIUM SCROLLBAR
+============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(61, 214, 189, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(61, 214, 189, 0.35);
+}
+
+body.light-mode ::-webkit-scrollbar-thumb {
+  background: rgba(12, 139, 118, 0.25);
+}
+
+/* ============================================================
+   PREMIUM SELECTION & FOCUS
+============================================================ */
+::selection {
+  background: rgba(61, 214, 189, 0.15);
+  color: var(--teal-dark);
+}
+
+body.light-mode ::selection {
+  background: rgba(12, 139, 118, 0.15);
+}
+
+*:focus-visible {
+  outline: none;
+  box-shadow: var(--up-focus-ring);
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================================
+   ACCESSIBILITY — Reduced motion & contrast
+============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 @media (prefers-contrast: high) {
   .theme-card { border: 2px solid var(--border); }
   .theme-table { border: 2px solid var(--border); }
-  .sidebar { border-right: 2px solid var(--border); }
-  
-  body.light-mode .theme-card { border-color: var(--border-strong); }
-  body.light-mode .theme-table { border-color: var(--border-strong); }
-  body.light-mode .sidebar { border-right-color: var(--border-strong); }
+  .disease-card { border: 2px solid var(--border); }
 }
 
-/* Print styles */
+/* ============================================================
+   PRINT STYLES
+============================================================ */
 @media print {
   .theme-container { background: #fff; color: #000; }
   .theme-card { border: 1px solid #ccc; box-shadow: none; }
   .theme-nav { display: none; }
+  .navbar { display: none; }
   .sidebar { display: none; }
   .no-print { display: none; }
-  .page-break { page-break-before: always; }
 }

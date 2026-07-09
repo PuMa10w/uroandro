@@ -360,6 +360,8 @@ textarea:focus-visible,
     background:
       linear-gradient(180deg, rgba(255, 252, 246, 0.99), rgba(246, 250, 253, 0.97)) !important;
     box-shadow: 0 16px 32px rgba(38, 70, 83, 0.12) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
   body.modal-open .tabs-shell .tabs,

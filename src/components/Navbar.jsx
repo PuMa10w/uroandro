@@ -5,11 +5,11 @@ import { trackSearch, trackSearchSelect, trackSymptomRoute } from '../utils/anal
 import { searchDiseases } from '../data';
 import {
   IconSearch, IconMoon, IconSun, IconMenu, IconClose,
-  IconStar, IconClock, IconArrowUp, IconArrowDown,
-  IconStarFilled, IconFavorites, IconChevronDown, IconChevronRight,
+  IconStar, IconArrowUp, IconArrowDown,
   IconPediatric, IconEmergency, IconSurgery, IconTools,
   IconCalculators, IconDrugs, IconAtlas, IconSitemap,
-  IconClipboard,
+  IconClipboard, IconHeart, IconClock, IconFavorites,
+  IconChevronDown,
 } from '../icons';
 
 const propTypes = {

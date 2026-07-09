@@ -129,6 +129,7 @@ export const allDiseases = [
   { id: 'catheter-complication', name: 'Механическое осложнение мочевого катетера', icd: 'T83.0', section: 'urology', subsection: 'reconstructive', icon: '⚠️' },
 
   // УРОЛОГИЯ — нефрология
+  { id: 'post-traumatic-renal-changes', name: 'Посттравматические изменения почечной ткани', icd: 'N16', section: 'urology', subsection: 'nephrology', icon: '⚠️' },
   { id: 'glomerulonephritis', name: 'Гломерулонефрит', icd: 'N00-N08', section: 'urology', subsection: 'nephrology', icon: '🫘' },
   { id: 'ckd', name: 'Хроническая болезнь почек', icd: 'N18', section: 'urology', subsection: 'nephrology', icon: '🫘' },
   { id: 'nephroptosis', name: 'Нефроптоз', icd: 'N28.8', section: 'urology', subsection: 'nephrology', icon: '🫘' },
@@ -271,6 +272,7 @@ export const allDiseases = [
   { id: 'male-genital-lichen-planus', name: 'Генитальный красный плоский лишай', icd: 'L43.9', section: 'andrology', subsection: 'sexual', icon: '🔬' },
   { id: 'chronic-bacterial-prostatitis', name: 'Хронический бактериальный простатит', icd: 'N41.1', section: 'andrology', subsection: 'sexual', icon: '🔥' },
   { id: 'testicular-atrophy', name: 'Атрофия яичка', icd: 'N50.0', section: 'andrology', subsection: 'sexual', icon: '⚡' },
+  { id: 'catheter-complication-mechanical', name: 'Механическое осложнение катетера', icd: 'T83.5', section: 'urology', subsection: 'functional', icon: '⚠️' },
 ];
 
 // ===== MAP для быстрого поиска по ID =====
@@ -320,6 +322,8 @@ const SEARCH_SYNONYMS = {
   hypogonadism: ['гипогонадизм', 'низкий тестостерон', 'дефицит тестостерона', 'снижение либидо', 'low testosterone'],
   'subclinical-hypogonadism': ['субклинический гипогонадизм', 'низкий тестостерон', 'пограничный тестостерон'],
   'hyperprolactinemia-male': ['гиперпролактинемия', 'пролактин', 'высокий пролактин'],
+  'chronic-bacterial-prostatitis': ['хронический бактериальный простатит', 'простатит', 'нечаянная бактериурия', 'chronic bacterial prostatitis'],
+  'catheter-complication-mechanical': ['механическое осложнение катетера', 'остранение катетера', 'катетер', 'catheter complication', 't83.5'],
   'testicular-atrophy': ['атрофия яичка', 'уменьшение яичка', 'testicular atrophy'],
 };
 

@@ -33,15 +33,15 @@ function main() {
   const contentQuality = readJson('content/content-quality-summary-v7.json');
   const drugAudit = readJson('content/drug-500-audit-v15.json');
   const icdAudit = readJson('content/icd-coverage-summary-v14.json');
-  const app = readText('src/App.js');
-  const modal = readText('src/components/DiseaseModal.js');
+  const app = readText('src/App.jsx');
+  const modal = readText('src/components/DiseaseModal.jsx');
   const css = readText('src/styles/v23ClinicalWorkbench.css');
-  const contracts = readText('src/types/clinicalContracts.js');
-  const navbar = readText('src/components/Navbar.js');
-  const tools = readText('src/components/ToolsSection.js');
-  const calculators = readText('src/components/CalculatorsPage.js');
-  const atlas = readText('src/components/Clinical3DAtlas.js');
-  const modalContent = readText('src/components/diseaseModal/DiseaseModalContent.js');
+  const contracts = readText('src/types/clinicalContracts.jsx');
+  const navbar = readText('src/components/Navbar.jsx');
+  const tools = readText('src/components/ToolsSection.jsx');
+  const calculators = readText('src/components/CalculatorsPage.jsx');
+  const atlas = readText('src/components/Clinical3DAtlas.jsx');
+  const modalContent = readText('src/components/diseaseModal/DiseaseModalContent.jsx');
 
   const visualGate = visualReport.visual_iPhone_gate_v23 || {};
   const blockers = visualGate.blockers || [];

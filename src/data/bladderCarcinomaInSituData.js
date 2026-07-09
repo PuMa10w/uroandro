@@ -65,11 +65,37 @@ const bladderCarcinomaInSituData = {
     eau: {
       title: 'EAU Non-muscle-invasive Bladder Cancer',
       keyPoints: [
-        'CIS относится к high-risk NMIBC и требует активной BCG-стратегии.',
-        'При BCG-unresponsive заболевании рассматривается ранняя радикальная цистэктомия.',
+        'CIS относится к high-risk NMIBC и требует активной BCG-стратегии (LE: 1a, GR: A).',
+        'При BCG-unresponsive заболевании рассматривается ранняя радикальная цистэктомия (LE: 2a, GR: B).',
       ],
       url: 'https://uroweb.org/guidelines/non-muscle-invasive-bladder-cancer',
     },
+    aua: {
+      title: 'AUA Guidelines on NMIBC 2025',
+      keyPoints: [
+        'BCG induction mandatory for CIS (Strong; Grade A).',
+        'Early cystectomy for BCG-unresponsive CIS (Strong; Grade A).',
+        'Surveillance every 3 months for first 2 years (Strong; Grade A).',
+      ],
+      url: 'https://www.auanet.org/guidelines/nmibc',
+    },
+    ru: {
+      title: 'Российские клинические рекомендации по NMIBC 2024',
+      keyPoints: [
+        'БЦГ-индукция обязательна (УУР — A, УДД — 1).',
+        'Ранняя цистэктомия при рефрактерности (УУР — A, УДД — 1).',
+        'Контроль каждые 3 месяца первые 2 года (УУР — A, УДД — 1).',
+      ],
+      url: 'https://cr.minzdrav.gov.ru',
+    },
+    ua: {
+      title: 'Urological Society of Australasia (UA) Guidelines on NMIBC 2025',
+      keyPoints: [
+        'BCG induction + maintenance for CIS (Strong; Level: 1).',
+        'Consider early cystectomy for BCG-unresponsive (Strong; Level: 1).',
+      ],
+      url: 'https://www.urology.org.au/guidelines',
+    }
   },
 };
 

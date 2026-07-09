@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "updated_at": "2026-07-09T06:36:45.924Z",
+  "updated_at": "2026-07-09T06:37:55.258Z",
   "visual_iPhone_gate_v23": {
     "name": "visual_iPhone_gate_v23",
     "status": "pass",
@@ -172,10 +172,10 @@
             "height": 122
           },
           "title": {
-            "top": 143,
+            "top": 144,
             "left": 22,
             "right": 298,
-            "bottom": 181,
+            "bottom": 182,
             "width": 277,
             "height": 37
           },
@@ -217,10 +217,10 @@
             "height": 122
           },
           "title": {
-            "top": 121,
+            "top": 129,
             "left": 22,
             "right": 298,
-            "bottom": 233,
+            "bottom": 241,
             "width": 277,
             "height": 112
           },

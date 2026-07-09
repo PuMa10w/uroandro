@@ -1098,3 +1098,216 @@ body.light-mode .premium-sheet {
     gap: 0.75rem;
   }
 }
+
+/* === Premium Subsection Selector - Fixed Horizontal Tabs === */
+.subsection-selector {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.92));
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  padding: 1.25rem 1rem 1rem;
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  transition: background 0.3s ease;
+  overflow: hidden;
+}
+
+.dark .subsection-selector {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.92));
+  border-bottom-color: var(--border);
+}
+
+/* Section Title with Premium Typography */
+.subsection-selector .section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 4.5vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 0 0 0.5rem;
+  padding-left: 1rem;
+}
+
+.subsection-selector .section-subtitle {
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  color: var(--text-secondary);
+  max-width: 720px;
+  margin: 0 auto 1rem;
+  padding: 0 1rem;
+  line-height: 1.5;
+}
+
+/* === Horizontal Subsection Grid - Modern Scroll === */
+.subsection-grid {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  padding: 0.5rem 1rem 1rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
+}
+
+.subsection-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* === Premium Subsection Card === */
+.subsection-card {
+  flex: 0 0 auto;
+  min-width: 200px;
+  min-height: 140px;
+  max-width: 280px;
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.dark .subsection-card {
+  background: rgba(15, 23, 42, 0.88);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.subsection-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent 40%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.subsection-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  border-color: rgba(61, 214, 189, 0.3);
+  background: rgba(255, 255, 255, 0.94);
+  z-index: 2;
+}
+
+.dark .subsection-card:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  background: rgba(15, 23, 42, 0.94);
+}
+
+.subsection-card:hover::before {
+  opacity: 1;
+}
+
+.subsection-card:active {
+  transform: translateY(-1px);
+}
+
+/* Subsection Icon */
+.subsection-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, rgba(61, 214, 189, 0.15), rgba(61, 214, 189, 0.08));
+  color: var(--teal);
+  flex-shrink: 0;
+}
+
+.dark .subsection-icon {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.12));
+  color: #60a5fa;
+}
+
+/* Subsection Title */
+.subsection-card h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem 0;
+  color: var(--text-primary);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+/* Subsection Description */
+.subsection-card p {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* === Subsection Card - Category Specific Colors === */
+.subsection-card.is-urology .subsection-icon {
+  background: linear-gradient(135deg, rgba(88, 224, 193, 0.18), rgba(88, 224, 193, 0.1));
+  color: #2563eb;
+}
+
+.subsection-card.is-andrology .subsection-icon {
+  background: linear-gradient(135deg, rgba(241, 204, 122, 0.18), rgba(241, 204, 122, 0.12));
+  color: #ca8a04;
+}
+
+.subsection-card.is-drugs .subsection-icon {
+  background: linear-gradient(135deg, rgba(167, 84, 207, 0.15), rgba(167, 84, 207, 0.1));
+  color: #a855f7;
+}
+
+.subsection-card.is-tools .subsection-icon {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(14, 165, 233, 0.1));
+  color: #0284c7;
+}
+
+/* === Sticky Section Container for iPhone === */
+.App[data-v23-workbench='true'] .section {
+  scroll-padding-top: 80px;
+}
+
+/* iPhone Safe Area for Sticky Header */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .subsection-selector {
+    padding-top: calc(env(safe-area-inset-top) + 1.25rem);
+  }
+}
+
+/* === Smooth Scrollbar for Horizontal Sections === */
+.subsection-grid {
+  mask-image: linear-gradient(to right, black 30%, transparent 90%);
+  mask-mode: alpha;
+}
+
+/* Hide scrollbar but keep functionality */
+.subsection-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.subsection-grid::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.subsection-grid::-webkit-scrollbar-thumb {
+  background: rgba(61, 214, 189, 0.3);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.subsection-grid::-webkit-scrollbar-thumb:hover {
+  background: rgba(61, 214, 189, 0.5);
+}

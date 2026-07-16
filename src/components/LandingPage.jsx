@@ -118,6 +118,31 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
   const [searchResults, setSearchResults] = React.useState([]);
   const [resultsStyle, setResultsStyle] = React.useState({});
   const searchRef = React.useRef(null);
+  const shellRef = React.useRef(null);
+
+  // Premium reveal-on-scroll for landing sections
+  React.useEffect(() => {
+    const shell = shellRef.current;
+    if (!shell) return undefined;
+    const sections = shell.querySelectorAll('.reveal-section');
+    if (!('IntersectionObserver' in window)) {
+      sections.forEach((s) => s.classList.add('is-visible'));
+      return undefined;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.08 }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
 
   // Position results dropdown below input
   React.useEffect(() => {
@@ -195,9 +220,9 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
   const favoriteCount = Object.values(favorites).filter(Boolean).length;
 
   return (
-    <div className="home-shell">
+    <div className="home-shell" ref={shellRef}>
       <section
-        className="home-workbench"
+        className="home-workbench reveal-section"
         aria-label="Clinical Workbench"
         data-v19-workbench="true"
         data-v20-workbench="true"
@@ -335,7 +360,7 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
       </section>
 
       {/* Destination Cards */}
-      <section className="home-destination-grid" aria-label="Основные разделы">
+      <section className="home-destination-grid reveal-section" aria-label="Основные разделы">
         <button
           type="button"
           className="home-destination-card is-urology"
@@ -402,7 +427,7 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
       </section>
 
       {/* Quick Access */}
-      <section className="home-panel" aria-label="Быстрый доступ">
+      <section className="home-panel reveal-section" aria-label="Быстрый доступ">
         <div className="home-panel-head">
           <span className="home-panel-kicker">Clinical shortcuts</span>
           <h2 className="home-panel-title">Частые маршруты</h2>
@@ -435,7 +460,7 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
       </section>
 
       {/* Guidelines */}
-      <section className="home-panel" aria-label="Источники">
+      <section className="home-panel reveal-section" aria-label="Источники">
         <div className="home-panel-head">
           <span className="home-panel-kicker">Evidence layer</span>
           <h2 className="home-panel-title">Источники</h2>

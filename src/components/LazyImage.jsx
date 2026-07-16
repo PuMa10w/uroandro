@@ -30,6 +30,8 @@ const LazyImage = ({ src, alt, placeholder = '🖼️', className, ...props }) =
         <img
           src={src}
           alt={alt}
+          loading="lazy"
+          decoding="async"
           className={`lazy-image ${isLoaded ? 'loaded' : ''}`}
           onLoad={() => setIsLoaded(true)}
         />

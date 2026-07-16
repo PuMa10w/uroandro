@@ -1358,3 +1358,92 @@ body.light-mode .home-workbench-action:hover {
     flex-wrap: wrap;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   HOME — PREMIUM REVEAL ON SCROLL
+   Секции плавно появляются при попадании во вьюпорт (stagger).
+   ═══════════════════════════════════════════════════════════════ */
+
+.reveal-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children inside a revealed section */
+.reveal-section.is-visible .home-workbench-action,
+.reveal-section.is-visible .home-workbench-lane,
+.reveal-section.is-visible .home-destination-card,
+.reveal-section.is-visible .quick-btn,
+.reveal-section.is-visible .guideline-card {
+  animation: sectionItemIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal-section.is-visible .home-workbench-action:nth-child(1) { animation-delay: 0.05s; }
+.reveal-section.is-visible .home-workbench-action:nth-child(2) { animation-delay: 0.10s; }
+.reveal-section.is-visible .home-workbench-action:nth-child(3) { animation-delay: 0.15s; }
+.reveal-section.is-visible .home-workbench-action:nth-child(4) { animation-delay: 0.20s; }
+.reveal-section.is-visible .home-workbench-lane:nth-child(1) { animation-delay: 0.05s; }
+.reveal-section.is-visible .home-workbench-lane:nth-child(2) { animation-delay: 0.12s; }
+.reveal-section.is-visible .home-workbench-lane:nth-child(3) { animation-delay: 0.19s; }
+.reveal-section.is-visible .home-destination-card:nth-child(1) { animation-delay: 0.05s; }
+.reveal-section.is-visible .home-destination-card:nth-child(2) { animation-delay: 0.13s; }
+.reveal-section.is-visible .quick-btn:nth-child(1) { animation-delay: 0.03s; }
+.reveal-section.is-visible .quick-btn:nth-child(2) { animation-delay: 0.07s; }
+.reveal-section.is-visible .quick-btn:nth-child(3) { animation-delay: 0.11s; }
+.reveal-section.is-visible .quick-btn:nth-child(4) { animation-delay: 0.15s; }
+.reveal-section.is-visible .quick-btn:nth-child(5) { animation-delay: 0.19s; }
+.reveal-section.is-visible .quick-btn:nth-child(6) { animation-delay: 0.23s; }
+.reveal-section.is-visible .quick-btn:nth-child(7) { animation-delay: 0.27s; }
+.reveal-section.is-visible .guideline-card:nth-child(1) { animation-delay: 0.04s; }
+.reveal-section.is-visible .guideline-card:nth-child(2) { animation-delay: 0.10s; }
+.reveal-section.is-visible .guideline-card:nth-child(3) { animation-delay: 0.16s; }
+.reveal-section.is-visible .guideline-card:nth-child(4) { animation-delay: 0.22s; }
+
+@keyframes sectionItemIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .reveal-section.is-visible .home-workbench-action,
+  .reveal-section.is-visible .home-workbench-lane,
+  .reveal-section.is-visible .home-destination-card,
+  .reveal-section.is-visible .quick-btn,
+  .reveal-section.is-visible .guideline-card {
+    animation: none;
+  }
+}
+
+/* === end reveal === */
+
+/* ═══════════════════════════════════════════════════════════════
+   PAINT PERF — skip rendering offscreen heavy sections
+   ═══════════════════════════════════════════════════════════════ */
+@media (min-width: 700px) {
+  .home-destination-grid,
+  .home-panel {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 480px;
+  }
+}

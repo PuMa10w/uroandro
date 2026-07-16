@@ -80,18 +80,41 @@ export default defineConfig(({ mode }) => {
           manualChunks(id) {
             const normalizedId = id.replace(/\\/g, '/');
 
-            // CRITICAL: Dynamic import for lazy-loaded data
-            if (
-              normalizedId.includes('/src/data/')
-              && /Data\.js$/.test(normalizedId)
-              && !normalizedId.endsWith('/sectionData.js')
-            ) {
-              const filename = normalizedId.split('/').pop() || '';
-              return `data-${filename.replace('.js', '').toLowerCase()}`;
-            }
-
+            // React / scheduler → single vendor chunk
             if (id.includes('react') || id.includes('scheduler')) {
               return 'vendor-react';
+            }
+
+            // Aggregate ALL disease data files into a FEW chunks instead of
+            // 190 tiny per-file chunks (waterfall on first section open).
+            // Group by section folder/file-prefix so each section stays
+            // a single lazy-loadable chunk.
+            if (
+              normalizedId.includes('/src/data/') &&
+              /Data\.js$/.test(normalizedId) &&
+              !normalizedId.endsWith('/sectionData.js') &&
+              !normalizedId.includes('drugReferenceData') &&
+              !normalizedId.includes('extraDrugReferenceData')
+            ) {
+              const filename = (normalizedId.split('/').pop() || '').replace('.js', '').toLowerCase();
+              // map a few known cross-cutting files; default = urology bucket
+              let bucket = 'urology';
+              if (/andr|erectile|fert|hypogon|peyron|sexual|endocrine/.test(filename)) bucket = 'andrology';
+              else if (/pediatric|child|neonat/.test(filename)) bucket = 'pediatric';
+              else if (/emerg|urgent|trauma|acute/.test(filename)) bucket = 'emergency';
+              else if (/surgery|surgical|reconstruct|fistula/.test(filename)) bucket = 'surgery';
+              else if (/metaphyl|diet|nutrition/.test(filename)) bucket = 'metaphylaxis';
+              else if (/tool|questionnaire|score|index|scale/.test(filename)) bucket = 'tools';
+              else if (/game|quiz|train/.test(filename)) bucket = 'games';
+              return `data-${bucket}`;
+            }
+
+            if (
+              normalizedId.includes('/src/data/') &&
+              (normalizedId.includes('drugReferenceData') ||
+                normalizedId.includes('extraDrugReferenceData'))
+            ) {
+              return 'data-drugs';
             }
 
             return undefined;

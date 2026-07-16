@@ -1,0 +1,74 @@
+/* ============================================================
+   DESIGN TOKENS — single source of truth
+   Imported FIRST (before index.css / App.css) so all
+   CSS custom properties resolve before component styles.
+   Keep this file FREE of component/section rules.
+   ============================================================ */
+
+:root {
+  /* Warm medical primary palette - optimal contrast for reading */
+  --bg-primary: #0a0e14; /* Deep medical navy */
+  --bg-secondary: #0f1620; /* Slightly lighter navy */
+  --bg-tertiary: #151c28; /* Card backgrounds */
+  --bg-card: rgba(20, 27, 40, 0.94); /* Main card bg */
+  --bg-card-hover: rgba(26, 34, 50, 0.98); /* Hover state */
+  --bg-elevated: rgba(17, 25, 42, 0.96); /* Dropdowns/modals */
+  --bg-panel: rgba(9, 15, 30, 0.98); /* Panel backgrounds */
+  --bg-overlay: rgba(2, 6, 12, 0.9); /* Backdrops */
+
+  /* Premium text hierarchy with perfect readability */
+  --text-primary: #e8eff8; /* Lightest primary text */
+  --text-secondary: #cbd6e8; /* High contrast secondary */
+  --text-muted: #94a8c4; /* Clear tertiary text */
+  --text-disabled: #6a7b94; /* Disabled states */
+
+  /* Professional medical accent palette */
+  --border: rgba(120, 150, 180, 0.15); /* Subtle borders */
+  --border-light: rgba(120, 150, 180, 0.08); /* Very subtle */
+  --border-strong: rgba(90, 130, 180, 0.25); /* Stronger borders */
+
+  /* Premium gradients for medical trust */
+  --gradient-primary: linear-gradient(135deg, #3dd6bd, #087f7b); /* Deep teal */
+  --gradient-secondary: linear-gradient(135deg, #8b6d4e, #5d4a37); /* Warm gold */
+  --gradient-card: linear-gradient(180deg, rgba(20, 27, 40, 0.92), rgba(10, 14, 20, 0.96));
+  --gradient-hero: linear-gradient(135deg, rgba(10, 14, 20, 0.98), rgba(17, 25, 42, 0.94));
+
+  /* iPhone-optimized shadows and depth */
+  --shadow-card: 0 20px 48px rgba(2, 6, 12, 0.35);
+  --shadow-card-hover: 0 28px 64px rgba(2, 6, 12, 0.45);
+  --shadow-soft: 0 12px 40px rgba(2, 6, 12, 0.25);
+  --shadow-glow-primary: 0 0 40px rgba(61, 214, 189, 0.15);
+  --shadow-glow-secondary: 0 0 40px rgba(139, 109, 78, 0.12);
+
+  /* iOS-spring transition curves */
+  --transition-fast: 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-base: 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-slow: 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* iPhone touch targets and safe areas */
+  --up-touch-target: 44px;
+  --up-touch-target-min: 2.75rem;
+  --up-control-min-width: 2.75rem;
+  --up-control-radius: 999px;
+  --up-focus-ring: 0 0 0 3px rgba(61, 214, 189, 0.22);
+  --up-hairline: 0.5px solid rgba(120, 150, 180, 0.18);
+
+  /* Medical reading optimized widths */
+  --up-reading-width: 68ch;
+  --up-section-max-width: 74rem;
+  --up-service-max-width: 40rem;
+
+  /* Premium medical positioning */
+  --up-sticky-tabs-top: calc(var(--sat) + 4.8rem);
+  --up-bottom-nav-space: calc(var(--sab) + 7.4rem);
+  --up-fixed-action-bottom: calc(var(--sab) + 0.68rem);
+  --up-modal-offset-top: calc(var(--sat) + 0.75rem);
+  --up-modal-offset-bottom: calc(var(--sab) + 0.75rem);
+
+  /* Cards and components */
+  --up-card-bg: rgba(20, 27, 40, 0.92);
+  --up-card-bg-hover: rgba(26, 34, 50, 0.96);
+  --up-card-border: 1px solid var(--border-strong);
+  --up-card-inset-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.04) inset;
+  --up-card-hover-glow: 0 0 20px rgba(61, 214, 189, 0.06);
+}

@@ -63,7 +63,7 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: 'build',
       sourcemap: false,
-      target: 'es2020',
+      target: 'es2022',
       cssCodeSplit: true,
       cssMinify: true,
       minify: 'esbuild',

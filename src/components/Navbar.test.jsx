@@ -5,16 +5,28 @@ import { searchDiseases } from '../data';
 import { trackSearch, trackSearchSelect, trackSymptomRoute } from '../utils/analytics';
 
 vi.mock('framer-motion', () => ({
-  motion: new Proxy({}, {
-    get: (_, tag) => {
-      const mockReact = require('react');
-      const Component = ({ children, initial, animate, exit, transition, whileHover, whileTap, viewport, layout, ...props }) => (
-        mockReact.createElement(tag, props, children)
-      );
-      Component.displayName = `motion.${String(tag)}`;
-      return Component;
-    },
-  }),
+  motion: new Proxy(
+    {},
+    {
+      get: (_, tag) => {
+        const mockReact = require('react');
+        const Component = ({
+          children,
+          initial,
+          animate,
+          exit,
+          transition,
+          whileHover,
+          whileTap,
+          viewport,
+          layout,
+          ...props
+        }) => mockReact.createElement(tag, props, children);
+        Component.displayName = `motion.${String(tag)}`;
+        return Component;
+      },
+    }
+  ),
   AnimatePresence: ({ children }) => {
     const mockReact = require('react');
     return mockReact.createElement(mockReact.Fragment, null, children);
@@ -48,7 +60,14 @@ describe('Navbar', () => {
       if (query === 'zz') return [];
 
       return [
-        { id: 'urolithiasis', name: 'Мочекаменная болезнь', section: 'urology', subsection: 'stones', icd: 'N20', icon: '💎' },
+        {
+          id: 'urolithiasis',
+          name: 'Мочекаменная болезнь',
+          section: 'urology',
+          subsection: 'stones',
+          icd: 'N20',
+          icon: '💎',
+        },
       ];
     });
   });
@@ -71,13 +90,16 @@ describe('Navbar', () => {
         onNavigate={onNavigate}
         favorites={{}}
         viewHistory={[]}
-      />,
+      />
     );
 
     fireEvent.click(screen.getByLabelText('Открыть поиск'));
-    fireEvent.change(screen.getByLabelText('Поиск по названию, МКБ, симптому, аббревиатуре или идентификатору'), {
-      target: { value: 'мо' },
-    });
+    fireEvent.change(
+      screen.getByLabelText('Поиск по названию, МКБ, симптому, аббревиатуре или идентификатору'),
+      {
+        target: { value: 'мо' },
+      }
+    );
 
     await act(async () => {
       vi.advanceTimersByTime(300);
@@ -89,7 +111,9 @@ describe('Navbar', () => {
     const resultText = await screen.findByText('Мочекаменная болезнь');
     fireEvent.click(resultText.closest('button'));
 
-    expect(onNavigate).toHaveBeenCalledWith('urology', 'stones', 'urolithiasis', { source: 'search' });
+    expect(onNavigate).toHaveBeenCalledWith('urology', 'stones', 'urolithiasis', {
+      source: 'search',
+    });
     expect(trackSearchSelect).toHaveBeenCalledWith('мо', 'urolithiasis');
   });
 
@@ -102,13 +126,16 @@ describe('Navbar', () => {
         onNavigate={vi.fn()}
         favorites={{}}
         viewHistory={[]}
-      />,
+      />
     );
 
     fireEvent.click(screen.getByLabelText('Открыть поиск'));
-    fireEvent.change(screen.getByLabelText('Поиск по названию, МКБ, симптому, аббревиатуре или идентификатору'), {
-      target: { value: 'zz' },
-    });
+    fireEvent.change(
+      screen.getByLabelText('Поиск по названию, МКБ, симптому, аббревиатуре или идентификатору'),
+      {
+        target: { value: 'zz' },
+      }
+    );
 
     await act(async () => {
       vi.advanceTimersByTime(300);
@@ -132,7 +159,7 @@ describe('Navbar', () => {
         onNavigate={onNavigate}
         favorites={{}}
         viewHistory={[]}
-      />,
+      />
     );
 
     fireEvent.click(screen.getByLabelText('Открыть поиск'));
@@ -141,8 +168,14 @@ describe('Navbar', () => {
 
     fireEvent.click(screen.getByText('Плохая спермограмма'));
 
-    expect(onNavigate).toHaveBeenCalledWith('andrology', 'fertility', 'male-infertility', { source: 'search_overlay_symptom' });
-    expect(trackSymptomRoute).toHaveBeenCalledWith('Плохая спермограмма', 'male-infertility', 'search_overlay');
+    expect(onNavigate).toHaveBeenCalledWith('andrology', 'fertility', 'male-infertility', {
+      source: 'search_overlay_symptom',
+    });
+    expect(trackSymptomRoute).toHaveBeenCalledWith(
+      'Плохая спермограмма',
+      'male-infertility',
+      'search_overlay'
+    );
   });
 
   it('navigates to favorites when favorites button is clicked', () => {
@@ -156,7 +189,7 @@ describe('Navbar', () => {
         onNavigate={onNavigate}
         favorites={{ a: true, b: false }}
         viewHistory={[]}
-      />,
+      />
     );
 
     fireEvent.click(screen.getByLabelText('Избранное: 1 нозологий'));
@@ -192,7 +225,7 @@ describe('Navbar', () => {
             icon: '💎',
           },
         ]}
-      />,
+      />
     );
 
     fireEvent.click(screen.getByLabelText('Открыть поиск'));
@@ -202,10 +235,14 @@ describe('Navbar', () => {
 
     fireEvent.click(screen.getAllByText('Мочекаменная болезнь')[0].closest('button'));
 
-    expect(onNavigate).toHaveBeenCalledWith('urology', 'stones', 'urolithiasis', { source: 'search_retention' });
+    expect(onNavigate).toHaveBeenCalledWith('urology', 'stones', 'urolithiasis', {
+      source: 'search_retention',
+    });
 
     fireEvent.click(screen.getByText('6 откр. из истории').closest('button'));
 
-    expect(onNavigate).toHaveBeenCalledWith('urology', 'stones', null, { source: 'search_retention_cluster' });
+    expect(onNavigate).toHaveBeenCalledWith('urology', 'stones', null, {
+      source: 'search_retention_cluster',
+    });
   });
 });

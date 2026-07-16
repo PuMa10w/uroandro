@@ -62,10 +62,7 @@ export default function SafeClinicalMarkup({
   className = '',
   sourceId = '',
 }) {
-  const sanitized = useMemo(
-    () => sanitizeClinicalHtml(html, allowedTags),
-    [html, allowedTags],
-  );
+  const sanitized = useMemo(() => sanitizeClinicalHtml(html, allowedTags), [html, allowedTags]);
   const safeHtml = sanitized || fallbackText || '';
 
   return (

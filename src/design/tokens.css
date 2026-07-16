@@ -7,12 +7,12 @@
 
   /* Backgrounds */
   --color-background: #ffffff; /* Ultra White */
-  --color-surface: #f5f5f5;    /* Soft Gray */
+  --color-surface: #f5f5f5; /* Soft Gray */
 
   /* Semantic colors */
-  --color-success: #0f9970;   /* Clinical Green */
-  --color-warning: #ffb400;   /* Amber */
-  --color-danger: #d72638;    /* Medical Red */
+  --color-success: #0f9970; /* Clinical Green */
+  --color-warning: #ffb400; /* Amber */
+  --color-danger: #d72638; /* Medical Red */
 
   /* Spacing tokens */
   --spacing-1: 4px;
@@ -29,7 +29,7 @@
   --radius-xl: 16px;
 
   /* Shadows */
-  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
 }

@@ -101,7 +101,7 @@ function getLimitedEditDistance(left, right, maxDistance = 2) {
       const distance = Math.min(
         previous[rightIndex] + 1,
         current[rightIndex - 1] + 1,
-        previous[rightIndex - 1] + substitutionCost,
+        previous[rightIndex - 1] + substitutionCost
       );
 
       current[rightIndex] = distance;
@@ -135,7 +135,10 @@ function scoreTokenCoverage(queryTokens, candidateTokens) {
       return true;
     }
 
-    if (queryToken.length >= 3 && candidateTokens.some((candidateToken) => candidateToken.includes(queryToken))) {
+    if (
+      queryToken.length >= 3 &&
+      candidateTokens.some((candidateToken) => candidateToken.includes(queryToken))
+    ) {
       fuzzyPenalty += 6;
       return true;
     }

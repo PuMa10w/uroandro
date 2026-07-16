@@ -44,7 +44,7 @@ describe('HistoryPanel', () => {
         ]}
         onNavigate={onNavigate}
         onClear={vi.fn()}
-      />,
+      />
     );
 
     expect(screen.getByText('Most revisited: Мочекаменная болезнь')).toBeInTheDocument();
@@ -57,11 +57,15 @@ describe('HistoryPanel', () => {
 
     const recommendationButtons = screen.getAllByText('Мужское бесплодие');
     fireEvent.click(recommendationButtons[0].closest('button'));
-    expect(onNavigate).toHaveBeenCalledWith('andrology', 'fertility', 'male-infertility', { source: 'retention_recommendation' });
+    expect(onNavigate).toHaveBeenCalledWith('andrology', 'fertility', 'male-infertility', {
+      source: 'retention_recommendation',
+    });
 
     fireEvent.click(recommendationButtons[1].closest('button'));
 
     expect(trackHistoryReopen).toHaveBeenCalledWith('male-infertility', 'landing_symptom_entry', 3);
-    expect(onNavigate).toHaveBeenCalledWith('andrology', 'fertility', 'male-infertility', { source: 'history_reopen' });
+    expect(onNavigate).toHaveBeenCalledWith('andrology', 'fertility', 'male-infertility', {
+      source: 'history_reopen',
+    });
   });
 });

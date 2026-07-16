@@ -2,7 +2,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Input({ type = 'text', placeholder = '', value, onChange, className = '' }) {
+export default function Input({
+  type = 'text',
+  placeholder = '',
+  value,
+  onChange,
+  className = '',
+}) {
   const base = 'border rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary';
   return (
     <input

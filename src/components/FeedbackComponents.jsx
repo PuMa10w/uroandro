@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const EmptyState = ({ 
-  icon = '📭', 
-  title = 'Нет данных', 
+const EmptyState = ({
+  icon = '📭',
+  title = 'Нет данных',
   message = 'Попробуйте изменить параметры поиска',
   action = null,
   actionLabel = '',
@@ -38,11 +38,7 @@ EmptyState.defaultProps = {
   actionLabel: '',
 };
 
-const LoadingSpinner = ({ 
-  size = 'medium', 
-  label = 'Загрузка...',
-  centered = true 
-}) => {
+const LoadingSpinner = ({ size = 'medium', label = 'Загрузка...', centered = true }) => {
   const sizeMap = {
     small: '20px',
     medium: '40px',
@@ -59,7 +55,7 @@ const LoadingSpinner = ({
   };
 
   return (
-    <div 
+    <div
       className={`loading-spinner ${centered ? 'centered' : ''}`}
       role="status"
       aria-live="polite"
@@ -99,12 +95,7 @@ LoadingSpinner.defaultProps = {
   centered: true,
 };
 
-const Toast = ({ 
-  message, 
-  type = 'info', 
-  onClose,
-  duration = 5000 
-}) => {
+const Toast = ({ message, type = 'info', onClose, duration = 5000 }) => {
   React.useEffect(() => {
     if (duration > 0 && onClose) {
       const timer = setTimeout(onClose, duration);
@@ -122,7 +113,7 @@ const Toast = ({
   const style = typeStyles[type] || typeStyles.info;
 
   return (
-    <div 
+    <div
       className="toast-notification"
       role="alert"
       style={{
@@ -140,7 +131,14 @@ const Toast = ({
         animation: 'slideIn 0.3s ease',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '12px',
+        }}
+      >
         <span>{message}</span>
         {onClose && (
           <button
@@ -195,13 +193,15 @@ const PremiumButton = ({
   className = '',
   ...props
 }) => {
-  const variantClass = {
-    primary: 'btn-premium-primary',
-    gold: 'btn-premium-gold',
-    ghost: 'btn-premium-ghost',
-  }[variant] || 'btn-premium-primary';
+  const variantClass =
+    {
+      primary: 'btn-premium-primary',
+      gold: 'btn-premium-gold',
+      ghost: 'btn-premium-ghost',
+    }[variant] || 'btn-premium-primary';
 
-  const sizeClass = size === 'sm' ? 'py-1.5 px-3 text-xs' : size === 'lg' ? 'py-3 px-6 text-base' : '';
+  const sizeClass =
+    size === 'sm' ? 'py-1.5 px-3 text-xs' : size === 'lg' ? 'py-3 px-6 text-base' : '';
 
   return (
     <button
@@ -211,14 +211,18 @@ const PremiumButton = ({
       {...props}
     >
       {loading ? (
-        <span className="loading-spinner-inline" style={{
-          width: 16, height: 16,
-          border: '2px solid rgba(255,255,255,0.2)',
-          borderTopColor: '#fff',
-          borderRadius: '50%',
-          animation: 'spin 0.8s linear infinite',
-          display: 'inline-block',
-        }} />
+        <span
+          className="loading-spinner-inline"
+          style={{
+            width: 16,
+            height: 16,
+            border: '2px solid rgba(255,255,255,0.2)',
+            borderTopColor: '#fff',
+            borderRadius: '50%',
+            animation: 'spin 0.8s linear infinite',
+            display: 'inline-block',
+          }}
+        />
       ) : icon ? (
         <span style={{ display: 'flex', alignItems: 'center' }}>{icon}</span>
       ) : null}

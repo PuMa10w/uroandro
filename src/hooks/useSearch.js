@@ -14,55 +14,58 @@ export const useSearch = (items, searchFields = ['name', 'icd', 'id'], options =
   const [results, setResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
 
-  const searchItems = useCallback((searchQuery) => {
-    if (!searchQuery || searchQuery.length < minLength) {
-      setResults([]);
-      setIsSearching(false);
-      return;
-    }
-
-    setIsSearching(true);
-
-    const normalizedQuery = caseSensitive ? searchQuery : searchQuery.toLowerCase();
-    const queryWords = normalizedQuery.split(/\s+/);
-
-    const scored = items.map(item => {
-      let score = 0;
-      const fieldValues = searchFields.map(field => {
-        const value = item[field];
-        return caseSensitive ? value : value?.toLowerCase();
-      });
-
-      for (const fieldValue of fieldValues) {
-        if (!fieldValue) continue;
-
-        if (fieldValue === normalizedQuery) {
-          score += 100;
-        } else if (fieldValue.startsWith(normalizedQuery)) {
-          score += 50;
-        } else if (fieldValue.includes(normalizedQuery)) {
-          score += 20;
-        }
-
-        for (const word of queryWords) {
-          if (fieldValue.includes(word)) {
-            score += 5;
-          }
-        }
+  const searchItems = useCallback(
+    (searchQuery) => {
+      if (!searchQuery || searchQuery.length < minLength) {
+        setResults([]);
+        setIsSearching(false);
+        return;
       }
 
-      return { item, score };
-    });
+      setIsSearching(true);
 
-    const filtered = scored
-      .filter(({ score }) => score > 0)
-      .sort((a, b) => sortByRelevance ? b.score - a.score : 0)
-      .slice(0, limit)
-      .map(({ item }) => item);
+      const normalizedQuery = caseSensitive ? searchQuery : searchQuery.toLowerCase();
+      const queryWords = normalizedQuery.split(/\s+/);
 
-    setResults(filtered);
-    setIsSearching(false);
-  }, [items, searchFields, minLength, caseSensitive, limit, sortByRelevance]);
+      const scored = items.map((item) => {
+        let score = 0;
+        const fieldValues = searchFields.map((field) => {
+          const value = item[field];
+          return caseSensitive ? value : value?.toLowerCase();
+        });
+
+        for (const fieldValue of fieldValues) {
+          if (!fieldValue) continue;
+
+          if (fieldValue === normalizedQuery) {
+            score += 100;
+          } else if (fieldValue.startsWith(normalizedQuery)) {
+            score += 50;
+          } else if (fieldValue.includes(normalizedQuery)) {
+            score += 20;
+          }
+
+          for (const word of queryWords) {
+            if (fieldValue.includes(word)) {
+              score += 5;
+            }
+          }
+        }
+
+        return { item, score };
+      });
+
+      const filtered = scored
+        .filter(({ score }) => score > 0)
+        .sort((a, b) => (sortByRelevance ? b.score - a.score : 0))
+        .slice(0, limit)
+        .map(({ item }) => item);
+
+      setResults(filtered);
+      setIsSearching(false);
+    },
+    [items, searchFields, minLength, caseSensitive, limit, sortByRelevance]
+  );
 
   const debouncedSearch = useMemo(
     () => debounce(searchItems, debounceMs),
@@ -94,7 +97,7 @@ export const useFilter = (items, initialFilters = {}) => {
   const [filters, setFilters] = useState(initialFilters);
 
   const filteredItems = useMemo(() => {
-    return items.filter(item => {
+    return items.filter((item) => {
       return Object.entries(filters).every(([key, value]) => {
         if (value === null || value === undefined || value === '') {
           return true;
@@ -120,11 +123,11 @@ export const useFilter = (items, initialFilters = {}) => {
   }, [items, filters]);
 
   const setFilter = useCallback((key, value) => {
-    setFilters(prev => ({ ...prev, [key]: value }));
+    setFilters((prev) => ({ ...prev, [key]: value }));
   }, []);
 
   const removeFilter = useCallback((key) => {
-    setFilters(prev => {
+    setFilters((prev) => {
       const next = { ...prev };
       delete next[key];
       return next;
@@ -150,7 +153,7 @@ export const useFilter = (items, initialFilters = {}) => {
   };
 };
 
-export default {
+export const searchHooks = {
   useSearch,
   useFilter,
 };

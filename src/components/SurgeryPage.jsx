@@ -7,8 +7,8 @@ const SurgeryModal = ({ surgery, onClose }) => {
   if (!surgery) return null;
 
   return (
-    <div 
-      className="modal-overlay" 
+    <div
+      className="modal-overlay"
       onClick={onClose}
       onKeyDown={(e) => e.key === 'Escape' && onClose()}
       role="dialog"
@@ -21,97 +21,151 @@ const SurgeryModal = ({ surgery, onClose }) => {
         onKeyDown={(e) => e.key === 'Escape' && onClose()}
         role="document"
       >
-          <div className="modal-header">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <span style={{ fontSize: '3rem' }}>{surgery.icon}</span>
-              <div>
-                <h2 className="modal-title" style={{ color: surgery.color }}>{surgery.fullName}</h2>
-                <div style={{ color: 'var(--text-muted)', marginTop: '0.25rem' }}>{surgery.evidenceLevel}</div>
+        <div className="modal-header">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <span style={{ fontSize: '3rem' }}>{surgery.icon}</span>
+            <div>
+              <h2 className="modal-title" style={{ color: surgery.color }}>
+                {surgery.fullName}
+              </h2>
+              <div style={{ color: 'var(--text-muted)', marginTop: '0.25rem' }}>
+                {surgery.evidenceLevel}
               </div>
             </div>
-            <button className="modal-close" onClick={onClose}>✕</button>
           </div>
-          <div className="modal-body surgery-modal-body">
-            {/* Indications */}
-            <div className="surgery-section">
-              <h4 style={{ color: surgery.color }}>📋 Показания</h4>
-              <ul className="surgery-list">{surgery.indications.map((item, i) => <li key={i}>{item}</li>)}</ul>
-            </div>
+          <button className="modal-close" onClick={onClose}>
+            ✕
+          </button>
+        </div>
+        <div className="modal-body surgery-modal-body">
+          {/* Indications */}
+          <div className="surgery-section">
+            <h4 style={{ color: surgery.color }}>📋 Показания</h4>
+            <ul className="surgery-list">
+              {surgery.indications.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Contraindications */}
-            <div className="surgery-section">
-              <h4 style={{ color: '#ef4444' }}>⛔ Противопоказания</h4>
-              <ul className="surgery-list">{surgery.contraindications.map((item, i) => <li key={i}>{item}</li>)}</ul>
-            </div>
+          {/* Contraindications */}
+          <div className="surgery-section">
+            <h4 style={{ color: '#ef4444' }}>⛔ Противопоказания</h4>
+            <ul className="surgery-list">
+              {surgery.contraindications.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Technique */}
-            <div className="surgery-section">
-              <h4 style={{ color: surgery.color }}>🔪 Техника операции</h4>
-              <div className="surgery-tech-grid">
-                <div className="surgery-tech-item"><strong>Анестезия:</strong> {surgery.technique.anesthesia}</div>
-                <div className="surgery-tech-item"><strong>Позиция:</strong> {surgery.technique.position}</div>
-                <div className="surgery-tech-item"><strong>Инструмент:</strong> {surgery.technique.instrument}</div>
-                <div className="surgery-tech-item"><strong>Энергия:</strong> {surgery.technique.energy}</div>
-                <div className="surgery-tech-item"><strong>Длительность:</strong> {surgery.technique.duration}</div>
-                <div className="surgery-tech-item"><strong>Госпитализация:</strong> {surgery.technique.stay}</div>
+          {/* Technique */}
+          <div className="surgery-section">
+            <h4 style={{ color: surgery.color }}>🔪 Техника операции</h4>
+            <div className="surgery-tech-grid">
+              <div className="surgery-tech-item">
+                <strong>Анестезия:</strong> {surgery.technique.anesthesia}
               </div>
-              <h5 style={{ marginTop: '1rem', color: 'var(--gold)' }}>Пошагово:</h5>
-              <ol className="surgery-steps">{surgery.technique.steps.map((step, i) => <li key={i}>{step}</li>)}</ol>
+              <div className="surgery-tech-item">
+                <strong>Позиция:</strong> {surgery.technique.position}
+              </div>
+              <div className="surgery-tech-item">
+                <strong>Инструмент:</strong> {surgery.technique.instrument}
+              </div>
+              <div className="surgery-tech-item">
+                <strong>Энергия:</strong> {surgery.technique.energy}
+              </div>
+              <div className="surgery-tech-item">
+                <strong>Длительность:</strong> {surgery.technique.duration}
+              </div>
+              <div className="surgery-tech-item">
+                <strong>Госпитализация:</strong> {surgery.technique.stay}
+              </div>
             </div>
+            <h5 style={{ marginTop: '1rem', color: 'var(--gold)' }}>Пошагово:</h5>
+            <ol className="surgery-steps">
+              {surgery.technique.steps.map((step, i) => (
+                <li key={i}>{step}</li>
+              ))}
+            </ol>
+          </div>
 
-            {/* Results */}
-            <div className="surgery-section">
-              <h4 style={{ color: surgery.color }}>📊 Результаты</h4>
-              <div className="surgery-results-grid">
-                {Object.entries(surgery.results).map(([key, val]) => (
-                  <div key={key} className="surgery-result-item">
-                    <strong>{key.replace(/([A-Z])/g, ' $1').trim()}:</strong> <span>{val}</span>
-                  </div>
+          {/* Results */}
+          <div className="surgery-section">
+            <h4 style={{ color: surgery.color }}>📊 Результаты</h4>
+            <div className="surgery-results-grid">
+              {Object.entries(surgery.results).map(([key, val]) => (
+                <div key={key} className="surgery-result-item">
+                  <strong>{key.replace(/([A-Z])/g, ' $1').trim()}:</strong> <span>{val}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Complications */}
+          <div className="surgery-section">
+            <h4 style={{ color: '#ef4444' }}>⚠️ Осложнения</h4>
+            <table className="styled-table surgery-complications">
+              <thead>
+                <tr>
+                  <th>Осложнение</th>
+                  <th>Частота</th>
+                  <th>Степень</th>
+                </tr>
+              </thead>
+              <tbody>
+                {surgery.complications.map((c, i) => (
+                  <tr key={i}>
+                    <td>{c.name}</td>
+                    <td>{c.rate}</td>
+                    <td>
+                      <span className={`comp-badge comp-${c.severity}`}>
+                        {c.severity === 'common'
+                          ? 'Частое'
+                          : c.severity === 'uncommon'
+                            ? 'Нечастое'
+                            : c.severity === 'rare'
+                              ? 'Редкое'
+                              : c.severity === 'longterm'
+                                ? 'Долгосрочное'
+                                : 'Дискуссионное'}
+                      </span>
+                    </td>
+                  </tr>
                 ))}
-              </div>
-            </div>
-
-            {/* Complications */}
-            <div className="surgery-section">
-              <h4 style={{ color: '#ef4444' }}>⚠️ Осложнения</h4>
-              <table className="styled-table surgery-complications">
-                <thead><tr><th>Осложнение</th><th>Частота</th><th>Степень</th></tr></thead>
-                <tbody>
-                  {surgery.complications.map((c, i) => (
-                    <tr key={i}>
-                      <td>{c.name}</td>
-                      <td>{c.rate}</td>
-                      <td>
-                        <span className={`comp-badge comp-${c.severity}`}>
-                          {c.severity === 'common' ? 'Частое' : c.severity === 'uncommon' ? 'Нечастое' : c.severity === 'rare' ? 'Редкое' : c.severity === 'longterm' ? 'Долгосрочное' : 'Дискуссионное'}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            {/* Postop */}
-            <div className="surgery-section">
-              <h4 style={{ color: surgery.color }}>📅 Послеоперационное ведение</h4>
-              <ul className="surgery-list">{surgery.postop.map((item, i) => <li key={i}>{item}</li>)}</ul>
-            </div>
-
-            {/* Tips */}
-            {surgery.tips && (
-              <div className="surgery-tips" style={{ borderColor: surgery.color }}>
-                <strong>💡 Клинический совет:</strong> {surgery.tips}
-              </div>
-            )}
-
-            {/* Video link */}
-            {surgery.videoUrl && (
-              <a href={surgery.videoUrl} target="_blank" rel="noopener noreferrer" className="surgery-video-link" style={{ borderColor: surgery.color }}>
-                🎬 Видео операции на YouTube
-              </a>
-            )}
+              </tbody>
+            </table>
           </div>
+
+          {/* Postop */}
+          <div className="surgery-section">
+            <h4 style={{ color: surgery.color }}>📅 Послеоперационное ведение</h4>
+            <ul className="surgery-list">
+              {surgery.postop.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Tips */}
+          {surgery.tips && (
+            <div className="surgery-tips" style={{ borderColor: surgery.color }}>
+              <strong>💡 Клинический совет:</strong> {surgery.tips}
+            </div>
+          )}
+
+          {/* Video link */}
+          {surgery.videoUrl && (
+            <a
+              href={surgery.videoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="surgery-video-link"
+              style={{ borderColor: surgery.color }}
+            >
+              🎬 Видео операции на YouTube
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -128,9 +182,22 @@ const surgeries = [
     icon: '🔪',
     color: '#16c79a',
     icd: '0VT08ZZ',
-    description: 'Золотой стандарт хирургического лечения ДГПЖ. Эндоскопическое удаление аденомы через уретру с помощью резектоскопа.',
-    indications: ['ДГПЖ с СНМП тяжёлой степени (IPSS ≥ 20)', 'Объём простаты 30-80 см³', 'Рецидивирующая ОЗМ', 'Камни мочевого пузыря на фоне ДГПЖ', 'Рецидивирующие ИМП', 'Макрогематурия из вен простаты'],
-    contraindications: ['Острый простатит', 'Некорригированная коагулопатия', 'Объём простаты > 80 см³ (относительное)', 'Рак простаты (предпочтительна радикальная простатэктомия)'],
+    description:
+      'Золотой стандарт хирургического лечения ДГПЖ. Эндоскопическое удаление аденомы через уретру с помощью резектоскопа.',
+    indications: [
+      'ДГПЖ с СНМП тяжёлой степени (IPSS ≥ 20)',
+      'Объём простаты 30-80 см³',
+      'Рецидивирующая ОЗМ',
+      'Камни мочевого пузыря на фоне ДГПЖ',
+      'Рецидивирующие ИМП',
+      'Макрогематурия из вен простаты',
+    ],
+    contraindications: [
+      'Острый простатит',
+      'Некорригированная коагулопатия',
+      'Объём простаты > 80 см³ (относительное)',
+      'Рак простаты (предпочтительна радикальная простатэктомия)',
+    ],
     technique: {
       anesthesia: 'Спинальная или общая',
       position: 'Литотомическая',
@@ -143,12 +210,17 @@ const surgeries = [
         'Затем боковые доли — от 6 ч к 12 ч по часовой стрелке',
         'Коагуляция кровоточащих сосудов (артерии на 1, 5, 7, 11 ч)',
         'Эвакуация стружек ирригатором (Ellik evacuator)',
-        'Проверка гемостаза, установка катетера Foley 22-24Fr с баллоном 30 мл'
+        'Проверка гемостаза, установка катетера Foley 22-24Fr с баллоном 30 мл',
       ],
       duration: '30-90 мин',
-      stay: '2-4 дня'
+      stay: '2-4 дня',
     },
-    results: { qmaxImprovement: '↑ на 10-15 мл/с', ipssReduction: '↓ на 70-85%', catheterDuration: '1-3 дня', successRate: '85-90%' },
+    results: {
+      qmaxImprovement: '↑ на 10-15 мл/с',
+      ipssReduction: '↓ на 70-85%',
+      catheterDuration: '1-3 дня',
+      successRate: '85-90%',
+    },
     complications: [
       { name: 'Ретроградная эякуляция', rate: '65-75%', severity: 'common' },
       { name: 'Эректильная дисфункция', rate: '5-10%', severity: 'uncommon' },
@@ -156,12 +228,19 @@ const surgeries = [
       { name: 'Кровотечение (нужна гемотрансфузия)', rate: '5-7%', severity: 'uncommon' },
       { name: 'Стриктура уретры', rate: '2-5%', severity: 'uncommon' },
       { name: 'Склероз шейки МП', rate: '2-4%', severity: 'uncommon' },
-      { name: 'Реоперация (в течение 10 лет)', rate: '5-10%', severity: 'longterm' }
+      { name: 'Реоперация (в течение 10 лет)', rate: '5-10%', severity: 'longterm' },
     ],
-    postop: ['Промывание мочевого пузыря первые 12-24 ч', 'Катетер 1-3 дня', 'Антибиотики 24-48 ч', 'Антикоагулянты — возобновить через 24-48 ч', 'Ограничение физ. нагрузки 4-6 недель', 'Контроль Qmax, IPSS через 3 мес'],
+    postop: [
+      'Промывание мочевого пузыря первые 12-24 ч',
+      'Катетер 1-3 дня',
+      'Антибиотики 24-48 ч',
+      'Антикоагулянты — возобновить через 24-48 ч',
+      'Ограничение физ. нагрузки 4-6 недель',
+      'Контроль Qmax, IPSS через 3 мес',
+    ],
     tips: 'Биполярная ТУР ↓ риск ТУР-синдрома × 10. Время резекции < 60 мин. При объёме > 80 см³ — предпочесть HoLEP.',
     videoUrl: 'https://www.youtube.com/results?search_query=TURP+surgery',
-    evidenceLevel: 'Grade A, LE: 1a (EAU)'
+    evidenceLevel: 'Grade A, LE: 1a (EAU)',
   },
   {
     id: 'holep',
@@ -171,9 +250,18 @@ const surgeries = [
     icon: '⚡',
     color: '#16c79a',
     icd: '0VT08ZZ',
-    description: 'Эндоскопическая энуклеация аденомы гольмиевым лазером. Альтернатива открытой аденомэктомии для больших объёмов. Не зависит от размера простаты.',
-    indications: ['ДГПЖ любого объёма (в т.ч. > 100 см³)', 'Рецидив после ТУР', 'Пациенты на антикоагулянтах (относительное)', 'Средняя доля (intravesical prostatic protrusion)'],
-    contraindications: ['Анкилоз тазобедренных суставов (невозможно литотомическое положение)', 'Стриктура уретры (невозможно ввести инструмент)'],
+    description:
+      'Эндоскопическая энуклеация аденомы гольмиевым лазером. Альтернатива открытой аденомэктомии для больших объёмов. Не зависит от размера простаты.',
+    indications: [
+      'ДГПЖ любого объёма (в т.ч. > 100 см³)',
+      'Рецидив после ТУР',
+      'Пациенты на антикоагулянтах (относительное)',
+      'Средняя доля (intravesical prostatic protrusion)',
+    ],
+    contraindications: [
+      'Анкилоз тазобедренных суставов (невозможно литотомическое положение)',
+      'Стриктура уретры (невозможно ввести инструмент)',
+    ],
     technique: {
       anesthesia: 'Спинальная или общая',
       position: 'Литотомическая',
@@ -186,23 +274,38 @@ const surgeries = [
         'Энуклеация боковых долей — от 5 и 7 ч к 12 ч',
         'Подготовка долей к морцелляции — отсечение от верхушки',
         'Морцелляция долей в мочевом пузыре',
-        'Гемостаз, установка катетера'
+        'Гемостаз, установка катетера',
       ],
       duration: '60-180 мин (зависит от объёма)',
-      stay: '1-3 дня'
+      stay: '1-3 дня',
     },
-    results: { qmaxImprovement: '↑ на 15-20 мл/с', ipssReduction: '↓ на 75-90%', catheterDuration: '< 24 ч (часто)', successRate: '90-95%' },
+    results: {
+      qmaxImprovement: '↑ на 15-20 мл/с',
+      ipssReduction: '↓ на 75-90%',
+      catheterDuration: '< 24 ч (часто)',
+      successRate: '90-95%',
+    },
     complications: [
       { name: 'Ретроградная эякуляция', rate: '60-75%', severity: 'common' },
       { name: 'Эректильная дисфункция', rate: '< 5%', severity: 'rare' },
       { name: 'Стриктура уретры', rate: '1-2%', severity: 'rare' },
-      { name: 'Транзиторное стрессовое недержание', rate: '5-10% (решается за 3-6 мес)', severity: 'uncommon' },
-      { name: 'Реоперация (10 лет)', rate: '< 2%', severity: 'longterm' }
+      {
+        name: 'Транзиторное стрессовое недержание',
+        rate: '5-10% (решается за 3-6 мес)',
+        severity: 'uncommon',
+      },
+      { name: 'Реоперация (10 лет)', rate: '< 2%', severity: 'longterm' },
     ],
-    postop: ['Катетер 6-24 ч', 'Ранняя активизация', 'Антибиотики 24 ч', 'Ограничение нагрузки 4 недели', 'Контроль IPSS, Qmax через 3 мес'],
+    postop: [
+      'Катетер 6-24 ч',
+      'Ранняя активизация',
+      'Антибиотики 24 ч',
+      'Ограничение нагрузки 4 недели',
+      'Контроль IPSS, Qmax через 3 мес',
+    ],
     tips: 'HoLEP — единственный метод, НЕ зависящий от объёма простаты. Кривая обучения: 50-100 операций. Золотой стандарт EAU для > 80 см³.',
     videoUrl: 'https://www.youtube.com/results?search_query=HoLEP+surgery',
-    evidenceLevel: 'Grade A, LE: 1a (EAU)'
+    evidenceLevel: 'Grade A, LE: 1a (EAU)',
   },
   {
     id: 'urs',
@@ -212,14 +315,27 @@ const surgeries = [
     icon: '💎',
     color: '#3b82f6',
     icd: '0TF78ZZ',
-    description: 'Эндоскопическое удаление камней мочеточника/почки через уретру с лазерным дроблением. Золотой стандарт для дистальных мочеточников и камней почки < 20 мм.',
-    indications: ['Камни мочеточника (любые)', 'Камни почки < 20 мм (RIRS)', 'Неэффективность ДУВЛТ', 'Камни у пациентов с ожирением', 'Камни при нарушениях свёртывания (относительное)'],
-    contraindications: ['Активная ИМП', 'Некорригированная коагулопатия', 'Невозможность доступа (стриктура уретры)', 'Беременность (относительное)'],
+    description:
+      'Эндоскопическое удаление камней мочеточника/почки через уретру с лазерным дроблением. Золотой стандарт для дистальных мочеточников и камней почки < 20 мм.',
+    indications: [
+      'Камни мочеточника (любые)',
+      'Камни почки < 20 мм (RIRS)',
+      'Неэффективность ДУВЛТ',
+      'Камни у пациентов с ожирением',
+      'Камни при нарушениях свёртывания (относительное)',
+    ],
+    contraindications: [
+      'Активная ИМП',
+      'Некорригированная коагулопатия',
+      'Невозможность доступа (стриктура уретры)',
+      'Беременность (относительное)',
+    ],
     technique: {
       anesthesia: 'Общая или спинальная',
       position: 'Литотомическая',
       instrument: 'Жёсткий уретероскоп (мочеточник), гибкий уретероскоп (почка), гольмиевый лазер',
-      energy: 'Гольмиевый лазер: камни мочеточника — 0.5-1.0 Дж, 5-15 Гц; камни почки — 0.2-0.5 Дж, 10-20 Гц (dusting)',
+      energy:
+        'Гольмиевый лазер: камни мочеточника — 0.5-1.0 Дж, 5-15 Гц; камни почки — 0.2-0.5 Дж, 10-20 Гц (dusting)',
       steps: [
         'Цистоскопия, идентификация устья мочеточника',
         'Канюляция устья, установка гидроского проводника',
@@ -227,23 +343,34 @@ const surgeries = [
         'Проведение уретероскопа до камня',
         'Лазерная литотрипсия: фрагментация (0.8-1.0 Дж) или пыление (0.2-0.5 Дж)',
         'Извлечение фрагментов корзинкой Dormia (при необходимости)',
-        'Установка стента J-J на 3-14 дней'
+        'Установка стента J-J на 3-14 дней',
       ],
       duration: '30-90 мин',
-      stay: '1-2 дня'
+      stay: '1-2 дня',
     },
-    results: { stoneFreeRate: '90-98% (дистальный мочеточник), 75-90% (почка)', reoperation: '5-10%', successRate: '85-95%' },
+    results: {
+      stoneFreeRate: '90-98% (дистальный мочеточник), 75-90% (почка)',
+      reoperation: '5-10%',
+      successRate: '85-95%',
+    },
     complications: [
       { name: 'Стриктура мочеточника', rate: '0.5-2%', severity: 'rare' },
       { name: 'Перфорация мочеточника', rate: '1-3%', severity: 'uncommon' },
       { name: 'Пиелонефрит', rate: '2-5%', severity: 'uncommon' },
       { name: 'Стент-симптомы', rate: '60-80%', severity: 'common' },
-      { name: 'Авульсия мочеточника', rate: '< 0.5%', severity: 'rare' }
+      { name: 'Авульсия мочеточника', rate: '< 0.5%', severity: 'rare' },
     ],
-    postop: ['Стент J-J на 3-14 дней', 'α-блокаторы (тамсулозин) для ↓ стент-симптомов', 'Антибиотики 24-48 ч', 'Обильное питьё', 'Ограничение нагрузки 1-2 недели', 'УЗИ/рентген через 4-6 нед — контроль stone-free'],
+    postop: [
+      'Стент J-J на 3-14 дней',
+      'α-блокаторы (тамсулозин) для ↓ стент-симптомов',
+      'Антибиотики 24-48 ч',
+      'Обильное питьё',
+      'Ограничение нагрузки 1-2 недели',
+      'УЗИ/рентген через 4-6 нед — контроль stone-free',
+    ],
     tips: 'Dusting (0.2 Дж × 20 Гц) — для камней почки, фрагментация (0.8-1.0 Дж × 10 Гц) — для мочеточника. RIRS (гибкий) — для камней почки < 20 мм.',
     videoUrl: 'https://www.youtube.com/results?search_query=URS+laser+lithotripsy',
-    evidenceLevel: 'Grade A, LE: 1a (EAU)'
+    evidenceLevel: 'Grade A, LE: 1a (EAU)',
   },
   {
     id: 'pcnl',
@@ -253,9 +380,21 @@ const surgeries = [
     icon: '🫘',
     color: '#3b82f6',
     icd: '0TP00ZZ',
-    description: 'Удаление камней почки через чрескожный доступ. Золотой стандарт для камней почки > 20 мм и коралловидных конкрементов.',
-    indications: ['Камни почки > 20 мм', 'Коралловидные камни', 'Камни нижних чашечек > 15 мм', 'Неэффективность ДУВЛТ/RIRS', 'Цистиновые камни > 20 мм'],
-    contraindications: ['Некорригированная коагулопатия', 'Беременность', 'Активная ИМП (предварительно лечить)', 'Невозможность перкутанного доступа'],
+    description:
+      'Удаление камней почки через чрескожный доступ. Золотой стандарт для камней почки > 20 мм и коралловидных конкрементов.',
+    indications: [
+      'Камни почки > 20 мм',
+      'Коралловидные камни',
+      'Камни нижних чашечек > 15 мм',
+      'Неэффективность ДУВЛТ/RIRS',
+      'Цистиновые камни > 20 мм',
+    ],
+    contraindications: [
+      'Некорригированная коагулопатия',
+      'Беременность',
+      'Активная ИМП (предварительно лечить)',
+      'Невозможность перкутанного доступа',
+    ],
     technique: {
       anesthesia: 'Общая',
       position: 'На животе (prone) или supine',
@@ -269,10 +408,10 @@ const surgeries = [
         'Идентификация и фрагментация камня',
         'Извлечение фрагментов',
         'Гемостаз лоханки (биполярная коагуляция)',
-        'Нефростомическая трубка или tubeless'
+        'Нефростомическая трубка или tubeless',
       ],
       duration: '60-180 мин',
-      stay: '2-5 дней'
+      stay: '2-5 дней',
     },
     results: { stoneFreeRate: '75-95%', reoperation: '5-15%', successRate: '85-95%' },
     complications: [
@@ -281,12 +420,18 @@ const surgeries = [
       { name: 'Пиелонефрит/сепсис', rate: '3-5%', severity: 'uncommon' },
       { name: 'АВ-фистула почки', rate: '< 1%', severity: 'rare' },
       { name: 'Перфорация лоханки', rate: '5-10%', severity: 'uncommon' },
-      { name: 'Повреждение соседних органов', rate: '< 1%', severity: 'rare' }
+      { name: 'Повреждение соседних органов', rate: '< 1%', severity: 'rare' },
     ],
-    postop: ['Нефростома 1-3 дня', 'Контрольный рентген/УЗИ на 2-3 день', 'Антибиотики 48-72 ч', 'Ограничение нагрузки 4-6 недель', 'Метафилактика камнеобразования'],
+    postop: [
+      'Нефростома 1-3 дня',
+      'Контрольный рентген/УЗИ на 2-3 день',
+      'Антибиотики 48-72 ч',
+      'Ограничение нагрузки 4-6 недель',
+      'Метафилактика камнеобразования',
+    ],
     tips: 'Mini-PCNL (14-20Fr tract) — ↓ кровотечение, но ↓ эффективность. Tubeless — без нефростомы, ↓ боль и срок госпитализации.',
     videoUrl: 'https://www.youtube.com/results?search_query=PCNL+surgery',
-    evidenceLevel: 'Grade A, LE: 1a (EAU)'
+    evidenceLevel: 'Grade A, LE: 1a (EAU)',
   },
   {
     id: 'eswl',
@@ -296,9 +441,22 @@ const surgeries = [
     icon: '💥',
     color: '#8b5cf6',
     icd: '5T815ZZ',
-    description: 'Неинвазивное дробление камней ударными волнами с внешней стороны тела. Первый метод для камней почки < 20 мм и мочеточника < 10 мм.',
-    indications: ['Камни почки < 20 мм (кроме нижних чашечек > 10 мм)', 'Камни мочеточника < 10 мм', 'Плотность камня < 1000 HU', 'Отсутствие обструкции дистальнее камня'],
-    contraindications: ['Беременность', 'Коагулопатия/антикоагулянты', 'Активная ИМП', 'Обструкция дистальнее камня', 'Пульсирующая аневризма аорты в зоне воздействия', 'Тяжёлое ожирение (кожа-камень > 15 см)'],
+    description:
+      'Неинвазивное дробление камней ударными волнами с внешней стороны тела. Первый метод для камней почки < 20 мм и мочеточника < 10 мм.',
+    indications: [
+      'Камни почки < 20 мм (кроме нижних чашечек > 10 мм)',
+      'Камни мочеточника < 10 мм',
+      'Плотность камня < 1000 HU',
+      'Отсутствие обструкции дистальнее камня',
+    ],
+    contraindications: [
+      'Беременность',
+      'Коагулопатия/антикоагулянты',
+      'Активная ИМП',
+      'Обструкция дистальнее камня',
+      'Пульсирующая аневризма аорты в зоне воздействия',
+      'Тяжёлое ожирение (кожа-камень > 15 см)',
+    ],
     technique: {
       anesthesia: 'Обычно без анестезии (НПВС за 30 мин)',
       position: 'На спине (почки) или на животе (мочеточник)',
@@ -310,23 +468,33 @@ const surgeries = [
         'Постепенное ↑ энергии (от 1 до 6)',
         '1500-3500 импульсов за сеанс',
         'Контроль фрагментации',
-        'При необходимости — повторный сеанс через 10-14 дней'
+        'При необходимости — повторный сеанс через 10-14 дней',
       ],
       duration: '30-60 мин',
-      stay: 'Амбулаторно'
+      stay: 'Амбулаторно',
     },
-    results: { stoneFreeRate: '60-80% (почки < 10 мм), 50-60% (10-20 мм)', reoperation: '20-30% (повторные сеансы)', successRate: '70-85%' },
+    results: {
+      stoneFreeRate: '60-80% (почки < 10 мм), 50-60% (10-20 мм)',
+      reoperation: '20-30% (повторные сеансы)',
+      successRate: '70-85%',
+    },
     complications: [
       { name: 'Гематурия (транзиторная)', rate: '80-90%', severity: 'common' },
       { name: 'Почечная колика', rate: '20-30%', severity: 'common' },
       { name: 'Периренальная гематома', rate: '< 1% (клинически значимая)', severity: 'rare' },
       { name: 'Повышение АД (отдалённое)', rate: 'Спорно, 0-8%', severity: 'debated' },
-      { name: 'Steinstrasse (улица камней)', rate: '4-7%', severity: 'uncommon' }
+      { name: 'Steinstrasse (улица камней)', rate: '4-7%', severity: 'uncommon' },
     ],
-    postop: ['Обильное питьё 2-3 л/сут', 'Фильтрация мочи — собрать фрагменты для анализа', 'α-блокаторы (тамсулозин) 2-4 нед — ↑ изгнание фрагментов', 'НПВС при колике', 'Контроль УЗИ/рентген через 4-6 нед'],
+    postop: [
+      'Обильное питьё 2-3 л/сут',
+      'Фильтрация мочи — собрать фрагменты для анализа',
+      'α-блокаторы (тамсулозин) 2-4 нед — ↑ изгнание фрагментов',
+      'НПВС при колике',
+      'Контроль УЗИ/рентген через 4-6 нед',
+    ],
     tips: 'Частота 60-90 имп/мин ↓ травму почки. Медленный ↑ энергии (ramping) ↑ эффективность. Камни > 1000 HU — ↓ эффективность.',
     videoUrl: 'https://www.youtube.com/results?search_query=ESWL+lithotripsy',
-    evidenceLevel: 'Grade A, LE: 1a (EAU)'
+    evidenceLevel: 'Grade A, LE: 1a (EAU)',
   },
   // ===== ОТКРЫТЫЕ И ЛАПАРОСКОПИЧЕСКИЕ ОПЕРАЦИИ =====
   {
@@ -337,9 +505,19 @@ const surgeries = [
     icon: '🎗️',
     color: '#ef4444',
     icd: '0VT00ZZ',
-    description: 'Полное удаление предстательной железы, семенных пузырьков и тазовых лимфоузлов. Золотой стандарт лечения локализованного рака простаты.',
-    indications: ['Локализованный рак простаты (T1-T2)', 'Ожидаемая продолжительность жизни > 10 лет', 'Локально-распространённый рак (T3) — в комбинации с ЛТ', 'Рецидив после ЛТ (salvage)'],
-    contraindications: ['Метастатический рак', 'Ожидаемая продолжительность жизни < 10 лет', 'Тяжёлые сопутствующие заболевания'],
+    description:
+      'Полное удаление предстательной железы, семенных пузырьков и тазовых лимфоузлов. Золотой стандарт лечения локализованного рака простаты.',
+    indications: [
+      'Локализованный рак простаты (T1-T2)',
+      'Ожидаемая продолжительность жизни > 10 лет',
+      'Локально-распространённый рак (T3) — в комбинации с ЛТ',
+      'Рецидив после ЛТ (salvage)',
+    ],
+    contraindications: [
+      'Метастатический рак',
+      'Ожидаемая продолжительность жизни < 10 лет',
+      'Тяжёлые сопутствующие заболевания',
+    ],
     technique: {
       anesthesia: 'Общая',
       position: 'На спине, Trendelenburg 25-30° (лапароскопия/робот)',
@@ -354,24 +532,40 @@ const surgeries = [
         'Выделение и пересечение простатических пучков (нервосбережение — если возможно)',
         'Уретровезикальный анастомоз (6-12 рассасывающихся швов)',
         'Тазовая лимфаденэктомия (при риске > 5%)',
-        'Установка катетера Foley, дренаж'
+        'Установка катетера Foley, дренаж',
       ],
       duration: '2-4 ч (робот) / 3-5 ч (открытая)',
-      stay: '3-7 дней'
+      stay: '3-7 дней',
     },
-    results: { cancerControl: '10-летняя рак-специфическая выживаемость: 90-98% (низкий риск)', continence: 'Континенция: 85-95% через 12 мес', potency: 'Потенция: 50-80% при двустороннем нервосбережении (зависит от возраста)', successRate: '90-95%' },
+    results: {
+      cancerControl: '10-летняя рак-специфическая выживаемость: 90-98% (низкий риск)',
+      continence: 'Континенция: 85-95% через 12 мес',
+      potency: 'Потенция: 50-80% при двустороннем нервосбережении (зависит от возраста)',
+      successRate: '90-95%',
+    },
     complications: [
       { name: 'Стрессовое недержание мочи', rate: '5-15% (через 12 мес)', severity: 'uncommon' },
-      { name: 'Эректильная дисфункция', rate: '20-50% (зависит от нервосбережения)', severity: 'common' },
+      {
+        name: 'Эректильная дисфункция',
+        rate: '20-50% (зависит от нервосбережения)',
+        severity: 'common',
+      },
       { name: 'Стриктура уретровезикального анастомоза', rate: '2-5%', severity: 'uncommon' },
       { name: 'Лимфоцеле', rate: '5-10% (при ЛАЭ)', severity: 'uncommon' },
       { name: 'Ректальное повреждение', rate: '< 1%', severity: 'rare' },
-      { name: 'ТЭЛА', rate: '< 1%', severity: 'rare' }
+      { name: 'ТЭЛА', rate: '< 1%', severity: 'rare' },
     ],
-    postop: ['Катетер 7-14 дней', 'Цистография перед удалением катетера', 'Упражнения Кегеля — с 1-го дня', 'Антикоагулянты — 4 недели', 'Контроль ПСА через 6 нед, затем каждые 3 мес × 2 года', 'ПСА < 0.2 нг/мл = биохимическое излечение'],
+    postop: [
+      'Катетер 7-14 дней',
+      'Цистография перед удалением катетера',
+      'Упражнения Кегеля — с 1-го дня',
+      'Антикоагулянты — 4 недели',
+      'Контроль ПСА через 6 нед, затем каждые 3 мес × 2 года',
+      'ПСА < 0.2 нг/мл = биохимическое излечение',
+    ],
     tips: 'Роботическая RP: ↑ точность анастомоза, ↓ кровопотеря, но онкологический результат = открытой. NVB (nerve-sparing) — только при низком/промежуточном риске.',
     videoUrl: 'https://www.youtube.com/results?search_query=robotic+radical+prostatectomy',
-    evidenceLevel: 'Grade A, LE: 1a (EAU)'
+    evidenceLevel: 'Grade A, LE: 1a (EAU)',
   },
   {
     id: 'rn',
@@ -381,9 +575,19 @@ const surgeries = [
     icon: '🔬',
     color: '#ef4444',
     icd: '0TK00ZZ',
-    description: 'Удаление почки с жировой капсулой, надпочечником (опционально) и регионарными лимфоузлами. Золотой стандарт при раке почки T2+.',
-    indications: ['Рак почки T2+ (> 7 см)', 'Рак почки с инвазией в почечную вену', 'Нефункционирующая почка', 'Доброкачественная патология — только при потере функции'],
-    contraindications: ['Единственная почка (относительное — частичная предпочтительна)', 'Двусторонний рак почки', 'Метастатический рак (паллиативная — при симптомах)'],
+    description:
+      'Удаление почки с жировой капсулой, надпочечником (опционально) и регионарными лимфоузлами. Золотой стандарт при раке почки T2+.',
+    indications: [
+      'Рак почки T2+ (> 7 см)',
+      'Рак почки с инвазией в почечную вену',
+      'Нефункционирующая почка',
+      'Доброкачественная патология — только при потере функции',
+    ],
+    contraindications: [
+      'Единственная почка (относительное — частичная предпочтительна)',
+      'Двусторонний рак почки',
+      'Метастатический рак (паллиативная — при симптомах)',
+    ],
     technique: {
       anesthesia: 'Общая',
       position: 'На спине или на боку (латеральная)',
@@ -396,23 +600,32 @@ const surgeries = [
         'Выделение и пересечение мочеточника',
         'Выделение надпочечника (адреналэктомия — при опухоли верхнего полюса)',
         'Удаление почки с жировой капсулой (мешок)',
-        'Тазовая/парааортальная лимфаденэктомия (по показаниям)'
+        'Тазовая/парааортальная лимфаденэктомия (по показаниям)',
       ],
       duration: '2-4 ч',
-      stay: '3-7 дней'
+      stay: '3-7 дней',
     },
-    results: { successRate: '95-98%', cancerControl: '5-летняя выживаемость: T1: 90-95%, T2: 80-90%, T3: 50-70%' },
+    results: {
+      successRate: '95-98%',
+      cancerControl: '5-летняя выживаемость: T1: 90-95%, T2: 80-90%, T3: 50-70%',
+    },
     complications: [
       { name: 'Кровотечение', rate: '2-5%', severity: 'uncommon' },
       { name: 'Повреждение селезёнки/печени/поджелудочной', rate: '1-3%', severity: 'uncommon' },
       { name: 'Пневмоторакс', rate: '1-2% (при трансторакальном доступе)', severity: 'uncommon' },
       { name: 'ХБП (после удаления одной почки)', rate: 'СКФ ↓ на 30-40%', severity: 'expected' },
-      { name: 'ТЭЛА', rate: '< 1%', severity: 'rare' }
+      { name: 'ТЭЛА', rate: '< 1%', severity: 'rare' },
     ],
-    postop: ['Контроль СКФ через 24 ч', 'Антикоагулянты — 4 недели', 'Ограничение нагрузки 6-8 недель', 'КТ ОБП через 3-6 мес, затем ежегодно × 5 лет', 'Контроль АД (риск гипертензии)'],
+    postop: [
+      'Контроль СКФ через 24 ч',
+      'Антикоагулянты — 4 недели',
+      'Ограничение нагрузки 6-8 недель',
+      'КТ ОБП через 3-6 мес, затем ежегодно × 5 лет',
+      'Контроль АД (риск гипертензии)',
+    ],
     tips: 'Лапароскопическая нефрэктомия = открытой по онкологическим результатам, но ↓ кровопотеря и срок госпитализации. Для T1 (< 7 см) — частичная нефрэктомия предпочтительна.',
     videoUrl: 'https://www.youtube.com/results?search_query=radical+nephrectomy',
-    evidenceLevel: 'Grade A, LE: 1a (EAU)'
+    evidenceLevel: 'Grade A, LE: 1a (EAU)',
   },
   {
     id: 'pn',
@@ -422,9 +635,21 @@ const surgeries = [
     icon: '💚',
     color: '#16c79a',
     icd: '0TP00ZZ',
-    description: 'Удаление опухоли с сохранением почечной паренхимы. Золотой стандарт для T1 (< 7 см). Сохраняет функцию почки и ↓ риск ХБП.',
-    indications: ['Рак почки T1a (< 4 см) — абсолютное показание', 'Рак почки T1b (4-7 см) — относительное', 'Единственная почка', 'Двусторонний рак почки', 'ХБП — почечно-сберегающий подход'],
-    contraindications: ['Опухоль > 7 см (относительное)', 'Центральная локализация (хиларная)', 'Мультифокальная опухоль', 'Невозможность достижения отрицательных margins'],
+    description:
+      'Удаление опухоли с сохранением почечной паренхимы. Золотой стандарт для T1 (< 7 см). Сохраняет функцию почки и ↓ риск ХБП.',
+    indications: [
+      'Рак почки T1a (< 4 см) — абсолютное показание',
+      'Рак почки T1b (4-7 см) — относительное',
+      'Единственная почка',
+      'Двусторонний рак почки',
+      'ХБП — почечно-сберегающий подход',
+    ],
+    contraindications: [
+      'Опухоль > 7 см (относительное)',
+      'Центральная локализация (хиларная)',
+      'Мультифокальная опухоль',
+      'Невозможность достижения отрицательных margins',
+    ],
     technique: {
       anesthesia: 'Общая',
       position: 'На спине или на боку',
@@ -438,23 +663,32 @@ const surgeries = [
         'Иссечение опухоли с отступом 5-10 мм (frozen section — margins)',
         'Ушивание дефекта паренхимы (рассасывающиеся швы)',
         'Declamp, проверка гемостаза',
-        'Fat patch / гемостатическая матрица'
+        'Fat patch / гемостатическая матрица',
       ],
       duration: '2-4 ч',
-      stay: '3-5 дней'
+      stay: '3-5 дней',
     },
-    results: { successRate: '90-95%', cancerControl: '5-летняя выживаемость = радикальной нефрэктомии (90-95% для T1)', ischemiaTime: 'Warm ischemia < 25 мин — критично для функции' },
+    results: {
+      successRate: '90-95%',
+      cancerControl: '5-летняя выживаемость = радикальной нефрэктомии (90-95% для T1)',
+      ischemiaTime: 'Warm ischemia < 25 мин — критично для функции',
+    },
     complications: [
       { name: 'Кровотечение (послеоперационное)', rate: '5-10%', severity: 'uncommon' },
       { name: 'Уринома / мочевой свищ', rate: '2-5%', severity: 'uncommon' },
       { name: 'Положительные margins', rate: '2-5%', severity: 'uncommon' },
       { name: 'Псевдоаневризма почечной артерии', rate: '2-4%', severity: 'uncommon' },
-      { name: 'ХБП', rate: 'СКФ ↓ на 15-25% (vs 30-40% при радикальной)', severity: 'expected' }
+      { name: 'ХБП', rate: 'СКФ ↓ на 15-25% (vs 30-40% при радикальной)', severity: 'expected' },
     ],
-    postop: ['Контроль СКФ через 24 ч и 3 мес', 'КТ ОБП через 3-6 мес, затем ежегодно', 'УЗИ почки — исключить уриному', 'Ограничение нагрузки 6-8 недель'],
+    postop: [
+      'Контроль СКФ через 24 ч и 3 мес',
+      'КТ ОБП через 3-6 мес, затем ежегодно',
+      'УЗИ почки — исключить уриному',
+      'Ограничение нагрузки 6-8 недель',
+    ],
     tips: 'Zero ischemia PN возможна при экзофитных опухолях. R.E.N.A.L. score > 9 — сложная PN. Роботическая PN: ↑ точность ушивания.',
     videoUrl: 'https://www.youtube.com/results?search_query=partial+nephrectomy',
-    evidenceLevel: 'Grade A, LE: 1a (EAU)'
+    evidenceLevel: 'Grade A, LE: 1a (EAU)',
   },
   {
     id: 'rc',
@@ -464,9 +698,19 @@ const surgeries = [
     icon: '🏥',
     color: '#ef4444',
     icd: '0TV00ZZ',
-    description: 'Удаление мочевого пузыря, простаты и семенных пузырьков (М) / матки и влагалища (Ж) + тазовая лимфаденэктомия + формирование деривации мочи.',
-    indications: ['Мышечно-инвазивный рак МП (T2-T4a)', 'БЦЖ-рефрактерный CIS', 'Высокий риск NMIBC — не отвечающий на терапию', 'Лучевой цистит с некрозом (паллиативная)'],
-    contraindications: ['Метастатический рак (M1)', 'Тяжёлые сопутствующие заболевания', 'Когнитивные нарушения (невозможность ухода за стомой)'],
+    description:
+      'Удаление мочевого пузыря, простаты и семенных пузырьков (М) / матки и влагалища (Ж) + тазовая лимфаденэктомия + формирование деривации мочи.',
+    indications: [
+      'Мышечно-инвазивный рак МП (T2-T4a)',
+      'БЦЖ-рефрактерный CIS',
+      'Высокий риск NMIBC — не отвечающий на терапию',
+      'Лучевой цистит с некрозом (паллиативная)',
+    ],
+    contraindications: [
+      'Метастатический рак (M1)',
+      'Тяжёлые сопутствующие заболевания',
+      'Когнитивные нарушения (невозможность ухода за стомой)',
+    ],
     technique: {
       anesthesia: 'Общая',
       position: 'На спине, Trendelenburg',
@@ -479,25 +723,40 @@ const surgeries = [
         'Выделение и пересечение уретры',
         'Удаление мочевого пузыря + простата (М) / матка+передняя стенка влагалища (Ж)',
         'Формирование деривации: илеальный кондуит / неоМ-Пузырь (Studer) / контиентная деривация',
-        'Уретероилеоанастомоз'
+        'Уретероилеоанастомоз',
       ],
       duration: '4-8 ч',
-      stay: '7-14 дней'
+      stay: '7-14 дней',
     },
-    results: { successRate: '90-95%', cancerControl: '5-летняя выживаемость: pT2: 60-75%, pT3: 35-50%, pT4: < 20%', qualityOfLife: 'НеоМ-Пузырь: лучшее качество жизни, но ↑ осложнения' },
+    results: {
+      successRate: '90-95%',
+      cancerControl: '5-летняя выживаемость: pT2: 60-75%, pT3: 35-50%, pT4: < 20%',
+      qualityOfLife: 'НеоМ-Пузырь: лучшее качество жизни, но ↑ осложнения',
+    },
     complications: [
       { name: 'Ранние (< 90 дней): Clavien ≥ III', rate: '20-30%', severity: 'common' },
       { name: 'Илеус', rate: '5-10%', severity: 'uncommon' },
       { name: 'Утечка из анастомоза', rate: '3-5%', severity: 'uncommon' },
       { name: 'Пиелонефрит', rate: '5-15%', severity: 'uncommon' },
       { name: 'Стриктура уретероилеоанастомоза', rate: '3-8%', severity: 'uncommon' },
-      { name: 'Метаболические нарушения (B12 ↓, ацидоз)', rate: '10-20% (долгосрочно)', severity: 'longterm' },
-      { name: 'Эректильная дисфункция', rate: '40-80% (без нервосбережения)', severity: 'common' }
+      {
+        name: 'Метаболические нарушения (B12 ↓, ацидоз)',
+        rate: '10-20% (долгосрочно)',
+        severity: 'longterm',
+      },
+      { name: 'Эректильная дисфункция', rate: '40-80% (без нервосбережения)', severity: 'common' },
     ],
-    postop: ['NG tube 2-4 дня', 'Ранняя активизация', 'TPN → энтеральное питание', 'Уретеральные стенты 10-14 дней', 'Обучение стомированию (при илеальном кондуите)', 'Контроль B12, электролитов ежегодно'],
+    postop: [
+      'NG tube 2-4 дня',
+      'Ранняя активизация',
+      'TPN → энтеральное питание',
+      'Уретеральные стенты 10-14 дней',
+      'Обучение стомированию (при илеальном кондуите)',
+      'Контроль B12, электролитов ежегодно',
+    ],
     tips: 'ERAS-протокол ↓ срок госпитализации на 3-5 дней. НеоМ-Пузырь — только при отрицательном срезе уретры. Роботическая цистэктомия: ↓ кровопотеря, = онкологический результат.',
     videoUrl: 'https://www.youtube.com/results?search_query=radical+cystectomy',
-    evidenceLevel: 'Grade A, LE: 1a (EAU)'
+    evidenceLevel: 'Grade A, LE: 1a (EAU)',
   },
   // ===== ДРУГИЕ ОПЕРАЦИИ =====
   {
@@ -508,9 +767,18 @@ const surgeries = [
     icon: '🧬',
     color: '#c9a84c',
     icd: '06LQ0ZZ',
-    description: 'Перевязка вен гроздьевидного сплетения через паховый/подпаховый доступ с микрохирургическим сохранением артерии и лимфатических сосудов.',
-    indications: ['Варикоцеле + мужское бесплодие', 'Варикоцеле + боль в мошонке', 'Варикоцеле + атрофия яичка у подростка', 'II-III ст. варикоцеле + плохая спермограмма'],
-    contraindications: ['I ст. варикоцеле без бесплодия', 'Тромбоз почечной вены (вторичное варикоцеле)'],
+    description:
+      'Перевязка вен гроздьевидного сплетения через паховый/подпаховый доступ с микрохирургическим сохранением артерии и лимфатических сосудов.',
+    indications: [
+      'Варикоцеле + мужское бесплодие',
+      'Варикоцеле + боль в мошонке',
+      'Варикоцеле + атрофия яичка у подростка',
+      'II-III ст. варикоцеле + плохая спермограмма',
+    ],
+    contraindications: [
+      'I ст. варикоцеле без бесплодия',
+      'Тромбоз почечной вены (вторичное варикоцеле)',
+    ],
     technique: {
       anesthesia: 'Местная / спинальная / общая',
       position: 'На спине',
@@ -523,22 +791,36 @@ const surgeries = [
         'Перевязка всех вен (клипы/лигатуры)',
         'Сохранение артерии и лимфатиков',
         'Доплер — подтверждение сохранённого артериального кровотока',
-        'Ушивание раны'
+        'Ушивание раны',
       ],
       duration: '30-60 мин',
-      stay: 'Амбулаторно / 1 день'
+      stay: 'Амбулаторно / 1 день',
     },
-    results: { improvement: 'Улучшение спермограммы: 60-80% за 3-6 мес', pregnancy: 'Беременность: 30-50% за 1 год', recurrence: 'Рецидив: 1-2%', successRate: '85-95%' },
+    results: {
+      improvement: 'Улучшение спермограммы: 60-80% за 3-6 мес',
+      pregnancy: 'Беременность: 30-50% за 1 год',
+      recurrence: 'Рецидив: 1-2%',
+      successRate: '85-95%',
+    },
     complications: [
-      { name: 'Гидроцеле', rate: '< 1% (при микрохирургии; при лапароскопии — 5-15%)', severity: 'rare' },
+      {
+        name: 'Гидроцеле',
+        rate: '< 1% (при микрохирургии; при лапароскопии — 5-15%)',
+        severity: 'rare',
+      },
       { name: 'Рецидив варикоцеле', rate: '1-2%', severity: 'rare' },
       { name: 'Атрофия яичка', rate: '< 0.5%', severity: 'rare' },
-      { name: 'Инфекция раны', rate: '< 1%', severity: 'rare' }
+      { name: 'Инфекция раны', rate: '< 1%', severity: 'rare' },
     ],
-    postop: ['Спермограмма через 3, 6, 12 мес', 'Ограничение нагрузки 2 недели', 'Ношение суспензория 2 недели', 'Половой покой 2 недели'],
+    postop: [
+      'Спермограмма через 3, 6, 12 мес',
+      'Ограничение нагрузки 2 недели',
+      'Ношение суспензория 2 недели',
+      'Половой покой 2 недели',
+    ],
     tips: 'Микро-Мармар — золотой стандарт. Рецидив 1-2% (vs 15% при лапароскопии). Сохранение лимфатиков = ↓ гидроцеле.',
     videoUrl: 'https://www.youtube.com/results?search_query=microsurgical+varicocelectomy',
-    evidenceLevel: 'Grade A, LE: 1a (EAU)'
+    evidenceLevel: 'Grade A, LE: 1a (EAU)',
   },
   {
     id: 'circumcision',
@@ -548,9 +830,20 @@ const surgeries = [
     icon: '✂️',
     color: '#c9a84c',
     icd: '0VBTXZZ',
-    description: 'Круговое иссечение крайней плоти. Одна из самых частых урологических операций. Показания: фимоз, парафимоз, рецидивирующий баланопостит.',
-    indications: ['Фимоз (не поддающийся консервативному лечению)', 'Парафимоз (после репозиции)', 'Рецидивирующий баланопостит', 'Склероатрофический лихен (крауроз)', 'Профилактика рака полового члена (в эндемичных регионах)'],
-    contraindications: ['Острый баланопостит (предварительно лечить)', 'Гипоспадия/эписпадия (крайняя плоть может понадобиться для реконструкции)', 'Нарушения свёртывания'],
+    description:
+      'Круговое иссечение крайней плоти. Одна из самых частых урологических операций. Показания: фимоз, парафимоз, рецидивирующий баланопостит.',
+    indications: [
+      'Фимоз (не поддающийся консервативному лечению)',
+      'Парафимоз (после репозиции)',
+      'Рецидивирующий баланопостит',
+      'Склероатрофический лихен (крауроз)',
+      'Профилактика рака полового члена (в эндемичных регионах)',
+    ],
+    contraindications: [
+      'Острый баланопостит (предварительно лечить)',
+      'Гипоспадия/эписпадия (крайняя плоть может понадобиться для реконструкции)',
+      'Нарушения свёртывания',
+    ],
     technique: {
       anesthesia: 'Местная (дорсальный блок) / общая',
       position: 'На спине',
@@ -562,23 +855,33 @@ const surgeries = [
         'Круговое иссечение крайней плоти',
         'Гемостаз (биполярная коагуляция)',
         'Сшивание внутреннего и наружного листков (рассасывающиеся швы 4-0/5-0)',
-        'Повязка'
+        'Повязка',
       ],
       duration: '15-30 мин',
-      stay: 'Амбулаторно'
+      stay: 'Амбулаторно',
     },
-    results: { successRate: '95-99%', satisfaction: 'Удовлетворённость: > 90%', recurrence: 'Рецидив фимоза: < 1%' },
+    results: {
+      successRate: '95-99%',
+      satisfaction: 'Удовлетворённость: > 90%',
+      recurrence: 'Рецидив фимоза: < 1%',
+    },
     complications: [
       { name: 'Кровотечение', rate: '1-2%', severity: 'uncommon' },
       { name: 'Инфекция раны', rate: '1-2%', severity: 'uncommon' },
       { name: 'Избыточное/недостаточное удаление кожи', rate: '2-5%', severity: 'uncommon' },
       { name: 'Мясная адгезия (у детей)', rate: '2-5%', severity: 'uncommon' },
-      { name: 'Стриктура меатуса', rate: '< 1%', severity: 'rare' }
+      { name: 'Стриктура меатуса', rate: '< 1%', severity: 'rare' },
     ],
-    postop: ['Повязка 24-48 ч', 'Половой покой 4-6 недель', 'Ежедневные ванночки', 'Парацетамол/ибупрофен — аналгезия', 'Контроль через 2 недели'],
+    postop: [
+      'Повязка 24-48 ч',
+      'Половой покой 4-6 недель',
+      'Ежедневные ванночки',
+      'Парацетамол/ибупрофен — аналгезия',
+      'Контроль через 2 недели',
+    ],
     tips: 'Степлер-обрезание (ZSR) — быстрее, но дороже. Лазерное — ↓ кровотечение. Дорсальный блок — 0.25% бупивакаин 5 мл.',
     videoUrl: 'https://www.youtube.com/results?search_query=circumcision+surgery',
-    evidenceLevel: 'Grade A, LE: 1a'
+    evidenceLevel: 'Grade A, LE: 1a',
   },
   {
     id: 'stent',
@@ -588,9 +891,19 @@ const surgeries = [
     icon: '🔧',
     color: '#3b82f6',
     icd: '0T7B0ZZ',
-    description: 'Установка двойного J-стента для обеспечения оттока мочи из почки. Временная или постоянная мера при обструкции.',
-    indications: ['Обструкция мочеточника (камень, опухоль, стриктура)', 'Подготовка к ДУВЛТ', 'После УРС', 'После операции на мочеточнике', 'Беременные с обструкцией'],
-    contraindications: ['Активная ИМП (предварительно лечить)', 'Невозможность ретроградного доступа (альтернатива — нефростома)'],
+    description:
+      'Установка двойного J-стента для обеспечения оттока мочи из почки. Временная или постоянная мера при обструкции.',
+    indications: [
+      'Обструкция мочеточника (камень, опухоль, стриктура)',
+      'Подготовка к ДУВЛТ',
+      'После УРС',
+      'После операции на мочеточнике',
+      'Беременные с обструкцией',
+    ],
+    contraindications: [
+      'Активная ИМП (предварительно лечить)',
+      'Невозможность ретроградного доступа (альтернатива — нефростома)',
+    ],
     technique: {
       anesthesia: 'Местная (гель) / спинальная / общая',
       position: 'Литотомическая',
@@ -602,23 +915,32 @@ const surgeries = [
         'Проведение стента по проводнику до лоханки',
         'Рентген-контроль положения (верхняя J — в лоханке, нижняя — в МП)',
         'Удаление проводника',
-        'Нить — для удаления (опционально, выступает из уретры)'
+        'Нить — для удаления (опционально, выступает из уретры)',
       ],
       duration: '10-20 мин',
-      stay: 'Амбулаторно'
+      stay: 'Амбулаторно',
     },
     results: { successRate: '95-99%', drainageQuality: 'Адекватный дренаж в 95-99%' },
     complications: [
       { name: 'Стент-симптомы (дизурия, поллакиурия, боль)', rate: '60-80%', severity: 'common' },
       { name: 'ИМП', rate: '5-10%', severity: 'uncommon' },
-      { name: 'Инкрустация стента', rate: '5-10% (при длительном стоянии > 6 мес)', severity: 'uncommon' },
+      {
+        name: 'Инкрустация стента',
+        rate: '5-10% (при длительном стоянии > 6 мес)',
+        severity: 'uncommon',
+      },
       { name: 'Миграция стента', rate: '2-5%', severity: 'uncommon' },
-      { name: 'Забытый стент', rate: 'Серьёзная проблема — требует ЧКНЛ', severity: 'rare' }
+      { name: 'Забытый стент', rate: 'Серьёзная проблема — требует ЧКНЛ', severity: 'rare' },
     ],
-    postop: ['α-блокаторы (тамсулозин) — ↓ стент-симптомы на 50%', 'Обильное питьё', 'Удаление через 2-14 дней (или замена каждые 3-6 мес)', 'Не забывать! — система напоминаний'],
+    postop: [
+      'α-блокаторы (тамсулозин) — ↓ стент-симптомы на 50%',
+      'Обильное питьё',
+      'Удаление через 2-14 дней (или замена каждые 3-6 мес)',
+      'Не забывать! — система напоминаний',
+    ],
     tips: 'Тамсулозин 0.4 мг ↓ стент-симптомы на 50%. Стент > 6 мес → инкрустация. Забытый стент — серьёзная медико-правовая проблема!',
     videoUrl: 'https://www.youtube.com/results?search_query=ureteral+stent+placement',
-    evidenceLevel: 'Grade A, LE: 1a (EAU)'
+    evidenceLevel: 'Grade A, LE: 1a (EAU)',
   },
   {
     id: 'nephrostomy',
@@ -628,9 +950,19 @@ const surgeries = [
     icon: '🩺',
     color: '#3b82f6',
     icd: '0T930ZZ',
-    description: 'Чрескожная установка дренажа в почку под рентген/УЗИ контролем. Экстренная декомпрессия при обструкции.',
-    indications: ['Обструкция + инфекция (экстренно!)', 'ОЗМ при неудачной катетеризации', 'Стриктура мочеточника — альтернатива стенту', 'Уретерокутанеальная фистула', 'Доступ к ЧЛС для ЧКНЛ'],
-    contraindications: ['Некорригированная коагулопатия', 'Отсутствие безопасного доступа (кишечник в пути)'],
+    description:
+      'Чрескожная установка дренажа в почку под рентген/УЗИ контролем. Экстренная декомпрессия при обструкции.',
+    indications: [
+      'Обструкция + инфекция (экстренно!)',
+      'ОЗМ при неудачной катетеризации',
+      'Стриктура мочеточника — альтернатива стенту',
+      'Уретерокутанеальная фистула',
+      'Доступ к ЧЛС для ЧКНЛ',
+    ],
+    contraindications: [
+      'Некорригированная коагулопатия',
+      'Отсутствие безопасного доступа (кишечник в пути)',
+    ],
     technique: {
       anesthesia: 'Местная + седация',
       position: 'На животе (prone)',
@@ -643,10 +975,10 @@ const surgeries = [
         'Проведение проводника в лоханку и мочеточник',
         'Бужирование тракта (последовательно)',
         'Установка нефростомического дренажа (pigtail 8-12Fr)',
-        'Фиксация к коже, подключение к мочеприёмнику'
+        'Фиксация к коже, подключение к мочеприёмнику',
       ],
       duration: '15-30 мин',
-      stay: '2-5 дней'
+      stay: '2-5 дней',
     },
     results: { successRate: '95-99%', drainageQuality: 'Эффективная декомпрессия в 95-99%' },
     complications: [
@@ -654,12 +986,17 @@ const surgeries = [
       { name: 'Пневмоторакс (наддиафрагмальная пункция)', rate: '1-2%', severity: 'uncommon' },
       { name: 'Пиелонефрит', rate: '2-5%', severity: 'uncommon' },
       { name: 'Выпадение дренажа', rate: '5-10%', severity: 'common' },
-      { name: 'Повреждение соседних органов', rate: '< 1%', severity: 'rare' }
+      { name: 'Повреждение соседних органов', rate: '< 1%', severity: 'rare' },
     ],
-    postop: ['Промывание дренажа — при закупорке', 'Уход за стомой', 'Антибиотики 24-48 ч', 'Плановое удаление/замена каждые 4-8 недель'],
+    postop: [
+      'Промывание дренажа — при закупорке',
+      'Уход за стомой',
+      'Антибиотики 24-48 ч',
+      'Плановое удаление/замена каждые 4-8 недель',
+    ],
     tips: 'УЗИ-навигация ↓ риск пневмоторакса. Дренаж 10-12Fr — ↓ риск закупорки. НЕ забывать менять каждые 4-8 недель!',
     videoUrl: 'https://www.youtube.com/results?search_query=percutaneous+nephrostomy',
-    evidenceLevel: 'Grade A, LE: 1a (EAU)'
+    evidenceLevel: 'Grade A, LE: 1a (EAU)',
   },
   // ===== РЕКОНСТРУКТИВНЫЕ =====
   {
@@ -670,8 +1007,14 @@ const surgeries = [
     icon: '🔧',
     color: '#8b5cf6',
     icd: '0TQ0XZZ',
-    description: 'Пластика уретры при стриктуре. Золотой стандарт — аутограф из буккальной слизистой. Рецидив после дилатации/уретротомии — показание к уретропластике.',
-    indications: ['Стриктура уретры > 2 см', 'Рецидив после дилатации/уретротомии', 'Спонгиозный фиброз', 'Стриктура после травмы таза'],
+    description:
+      'Пластика уретры при стриктуре. Золотой стандарт — аутограф из буккальной слизистой. Рецидив после дилатации/уретротомии — показание к уретропластике.',
+    indications: [
+      'Стриктура уретры > 2 см',
+      'Рецидив после дилатации/уретротомии',
+      'Спонгиозный фиброз',
+      'Стриктура после травмы таза',
+    ],
     contraindications: ['Активная ИМП', 'Облитерация > 10 см (сложная реконструкция)'],
     technique: {
       anesthesia: 'Общая',
@@ -685,23 +1028,32 @@ const surgeries = [
         'Аутограф из буккальной слизистой (щека, 2×5-7 см)',
         'Дорсальная онлей-пластика (графт фиксируется к кавернозным телам)',
         'Ушивание спонгиозного слоя ( waterproofing)',
-        'Установка катетера Foley 16-18Fr'
+        'Установка катетера Foley 16-18Fr',
       ],
       duration: '2-4 ч',
-      stay: '2-4 дня'
+      stay: '2-4 дня',
     },
-    results: { successRate: '85-95% (при буккальном графте)', recurrence: 'Рецидив: 5-15% за 5 лет', qmaxImprovement: '↑ на 15-25 мл/с' },
+    results: {
+      successRate: '85-95% (при буккальном графте)',
+      recurrence: 'Рецидив: 5-15% за 5 лет',
+      qmaxImprovement: '↑ на 15-25 мл/с',
+    },
     complications: [
       { name: 'Рецидив стриктуры', rate: '5-15%', severity: 'uncommon' },
       { name: 'Эректильная дисфункция', rate: '< 5%', severity: 'rare' },
       { name: 'Дивертикул уретры', rate: '< 2%', severity: 'rare' },
       { name: 'Дискомфорт в месте забора графта', rate: '10-20% (временный)', severity: 'common' },
-      { name: 'Уретрокожный свищ', rate: '1-2%', severity: 'uncommon' }
+      { name: 'Уретрокожный свищ', rate: '1-2%', severity: 'uncommon' },
     ],
-    postop: ['Катетер 14-21 день', 'Уретрография перед удалением катетера', 'Урофлоуметрия через 3, 6, 12 мес', 'Ограничение нагрузки и половой покой 6 недель'],
+    postop: [
+      'Катетер 14-21 день',
+      'Уретрография перед удалением катетера',
+      'Урофлоуметрия через 3, 6, 12 мес',
+      'Ограничение нагрузки и половой покой 6 недель',
+    ],
     tips: 'Дорсальная онлей-пластика (Barbagli) — золотой стандарт. Вентральная — при пенальных стриктурах. При рецидиве — повторная уретропластика.',
     videoUrl: 'https://www.youtube.com/results?search_query=urethroplasty+graft',
-    evidenceLevel: 'Grade B, LE: 2a (EAU)'
+    evidenceLevel: 'Grade B, LE: 2a (EAU)',
   },
   // ===== АНДРОЛОГИЧЕСКИЕ =====
   {
@@ -712,9 +1064,20 @@ const surgeries = [
     icon: '⚡',
     color: '#c9a84c',
     icd: '0VHT0ZZ',
-    description: 'Имплантация фаллопротеза при рефрактерной эректильной дисфункции. 3-я линия лечения. Удовлетворённость > 85%.',
-    indications: ['Рефрактерная ЭД (ФДЭ-5, инъекции не работают)', 'ЭД после радикальной простатэктомии', 'ЭД при сахарном диабете', 'Болезнь Пейрони + ЭД', 'Приапизм > 48 ч с фиброзом'],
-    contraindications: ['Активная ИМП', 'Тяжёлый неконтролируемый диабет (HbA1c > 8%)', 'Нарушения свёртывания'],
+    description:
+      'Имплантация фаллопротеза при рефрактерной эректильной дисфункции. 3-я линия лечения. Удовлетворённость > 85%.',
+    indications: [
+      'Рефрактерная ЭД (ФДЭ-5, инъекции не работают)',
+      'ЭД после радикальной простатэктомии',
+      'ЭД при сахарном диабете',
+      'Болезнь Пейрони + ЭД',
+      'Приапизм > 48 ч с фиброзом',
+    ],
+    contraindications: [
+      'Активная ИМП',
+      'Тяжёлый неконтролируемый диабет (HbA1c > 8%)',
+      'Нарушения свёртывания',
+    ],
     technique: {
       anesthesia: 'Общая / спинальная',
       position: 'На спине',
@@ -728,23 +1091,33 @@ const surgeries = [
         'Создание кармана для резервуара (пространство Retzius)',
         'Установка помпы в мошонку',
         'Соединение компонентов, тестирование',
-        'Полунаполненное состояние при ушивании'
+        'Полунаполненное состояние при ушивании',
       ],
       duration: '1-2 ч',
-      stay: '1-2 дня'
+      stay: '1-2 дня',
     },
-    results: { satisfaction: 'Удовлетворённость: 85-90% (пациент), 80-85% (партнёр)', durability: 'Срок службы: 10-15 лет', mechanicalFailure: 'Механическая поломка: < 5% за 5 лет', successRate: '90-95%' },
+    results: {
+      satisfaction: 'Удовлетворённость: 85-90% (пациент), 80-85% (партнёр)',
+      durability: 'Срок службы: 10-15 лет',
+      mechanicalFailure: 'Механическая поломка: < 5% за 5 лет',
+      successRate: '90-95%',
+    },
     complications: [
       { name: 'Инфекция протеза', rate: '1-3% (первичная), 10-18% (ревизия)', severity: 'rare' },
       { name: 'Механическая поломка', rate: '< 5% за 5 лет', severity: 'longterm' },
       { name: 'Эрозия цилиндров', rate: '< 1%', severity: 'rare' },
       { name: 'Миграция помпы', rate: '2-3%', severity: 'uncommon' },
-      { name: 'Перфорация кавернозного тела', rate: '< 1%', severity: 'rare' }
+      { name: 'Перфорация кавернозного тела', rate: '< 1%', severity: 'rare' },
     ],
-    postop: ['Активация через 4-6 недель', 'Антибиотики (протез с антимикробным покрытием)', 'Активация/деактивация × 2-3 р/день — обучение', 'Половая жизнь через 6 недель'],
+    postop: [
+      'Активация через 4-6 недель',
+      'Антибиотики (протез с антимикробным покрытием)',
+      'Активация/деактивация × 2-3 р/день — обучение',
+      'Половая жизнь через 6 недель',
+    ],
     tips: 'InhibiZone (AMS) и Titan (Coloplast) — ↓ инфекция. 3-компонентный надувной — лучшая жёсткость. Полужёсткий — проще, но менее естественный.',
     videoUrl: 'https://www.youtube.com/results?search_query=penile+prosthesis+implantation',
-    evidenceLevel: 'Grade A, LE: 1a (EAU)'
+    evidenceLevel: 'Grade A, LE: 1a (EAU)',
   },
   {
     id: 'vasectomy',
@@ -754,9 +1127,19 @@ const surgeries = [
     icon: '✂️',
     color: '#c9a84c',
     icd: '0VQM0ZZ',
-    description: 'Перевязка/пересечение семявыносящих протоков. Надёжный метод контрацепции. Эффективность > 99%.',
-    indications: ['Желание постоянной контрацепции', 'Завершённая репродуктивная функция', 'Нежелание/невозможность других методов'],
-    contraindications: ['Неуверенность пациента', 'Давление партнёра', 'Неосведомлённость о необратимости', 'Острая ИМП/дерматит мошонки'],
+    description:
+      'Перевязка/пересечение семявыносящих протоков. Надёжный метод контрацепции. Эффективность > 99%.',
+    indications: [
+      'Желание постоянной контрацепции',
+      'Завершённая репродуктивная функция',
+      'Нежелание/невозможность других методов',
+    ],
+    contraindications: [
+      'Неуверенность пациента',
+      'Давление партнёра',
+      'Неосведомлённость о необратимости',
+      'Острая ИМП/дерматит мошонки',
+    ],
     technique: {
       anesthesia: 'Местная',
       position: 'На спине',
@@ -770,23 +1153,32 @@ const surgeries = [
         'Резекция 1-2 см vas',
         'Коагуляция/лигирование обоих концов',
         'Фасциальная интерпозиция (один конец в фасцию)',
-        'Возвращение vas в мошонку, тот же для другой стороны'
+        'Возвращение vas в мошонку, тот же для другой стороны',
       ],
       duration: '10-20 мин',
-      stay: 'Амбулаторно'
+      stay: 'Амбулаторно',
     },
-    results: { successRate: '> 99%', failureRate: '1:2000', reversalRate: 'Вазовазостомия: 70-90% проходимость, 30-70% беременность' },
+    results: {
+      successRate: '> 99%',
+      failureRate: '1:2000',
+      reversalRate: 'Вазовазостомия: 70-90% проходимость, 30-70% беременность',
+    },
     complications: [
       { name: 'Гематома мошонки', rate: '1-2%', severity: 'uncommon' },
       { name: 'Инфекция раны', rate: '< 1%', severity: 'rare' },
       { name: 'Гранулёма', rate: '5-15%', severity: 'common' },
       { name: 'Поствазэктомический болевой синдром', rate: '1-2%', severity: 'uncommon' },
-      { name: 'Рециanalизация (спонтанное восстановление)', rate: '< 0.1%', severity: 'rare' }
+      { name: 'Рециanalизация (спонтанное восстановление)', rate: '< 0.1%', severity: 'rare' },
     ],
-    postop: ['Контрацепция ещё 3 мес (или 20 эякуляций)! Спермограмма — контроль азооспермии', 'Покой 2-3 дня', 'Суспензорий 1 неделю', 'Лёд на мошонку 24 ч'],
+    postop: [
+      'Контрацепция ещё 3 мес (или 20 эякуляций)! Спермограмма — контроль азооспермии',
+      'Покой 2-3 дня',
+      'Суспензорий 1 неделю',
+      'Лёд на мошонку 24 ч',
+    ],
     tips: 'No-Scalpel техника ↓ осложнения × 2-3. Фасциальная интерпозиция ↓ рециanalизацию. Всегда подтверждать азооспермию спермограммой!',
     videoUrl: 'https://www.youtube.com/results?search_query=no+scalpel+vasectomy',
-    evidenceLevel: 'Grade A, LE: 1a'
+    evidenceLevel: 'Grade A, LE: 1a',
   },
 ];
 
@@ -799,7 +1191,10 @@ const createSurgery = ({
   color,
   description,
   indications,
-  contraindications = ['Некорригированная коагулопатия или активная инфекция без стабилизации', 'Высокий анестезиологический риск без предоперационной оптимизации'],
+  contraindications = [
+    'Некорригированная коагулопатия или активная инфекция без стабилизации',
+    'Высокий анестезиологический риск без предоперационной оптимизации',
+  ],
   anesthesia = 'Общая / регионарная по протоколу',
   position = 'По доступу и зоне вмешательства',
   instrument = 'Профильный эндоскопический или хирургический набор',
@@ -811,7 +1206,11 @@ const createSurgery = ({
   complications = [
     { name: 'Кровотечение / гематома', rate: '1-5%', severity: 'uncommon' },
     { name: 'Инфекция / лихорадка', rate: '1-4%', severity: 'uncommon' },
-    { name: 'Рецидив симптомов или потребность в повторном вмешательстве', rate: 'индивидуально', severity: 'discussion' },
+    {
+      name: 'Рецидив симптомов или потребность в повторном вмешательстве',
+      rate: 'индивидуально',
+      severity: 'discussion',
+    },
   ],
   postop = [
     'Контроль боли, температуры, диуреза и признаков инфекции.',
@@ -856,9 +1255,20 @@ const additionalSurgeries = [
     category: 'endoscopic',
     icon: '◆',
     color: '#63ead5',
-    description: 'Перкутанный доступ меньшего диаметра для удаления камней почки с балансом эффективности и снижения травматичности.',
-    indications: ['Камни почки, когда RIRS/ДЛТ недостаточны', 'Нижнечашечные или множественные камни', 'Необходимость высокой stone-free вероятности'],
-    steps: ['Планирование доступа по КТ', 'Пункция чашечки под УЗИ/рентген-контролем', 'Дилатация мини-тракта', 'Литотрипсия и эвакуация фрагментов', 'Контроль остаточных фрагментов и дренирование по показаниям'],
+    description:
+      'Перкутанный доступ меньшего диаметра для удаления камней почки с балансом эффективности и снижения травматичности.',
+    indications: [
+      'Камни почки, когда RIRS/ДЛТ недостаточны',
+      'Нижнечашечные или множественные камни',
+      'Необходимость высокой stone-free вероятности',
+    ],
+    steps: [
+      'Планирование доступа по КТ',
+      'Пункция чашечки под УЗИ/рентген-контролем',
+      'Дилатация мини-тракта',
+      'Литотрипсия и эвакуация фрагментов',
+      'Контроль остаточных фрагментов и дренирование по показаниям',
+    ],
     duration: '60-140 мин',
     stay: '1-3 дня',
     successRate: '80-95%',
@@ -872,9 +1282,20 @@ const additionalSurgeries = [
     category: 'endoscopic',
     icon: '◇',
     color: '#45c4ff',
-    description: 'Основной хирургический маршрут для крупных, коралловидных и сложных камней почки.',
-    indications: ['Камни почки > 20 мм', 'Коралловидные конкременты', 'Неэффективность ДЛТ/RIRS или высокий риск остаточных фрагментов'],
-    steps: ['КТ-навигация и выбор доступа', 'Пункция и формирование тракта', 'Нефроскопия', 'Ультразвуковая/лазерная литотрипсия', 'Проверка чашечно-лоханочной системы и дренирование'],
+    description:
+      'Основной хирургический маршрут для крупных, коралловидных и сложных камней почки.',
+    indications: [
+      'Камни почки > 20 мм',
+      'Коралловидные конкременты',
+      'Неэффективность ДЛТ/RIRS или высокий риск остаточных фрагментов',
+    ],
+    steps: [
+      'КТ-навигация и выбор доступа',
+      'Пункция и формирование тракта',
+      'Нефроскопия',
+      'Ультразвуковая/лазерная литотрипсия',
+      'Проверка чашечно-лоханочной системы и дренирование',
+    ],
     duration: '90-180 мин',
     stay: '2-4 дня',
     successRate: '75-90%',
@@ -888,9 +1309,20 @@ const additionalSurgeries = [
     category: 'endoscopic',
     icon: '◇',
     color: '#63ead5',
-    description: 'Комбинация ретроградного и перкутанного доступа для сложных камней с лучшим контролем чашечек.',
-    indications: ['Крупные множественные камни', 'Сложная чашечно-лоханочная анатомия', 'Необходимость минимизировать число доступов'],
-    steps: ['Позиционирование для одновременного доступа', 'Ретроградная визуализация', 'Перкутанный доступ', 'Синхронная литотрипсия', 'Контроль резидуальных фрагментов'],
+    description:
+      'Комбинация ретроградного и перкутанного доступа для сложных камней с лучшим контролем чашечек.',
+    indications: [
+      'Крупные множественные камни',
+      'Сложная чашечно-лоханочная анатомия',
+      'Необходимость минимизировать число доступов',
+    ],
+    steps: [
+      'Позиционирование для одновременного доступа',
+      'Ретроградная визуализация',
+      'Перкутанный доступ',
+      'Синхронная литотрипсия',
+      'Контроль резидуальных фрагментов',
+    ],
     duration: '120-220 мин',
     stay: '2-4 дня',
     successRate: '80-95%',
@@ -904,9 +1336,20 @@ const additionalSurgeries = [
     category: 'open-lap',
     icon: '✦',
     color: '#f0c96a',
-    description: 'Реконструкция лоханочно-мочеточникового сегмента при обструкции с сохранением функции почки.',
-    indications: ['Обструкция ЛМС с болью/инфекцией/снижением функции', 'Гидронефроз с функциональным подтверждением обструкции', 'Неэффективность эндопиелотомии или анатомически сложный случай'],
-    steps: ['Доступ к ЛМС', 'Иссечение стенозированного сегмента', 'Спатуляция мочеточника', 'Анастомоз лоханка-мочеточник', 'Установка стента и контроль герметичности'],
+    description:
+      'Реконструкция лоханочно-мочеточникового сегмента при обструкции с сохранением функции почки.',
+    indications: [
+      'Обструкция ЛМС с болью/инфекцией/снижением функции',
+      'Гидронефроз с функциональным подтверждением обструкции',
+      'Неэффективность эндопиелотомии или анатомически сложный случай',
+    ],
+    steps: [
+      'Доступ к ЛМС',
+      'Иссечение стенозированного сегмента',
+      'Спатуляция мочеточника',
+      'Анастомоз лоханка-мочеточник',
+      'Установка стента и контроль герметичности',
+    ],
     duration: '120-240 мин',
     stay: '2-5 дней',
     successRate: '90-97%',
@@ -921,8 +1364,18 @@ const additionalSurgeries = [
     icon: '✦',
     color: '#f0c96a',
     description: 'Восстановление оттока мочи при дистальной стриктуре/повреждении мочеточника.',
-    indications: ['Дистальная стриктура мочеточника', 'Ятрогенное повреждение', 'Рефлюкс/обструкция с клиническими последствиями'],
-    steps: ['Мобилизация мочеточника', 'Резекция рубцового сегмента', 'Формирование тоннеля или psoas hitch/Boari по длине дефекта', 'Анастомоз со стентом', 'Контроль дренажа'],
+    indications: [
+      'Дистальная стриктура мочеточника',
+      'Ятрогенное повреждение',
+      'Рефлюкс/обструкция с клиническими последствиями',
+    ],
+    steps: [
+      'Мобилизация мочеточника',
+      'Резекция рубцового сегмента',
+      'Формирование тоннеля или psoas hitch/Boari по длине дефекта',
+      'Анастомоз со стентом',
+      'Контроль дренажа',
+    ],
     duration: '120-240 мин',
     stay: '3-7 дней',
     successRate: '85-95%',
@@ -936,9 +1389,20 @@ const additionalSurgeries = [
     category: 'reconstructive',
     icon: '✦',
     color: '#f0c96a',
-    description: 'Реконструкция протяжённого дистального дефекта мочеточника за счёт трубчатого лоскута мочевого пузыря.',
-    indications: ['Протяжённая дистальная/средняя стриктура мочеточника', 'Послеоперационные повреждения', 'Невозможность простого реимпланта без натяжения'],
-    steps: ['Оценка ёмкости мочевого пузыря', 'Формирование лоскута', 'Тубуляризация', 'Анастомоз с мочеточником', 'Стентирование и дренирование'],
+    description:
+      'Реконструкция протяжённого дистального дефекта мочеточника за счёт трубчатого лоскута мочевого пузыря.',
+    indications: [
+      'Протяжённая дистальная/средняя стриктура мочеточника',
+      'Послеоперационные повреждения',
+      'Невозможность простого реимпланта без натяжения',
+    ],
+    steps: [
+      'Оценка ёмкости мочевого пузыря',
+      'Формирование лоскута',
+      'Тубуляризация',
+      'Анастомоз с мочеточником',
+      'Стентирование и дренирование',
+    ],
     duration: '150-260 мин',
     stay: '4-7 дней',
     successRate: '80-95%',
@@ -952,9 +1416,20 @@ const additionalSurgeries = [
     category: 'reconstructive',
     icon: '◆',
     color: '#63ead5',
-    description: 'Иссечение короткого рубцового сегмента уретры с формированием первичного анастомоза.',
-    indications: ['Короткая бульбарная стриктура', 'Рецидив после дилатации/уретротомии', 'Выраженные симптомы обструкции'],
-    steps: ['Перинеальный доступ', 'Выделение уретры', 'Иссечение стриктуры', 'Спатуляция концов', 'Безнатяжный анастомоз на катетере'],
+    description:
+      'Иссечение короткого рубцового сегмента уретры с формированием первичного анастомоза.',
+    indications: [
+      'Короткая бульбарная стриктура',
+      'Рецидив после дилатации/уретротомии',
+      'Выраженные симптомы обструкции',
+    ],
+    steps: [
+      'Перинеальный доступ',
+      'Выделение уретры',
+      'Иссечение стриктуры',
+      'Спатуляция концов',
+      'Безнатяжный анастомоз на катетере',
+    ],
     duration: '90-180 мин',
     stay: '1-3 дня',
     successRate: '85-95%',
@@ -969,8 +1444,18 @@ const additionalSurgeries = [
     icon: '◆',
     color: '#63ead5',
     description: 'Пластика протяжённых стриктур уретры с использованием слизистой щеки.',
-    indications: ['Протяжённая бульбарная/пенильная стриктура', 'Лихен склероз', 'Рецидивные стриктуры после эндоскопического лечения'],
-    steps: ['Забор буккального графта', 'Подготовка уретрального ложа', 'Фиксация graft onlay/inlay', 'Катетеризация', 'План контрольной уретрографии'],
+    indications: [
+      'Протяжённая бульбарная/пенильная стриктура',
+      'Лихен склероз',
+      'Рецидивные стриктуры после эндоскопического лечения',
+    ],
+    steps: [
+      'Забор буккального графта',
+      'Подготовка уретрального ложа',
+      'Фиксация graft onlay/inlay',
+      'Катетеризация',
+      'План контрольной уретрографии',
+    ],
     duration: '150-300 мин',
     stay: '2-5 дней',
     successRate: '75-90%',
@@ -984,9 +1469,20 @@ const additionalSurgeries = [
     category: 'reconstructive',
     icon: '◇',
     color: '#45c4ff',
-    description: 'Золотой хирургический маршрут при тяжёлой стрессовой инконтиненции у мужчин после операций на простате.',
-    indications: ['Тяжёлая стрессовая инконтиненция', 'Постпростатэктомическое недержание', 'Неэффективность консервативной терапии'],
-    steps: ['Оценка уретры и инфекции', 'Перинеальный/паховый доступ', 'Установка манжеты', 'Размещение резервуара и помпы', 'Отсроченная активация устройства'],
+    description:
+      'Золотой хирургический маршрут при тяжёлой стрессовой инконтиненции у мужчин после операций на простате.',
+    indications: [
+      'Тяжёлая стрессовая инконтиненция',
+      'Постпростатэктомическое недержание',
+      'Неэффективность консервативной терапии',
+    ],
+    steps: [
+      'Оценка уретры и инфекции',
+      'Перинеальный/паховый доступ',
+      'Установка манжеты',
+      'Размещение резервуара и помпы',
+      'Отсроченная активация устройства',
+    ],
     duration: '60-120 мин',
     stay: '1-2 дня',
     successRate: '70-90%',
@@ -1000,9 +1496,20 @@ const additionalSurgeries = [
     category: 'reconstructive',
     icon: '◇',
     color: '#45c4ff',
-    description: 'Менее инвазивный вариант для лёгкой и умеренной стрессовой инконтиненции у мужчин.',
-    indications: ['Лёгкая/умеренная стрессовая инконтиненция', 'Отсутствие выраженной лучевой травмы уретры', 'Сохранная функция детрузора'],
-    steps: ['Перинеальный доступ', 'Проведение слинга', 'Регулировка поддержки бульбарной уретры', 'Контроль натяжения', 'Раннее наблюдение мочеиспускания'],
+    description:
+      'Менее инвазивный вариант для лёгкой и умеренной стрессовой инконтиненции у мужчин.',
+    indications: [
+      'Лёгкая/умеренная стрессовая инконтиненция',
+      'Отсутствие выраженной лучевой травмы уретры',
+      'Сохранная функция детрузора',
+    ],
+    steps: [
+      'Перинеальный доступ',
+      'Проведение слинга',
+      'Регулировка поддержки бульбарной уретры',
+      'Контроль натяжения',
+      'Раннее наблюдение мочеиспускания',
+    ],
     duration: '45-90 мин',
     stay: '1-2 дня',
     successRate: '55-80%',
@@ -1016,9 +1523,20 @@ const additionalSurgeries = [
     category: 'reconstructive',
     icon: '◇',
     color: '#45c4ff',
-    description: 'Функциональная хирургия при рефрактерных нарушениях мочеиспускания после тестовой стимуляции.',
-    indications: ['Рефрактерный гиперактивный мочевой пузырь', 'Необструктивная задержка мочи', 'Выраженная ургентность/частота при неэффективности терапии'],
-    steps: ['Тестовая стимуляция S3', 'Оценка дневника и ответа', 'Имплантация электрода', 'Имплантация генератора', 'Программирование и follow-up'],
+    description:
+      'Функциональная хирургия при рефрактерных нарушениях мочеиспускания после тестовой стимуляции.',
+    indications: [
+      'Рефрактерный гиперактивный мочевой пузырь',
+      'Необструктивная задержка мочи',
+      'Выраженная ургентность/частота при неэффективности терапии',
+    ],
+    steps: [
+      'Тестовая стимуляция S3',
+      'Оценка дневника и ответа',
+      'Имплантация электрода',
+      'Имплантация генератора',
+      'Программирование и follow-up',
+    ],
     duration: '45-120 мин',
     stay: 'Амбулаторно / 1 день',
     successRate: '50-80%',
@@ -1032,9 +1550,20 @@ const additionalSurgeries = [
     category: 'endoscopic',
     icon: '◆',
     color: '#63ead5',
-    description: 'Цистоскопическая терапия рефрактерного ГАМП или нейрогенной детрузорной гиперактивности.',
-    indications: ['Рефрактерный ГАМП', 'Нейрогенная детрузорная гиперактивность', 'Неэффективность/непереносимость медикаментов'],
-    steps: ['Исключение ИМП', 'Цистоскопия', 'Множественные инъекции в детрузор', 'Контроль остаточной мочи', 'План повторения при снижении эффекта'],
+    description:
+      'Цистоскопическая терапия рефрактерного ГАМП или нейрогенной детрузорной гиперактивности.',
+    indications: [
+      'Рефрактерный ГАМП',
+      'Нейрогенная детрузорная гиперактивность',
+      'Неэффективность/непереносимость медикаментов',
+    ],
+    steps: [
+      'Исключение ИМП',
+      'Цистоскопия',
+      'Множественные инъекции в детрузор',
+      'Контроль остаточной мочи',
+      'План повторения при снижении эффекта',
+    ],
     duration: '15-40 мин',
     stay: 'Амбулаторно',
     successRate: '60-80%',
@@ -1048,9 +1577,20 @@ const additionalSurgeries = [
     category: 'andrology',
     icon: '◌',
     color: '#f0c96a',
-    description: 'Амбулаторная операция при фимозе, рецидивирующем баланопостите или дерматологических показаниях.',
-    indications: ['Фимоз / парафимоз после стабилизации', 'Рецидивирующий баланопостит', 'Лихен склероз по клинической оценке'],
-    steps: ['Разметка', 'Анестезия', 'Иссечение крайней плоти', 'Гемостаз', 'Косметический шов и повязка'],
+    description:
+      'Амбулаторная операция при фимозе, рецидивирующем баланопостите или дерматологических показаниях.',
+    indications: [
+      'Фимоз / парафимоз после стабилизации',
+      'Рецидивирующий баланопостит',
+      'Лихен склероз по клинической оценке',
+    ],
+    steps: [
+      'Разметка',
+      'Анестезия',
+      'Иссечение крайней плоти',
+      'Гемостаз',
+      'Косметический шов и повязка',
+    ],
     duration: '20-45 мин',
     stay: 'Амбулаторно',
     successRate: '> 95%',
@@ -1065,8 +1605,18 @@ const additionalSurgeries = [
     icon: '◌',
     color: '#f0c96a',
     description: 'Фиксация яичка в мошонке для сохранения функции и профилактики перекрута.',
-    indications: ['Крипторхизм', 'Перекрут яичка после деторсии', 'Высокорисковая мобильность яичка'],
-    steps: ['Паховый/мошоночный доступ', 'Мобилизация семенного канатика', 'Формирование ложа', 'Фиксация яичка', 'Контроль кровоснабжения'],
+    indications: [
+      'Крипторхизм',
+      'Перекрут яичка после деторсии',
+      'Высокорисковая мобильность яичка',
+    ],
+    steps: [
+      'Паховый/мошоночный доступ',
+      'Мобилизация семенного канатика',
+      'Формирование ложа',
+      'Фиксация яичка',
+      'Контроль кровоснабжения',
+    ],
     duration: '45-90 мин',
     stay: 'Амбулаторно / 1 день',
     successRate: '85-95%',
@@ -1081,8 +1631,18 @@ const additionalSurgeries = [
     icon: '◌',
     color: '#f0c96a',
     description: 'Удаление или пластика оболочек яичка при симптомной водянке.',
-    indications: ['Симптомное гидроцеле', 'Увеличение мошонки с дискомфортом', 'Неясная диагностика после УЗИ по показаниям'],
-    steps: ['Мошоночный доступ', 'Выделение влагалищной оболочки', 'Эвакуация жидкости', 'Пликация/иссечение оболочки', 'Гемостаз и поддерживающая повязка'],
+    indications: [
+      'Симптомное гидроцеле',
+      'Увеличение мошонки с дискомфортом',
+      'Неясная диагностика после УЗИ по показаниям',
+    ],
+    steps: [
+      'Мошоночный доступ',
+      'Выделение влагалищной оболочки',
+      'Эвакуация жидкости',
+      'Пликация/иссечение оболочки',
+      'Гемостаз и поддерживающая повязка',
+    ],
     duration: '30-60 мин',
     stay: 'Амбулаторно / 1 день',
     successRate: '85-95%',
@@ -1096,9 +1656,20 @@ const additionalSurgeries = [
     category: 'andrology',
     icon: '◌',
     color: '#f0c96a',
-    description: 'Микрохирургическое или стандартное удаление симптомного сперматоцеле с сохранением придатка по возможности.',
-    indications: ['Боль или выраженный дискомфорт', 'Рост образования', 'Диагностическая неопределённость после УЗИ'],
-    steps: ['Мошоночный доступ', 'Выделение кисты', 'Сохранение придатка и сосудов', 'Удаление образования', 'Гемостаз и поддержка мошонки'],
+    description:
+      'Микрохирургическое или стандартное удаление симптомного сперматоцеле с сохранением придатка по возможности.',
+    indications: [
+      'Боль или выраженный дискомфорт',
+      'Рост образования',
+      'Диагностическая неопределённость после УЗИ',
+    ],
+    steps: [
+      'Мошоночный доступ',
+      'Выделение кисты',
+      'Сохранение придатка и сосудов',
+      'Удаление образования',
+      'Гемостаз и поддержка мошонки',
+    ],
     duration: '30-75 мин',
     stay: 'Амбулаторно',
     successRate: '80-95%',
@@ -1112,9 +1683,20 @@ const additionalSurgeries = [
     category: 'andrology',
     icon: '◆',
     color: '#63ead5',
-    description: 'Фертильная хирургия при необструктивной азооспермии с поиском очагов сперматогенеза.',
-    indications: ['Необструктивная азооспермия', 'План ICSI', 'После гормональной/генетической оценки и консультации пары'],
-    steps: ['Предоперационная фертильная оценка', 'Микрохирургический доступ к яичку', 'Поиск расширенных канальцев', 'Передача материала эмбриологу', 'Гемостаз и ушивание'],
+    description:
+      'Фертильная хирургия при необструктивной азооспермии с поиском очагов сперматогенеза.',
+    indications: [
+      'Необструктивная азооспермия',
+      'План ICSI',
+      'После гормональной/генетической оценки и консультации пары',
+    ],
+    steps: [
+      'Предоперационная фертильная оценка',
+      'Микрохирургический доступ к яичку',
+      'Поиск расширенных канальцев',
+      'Передача материала эмбриологу',
+      'Гемостаз и ушивание',
+    ],
     duration: '90-180 мин',
     stay: 'Амбулаторно / 1 день',
     successRate: '30-60%',
@@ -1128,9 +1710,20 @@ const additionalSurgeries = [
     category: 'andrology',
     icon: '◆',
     color: '#63ead5',
-    description: 'Получение сперматозоидов из придатка/семявыносящего протока для ICSI при обструктивном факторе.',
-    indications: ['Обструктивная азооспермия', 'Вазэктомия в анамнезе', 'CBAVD или поствоспалительная обструкция'],
-    steps: ['Подтверждение OA-паттерна', 'Пункция/микрохирургический доступ', 'Оценка материала эмбриологом', 'Криоконсервация по показаниям', 'План ICSI'],
+    description:
+      'Получение сперматозоидов из придатка/семявыносящего протока для ICSI при обструктивном факторе.',
+    indications: [
+      'Обструктивная азооспермия',
+      'Вазэктомия в анамнезе',
+      'CBAVD или поствоспалительная обструкция',
+    ],
+    steps: [
+      'Подтверждение OA-паттерна',
+      'Пункция/микрохирургический доступ',
+      'Оценка материала эмбриологом',
+      'Криоконсервация по показаниям',
+      'План ICSI',
+    ],
     duration: '20-90 мин',
     stay: 'Амбулаторно',
     successRate: '70-95%',
@@ -1145,8 +1738,18 @@ const additionalSurgeries = [
     icon: '✦',
     color: '#ff8f70',
     description: 'Стандарт первичного хирургического этапа при подозрении на опухоль яичка.',
-    indications: ['Солидная опухоль яичка по УЗИ', 'Онкомаркеры/клиника, подозрительные на герминогенную опухоль', 'Невозможность органосохраняющей тактики'],
-    steps: ['Паховый доступ', 'Контроль семенного канатика', 'Удаление яичка без нарушения оболочек', 'Маркировка материала', 'План стадирования и онкоконсилиума'],
+    indications: [
+      'Солидная опухоль яичка по УЗИ',
+      'Онкомаркеры/клиника, подозрительные на герминогенную опухоль',
+      'Невозможность органосохраняющей тактики',
+    ],
+    steps: [
+      'Паховый доступ',
+      'Контроль семенного канатика',
+      'Удаление яичка без нарушения оболочек',
+      'Маркировка материала',
+      'План стадирования и онкоконсилиума',
+    ],
     duration: '30-60 мин',
     stay: '1 день',
     successRate: 'Онкологический стандарт',
@@ -1161,8 +1764,18 @@ const additionalSurgeries = [
     icon: '✦',
     color: '#ff8f70',
     description: 'Удаление опухоли почки с сохранением паренхимы при локализованном процессе.',
-    indications: ['Опухоль почки T1 по локализации и сложности', 'Единственная почка или риск ХБП', 'Органосохраняющая стратегия по онкоконсилиуму'],
-    steps: ['Планирование по КТ/МРТ', 'Доступ лапароскопический/роботический/открытый', 'Контроль сосудов', 'Энуклеорезекция/резекция', 'Ренорафия и контроль гемостаза'],
+    indications: [
+      'Опухоль почки T1 по локализации и сложности',
+      'Единственная почка или риск ХБП',
+      'Органосохраняющая стратегия по онкоконсилиуму',
+    ],
+    steps: [
+      'Планирование по КТ/МРТ',
+      'Доступ лапароскопический/роботический/открытый',
+      'Контроль сосудов',
+      'Энуклеорезекция/резекция',
+      'Ренорафия и контроль гемостаза',
+    ],
     duration: '120-240 мин',
     stay: '3-7 дней',
     successRate: 'Онкоконтроль высокий при правильном отборе',
@@ -1176,9 +1789,20 @@ const additionalSurgeries = [
     category: 'open-lap',
     icon: '✦',
     color: '#ff8f70',
-    description: 'Удаление почки при онкологическом или разрушительном процессе, когда органосохранение нецелесообразно.',
-    indications: ['Локализованный рак почки, непригодный для резекции', 'Нефункционирующая почка с осложнениями', 'Инфекционно-деструктивный процесс после стабилизации'],
-    steps: ['Стадирование и план доступа', 'Контроль сосудистой ножки', 'Мобилизация почки', 'Удаление препарата', 'Дренирование по показаниям'],
+    description:
+      'Удаление почки при онкологическом или разрушительном процессе, когда органосохранение нецелесообразно.',
+    indications: [
+      'Локализованный рак почки, непригодный для резекции',
+      'Нефункционирующая почка с осложнениями',
+      'Инфекционно-деструктивный процесс после стабилизации',
+    ],
+    steps: [
+      'Стадирование и план доступа',
+      'Контроль сосудистой ножки',
+      'Мобилизация почки',
+      'Удаление препарата',
+      'Дренирование по показаниям',
+    ],
     duration: '90-220 мин',
     stay: '3-7 дней',
     successRate: 'Зависит от стадии и функции контралатеральной почки',
@@ -1192,9 +1816,20 @@ const additionalSurgeries = [
     category: 'non-invasive',
     icon: '◇',
     color: '#45c4ff',
-    description: 'Дренирование почки при обструкции, инфекции или необходимости временного отвода мочи.',
-    indications: ['Обструкция верхних мочевых путей', 'Инфицированная обструкция / уросепсис', 'Подготовка к staged-лечению камней или реконструкции'],
-    steps: ['УЗИ/рентген-навигация', 'Пункция чашечно-лоханочной системы', 'Проводник', 'Установка нефростомического дренажа', 'Контроль положения и оттока'],
+    description:
+      'Дренирование почки при обструкции, инфекции или необходимости временного отвода мочи.',
+    indications: [
+      'Обструкция верхних мочевых путей',
+      'Инфицированная обструкция / уросепсис',
+      'Подготовка к staged-лечению камней или реконструкции',
+    ],
+    steps: [
+      'УЗИ/рентген-навигация',
+      'Пункция чашечно-лоханочной системы',
+      'Проводник',
+      'Установка нефростомического дренажа',
+      'Контроль положения и оттока',
+    ],
     duration: '15-45 мин',
     stay: 'По клинической ситуации',
     successRate: '> 90%',
@@ -1208,9 +1843,20 @@ const additionalSurgeries = [
     category: 'andrology',
     icon: '◆',
     color: '#63ead5',
-    description: 'Корригирующая операция для стабильной деформации при сохранной эректильной функции.',
-    indications: ['Стабильная болезнь Пейрони', 'Искривление, мешающее половому акту', 'Сохранная эрекция без показаний к протезированию'],
-    steps: ['Документация деформации', 'Дегловинг/локальный доступ', 'Искусственная эрекция', 'Пликационные швы', 'Контроль оси и гемостаз'],
+    description:
+      'Корригирующая операция для стабильной деформации при сохранной эректильной функции.',
+    indications: [
+      'Стабильная болезнь Пейрони',
+      'Искривление, мешающее половому акту',
+      'Сохранная эрекция без показаний к протезированию',
+    ],
+    steps: [
+      'Документация деформации',
+      'Дегловинг/локальный доступ',
+      'Искусственная эрекция',
+      'Пликационные швы',
+      'Контроль оси и гемостаз',
+    ],
     duration: '60-120 мин',
     stay: 'Амбулаторно / 1 день',
     successRate: '70-90%',
@@ -1224,9 +1870,20 @@ const additionalSurgeries = [
     category: 'andrology',
     icon: '◆',
     color: '#63ead5',
-    description: 'Коррекция сложной деформации с сохранением длины при тщательно отобранных пациентах.',
-    indications: ['Тяжёлая или комплексная деформация', 'Стабильная стадия', 'Сохранная эректильная функция или план комбинированной тактики'],
-    steps: ['Картирование бляшки и деформации', 'Доступ и нейроваскулярная защита', 'Разрез/иссечение бляшки', 'Фиксация графта', 'Контроль эрекции и оси'],
+    description:
+      'Коррекция сложной деформации с сохранением длины при тщательно отобранных пациентах.',
+    indications: [
+      'Тяжёлая или комплексная деформация',
+      'Стабильная стадия',
+      'Сохранная эректильная функция или план комбинированной тактики',
+    ],
+    steps: [
+      'Картирование бляшки и деформации',
+      'Доступ и нейроваскулярная защита',
+      'Разрез/иссечение бляшки',
+      'Фиксация графта',
+      'Контроль эрекции и оси',
+    ],
     duration: '120-240 мин',
     stay: '1-2 дня',
     successRate: '60-85%',
@@ -1251,8 +1908,11 @@ const SurgeryPage = ({ onNavigate }) => {
     { id: 'andrology', label: 'Андрологические', icon: '⚡' },
   ];
 
-  const filtered = activeCategory === 'all' ? surgeryCatalog : surgeryCatalog.filter(s => s.category === activeCategory);
-  const selected = surgeryCatalog.find(s => s.id === selectedId);
+  const filtered =
+    activeCategory === 'all'
+      ? surgeryCatalog
+      : surgeryCatalog.filter((s) => s.category === activeCategory);
+  const selected = surgeryCatalog.find((s) => s.id === selectedId);
   const heroActions = [
     {
       label: 'Эндоскопические операции',
@@ -1286,7 +1946,10 @@ const SurgeryPage = ({ onNavigate }) => {
         stats={[
           { label: 'Операций', value: String(surgeryCatalog.length) },
           { label: 'Фокус', value: 'Procedure planning' },
-          { label: 'Текущий фильтр', value: categories.find((cat) => cat.id === activeCategory)?.label || 'Все' },
+          {
+            label: 'Текущий фильтр',
+            value: categories.find((cat) => cat.id === activeCategory)?.label || 'Все',
+          },
         ]}
         highlights={[
           'Показания, противопоказания и техника по ключевым операциям',
@@ -1298,7 +1961,7 @@ const SurgeryPage = ({ onNavigate }) => {
 
       {/* Category Tabs */}
       <div className="surgery-tabs" role="tablist" aria-label="Категории операций">
-        {categories.map(cat => (
+        {categories.map((cat) => (
           <button
             key={cat.id}
             className={`surgery-tab ${activeCategory === cat.id ? 'active' : ''}`}
@@ -1321,7 +1984,9 @@ const SurgeryPage = ({ onNavigate }) => {
             onClick={() => setSelectedId(s.id)}
             role="button"
             tabIndex={0}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedId(s.id); }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') setSelectedId(s.id);
+            }}
             aria-pressed={selectedId === s.id}
           >
             <div className="surgery-card-header" style={{ borderTopColor: s.color }}>
@@ -1336,7 +2001,9 @@ const SurgeryPage = ({ onNavigate }) => {
             <div className="surgery-card-stats">
               <div className="surgery-stat">
                 <span className="surgery-stat-label">Успех</span>
-                <span className="surgery-stat-value" style={{ color: s.color }}>{s.results.successRate || s.results.stoneFreeRate || '—'}</span>
+                <span className="surgery-stat-value" style={{ color: s.color }}>
+                  {s.results.successRate || s.results.stoneFreeRate || '—'}
+                </span>
               </div>
               <div className="surgery-stat">
                 <span className="surgery-stat-label">Длительность</span>
@@ -1352,10 +2019,7 @@ const SurgeryPage = ({ onNavigate }) => {
       </div>
 
       {/* Surgery Details Modal */}
-      <SurgeryModal
-        surgery={selected}
-        onClose={() => setSelectedId(null)}
-      />
+      <SurgeryModal surgery={selected} onClose={() => setSelectedId(null)} />
     </section>
   );
 };

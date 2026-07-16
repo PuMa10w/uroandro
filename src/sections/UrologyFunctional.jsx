@@ -2,27 +2,37 @@ import React, { useMemo } from 'react';
 import DiseaseSection from '../components/DiseaseSection';
 import { getSectionDiseasesByIds } from '../data/sectionData';
 
-const UrologyFunctional = ({ favorites, onToggleFavorite, onNavigate, selectedDiseaseId, viewHistory }) => {
-  const data = useMemo(() => getSectionDiseasesByIds([
-    'overactive-bladder',
-    'stress-incontinence',
-    'neurogenic-bladder',
-    'urinary-retention',
-    'interstitial-cystitis',
-    'bph',
-    'seminal-vesicle-disease',
-    'prostatic-cyst',
-    'post-prostatectomy-incontinence',
-    'bladder-neck-obstruction',
-    'bladder-outlet-obstruction',
-    'stress-incontinence-male',
-    'urge-incontinence',
-    'neurogenic-bladder-child',
-    'nocturia',
-    'pollakiuria',
-    'vesicocutaneous-fistula',
-    'urethral-hypersensitivity',
-  ]), []);
+const UrologyFunctional = ({
+  favorites,
+  onToggleFavorite,
+  onNavigate,
+  selectedDiseaseId,
+  viewHistory,
+}) => {
+  const data = useMemo(
+    () =>
+      getSectionDiseasesByIds([
+        'overactive-bladder',
+        'stress-incontinence',
+        'neurogenic-bladder',
+        'urinary-retention',
+        'interstitial-cystitis',
+        'bph',
+        'seminal-vesicle-disease',
+        'prostatic-cyst',
+        'post-prostatectomy-incontinence',
+        'bladder-neck-obstruction',
+        'bladder-outlet-obstruction',
+        'stress-incontinence-male',
+        'urge-incontinence',
+        'neurogenic-bladder-child',
+        'nocturia',
+        'pollakiuria',
+        'vesicocutaneous-fistula',
+        'urethral-hypersensitivity',
+      ]),
+    []
+  );
 
   return (
     <DiseaseSection

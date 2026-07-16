@@ -4,15 +4,33 @@ const baseAnatomyModels = [
     organ: 'Почка и мочеточник',
     title: 'Камень почки / мочеточника',
     subtitle: 'Обструкция, колика, гидронефроз и маршрут до декомпрессии.',
-    diseaseIds: ['urolithiasis', 'kidney-ureter-stones', 'ureteral-stone', 'renal-colic', 'hydronephrosis'],
+    diseaseIds: [
+      'urolithiasis',
+      'kidney-ureter-stones',
+      'ureteral-stone',
+      'renal-colic',
+      'hydronephrosis',
+    ],
     route: { section: 'urology', subsection: 'stones', diseaseId: 'urolithiasis' },
     tone: 'stone',
     performanceBudget: 'lazy-css-3d; interactive fallback under 40 KB',
     fallbackAsset: 'procedural-kidney-ureter-svg',
     hotspots: [
-      { id: 'pelvis', label: 'Лоханка', clinicalMeaning: 'Оценить дилатацию ЧЛС и риск инфицированной обструкции.' },
-      { id: 'ureter', label: 'Мочеточник', clinicalMeaning: 'Локализация камня определяет MET, URS или декомпрессию.' },
-      { id: 'stone', label: 'Конкремент', clinicalMeaning: 'Размер, плотность и симптоматика задают тактику.' },
+      {
+        id: 'pelvis',
+        label: 'Лоханка',
+        clinicalMeaning: 'Оценить дилатацию ЧЛС и риск инфицированной обструкции.',
+      },
+      {
+        id: 'ureter',
+        label: 'Мочеточник',
+        clinicalMeaning: 'Локализация камня определяет MET, URS или декомпрессию.',
+      },
+      {
+        id: 'stone',
+        label: 'Конкремент',
+        clinicalMeaning: 'Размер, плотность и симптоматика задают тактику.',
+      },
     ],
   },
   {
@@ -26,9 +44,21 @@ const baseAnatomyModels = [
     performanceBudget: 'lazy-css-3d; no blocking canvas',
     fallbackAsset: 'procedural-bladder-prostate-svg',
     hotspots: [
-      { id: 'detrusor', label: 'Детрузор', clinicalMeaning: 'Отделить гиперактивность от гипоактивности и обструкции.' },
-      { id: 'neck', label: 'Шейка', clinicalMeaning: 'Ключевая зона динамической и анатомической обструкции.' },
-      { id: 'prostate', label: 'Простата', clinicalMeaning: 'Объём, IPSS, PVR и PSA направляют терапию.' },
+      {
+        id: 'detrusor',
+        label: 'Детрузор',
+        clinicalMeaning: 'Отделить гиперактивность от гипоактивности и обструкции.',
+      },
+      {
+        id: 'neck',
+        label: 'Шейка',
+        clinicalMeaning: 'Ключевая зона динамической и анатомической обструкции.',
+      },
+      {
+        id: 'prostate',
+        label: 'Простата',
+        clinicalMeaning: 'Объём, IPSS, PVR и PSA направляют терапию.',
+      },
     ],
   },
   {
@@ -36,15 +66,33 @@ const baseAnatomyModels = [
     organ: 'Яичко и семенной канатик',
     title: 'Варикоцеле и мужская фертильность',
     subtitle: 'Связь УЗИ, спермограммы, гормонов и решения о коррекции.',
-    diseaseIds: ['varicocele', 'male-infertility', 'oligospermia', 'asthenozoospermia', 'teratozoospermia'],
+    diseaseIds: [
+      'varicocele',
+      'male-infertility',
+      'oligospermia',
+      'asthenozoospermia',
+      'teratozoospermia',
+    ],
     route: { section: 'andrology', subsection: 'fertility', diseaseId: 'varicocele' },
     tone: 'fertility',
     performanceBudget: 'lazy-css-3d; reduced-motion safe',
     fallbackAsset: 'procedural-testis-varicocele-svg',
     hotspots: [
-      { id: 'plexus', label: 'Plexus pampiniformis', clinicalMeaning: 'Клиническое варикоцеле + отклонения спермы могут менять тактику.' },
-      { id: 'testis', label: 'Объём яичка', clinicalMeaning: 'Атрофия и FSH помогают оценить сперматогенез.' },
-      { id: 'duct', label: 'Выносящие пути', clinicalMeaning: 'Важно не спутать сосудистый фактор с обструкцией.' },
+      {
+        id: 'plexus',
+        label: 'Plexus pampiniformis',
+        clinicalMeaning: 'Клиническое варикоцеле + отклонения спермы могут менять тактику.',
+      },
+      {
+        id: 'testis',
+        label: 'Объём яичка',
+        clinicalMeaning: 'Атрофия и FSH помогают оценить сперматогенез.',
+      },
+      {
+        id: 'duct',
+        label: 'Выносящие пути',
+        clinicalMeaning: 'Важно не спутать сосудистый фактор с обструкцией.',
+      },
     ],
   },
   {
@@ -52,15 +100,32 @@ const baseAnatomyModels = [
     organ: 'Половой член и уретра',
     title: 'ЭД, болезнь Пейрони и стриктуры',
     subtitle: 'Сосудистый, фиброзный и реконструктивный контекст в одной модели.',
-    diseaseIds: ['erectile-dysfunction', 'peyronie', 'urethral-stricture', 'postprocedural-urethral-stricture'],
+    diseaseIds: [
+      'erectile-dysfunction',
+      'peyronie',
+      'urethral-stricture',
+      'postprocedural-urethral-stricture',
+    ],
     route: { section: 'andrology', subsection: 'sexual', diseaseId: 'erectile-dysfunction' },
     tone: 'andrology',
     performanceBudget: 'lazy-css-3d; privacy-safe local rendering',
     fallbackAsset: 'procedural-penis-urethra-svg',
     hotspots: [
-      { id: 'corpora', label: 'Кавернозные тела', clinicalMeaning: 'PDE5, сосудистый риск и нейрогенный контекст.' },
-      { id: 'plaque', label: 'Фиброзная бляшка', clinicalMeaning: 'Деформация, боль и стабильность фазы определяют лечение.' },
-      { id: 'urethra', label: 'Уретра', clinicalMeaning: 'Стриктура требует анатомического подтверждения и планирования доступа.' },
+      {
+        id: 'corpora',
+        label: 'Кавернозные тела',
+        clinicalMeaning: 'PDE5, сосудистый риск и нейрогенный контекст.',
+      },
+      {
+        id: 'plaque',
+        label: 'Фиброзная бляшка',
+        clinicalMeaning: 'Деформация, боль и стабильность фазы определяют лечение.',
+      },
+      {
+        id: 'urethra',
+        label: 'Уретра',
+        clinicalMeaning: 'Стриктура требует анатомического подтверждения и планирования доступа.',
+      },
     ],
   },
   {
@@ -68,15 +133,31 @@ const baseAnatomyModels = [
     organ: 'Тазовое дно',
     title: 'Хроническая тазовая боль',
     subtitle: 'Мышечный, урологический и нейромодуляторный маршрут без лишнего шума.',
-    diseaseIds: ['chronic-prostatitis-cpps', 'male-pelvic-floor-dysfunction', 'bladder-pain-syndrome'],
+    diseaseIds: [
+      'chronic-prostatitis-cpps',
+      'male-pelvic-floor-dysfunction',
+      'bladder-pain-syndrome',
+    ],
     route: { section: 'urology', subsection: 'pain', diseaseId: 'chronic-prostatitis-cpps' },
     tone: 'pain',
     performanceBudget: 'lazy-css-3d; low-motion first',
     fallbackAsset: 'procedural-pelvic-floor-svg',
     hotspots: [
-      { id: 'levator', label: 'Levator ani', clinicalMeaning: 'Гипертонус меняет фокус лечения на реабилитацию и боль.' },
-      { id: 'bladder', label: 'Мочевой пузырь', clinicalMeaning: 'Симптомы накопления требуют исключить инфекцию и IC/BPS.' },
-      { id: 'prostate', label: 'Простата', clinicalMeaning: 'Не все боли являются бактериальным простатитом.' },
+      {
+        id: 'levator',
+        label: 'Levator ani',
+        clinicalMeaning: 'Гипертонус меняет фокус лечения на реабилитацию и боль.',
+      },
+      {
+        id: 'bladder',
+        label: 'Мочевой пузырь',
+        clinicalMeaning: 'Симптомы накопления требуют исключить инфекцию и IC/BPS.',
+      },
+      {
+        id: 'prostate',
+        label: 'Простата',
+        clinicalMeaning: 'Не все боли являются бактериальным простатитом.',
+      },
     ],
   },
   {
@@ -90,9 +171,21 @@ const baseAnatomyModels = [
     performanceBudget: 'lazy-css-3d; static fallback for low-power devices',
     fallbackAsset: 'procedural-kidney-tumor-svg',
     hotspots: [
-      { id: 'mass', label: 'Объёмное образование', clinicalMeaning: 'Размер и усиление определяют онкоурологическую тактику.' },
-      { id: 'sinus', label: 'Синус почки', clinicalMeaning: 'Близость к синусу повышает сложность резекции.' },
-      { id: 'vessels', label: 'Сосудистая ножка', clinicalMeaning: 'Важна для планирования операции и рисков.' },
+      {
+        id: 'mass',
+        label: 'Объёмное образование',
+        clinicalMeaning: 'Размер и усиление определяют онкоурологическую тактику.',
+      },
+      {
+        id: 'sinus',
+        label: 'Синус почки',
+        clinicalMeaning: 'Близость к синусу повышает сложность резекции.',
+      },
+      {
+        id: 'vessels',
+        label: 'Сосудистая ножка',
+        clinicalMeaning: 'Важна для планирования операции и рисков.',
+      },
     ],
   },
   {
@@ -106,9 +199,21 @@ const baseAnatomyModels = [
     performanceBudget: 'lazy-css-3d; static fallback before oncology route',
     fallbackAsset: 'procedural-prostate-cancer-svg',
     hotspots: [
-      { id: 'peripheral-zone', label: 'Периферическая зона', clinicalMeaning: 'Связать PI-RADS, таргетную биопсию и локальный риск.' },
-      { id: 'capsule', label: 'Капсула', clinicalMeaning: 'Экстракапсулярное распространение меняет тактику и хирургический план.' },
-      { id: 'nodes', label: 'Лимфоузлы', clinicalMeaning: 'Нужны для стадирования, nomograms и выбора расширенной лимфодиссекции.' },
+      {
+        id: 'peripheral-zone',
+        label: 'Периферическая зона',
+        clinicalMeaning: 'Связать PI-RADS, таргетную биопсию и локальный риск.',
+      },
+      {
+        id: 'capsule',
+        label: 'Капсула',
+        clinicalMeaning: 'Экстракапсулярное распространение меняет тактику и хирургический план.',
+      },
+      {
+        id: 'nodes',
+        label: 'Лимфоузлы',
+        clinicalMeaning: 'Нужны для стадирования, nomograms и выбора расширенной лимфодиссекции.',
+      },
     ],
   },
   {
@@ -122,9 +227,22 @@ const baseAnatomyModels = [
     performanceBudget: 'lazy-css-3d; no blocking WebGL in hematuria workflow',
     fallbackAsset: 'procedural-bladder-tumor-svg',
     hotspots: [
-      { id: 'tumor', label: 'Экзофитный узел', clinicalMeaning: 'Полнота TURBT и мышечный слой в препарате определяют риск недостадирования.' },
-      { id: 'cis', label: 'CIS-поле', clinicalMeaning: 'Плоские очаги требуют отдельной диагностики и инстилляционного маршрута.' },
-      { id: 'trigone', label: 'Треугольник', clinicalMeaning: 'Близость к устьям влияет на технику, риски стента и follow-up.' },
+      {
+        id: 'tumor',
+        label: 'Экзофитный узел',
+        clinicalMeaning:
+          'Полнота TURBT и мышечный слой в препарате определяют риск недостадирования.',
+      },
+      {
+        id: 'cis',
+        label: 'CIS-поле',
+        clinicalMeaning: 'Плоские очаги требуют отдельной диагностики и инстилляционного маршрута.',
+      },
+      {
+        id: 'trigone',
+        label: 'Треугольник',
+        clinicalMeaning: 'Близость к устьям влияет на технику, риски стента и follow-up.',
+      },
     ],
   },
   {
@@ -138,9 +256,22 @@ const baseAnatomyModels = [
     performanceBudget: 'lazy-css-3d; reduced-motion safe',
     fallbackAsset: 'procedural-hydronephrosis-svg',
     hotspots: [
-      { id: 'calyces', label: 'Чашечки', clinicalMeaning: 'Степень дилатации сопоставляется с функцией и симптомами.' },
-      { id: 'upj', label: 'ЛМС', clinicalMeaning: 'Ключевая зона для диуретической ренографии, КТ-урографии и пиелопластики.' },
-      { id: 'vessel', label: 'Crossing vessel', clinicalMeaning: 'Сосудистый конфликт меняет план реконструкции.' },
+      {
+        id: 'calyces',
+        label: 'Чашечки',
+        clinicalMeaning: 'Степень дилатации сопоставляется с функцией и симптомами.',
+      },
+      {
+        id: 'upj',
+        label: 'ЛМС',
+        clinicalMeaning:
+          'Ключевая зона для диуретической ренографии, КТ-урографии и пиелопластики.',
+      },
+      {
+        id: 'vessel',
+        label: 'Crossing vessel',
+        clinicalMeaning: 'Сосудистый конфликт меняет план реконструкции.',
+      },
     ],
   },
   {
@@ -148,15 +279,31 @@ const baseAnatomyModels = [
     organ: 'Уретра',
     title: 'Стриктура уретры: карта сегментов',
     subtitle: 'Meatus, пенильная, бульбарная, мембранозная уретра и выбор реконструкции.',
-    diseaseIds: ['urethral-stricture', 'postprocedural-urethral-stricture', 'pelvic-fracture-urethral-injury'],
+    diseaseIds: [
+      'urethral-stricture',
+      'postprocedural-urethral-stricture',
+      'pelvic-fracture-urethral-injury',
+    ],
     route: { section: 'urology', subsection: 'reconstructive', diseaseId: 'urethral-stricture' },
     tone: 'andrology',
     performanceBudget: 'lazy-css-3d; surgical planning fallback',
     fallbackAsset: 'procedural-urethral-stricture-svg',
     hotspots: [
-      { id: 'meatus', label: 'Meatus', clinicalMeaning: 'Дистальная стриктура требует отдельной оценки кожи и lichen sclerosus.' },
-      { id: 'bulbar', label: 'Бульбарная уретра', clinicalMeaning: 'Короткие и длинные стриктуры имеют разные реконструктивные маршруты.' },
-      { id: 'posterior', label: 'Задняя уретра', clinicalMeaning: 'PFUI и посттравматический контекст требуют staged planning.' },
+      {
+        id: 'meatus',
+        label: 'Meatus',
+        clinicalMeaning: 'Дистальная стриктура требует отдельной оценки кожи и lichen sclerosus.',
+      },
+      {
+        id: 'bulbar',
+        label: 'Бульбарная уретра',
+        clinicalMeaning: 'Короткие и длинные стриктуры имеют разные реконструктивные маршруты.',
+      },
+      {
+        id: 'posterior',
+        label: 'Задняя уретра',
+        clinicalMeaning: 'PFUI и посттравматический контекст требуют staged planning.',
+      },
     ],
   },
   {
@@ -170,9 +317,22 @@ const baseAnatomyModels = [
     performanceBudget: 'lazy-css-3d; emergency static fallback',
     fallbackAsset: 'procedural-urosepsis-source-svg',
     hotspots: [
-      { id: 'obstruction', label: 'Обструкция', clinicalMeaning: 'Инфицированная обструкция требует срочной декомпрессии, а не только антибиотика.' },
-      { id: 'device', label: 'Катетер/стент', clinicalMeaning: 'Device-associated infection требует оценки замены устройства и посева.' },
-      { id: 'icu', label: 'Perfusion', clinicalMeaning: 'MAP, лактат, диурез и source control ведут маршрут интенсивной терапии.' },
+      {
+        id: 'obstruction',
+        label: 'Обструкция',
+        clinicalMeaning:
+          'Инфицированная обструкция требует срочной декомпрессии, а не только антибиотика.',
+      },
+      {
+        id: 'device',
+        label: 'Катетер/стент',
+        clinicalMeaning: 'Device-associated infection требует оценки замены устройства и посева.',
+      },
+      {
+        id: 'icu',
+        label: 'Perfusion',
+        clinicalMeaning: 'MAP, лактат, диурез и source control ведут маршрут интенсивной терапии.',
+      },
     ],
   },
 ];
@@ -189,14 +349,49 @@ export const anatomyModels = baseAnatomyModels.map((model) => ({
 
 export const icdCoverageTargets = [
   { range: 'N20-N23', label: 'Мочекаменная болезнь', priority: 'A', status: 'covered-core' },
-  { range: 'N30-N39', label: 'Инфекции, цистит, пиелонефрит, СНМП', priority: 'A', status: 'covered-core' },
-  { range: 'N40-N42', label: 'Простата: ДГПЖ, простатит, опухолевые маркеры', priority: 'A', status: 'covered-core' },
-  { range: 'N43-N51', label: 'Мужские половые органы, фертильность, сексуальная медицина', priority: 'A', status: 'covered-core' },
+  {
+    range: 'N30-N39',
+    label: 'Инфекции, цистит, пиелонефрит, СНМП',
+    priority: 'A',
+    status: 'covered-core',
+  },
+  {
+    range: 'N40-N42',
+    label: 'Простата: ДГПЖ, простатит, опухолевые маркеры',
+    priority: 'A',
+    status: 'covered-core',
+  },
+  {
+    range: 'N43-N51',
+    label: 'Мужские половые органы, фертильность, сексуальная медицина',
+    priority: 'A',
+    status: 'covered-core',
+  },
   { range: 'C60-C68', label: 'Онкоурология', priority: 'A', status: 'covered-core' },
-  { range: 'Q53-Q64', label: 'Педиатрическая урология и врождённые аномалии', priority: 'B', status: 'covered-core' },
-  { range: 'A54/A56/A60/A63', label: 'STI и урогенитальные инфекции', priority: 'B', status: 'needs-wave-expansion' },
-  { range: 'S37', label: 'Травмы мочеполовых органов', priority: 'B', status: 'needs-wave-expansion' },
-  { range: 'Z30-Z31', label: 'Контрацепция, фертильность, ART-контекст', priority: 'B', status: 'covered-core' },
+  {
+    range: 'Q53-Q64',
+    label: 'Педиатрическая урология и врождённые аномалии',
+    priority: 'B',
+    status: 'covered-core',
+  },
+  {
+    range: 'A54/A56/A60/A63',
+    label: 'STI и урогенитальные инфекции',
+    priority: 'B',
+    status: 'needs-wave-expansion',
+  },
+  {
+    range: 'S37',
+    label: 'Травмы мочеполовых органов',
+    priority: 'B',
+    status: 'needs-wave-expansion',
+  },
+  {
+    range: 'Z30-Z31',
+    label: 'Контрацепция, фертильность, ART-контекст',
+    priority: 'B',
+    status: 'covered-core',
+  },
 ];
 
 export const clinicalAssistantCards = [

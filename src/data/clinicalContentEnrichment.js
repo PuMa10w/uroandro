@@ -56,17 +56,45 @@ export const sourcePackMinimumIds = new Set([
 const sourcePackByDomain = {
   urology: [
     { body: 'EAU', title: 'EAU Guidelines', url: 'https://uroweb.org/guidelines' },
-    { body: 'AUA', title: 'AUA Guidelines & Quality', url: 'https://www.auanet.org/guidelines-and-quality' },
-    { body: 'Минздрав РФ', title: 'Рубрикатор клинических рекомендаций', url: 'https://cr.minzdrav.gov.ru/' },
+    {
+      body: 'AUA',
+      title: 'AUA Guidelines & Quality',
+      url: 'https://www.auanet.org/guidelines-and-quality',
+    },
+    {
+      body: 'Минздрав РФ',
+      title: 'Рубрикатор клинических рекомендаций',
+      url: 'https://cr.minzdrav.gov.ru/',
+    },
   ],
   andrology: [
-    { body: 'EAU', title: 'EAU Sexual and Reproductive Health Guidelines', url: 'https://uroweb.org/guidelines' },
-    { body: 'AUA', title: 'AUA Guidelines & Quality', url: 'https://www.auanet.org/guidelines-and-quality' },
-    { body: 'CUA/USANZ', title: 'Regional urology guideline portals', url: 'https://www.cua.org/guidelines' },
+    {
+      body: 'EAU',
+      title: 'EAU Sexual and Reproductive Health Guidelines',
+      url: 'https://uroweb.org/guidelines',
+    },
+    {
+      body: 'AUA',
+      title: 'AUA Guidelines & Quality',
+      url: 'https://www.auanet.org/guidelines-and-quality',
+    },
+    {
+      body: 'CUA/USANZ',
+      title: 'Regional urology guideline portals',
+      url: 'https://www.cua.org/guidelines',
+    },
   ],
   pediatric: [
-    { body: 'EAU/ESPU', title: 'Paediatric Urology Guidelines', url: 'https://uroweb.org/guidelines' },
-    { body: 'Минздрав РФ', title: 'Рубрикатор клинических рекомендаций', url: 'https://cr.minzdrav.gov.ru/' },
+    {
+      body: 'EAU/ESPU',
+      title: 'Paediatric Urology Guidelines',
+      url: 'https://uroweb.org/guidelines',
+    },
+    {
+      body: 'Минздрав РФ',
+      title: 'Рубрикатор клинических рекомендаций',
+      url: 'https://cr.minzdrav.gov.ru/',
+    },
   ],
 };
 

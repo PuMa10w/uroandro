@@ -19,11 +19,15 @@ export function getFavoriteDescription(disease) {
 }
 
 export function getFavoriteTags(disease) {
-  return Array.isArray(disease?.tags) && disease.tags.length > 0 ? disease.tags : DEFAULT_FAVORITE_TAGS;
+  return Array.isArray(disease?.tags) && disease.tags.length > 0
+    ? disease.tags
+    : DEFAULT_FAVORITE_TAGS;
 }
 
 export function getHeaderTags(disease) {
-  return Array.isArray(disease?.tags) && disease.tags.length > 0 ? disease.tags : DEFAULT_HEADER_TAGS;
+  return Array.isArray(disease?.tags) && disease.tags.length > 0
+    ? disease.tags
+    : DEFAULT_HEADER_TAGS;
 }
 
 export const cardMetadataDefaults = {

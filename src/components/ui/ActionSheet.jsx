@@ -28,13 +28,13 @@ export default function ActionSheet({ isOpen, onClose, title, actions, cancelLab
   return (
     <div className="fixed inset-0 z-[600] flex items-end justify-center" onClick={onClose}>
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" aria-hidden="true" />
-      
+
       <div
         className="relative w-full bg-bg-card rounded-t-2xl safe-area-bottom"
-        style={{ 
+        style={{
           paddingBottom: `${Math.max(12, insets.bottom + 12)}px`,
           maxWidth: '500px',
-          margin: '0 auto'
+          margin: '0 auto',
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -43,7 +43,7 @@ export default function ActionSheet({ isOpen, onClose, title, actions, cancelLab
             <h3 className="text-center text-text-primary font-semibold text-base">{title}</h3>
           </div>
         )}
-        
+
         <div className="py-2">
           {actions.map((action) => (
             <button
@@ -60,7 +60,7 @@ export default function ActionSheet({ isOpen, onClose, title, actions, cancelLab
             </button>
           ))}
         </div>
-        
+
         <div className="pt-2 border-t border-border mt-2">
           <button
             onClick={onClose}

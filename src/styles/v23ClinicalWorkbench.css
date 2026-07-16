@@ -43,7 +43,11 @@ body.light-mode {
 body,
 .App {
   background:
-    radial-gradient(circle at 10% 0%, color-mix(in srgb, var(--v23-accent) 10%, transparent), transparent 28%),
+    radial-gradient(
+      circle at 10% 0%,
+      color-mix(in srgb, var(--v23-accent) 10%, transparent),
+      transparent 28%
+    ),
     linear-gradient(180deg, var(--v23-bg), color-mix(in srgb, var(--v23-bg) 88%, black));
   color: var(--v23-text);
 }
@@ -149,8 +153,11 @@ textarea:focus-visible,
     max-width: calc(100vw - 1.44rem);
     transform: none !important;
     border: 1px solid var(--v23-border);
-    background:
-      linear-gradient(180deg, color-mix(in srgb, var(--v23-bg-elevated) 94%, transparent), color-mix(in srgb, var(--v23-bg) 94%, transparent));
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--v23-bg-elevated) 94%, transparent),
+      color-mix(in srgb, var(--v23-bg) 94%, transparent)
+    );
     backdrop-filter: blur(22px) saturate(1.18);
     -webkit-backdrop-filter: blur(22px) saturate(1.18);
     box-shadow: var(--v23-shadow-soft);
@@ -215,7 +222,11 @@ textarea:focus-visible,
   .App[data-v23-workbench='true'] .clinical-os-strip {
     border-radius: var(--v23-radius-lg);
     background:
-      radial-gradient(circle at 0 0, color-mix(in srgb, var(--v23-accent) 8%, transparent), transparent 34%),
+      radial-gradient(
+        circle at 0 0,
+        color-mix(in srgb, var(--v23-accent) 8%, transparent),
+        transparent 34%
+      ),
       var(--v23-surface);
   }
 
@@ -317,10 +328,18 @@ textarea:focus-visible,
     -webkit-overflow-scrolling: touch !important;
     overscroll-behavior: contain !important;
     scroll-padding-top: calc(var(--v23-tabs-total) + 0.75rem) !important;
-    scroll-padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--v23-modal-quickbar-height) + 1.6rem) !important;
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--v23-modal-quickbar-height) + 2rem) !important;
+    scroll-padding-bottom: calc(
+      env(safe-area-inset-bottom, 0px) + var(--v23-modal-quickbar-height) + 1.6rem
+    ) !important;
+    padding-bottom: calc(
+      env(safe-area-inset-bottom, 0px) + var(--v23-modal-quickbar-height) + 2rem
+    ) !important;
     background:
-      radial-gradient(circle at top left, color-mix(in srgb, var(--v23-accent) 11%, transparent), transparent 34%),
+      radial-gradient(
+        circle at top left,
+        color-mix(in srgb, var(--v23-accent) 11%, transparent),
+        transparent 34%
+      ),
       linear-gradient(180deg, color-mix(in srgb, var(--v23-bg) 96%, black), var(--v23-bg)) !important;
   }
 
@@ -331,7 +350,9 @@ textarea:focus-visible,
   }
 
   body.modal-open .modal-header {
-    padding-top: calc(env(safe-area-inset-top, 0px) + var(--v23-modal-tabs-height) + 0.8rem) !important;
+    padding-top: calc(
+      env(safe-area-inset-top, 0px) + var(--v23-modal-tabs-height) + 0.8rem
+    ) !important;
     padding-bottom: 0.75rem !important;
     min-height: 0 !important;
   }
@@ -349,16 +370,22 @@ textarea:focus-visible,
     padding: 0.42rem 0 0.38rem !important;
     border-top: 1px solid var(--v23-border) !important;
     border-bottom: 1px solid var(--v23-border) !important;
-    background:
-      linear-gradient(180deg, color-mix(in srgb, var(--v23-bg-elevated) 98%, transparent), color-mix(in srgb, var(--v23-bg) 95%, transparent)) !important;
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--v23-bg-elevated) 98%, transparent),
+      color-mix(in srgb, var(--v23-bg) 95%, transparent)
+    ) !important;
     box-shadow: 0 16px 38px rgba(0, 0, 0, 0.34) !important;
     backdrop-filter: blur(22px) saturate(1.2) !important;
     -webkit-backdrop-filter: blur(22px) saturate(1.2) !important;
   }
 
   body.light-mode.modal-open .tabs-shell {
-    background:
-      linear-gradient(180deg, rgba(255, 252, 246, 0.99), rgba(246, 250, 253, 0.97)) !important;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 252, 246, 0.99),
+      rgba(246, 250, 253, 0.97)
+    ) !important;
     box-shadow: 0 16px 32px rgba(38, 70, 83, 0.12) !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -373,7 +400,8 @@ textarea:focus-visible,
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
-    padding: 0 max(3.8rem, env(safe-area-inset-right, 0px) + 1rem) 0 max(0.82rem, env(safe-area-inset-left, 0px) + 0.82rem) !important;
+    padding: 0 max(3.8rem, env(safe-area-inset-right, 0px) + 1rem) 0
+      max(0.82rem, env(safe-area-inset-left, 0px) + 0.82rem) !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch !important;
@@ -398,14 +426,18 @@ textarea:focus-visible,
 
   body.modal-open .modal-body {
     padding-top: 0 !important;
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--v23-modal-quickbar-height) + 2.2rem) !important;
+    padding-bottom: calc(
+      env(safe-area-inset-bottom, 0px) + var(--v23-modal-quickbar-height) + 2.2rem
+    ) !important;
   }
 
   body.modal-open .modal-tabpanel,
   body.modal-open .modal-tabpanel > .content-block {
     max-width: 100% !important;
     min-width: 0 !important;
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--v23-modal-quickbar-height) + 2.4rem) !important;
+    padding-bottom: calc(
+      env(safe-area-inset-bottom, 0px) + var(--v23-modal-quickbar-height) + 2.4rem
+    ) !important;
   }
 
   body.modal-open .modal-mobile-quickbar,
@@ -451,7 +483,9 @@ textarea:focus-visible,
   }
 
   body.modal-open .modal-header {
-    padding-top: calc(env(safe-area-inset-top, 0px) + var(--v23-modal-tabs-height) + 0.34rem) !important;
+    padding-top: calc(
+      env(safe-area-inset-top, 0px) + var(--v23-modal-tabs-height) + 0.34rem
+    ) !important;
     padding-bottom: 0.42rem !important;
   }
 

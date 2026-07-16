@@ -25,11 +25,7 @@ const LazyImage = ({ src, alt, placeholder = '🖼️', className, ...props }) =
 
   return (
     <div ref={imgRef} className={`lazy-image-container ${className || ''}`} {...props}>
-      {!isLoaded && (
-        <div className="lazy-image-placeholder">
-          {placeholder}
-        </div>
-      )}
+      {!isLoaded && <div className="lazy-image-placeholder">{placeholder}</div>}
       {isInView && (
         <img
           src={src}

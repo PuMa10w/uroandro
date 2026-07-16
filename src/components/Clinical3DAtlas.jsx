@@ -1,5 +1,9 @@
 import React, { useMemo, useState } from 'react';
-import { anatomyModels, clinicalAssistantCards, icdCoverageTargets } from '../data/clinicalAtlasData';
+import {
+  anatomyModels,
+  clinicalAssistantCards,
+  icdCoverageTargets,
+} from '../data/clinicalAtlasData';
 import '../styles/servicePages.css';
 
 function ClinicalModelFigure({ model, activeHotspot }) {
@@ -9,7 +13,9 @@ function ClinicalModelFigure({ model, activeHotspot }) {
         <span className="clinical-model-organ organ-primary" />
         <span className="clinical-model-organ organ-secondary" />
         <span className="clinical-model-duct" />
-        <span className={`clinical-model-focus hotspot-${activeHotspot || model.hotspots[0]?.id || 'core'}`} />
+        <span
+          className={`clinical-model-focus hotspot-${activeHotspot || model.hotspots[0]?.id || 'core'}`}
+        />
       </div>
       <div className="clinical-model-caption">
         <span>{model.organ}</span>
@@ -24,7 +30,7 @@ function Clinical3DAtlas({ onNavigate }) {
   const [activeHotspots, setActiveHotspots] = useState({});
   const activeModel = useMemo(
     () => anatomyModels.find((model) => model.modelId === activeModelId) || anatomyModels[0],
-    [activeModelId],
+    [activeModelId]
   );
   const activeHotspot = activeHotspots[activeModel.modelId] || activeModel.hotspots[0]?.id;
 
@@ -56,7 +62,9 @@ function Clinical3DAtlas({ onNavigate }) {
                 <span className="service-hero-stat-label">моделей</span>
               </div>
               <div className="service-hero-stat">
-                <span className="service-hero-stat-value">{anatomyModels.reduce((sum, model) => sum + model.hotspots.length, 0)}</span>
+                <span className="service-hero-stat-value">
+                  {anatomyModels.reduce((sum, model) => sum + model.hotspots.length, 0)}
+                </span>
                 <span className="service-hero-stat-label">hotspots</span>
               </div>
               <div className="service-hero-stat">
@@ -96,12 +104,17 @@ function Clinical3DAtlas({ onNavigate }) {
         </aside>
 
         <article className="clinical-atlas-stage service-card-shell">
-          <div className="atlas-fallback-policy" data-v19-atlas-fallback="true" data-v20-atlas-performance="true">
+          <div
+            className="atlas-fallback-policy"
+            data-v19-atlas-fallback="true"
+            data-v20-atlas-performance="true"
+          >
             <span>Progressive 3D</span>
             <strong>{activeModel.activationPolicy}</strong>
             <p>
-              Fallback: {activeModel.fallbackAsset}. Reduced motion: {activeModel.reducedMotionBehavior}.
-              Модель не блокирует чтение карточки и работает как клиническая навигация по hotspots.
+              Fallback: {activeModel.fallbackAsset}. Reduced motion:{' '}
+              {activeModel.reducedMotionBehavior}. Модель не блокирует чтение карточки и работает
+              как клиническая навигация по hotspots.
             </p>
           </div>
 
@@ -111,7 +124,11 @@ function Clinical3DAtlas({ onNavigate }) {
               <h3>{activeModel.title}</h3>
               <p>{activeModel.subtitle}</p>
             </div>
-            <button type="button" className="service-hero-action atlas-open-route" onClick={() => openModelRoute(activeModel)}>
+            <button
+              type="button"
+              className="service-hero-action atlas-open-route"
+              onClick={() => openModelRoute(activeModel)}
+            >
               <span className="service-hero-action-title">Открыть карточку</span>
               <span className="service-hero-action-meta">нозология + алгоритм</span>
             </button>
@@ -125,7 +142,9 @@ function Clinical3DAtlas({ onNavigate }) {
                 key={hotspot.id}
                 type="button"
                 className={`clinical-hotspot-card ${activeHotspot === hotspot.id ? 'active' : ''}`}
-                onClick={() => setActiveHotspots((prev) => ({ ...prev, [activeModel.modelId]: hotspot.id }))}
+                onClick={() =>
+                  setActiveHotspots((prev) => ({ ...prev, [activeModel.modelId]: hotspot.id }))
+                }
               >
                 <span>{hotspot.label}</span>
                 <p>{hotspot.clinicalMeaning}</p>
@@ -140,7 +159,10 @@ function Clinical3DAtlas({ onNavigate }) {
           <div>
             <span className="service-eyebrow">ICD-10 coverage</span>
             <h3>Паспорт покрытия МКБ</h3>
-            <p>Этот слой фиксирует, какие группы уже закрыты ядром сайта, а какие идут в следующую волну экспертного наполнения.</p>
+            <p>
+              Этот слой фиксирует, какие группы уже закрыты ядром сайта, а какие идут в следующую
+              волну экспертного наполнения.
+            </p>
           </div>
         </div>
         <div className="icd-coverage-grid">
@@ -148,7 +170,9 @@ function Clinical3DAtlas({ onNavigate }) {
             <div key={target.range} className={`icd-coverage-card status-${target.status}`}>
               <span>{target.range}</span>
               <strong>{target.label}</strong>
-              <small>Priority {target.priority} · {target.status}</small>
+              <small>
+                Priority {target.priority} · {target.status}
+              </small>
             </div>
           ))}
         </div>

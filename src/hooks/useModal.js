@@ -54,14 +54,14 @@ export const useMultipleModals = () => {
   const [modals, setModals] = useState({});
 
   const openModal = useCallback((modalId, data = null) => {
-    setModals(prev => ({
+    setModals((prev) => ({
       ...prev,
       [modalId]: { isOpen: true, data },
     }));
   }, []);
 
   const closeModal = useCallback((modalId) => {
-    setModals(prev => ({
+    setModals((prev) => ({
       ...prev,
       [modalId]: { isOpen: false, data: null },
     }));
@@ -71,7 +71,7 @@ export const useMultipleModals = () => {
     setModals({});
   }, []);
 
-  const isAnyOpen = Object.values(modals).some(m => m.isOpen);
+  const isAnyOpen = Object.values(modals).some((m) => m.isOpen);
 
   return { modals, openModal, closeModal, closeAllModals, isAnyOpen };
 };
@@ -79,21 +79,24 @@ export const useMultipleModals = () => {
 export const useModalStack = (maxDepth = 5) => {
   const [stack, setStack] = useState([]);
 
-  const push = useCallback((modalData) => {
-    setStack(prev => {
-      if (prev.length >= maxDepth) {
-        return prev;
-      }
-      return [...prev, modalData];
-    });
-  }, [maxDepth]);
+  const push = useCallback(
+    (modalData) => {
+      setStack((prev) => {
+        if (prev.length >= maxDepth) {
+          return prev;
+        }
+        return [...prev, modalData];
+      });
+    },
+    [maxDepth]
+  );
 
   const pop = useCallback(() => {
-    setStack(prev => prev.slice(0, -1));
+    setStack((prev) => prev.slice(0, -1));
   }, []);
 
   const replace = useCallback((modalData) => {
-    setStack(prev => [...prev.slice(0, -1), modalData]);
+    setStack((prev) => [...prev.slice(0, -1), modalData]);
   }, []);
 
   const clear = useCallback(() => {
@@ -107,7 +110,7 @@ export const useModalStack = (maxDepth = 5) => {
   return { stack, push, pop, replace, clear, current, isOpen, depth };
 };
 
-export default {
+export const modalHooks = {
   useModal,
   useMultipleModals,
   useModalStack,

@@ -88,7 +88,7 @@ function formatTelemetrySummary(snapshot) {
   if (snapshot.topPathways.length) {
     snapshot.topPathways.forEach((item, index) => {
       lines.push(
-        `${index + 1}. ${item.label} | ${item.source} | ${item.retained} | ${item.count} opens | ${item.progressRate}% progressed`,
+        `${index + 1}. ${item.label} | ${item.source} | ${item.retained} | ${item.count} opens | ${item.progressRate}% progressed`
       );
     });
   } else {
@@ -100,7 +100,7 @@ function formatTelemetrySummary(snapshot) {
   if (snapshot.topRecommendations.length) {
     snapshot.topRecommendations.forEach((item, index) => {
       lines.push(
-        `${index + 1}. ${item.label} | ${item.source} | ${item.retained} | ${item.recommendations} recommendations | ${item.modalRate}% modal conversion`,
+        `${index + 1}. ${item.label} | ${item.source} | ${item.retained} | ${item.recommendations} recommendations | ${item.modalRate}% modal conversion`
       );
     });
   } else {
@@ -112,7 +112,7 @@ function formatTelemetrySummary(snapshot) {
   if (snapshot.weakestDropoffs.length) {
     snapshot.weakestDropoffs.forEach((item, index) => {
       lines.push(
-        `${index + 1}. ${item.label} | ${item.source} | ${item.retained} | ${item.count} entries | ${item.dropoffRate}% dropoff`,
+        `${index + 1}. ${item.label} | ${item.source} | ${item.retained} | ${item.count} entries | ${item.dropoffRate}% dropoff`
       );
     });
   } else {
@@ -130,7 +130,7 @@ function buildTelemetryExport(snapshot, exportContext = {}) {
       context: exportContext,
     },
     null,
-    2,
+    2
   );
 }
 
@@ -144,7 +144,8 @@ function compareTelemetryExports(baseExport, compareExport) {
 
   return {
     totalEventsDelta: (compareSnapshot.totalEvents || 0) - (baseSnapshot.totalEvents || 0),
-    sectionPathwayDelta: (compareSnapshot.sectionPathwayEvents || 0) - (baseSnapshot.sectionPathwayEvents || 0),
+    sectionPathwayDelta:
+      (compareSnapshot.sectionPathwayEvents || 0) - (baseSnapshot.sectionPathwayEvents || 0),
     modalOpenDelta: (compareSnapshot.modalOpenEvents || 0) - (baseSnapshot.modalOpenEvents || 0),
     topPathwayShift: {
       base: baseSnapshot.topPathways?.[0]?.label || 'None',
@@ -160,11 +161,11 @@ function compareTelemetryExports(baseExport, compareExport) {
     },
     retentionHistoryDelta: compareHistory.length - baseHistory.length,
     favoritesDelta:
-      ((compareContext?.retention?.favoritesCount) || 0)
-      - ((baseContext?.retention?.favoritesCount) || 0),
+      (compareContext?.retention?.favoritesCount || 0) -
+      (baseContext?.retention?.favoritesCount || 0),
     weakestDropoffDelta:
-      ((compareSnapshot.weakestDropoffs?.[0]?.dropoffRate) || 0)
-      - ((baseSnapshot.weakestDropoffs?.[0]?.dropoffRate) || 0),
+      (compareSnapshot.weakestDropoffs?.[0]?.dropoffRate || 0) -
+      (baseSnapshot.weakestDropoffs?.[0]?.dropoffRate || 0),
     activeSectionShift: {
       base: baseContext?.appState?.activeSection || 'unknown',
       compare: compareContext?.appState?.activeSection || 'unknown',
@@ -178,20 +179,32 @@ function getCompareVerdict(compareSummary) {
   }
 
   const score =
-    (compareSummary.modalOpenDelta || 0) * 2
-    + (compareSummary.sectionPathwayDelta || 0)
-    - Math.max(0, -(compareSummary.totalEventsDelta || 0))
-    - Math.max(0, compareSummary.weakestDropoffDelta || 0);
+    (compareSummary.modalOpenDelta || 0) * 2 +
+    (compareSummary.sectionPathwayDelta || 0) -
+    Math.max(0, -(compareSummary.totalEventsDelta || 0)) -
+    Math.max(0, compareSummary.weakestDropoffDelta || 0);
 
   if (score >= 2) {
-    return { status: 'improved', label: 'Improved', reason: 'Higher downstream conversion with acceptable pathway quality.' };
+    return {
+      status: 'improved',
+      label: 'Improved',
+      reason: 'Higher downstream conversion with acceptable pathway quality.',
+    };
   }
 
   if (score <= -2) {
-    return { status: 'regressed', label: 'Regressed', reason: 'Weaker downstream conversion or more dropoff than the baseline.' };
+    return {
+      status: 'regressed',
+      label: 'Regressed',
+      reason: 'Weaker downstream conversion or more dropoff than the baseline.',
+    };
   }
 
-  return { status: 'neutral', label: 'Neutral', reason: 'Mixed movement across conversion and dropoff signals.' };
+  return {
+    status: 'neutral',
+    label: 'Neutral',
+    reason: 'Mixed movement across conversion and dropoff signals.',
+  };
 }
 
 function renderPathwayItems(items = [], metricLabel) {
@@ -202,9 +215,14 @@ function renderPathwayItems(items = [], metricLabel) {
   return (
     <ul style={panelStyles.list}>
       {items.map((item) => (
-        <li key={`${item.label}-${item.source}-${item.step || metricLabel}`} style={panelStyles.item}>
+        <li
+          key={`${item.label}-${item.source}-${item.step || metricLabel}`}
+          style={panelStyles.item}
+        >
           <strong>{item.label}</strong>
-          <div>{item.source} · {item.retained}</div>
+          <div>
+            {item.source} · {item.retained}
+          </div>
           <div>
             {metricLabel === 'pathways'
               ? `${item.count} opens · ${item.progressRate}% progressed`
@@ -261,6 +279,10 @@ const DebugPanel = ({
     if (!showTelemetry) {
       return null;
     }
+
+    // telemetryVersion используется как счётчик инвалидации: растёт по
+    // событию 'uro-telemetry-update', принуждая useMemo пересчитаться.
+    void telemetryVersion;
 
     return getTelemetrySnapshot();
   }, [showTelemetry, telemetryVersion]);
@@ -381,8 +403,12 @@ const DebugPanel = ({
                     {telemetrySnapshot.weakestDropoffs.map((item) => (
                       <li key={`${item.label}-${item.source}-dropoff`} style={panelStyles.item}>
                         <strong>{item.label}</strong>
-                        <div>{item.source} · {item.retained}</div>
-                        <div>{item.count} entries · {item.dropoffRate}% dropoff</div>
+                        <div>
+                          {item.source} · {item.retained}
+                        </div>
+                        <div>
+                          {item.count} entries · {item.dropoffRate}% dropoff
+                        </div>
                       </li>
                     ))}
                   </ul>
@@ -432,16 +458,40 @@ const DebugPanel = ({
                   </div>
                   <div style={{ marginTop: '6px', opacity: 0.86 }}>{compareVerdict.reason}</div>
                   <ul style={panelStyles.list}>
-                    <li style={panelStyles.item}>Events delta: {compareSummary.totalEventsDelta}</li>
-                    <li style={panelStyles.item}>Section pathway delta: {compareSummary.sectionPathwayDelta}</li>
-                    <li style={panelStyles.item}>Modal open delta: {compareSummary.modalOpenDelta}</li>
-                    <li style={panelStyles.item}>Weakest dropoff delta: {compareSummary.weakestDropoffDelta}</li>
-                    <li style={panelStyles.item}>Top pathway: {compareSummary.topPathwayShift.base} {'->'} {compareSummary.topPathwayShift.compare}</li>
-                    <li style={panelStyles.item}>Top recommendation: {compareSummary.topRecommendationShift.base} {'->'} {compareSummary.topRecommendationShift.compare}</li>
-                    <li style={panelStyles.item}>Weakest dropoff: {compareSummary.weakestDropoffShift.base} {'->'} {compareSummary.weakestDropoffShift.compare}</li>
-                    <li style={panelStyles.item}>View history delta: {compareSummary.retentionHistoryDelta}</li>
-                    <li style={panelStyles.item}>Favorites delta: {compareSummary.favoritesDelta}</li>
-                    <li style={panelStyles.item}>Active section: {compareSummary.activeSectionShift.base} {'->'} {compareSummary.activeSectionShift.compare}</li>
+                    <li style={panelStyles.item}>
+                      Events delta: {compareSummary.totalEventsDelta}
+                    </li>
+                    <li style={panelStyles.item}>
+                      Section pathway delta: {compareSummary.sectionPathwayDelta}
+                    </li>
+                    <li style={panelStyles.item}>
+                      Modal open delta: {compareSummary.modalOpenDelta}
+                    </li>
+                    <li style={panelStyles.item}>
+                      Weakest dropoff delta: {compareSummary.weakestDropoffDelta}
+                    </li>
+                    <li style={panelStyles.item}>
+                      Top pathway: {compareSummary.topPathwayShift.base} {'->'}{' '}
+                      {compareSummary.topPathwayShift.compare}
+                    </li>
+                    <li style={panelStyles.item}>
+                      Top recommendation: {compareSummary.topRecommendationShift.base} {'->'}{' '}
+                      {compareSummary.topRecommendationShift.compare}
+                    </li>
+                    <li style={panelStyles.item}>
+                      Weakest dropoff: {compareSummary.weakestDropoffShift.base} {'->'}{' '}
+                      {compareSummary.weakestDropoffShift.compare}
+                    </li>
+                    <li style={panelStyles.item}>
+                      View history delta: {compareSummary.retentionHistoryDelta}
+                    </li>
+                    <li style={panelStyles.item}>
+                      Favorites delta: {compareSummary.favoritesDelta}
+                    </li>
+                    <li style={panelStyles.item}>
+                      Active section: {compareSummary.activeSectionShift.base} {'->'}{' '}
+                      {compareSummary.activeSectionShift.compare}
+                    </li>
                   </ul>
                 </div>
               )}
@@ -463,9 +513,7 @@ const DebugPanel = ({
           {showState && initialState && (
             <div style={panelStyles.section}>
               <strong>State</strong>
-              <pre style={panelStyles.pre}>
-                {JSON.stringify(initialState, null, 2)}
-              </pre>
+              <pre style={panelStyles.pre}>{JSON.stringify(initialState, null, 2)}</pre>
             </div>
           )}
 
@@ -537,10 +585,12 @@ DebugPanel.propTypes = {
   showTelemetry: PropTypes.bool,
   initialState: PropTypes.object,
   exportContext: PropTypes.object,
-  routes: PropTypes.arrayOf(PropTypes.shape({
-    path: PropTypes.string,
-    component: PropTypes.string,
-  })),
+  routes: PropTypes.arrayOf(
+    PropTypes.shape({
+      path: PropTypes.string,
+      component: PropTypes.string,
+    })
+  ),
 };
 
 DebugPanel.defaultProps = {

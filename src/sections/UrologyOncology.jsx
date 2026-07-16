@@ -12,10 +12,16 @@ const PRIORITY_ONCOLOGY_IDS = [
   'elevated-psa',
 ];
 
-const UrologyOncology = ({ favorites, onToggleFavorite, onNavigate, selectedDiseaseId, viewHistory }) => {
+const UrologyOncology = ({
+  favorites,
+  onToggleFavorite,
+  onNavigate,
+  selectedDiseaseId,
+  viewHistory,
+}) => {
   const data = useMemo(
     () => getSectionDiseasesBySubsection('urology', 'oncology', PRIORITY_ONCOLOGY_IDS),
-    [],
+    []
   );
 
   return (

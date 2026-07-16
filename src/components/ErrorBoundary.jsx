@@ -37,9 +37,11 @@ class ErrorBoundary extends React.Component {
   isChunkLoadError = (error) => {
     if (!error) return false;
     const message = String(error.message || '');
-    return message.includes('ChunkLoadError')
-      || message.includes('Loading chunk')
-      || message.includes('Failed to fetch dynamically imported module');
+    return (
+      message.includes('ChunkLoadError') ||
+      message.includes('Loading chunk') ||
+      message.includes('Failed to fetch dynamically imported module')
+    );
   };
 
   recoverFromChunkError = async () => {

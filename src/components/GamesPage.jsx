@@ -49,16 +49,33 @@ const duelCases = [
   {
     id: 'renal-colic',
     title: 'Боль в пояснице и гематурия',
-    prompt: 'Мужчина 42 лет. Острая боль в пояснице с иррадиацией в пах, микрогематурия, температуры нет.',
+    prompt:
+      'Мужчина 42 лет. Острая боль в пояснице с иррадиацией в пах, микрогематурия, температуры нет.',
     symptoms: ['Коликообразная боль', 'Иррадиация в пах', 'Микрогематурия'],
     investigations: [
-      { id: 'ct', label: 'КТ без контраста', useful: true, text: 'Конкремент 6 мм в дистальном отделе мочеточника.' },
-      { id: 'urine', label: 'Общий анализ мочи', useful: true, text: 'Эритроцитурия без выраженной лейкоцитурии.' },
-      { id: 'cystoscopy', label: 'Цистоскопия', useful: false, text: 'Инвазивно и не относится к исследованиям первой линии.' },
+      {
+        id: 'ct',
+        label: 'КТ без контраста',
+        useful: true,
+        text: 'Конкремент 6 мм в дистальном отделе мочеточника.',
+      },
+      {
+        id: 'urine',
+        label: 'Общий анализ мочи',
+        useful: true,
+        text: 'Эритроцитурия без выраженной лейкоцитурии.',
+      },
+      {
+        id: 'cystoscopy',
+        label: 'Цистоскопия',
+        useful: false,
+        text: 'Инвазивно и не относится к исследованиям первой линии.',
+      },
     ],
     diagnoses: ['Почечная колика', 'Острый пиелонефрит', 'Рак мочевого пузыря'],
     correct: 'Почечная колика',
-    rationale: 'Картина типична для уретеролитиаза: колика, гематурия и отсутствие системной воспалительной реакции.',
+    rationale:
+      'Картина типична для уретеролитиаза: колика, гематурия и отсутствие системной воспалительной реакции.',
   },
   {
     id: 'pyelonephritis',
@@ -68,21 +85,38 @@ const duelCases = [
     investigations: [
       { id: 'culture', label: 'Посев мочи', useful: true, text: 'Рост E. coli более 10^5 КОЕ/мл.' },
       { id: 'cbc', label: 'Общий анализ крови', useful: true, text: 'Лейкоцитоз и повышение CRP.' },
-      { id: 'psa', label: 'ПСА', useful: false, text: 'Не даёт диагностической ценности в этом сценарии.' },
+      {
+        id: 'psa',
+        label: 'ПСА',
+        useful: false,
+        text: 'Не даёт диагностической ценности в этом сценарии.',
+      },
     ],
     diagnoses: ['Острый пиелонефрит', 'Интерстициальный цистит', 'Почечная колика'],
     correct: 'Острый пиелонефрит',
-    rationale: 'Системная воспалительная реакция и локальная симптоматика делают пиелонефрит наиболее вероятным диагнозом.',
+    rationale:
+      'Системная воспалительная реакция и локальная симптоматика делают пиелонефрит наиболее вероятным диагнозом.',
   },
   {
     id: 'bph',
     title: 'Симптомы нижних мочевых путей',
-    prompt: 'Мужчина 68 лет. Никтурия, слабая струя, затруднённое начало мочеиспускания, без боли и температуры.',
+    prompt:
+      'Мужчина 68 лет. Никтурия, слабая струя, затруднённое начало мочеиспускания, без боли и температуры.',
     symptoms: ['Никтурия', 'Слабая струя', 'Затруднённое мочеиспускание'],
     investigations: [
       { id: 'ipss', label: 'IPSS', useful: true, text: 'Высокий балл симптомов, выраженные СНМП.' },
-      { id: 'ultrasound', label: 'УЗИ с остаточной мочой', useful: true, text: 'Увеличение простаты, остаточная моча 90 мл.' },
-      { id: 'biopsy', label: 'Биопсия почки', useful: false, text: 'Не соответствует клинической задаче первой линии.' },
+      {
+        id: 'ultrasound',
+        label: 'УЗИ с остаточной мочой',
+        useful: true,
+        text: 'Увеличение простаты, остаточная моча 90 мл.',
+      },
+      {
+        id: 'biopsy',
+        label: 'Биопсия почки',
+        useful: false,
+        text: 'Не соответствует клинической задаче первой линии.',
+      },
     ],
     diagnoses: ['ДГПЖ', 'Острый простатит', 'Рак почки'],
     correct: 'ДГПЖ',
@@ -109,7 +143,8 @@ const stoneLevels = [
     density: 62,
     tissueLimit: 72,
     bestTools: ['laser'],
-    educational: 'Оксалатные камни плотнее, поэтому растут требования к мощности и контролю перегрева.',
+    educational:
+      'Оксалатные камни плотнее, поэтому растут требования к мощности и контролю перегрева.',
   },
   {
     id: 'staghorn',
@@ -119,7 +154,8 @@ const stoneLevels = [
     density: 86,
     tissueLimit: 68,
     bestTools: ['laser', 'lithotripter'],
-    educational: 'Коралловидные и инфекционные камни требуют дальнейшей профилактики рецидива и контроля инфекции.',
+    educational:
+      'Коралловидные и инфекционные камни требуют дальнейшей профилактики рецидива и контроля инфекции.',
   },
 ];
 
@@ -142,22 +178,52 @@ const defenderWaves = [
     title: 'Прогрессирующая гиперплазия',
     enemies: 'Давление ДГПЖ / симптоматическая обструкция',
     hp: 88,
-    educational: 'При хроническом процессе важна комбинация symptomatic relief и долгосрочного контроля.',
+    educational:
+      'При хроническом процессе важна комбинация symptomatic relief и долгосрочного контроля.',
   },
   {
     id: 'tumor-wave',
     title: 'Опухолевое давление T3',
     enemies: 'Locally advanced tumor',
     hp: 108,
-    educational: 'Высокое опухолевое давление требует сочетания контроля симптомов и быстрой диагностики.',
+    educational:
+      'Высокое опухолевое давление требует сочетания контроля симптомов и быстрой диагностики.',
   },
 ];
 
 const defenderTools = [
-  { id: 'antibiotic', label: 'Антибиотики', damage: 22, reserveCost: 12, recovery: 0, note: 'Сильнее против инфекционной волны.' },
-  { id: 'alpha-blocker', label: 'Альфа-блокаторы', damage: 16, reserveCost: 10, recovery: 4, note: 'Снижают динамическую обструкцию.' },
-  { id: 'immunotherapy', label: 'Иммунотерапия', damage: 18, reserveCost: 14, recovery: 0, note: 'Подходит для опухолевого сценария.' },
-  { id: 'diagnostics', label: 'Диагностика', damage: 10, reserveCost: 8, recovery: 8, note: 'Снижает неопределённость и возвращает контроль.' },
+  {
+    id: 'antibiotic',
+    label: 'Антибиотики',
+    damage: 22,
+    reserveCost: 12,
+    recovery: 0,
+    note: 'Сильнее против инфекционной волны.',
+  },
+  {
+    id: 'alpha-blocker',
+    label: 'Альфа-блокаторы',
+    damage: 16,
+    reserveCost: 10,
+    recovery: 4,
+    note: 'Снижают динамическую обструкцию.',
+  },
+  {
+    id: 'immunotherapy',
+    label: 'Иммунотерапия',
+    damage: 18,
+    reserveCost: 14,
+    recovery: 0,
+    note: 'Подходит для опухолевого сценария.',
+  },
+  {
+    id: 'diagnostics',
+    label: 'Диагностика',
+    damage: 10,
+    reserveCost: 8,
+    recovery: 8,
+    note: 'Снижает неопределённость и возвращает контроль.',
+  },
 ];
 
 const endoStages = [
@@ -209,21 +275,38 @@ const DifficultySwitcher = ({ difficulty, setDifficulty, disabled }) => (
   </div>
 );
 
-const GameStageShell = ({ kicker, title, description, difficulty, setDifficulty, scoreLabel, score, onBack, disabledDifficulty, children }) => (
+const GameStageShell = ({
+  kicker,
+  title,
+  description,
+  difficulty,
+  setDifficulty,
+  scoreLabel,
+  score,
+  onBack,
+  disabledDifficulty,
+  children,
+}) => (
   <div className="game-stage">
     <div className="game-stage-head">
       <div>
         <span className="game-stage-kicker">{kicker}</span>
         <h2>{title}</h2>
         <p>{description}</p>
-        <DifficultySwitcher difficulty={difficulty} setDifficulty={setDifficulty} disabled={disabledDifficulty} />
+        <DifficultySwitcher
+          difficulty={difficulty}
+          setDifficulty={setDifficulty}
+          disabled={disabledDifficulty}
+        />
       </div>
       <div className="game-stage-actions">
         <div className="duel-score-card">
           <span className="duel-score-label">{scoreLabel}</span>
           <strong>{score}</strong>
         </div>
-        <button className="game-stage-back" onClick={onBack}>К хабу игр</button>
+        <button className="game-stage-back" onClick={onBack}>
+          К хабу игр
+        </button>
       </div>
     </div>
     {children}
@@ -287,7 +370,9 @@ const DiagnosisDuelGame = ({ onBack, onRecordScore }) => {
           <p>{currentCase.prompt}</p>
           <div className="duel-chip-group">
             {currentCase.symptoms.map((symptom) => (
-              <span key={symptom} className="duel-chip">{symptom}</span>
+              <span key={symptom} className="duel-chip">
+                {symptom}
+              </span>
             ))}
           </div>
         </div>
@@ -303,7 +388,11 @@ const DiagnosisDuelGame = ({ onBack, onRecordScore }) => {
                   onClick={() => revealInvestigation(investigation)}
                 >
                   <span>{investigation.label}</span>
-                  <small>{revealedSet.has(investigation.id) ? investigation.text : 'Открыть результат исследования'}</small>
+                  <small>
+                    {revealedSet.has(investigation.id)
+                      ? investigation.text
+                      : 'Открыть результат исследования'}
+                  </small>
                 </button>
               ))}
             </div>
@@ -323,7 +412,11 @@ const DiagnosisDuelGame = ({ onBack, onRecordScore }) => {
                 </button>
               ))}
             </div>
-            <button className="duel-submit-btn" onClick={submitDiagnosis} disabled={!selectedDiagnosis || resolved}>
+            <button
+              className="duel-submit-btn"
+              onClick={submitDiagnosis}
+              disabled={!selectedDiagnosis || resolved}
+            >
               Подтвердить диагноз
             </button>
           </div>
@@ -333,14 +426,20 @@ const DiagnosisDuelGame = ({ onBack, onRecordScore }) => {
       {resolved && (
         <div className="duel-result-card">
           <div className="duel-result-topline">
-            <span className={`duel-result-status ${selectedDiagnosis === currentCase.correct ? 'success' : 'danger'}`}>
-              {selectedDiagnosis === currentCase.correct ? 'Диагноз подтверждён' : 'Диагноз неверный'}
+            <span
+              className={`duel-result-status ${selectedDiagnosis === currentCase.correct ? 'success' : 'danger'}`}
+            >
+              {selectedDiagnosis === currentCase.correct
+                ? 'Диагноз подтверждён'
+                : 'Диагноз неверный'}
             </span>
             <strong>Правильный ответ: {currentCase.correct}</strong>
           </div>
           <p>{currentCase.rationale}</p>
           <div className="duel-result-actions">
-            <button className="duel-next-btn" onClick={nextCase}>Следующий кейс</button>
+            <button className="duel-next-btn" onClick={nextCase}>
+              Следующий кейс
+            </button>
           </div>
         </div>
       )}
@@ -438,35 +537,72 @@ const StoneCrusherGame = ({ onBack, onRecordScore }) => {
         <div className="stone-panel stone-panel-level">
           <span className="duel-case-index">Level {levelIndex + 1}</span>
           <h3>{level.title}</h3>
-          <p>{level.composition} · {level.size}</p>
+          <p>
+            {level.composition} · {level.size}
+          </p>
 
           <div className="stone-metrics">
-            <div className="stone-metric"><span>Плотность</span><strong>{level.density}%</strong></div>
-            <div className="stone-metric"><span>Предел тканей</span><strong>{level.tissueLimit}%</strong></div>
-            <div className="stone-metric"><span>Комбо</span><strong>x{combo}</strong></div>
+            <div className="stone-metric">
+              <span>Плотность</span>
+              <strong>{level.density}%</strong>
+            </div>
+            <div className="stone-metric">
+              <span>Предел тканей</span>
+              <strong>{level.tissueLimit}%</strong>
+            </div>
+            <div className="stone-metric">
+              <span>Комбо</span>
+              <strong>x{combo}</strong>
+            </div>
           </div>
 
           <div className="stone-visual-shell">
-            <div className="stone-visual-core" style={{ width: `${Math.max(stoneIntegrity, 16)}%`, opacity: Math.max(stoneIntegrity / 100, 0.25) }} />
+            <div
+              className="stone-visual-core"
+              style={{
+                width: `${Math.max(stoneIntegrity, 16)}%`,
+                opacity: Math.max(stoneIntegrity / 100, 0.25),
+              }}
+            />
             <div className="stone-visual-ring" />
           </div>
 
           <div className="stone-bars">
             <div className="stone-bar-group">
               <span>Целостность камня</span>
-              <div className="stone-bar"><div className="stone-bar-fill stone-bar-fill-gold" style={{ width: `${stoneIntegrity}%` }} /></div>
+              <div className="stone-bar">
+                <div
+                  className="stone-bar-fill stone-bar-fill-gold"
+                  style={{ width: `${stoneIntegrity}%` }}
+                />
+              </div>
             </div>
             <div className="stone-bar-group">
               <span>Перегрев тканей</span>
-              <div className="stone-bar"><div className="stone-bar-fill stone-bar-fill-danger" style={{ width: `${tissueHeat}%` }} /></div>
+              <div className="stone-bar">
+                <div
+                  className="stone-bar-fill stone-bar-fill-danger"
+                  style={{ width: `${tissueHeat}%` }}
+                />
+              </div>
             </div>
             <div className="stone-bar-group">
               <span>Энергия системы</span>
-              <div className="stone-bar"><div className="stone-bar-fill stone-bar-fill-teal" style={{ width: `${energy}%` }} /></div>
+              <div className="stone-bar">
+                <div
+                  className="stone-bar-fill stone-bar-fill-teal"
+                  style={{ width: `${energy}%` }}
+                />
+              </div>
             </div>
             <div className="stone-bar-group">
               <span>Нагрузка на почку</span>
-              <div className="stone-bar"><div className="stone-bar-fill stone-bar-fill-danger" style={{ width: `${renalStress}%` }} /></div>
+              <div className="stone-bar">
+                <div
+                  className="stone-bar-fill stone-bar-fill-danger"
+                  style={{ width: `${renalStress}%` }}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -482,16 +618,26 @@ const StoneCrusherGame = ({ onBack, onRecordScore }) => {
                 disabled={status !== 'idle'}
               >
                 <strong>{item.label}</strong>
-                <small>Мощность {item.power} · Нагрев {item.heat}</small>
+                <small>
+                  Мощность {item.power} · Нагрев {item.heat}
+                </small>
               </button>
             ))}
           </div>
 
           <div className="stone-action-grid">
-            <button className="duel-submit-btn stone-strike-btn" onClick={strike} disabled={status !== 'idle'}>
+            <button
+              className="duel-submit-btn stone-strike-btn"
+              onClick={strike}
+              disabled={status !== 'idle'}
+            >
               Импульс дробления
             </button>
-            <button className="game-stage-back stone-cool-btn" onClick={coolDown} disabled={status !== 'idle'}>
+            <button
+              className="game-stage-back stone-cool-btn"
+              onClick={coolDown}
+              disabled={status !== 'idle'}
+            >
               Охладить и стабилизировать
             </button>
           </div>
@@ -521,8 +667,12 @@ const StoneCrusherGame = ({ onBack, onRecordScore }) => {
           </div>
           <p>{level.educational}</p>
           <div className="stone-result-actions">
-            <button className="game-stage-back stone-cool-btn" onClick={resetLevel}>Повторить уровень</button>
-            <button className="duel-next-btn" onClick={nextLevel}>Следующий кейс</button>
+            <button className="game-stage-back stone-cool-btn" onClick={resetLevel}>
+              Повторить уровень
+            </button>
+            <button className="duel-next-btn" onClick={nextLevel}>
+              Следующий кейс
+            </button>
           </div>
         </div>
       )}
@@ -557,7 +707,10 @@ const ProstateDefenderGame = ({ onBack, onRecordScore }) => {
     const preset = difficultyPresets[difficulty];
     const nextThreat = Math.max(threatHp - Math.round(defense.damage * preset.scoreBoost), 0);
     const nextReserve = Math.max(clinicalReserve - defense.reserveCost - preset.reservePenalty, 0);
-    const nextProstate = Math.max(Math.min(prostateHp - Math.round(8 * preset.riskMultiplier) + defense.recovery, 100), 0);
+    const nextProstate = Math.max(
+      Math.min(prostateHp - Math.round(8 * preset.riskMultiplier) + defense.recovery, 100),
+      0
+    );
     const nextScore = score + defense.damage * 3 + Math.max(nextProstate - 80, 0);
 
     setThreatHp(nextThreat);
@@ -611,15 +764,30 @@ const ProstateDefenderGame = ({ onBack, onRecordScore }) => {
           <div className="stone-bars defender-bars">
             <div className="stone-bar-group">
               <span>Стабильность простаты</span>
-              <div className="stone-bar"><div className="stone-bar-fill stone-bar-fill-teal" style={{ width: `${prostateHp}%` }} /></div>
+              <div className="stone-bar">
+                <div
+                  className="stone-bar-fill stone-bar-fill-teal"
+                  style={{ width: `${prostateHp}%` }}
+                />
+              </div>
             </div>
             <div className="stone-bar-group">
               <span>Давление угрозы</span>
-              <div className="stone-bar"><div className="stone-bar-fill stone-bar-fill-danger" style={{ width: `${(threatHp / wave.hp) * 100}%` }} /></div>
+              <div className="stone-bar">
+                <div
+                  className="stone-bar-fill stone-bar-fill-danger"
+                  style={{ width: `${(threatHp / wave.hp) * 100}%` }}
+                />
+              </div>
             </div>
             <div className="stone-bar-group">
               <span>Клинический резерв</span>
-              <div className="stone-bar"><div className="stone-bar-fill stone-bar-fill-gold" style={{ width: `${clinicalReserve}%` }} /></div>
+              <div className="stone-bar">
+                <div
+                  className="stone-bar-fill stone-bar-fill-gold"
+                  style={{ width: `${clinicalReserve}%` }}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -641,10 +809,18 @@ const ProstateDefenderGame = ({ onBack, onRecordScore }) => {
           </div>
 
           <div className="stone-action-grid">
-            <button className="duel-submit-btn stone-strike-btn" onClick={deployDefense} disabled={status !== 'idle'}>
+            <button
+              className="duel-submit-btn stone-strike-btn"
+              onClick={deployDefense}
+              disabled={status !== 'idle'}
+            >
               Применить тактику
             </button>
-            <button className="game-stage-back stone-cool-btn" onClick={stabilize} disabled={status !== 'idle'}>
+            <button
+              className="game-stage-back stone-cool-btn"
+              onClick={stabilize}
+              disabled={status !== 'idle'}
+            >
               Стабилизировать состояние
             </button>
           </div>
@@ -666,8 +842,15 @@ const ProstateDefenderGame = ({ onBack, onRecordScore }) => {
           </div>
           <p>{wave.educational}</p>
           <div className="stone-result-actions">
-            <button className="game-stage-back stone-cool-btn" onClick={() => setWaveIndex(waveIndex)}>Повторить волну</button>
-            <button className="duel-next-btn" onClick={nextWave}>Следующая волна</button>
+            <button
+              className="game-stage-back stone-cool-btn"
+              onClick={() => setWaveIndex(waveIndex)}
+            >
+              Повторить волну
+            </button>
+            <button className="duel-next-btn" onClick={nextWave}>
+              Следующая волна
+            </button>
           </div>
         </div>
       )}
@@ -703,8 +886,14 @@ const UroEndoSimGame = ({ onBack, onRecordScore }) => {
     const [min, max] = stage.idealRange;
     const withinRange = nextAlignment >= min && nextAlignment <= max;
     const nextProgress = Math.min(progress + (withinRange ? 24 : 12), 100);
-    const nextPrecision = Math.max(precision - (withinRange ? 4 : Math.round(12 * preset.riskMultiplier)), 0);
-    const nextSafety = Math.max(safety - (withinRange ? 3 : Math.round(14 * preset.riskMultiplier)), 0);
+    const nextPrecision = Math.max(
+      precision - (withinRange ? 4 : Math.round(12 * preset.riskMultiplier)),
+      0
+    );
+    const nextSafety = Math.max(
+      safety - (withinRange ? 3 : Math.round(14 * preset.riskMultiplier)),
+      0
+    );
     const nextScore = score + Math.round((withinRange ? 26 : 10) * preset.scoreBoost);
 
     setAlignment(nextAlignment);
@@ -754,25 +943,48 @@ const UroEndoSimGame = ({ onBack, onRecordScore }) => {
         <div className="stone-panel stone-panel-level uro-endo-arena">
           <span className="duel-case-index">Stage {stageIndex + 1}</span>
           <h3>{stage.title}</h3>
-          <p>Оптимальный коридор: {stage.idealRange[0]}-{stage.idealRange[1]}% стабильности движения.</p>
+          <p>
+            Оптимальный коридор: {stage.idealRange[0]}-{stage.idealRange[1]}% стабильности движения.
+          </p>
 
           <div className="endo-track-shell">
-            <div className="endo-track-zone endo-track-zone-optimal" style={{ left: `${stage.idealRange[0]}%`, width: `${stage.idealRange[1] - stage.idealRange[0]}%` }} />
+            <div
+              className="endo-track-zone endo-track-zone-optimal"
+              style={{
+                left: `${stage.idealRange[0]}%`,
+                width: `${stage.idealRange[1] - stage.idealRange[0]}%`,
+              }}
+            />
             <div className="endo-track-cursor" style={{ left: `${alignment}%` }} />
           </div>
 
           <div className="stone-bars">
             <div className="stone-bar-group">
               <span>Прогресс процедуры</span>
-              <div className="stone-bar"><div className="stone-bar-fill stone-bar-fill-gold" style={{ width: `${progress}%` }} /></div>
+              <div className="stone-bar">
+                <div
+                  className="stone-bar-fill stone-bar-fill-gold"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
             </div>
             <div className="stone-bar-group">
               <span>Точность инструмента</span>
-              <div className="stone-bar"><div className="stone-bar-fill stone-bar-fill-teal" style={{ width: `${precision}%` }} /></div>
+              <div className="stone-bar">
+                <div
+                  className="stone-bar-fill stone-bar-fill-teal"
+                  style={{ width: `${precision}%` }}
+                />
+              </div>
             </div>
             <div className="stone-bar-group">
               <span>Безопасность тканей</span>
-              <div className="stone-bar"><div className="stone-bar-fill stone-bar-fill-danger" style={{ width: `${safety}%` }} /></div>
+              <div className="stone-bar">
+                <div
+                  className="stone-bar-fill stone-bar-fill-danger"
+                  style={{ width: `${safety}%` }}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -780,18 +992,34 @@ const UroEndoSimGame = ({ onBack, onRecordScore }) => {
         <div className="stone-panel stone-panel-controls">
           <div className="duel-board-title">Управление эндоскопом</div>
           <div className="endo-controls-grid">
-            <button className="stone-tool-btn" onClick={() => nudge(-12)} disabled={status !== 'idle'}>
+            <button
+              className="stone-tool-btn"
+              onClick={() => nudge(-12)}
+              disabled={status !== 'idle'}
+            >
               <strong>Сместиться влево</strong>
               <small>Мягкая коррекция траектории</small>
             </button>
-            <button className="stone-tool-btn" onClick={() => nudge(12)} disabled={status !== 'idle'}>
+            <button
+              className="stone-tool-btn"
+              onClick={() => nudge(12)}
+              disabled={status !== 'idle'}
+            >
               <strong>Сместиться вправо</strong>
               <small>Мягкая коррекция траектории</small>
             </button>
-            <button className="duel-submit-btn stone-strike-btn" onClick={() => nudge(0)} disabled={status !== 'idle'}>
+            <button
+              className="duel-submit-btn stone-strike-btn"
+              onClick={() => nudge(0)}
+              disabled={status !== 'idle'}
+            >
               Продвинуться по оси
             </button>
-            <button className="game-stage-back stone-cool-btn" onClick={stabilizeScope} disabled={status !== 'idle'}>
+            <button
+              className="game-stage-back stone-cool-btn"
+              onClick={stabilizeScope}
+              disabled={status !== 'idle'}
+            >
               Стабилизировать обзор
             </button>
           </div>
@@ -819,8 +1047,15 @@ const UroEndoSimGame = ({ onBack, onRecordScore }) => {
           </div>
           <p>{stage.educational}</p>
           <div className="stone-result-actions">
-            <button className="game-stage-back stone-cool-btn" onClick={() => setStageIndex(stageIndex)}>Повторить этап</button>
-            <button className="duel-next-btn" onClick={nextStage}>Следующий этап</button>
+            <button
+              className="game-stage-back stone-cool-btn"
+              onClick={() => setStageIndex(stageIndex)}
+            >
+              Повторить этап
+            </button>
+            <button className="duel-next-btn" onClick={nextStage}>
+              Следующий этап
+            </button>
           </div>
         </div>
       )}
@@ -829,12 +1064,28 @@ const UroEndoSimGame = ({ onBack, onRecordScore }) => {
 };
 
 const GamesHub = ({ gameProgress, onNavigate }) => {
-  const totalCompletions = Object.values(gameProgress).reduce((sum, game) => sum + (game?.completions || 0), 0);
-  const bestOverallScore = Math.max(0, ...Object.values(gameProgress).map((game) => game?.bestScore || 0));
+  const totalCompletions = Object.values(gameProgress).reduce(
+    (sum, game) => sum + (game?.completions || 0),
+    0
+  );
+  const bestOverallScore = Math.max(
+    0,
+    ...Object.values(gameProgress).map((game) => game?.bestScore || 0)
+  );
   const achievements = [
     { id: 'first-win', label: 'Первый успех', unlocked: totalCompletions >= 1 },
-    { id: 'triple-core', label: 'Тройной контур', unlocked: ['diagnosisDuel', 'stoneCrusher', 'prostateDefender'].every((id) => (gameProgress[id]?.completions || 0) > 0) },
-    { id: 'precision-run', label: 'Точная рука', unlocked: (gameProgress.uroEndoSim?.bestScore || 0) >= 150 },
+    {
+      id: 'triple-core',
+      label: 'Тройной контур',
+      unlocked: ['diagnosisDuel', 'stoneCrusher', 'prostateDefender'].every(
+        (id) => (gameProgress[id]?.completions || 0) > 0
+      ),
+    },
+    {
+      id: 'precision-run',
+      label: 'Точная рука',
+      unlocked: (gameProgress.uroEndoSim?.bestScore || 0) >= 150,
+    },
   ];
 
   return (
@@ -844,11 +1095,14 @@ const GamesHub = ({ gameProgress, onNavigate }) => {
           <span className="games-kicker">Интерактивное обучение</span>
           <h1 className="games-title">UroMed PlayLab</h1>
           <p className="games-subtitle">
-            Учебный игровой контур для урологии и андрологии: кейсы, тренажёры и короткие тактические сценарии,
-            которые усиливают клиническое мышление, а не отвлекают от него.
+            Учебный игровой контур для урологии и андрологии: кейсы, тренажёры и короткие
+            тактические сценарии, которые усиливают клиническое мышление, а не отвлекают от него.
           </p>
           <div className="games-hero-actions">
-            <button className="hero-primary-btn" onClick={() => onNavigate('games', null, 'diagnosis-duel')}>
+            <button
+              className="hero-primary-btn"
+              onClick={() => onNavigate('games', null, 'diagnosis-duel')}
+            >
               Открыть Diagnosis Duel
             </button>
             <button className="hero-secondary-btn" onClick={() => onNavigate('calculators')}>
@@ -863,7 +1117,8 @@ const GamesHub = ({ gameProgress, onNavigate }) => {
           <HeroMetric value={bestOverallScore} label="Лучший результат" />
           <HeroMetric value="4" label="Форматы обучения" />
           <div className="games-hero-note">
-            Здесь мы держим только те сценарии, которые помогают быстрее думать, выбирать тактику и замечать клинические риски.
+            Здесь мы держим только те сценарии, которые помогают быстрее думать, выбирать тактику и
+            замечать клинические риски.
           </div>
         </div>
       </div>
@@ -873,7 +1128,10 @@ const GamesHub = ({ gameProgress, onNavigate }) => {
           <span className="game-learning-label">Задание дня</span>
           <h3>Пройди Stone Crusher без выхода за предел безопасности тканей</h3>
           <p>Цель дня: завершить уровень и сохранить не менее 35% энергии системы.</p>
-          <button className="game-open-btn live" onClick={() => onNavigate('games', null, 'stone-crusher')}>
+          <button
+            className="game-open-btn live"
+            onClick={() => onNavigate('games', null, 'stone-crusher')}
+          >
             Открыть задание
           </button>
         </div>
@@ -882,7 +1140,10 @@ const GamesHub = ({ gameProgress, onNavigate }) => {
           <span className="game-learning-label">Бейджи прогресса</span>
           <div className="games-achievement-list">
             {achievements.map((achievement) => (
-              <span key={achievement.id} className={`games-achievement ${achievement.unlocked ? 'unlocked' : ''}`}>
+              <span
+                key={achievement.id}
+                className={`games-achievement ${achievement.unlocked ? 'unlocked' : ''}`}
+              >
                 {achievement.label}
               </span>
             ))}
@@ -907,7 +1168,10 @@ const GamesHub = ({ gameProgress, onNavigate }) => {
               <span>Best: {gameProgress[game.progressKey]?.bestScore || 0}</span>
               <span>Runs: {gameProgress[game.progressKey]?.completions || 0}</span>
             </div>
-            <button className="game-open-btn live" onClick={() => onNavigate('games', null, game.id)}>
+            <button
+              className="game-open-btn live"
+              onClick={() => onNavigate('games', null, game.id)}
+            >
               Открыть сценарий
             </button>
           </div>

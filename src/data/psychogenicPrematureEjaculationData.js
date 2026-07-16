@@ -6,7 +6,12 @@ const psychogenicPrematureEjaculationData = {
   description:
     'Психогенный вариант преждевременной эякуляции с выраженным дистрессом и снижением контроля эякуляторного рефлекса.',
   tags: ['МКБ-10 F52.4', 'EAU Sexual and Reproductive Health', 'психосексуальная медицина'],
-  relatedIds: ['premature-ejaculation', 'psychogenic-ed', 'delayed-ejaculation', 'erectile-dysfunction'],
+  relatedIds: [
+    'premature-ejaculation',
+    'psychogenic-ed',
+    'delayed-ejaculation',
+    'erectile-dysfunction',
+  ],
 
   definition:
     'F52.4 - преждевременная эякуляция, где ключевую роль играют психологические механизмы, тревога и поведенческие паттерны.',

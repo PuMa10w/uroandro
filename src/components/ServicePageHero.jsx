@@ -28,7 +28,7 @@ const ServicePageHero = ({
         ) : null}
       </div>
 
-      {(stats.length > 0 || highlights.length > 0 || actions.length > 0) ? (
+      {stats.length > 0 || highlights.length > 0 || actions.length > 0 ? (
         <div className="service-hero-grid">
           {stats.length > 0 ? (
             <div className="service-hero-panel">
@@ -67,7 +67,9 @@ const ServicePageHero = ({
                     onClick={action.onClick}
                   >
                     <span className="service-hero-action-title">{action.label}</span>
-                    {action.meta ? <span className="service-hero-action-meta">{action.meta}</span> : null}
+                    {action.meta ? (
+                      <span className="service-hero-action-meta">{action.meta}</span>
+                    ) : null}
                   </button>
                 ))}
               </div>
@@ -88,7 +90,7 @@ ServicePageHero.propTypes = {
     PropTypes.shape({
       label: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
-    }),
+    })
   ),
   highlights: PropTypes.arrayOf(PropTypes.string),
   actions: PropTypes.arrayOf(
@@ -96,7 +98,7 @@ ServicePageHero.propTypes = {
       label: PropTypes.string.isRequired,
       meta: PropTypes.string,
       onClick: PropTypes.func.isRequired,
-    }),
+    })
   ),
 };
 

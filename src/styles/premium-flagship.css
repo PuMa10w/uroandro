@@ -59,7 +59,8 @@ body.light-mode {
 
 /* ─── Floating Animation ─────────────────────────────────── */
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -146,7 +147,7 @@ body.light-mode .navbar {
 }
 
 .nav-dropdown-item:hover {
-  background: rgba(61, 214, 189, 0.10) !important;
+  background: rgba(61, 214, 189, 0.1) !important;
   color: var(--text-primary) !important;
   transform: translateX(2px);
 }
@@ -276,8 +277,12 @@ body.light-mode .navbar {
 
 /* ─── Skeleton shimmer ───────────────────────────────────── */
 @keyframes skeletonShimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 .skeleton {
@@ -414,21 +419,46 @@ body.light-mode .navbar {
   }
 }
 
-.stagger-enter > *:nth-child(1)  { animation-delay: 0ms; }
-.stagger-enter > *:nth-child(2)  { animation-delay: 60ms; }
-.stagger-enter > *:nth-child(3)  { animation-delay: 120ms; }
-.stagger-enter > *:nth-child(4)  { animation-delay: 180ms; }
-.stagger-enter > *:nth-child(5)  { animation-delay: 240ms; }
-.stagger-enter > *:nth-child(6)  { animation-delay: 300ms; }
-.stagger-enter > *:nth-child(7)  { animation-delay: 360ms; }
-.stagger-enter > *:nth-child(8)  { animation-delay: 420ms; }
-.stagger-enter > *:nth-child(9)  { animation-delay: 480ms; }
-.stagger-enter > *:nth-child(10) { animation-delay: 540ms; }
+.stagger-enter > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+.stagger-enter > *:nth-child(2) {
+  animation-delay: 60ms;
+}
+.stagger-enter > *:nth-child(3) {
+  animation-delay: 120ms;
+}
+.stagger-enter > *:nth-child(4) {
+  animation-delay: 180ms;
+}
+.stagger-enter > *:nth-child(5) {
+  animation-delay: 240ms;
+}
+.stagger-enter > *:nth-child(6) {
+  animation-delay: 300ms;
+}
+.stagger-enter > *:nth-child(7) {
+  animation-delay: 360ms;
+}
+.stagger-enter > *:nth-child(8) {
+  animation-delay: 420ms;
+}
+.stagger-enter > *:nth-child(9) {
+  animation-delay: 480ms;
+}
+.stagger-enter > *:nth-child(10) {
+  animation-delay: 540ms;
+}
 
 /* ─── Glow pulse (active nav indicator) ──────────────────── */
 @keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 8px rgba(88, 224, 193, 0.2); }
-  50% { box-shadow: 0 0 16px rgba(88, 224, 193, 0.4); }
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(88, 224, 193, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(88, 224, 193, 0.4);
+  }
 }
 
 .glow-pulse {
@@ -494,8 +524,12 @@ body.light-mode .premium-sheet {
 
 /* ─── Modal overlay animation ───────────────────────────── */
 @keyframes overlayFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .modal-overlay {
   animation: overlayFadeIn 0.15s ease forwards;
@@ -557,7 +591,9 @@ body.light-mode .search-dropdown {
   background: rgba(255, 255, 255, 0.06) !important;
   border: 0.5px solid var(--border) !important;
   border-radius: 10px !important;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 .search-input:focus {
   border-color: var(--teal) !important;
@@ -689,7 +725,11 @@ body.light-mode .mobile-shell-nav {
   background: rgba(11, 20, 34, 0.7);
   backdrop-filter: blur(40px) saturate(180%);
   color: var(--text-primary);
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'Manrope',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   transition: all var(--transition-base);
@@ -700,7 +740,9 @@ body.light-mode .mobile-shell-nav {
 .hero-search-input:focus {
   outline: none;
   border-color: rgba(88, 224, 193, 0.4);
-  box-shadow: 0 0 0 3px rgba(88, 224, 193, 0.1), var(--shadow-card);
+  box-shadow:
+    0 0 0 3px rgba(88, 224, 193, 0.1),
+    var(--shadow-card);
   background: rgba(11, 20, 34, 0.85);
 }
 
@@ -820,23 +862,28 @@ body.light-mode .hero-search-result-item:hover {
 .quick-btn,
 .guideline-card,
 .home-workbench-recent-card {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family:
+    'Manrope',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
 }
 
 /* ─── Home workbench color coding ───────────────────────── */
 /* Urology card glow — cool teal-blue */
-.home-section-card[data-section="urology"] {
+.home-section-card[data-section='urology'] {
   border-color: rgba(88, 224, 193, 0.3) !important;
 }
-.home-section-card[data-section="urology"]:hover {
+.home-section-card[data-section='urology']:hover {
   box-shadow: 0 0 30px rgba(88, 224, 193, 0.08) !important;
 }
 
 /* Andrology card glow — warm gold */
-.home-section-card[data-section="andrology"] {
+.home-section-card[data-section='andrology'] {
   border-color: rgba(241, 204, 122, 0.3) !important;
 }
-.home-section-card[data-section="andrology"]:hover {
+.home-section-card[data-section='andrology']:hover {
   box-shadow: 0 0 30px rgba(241, 204, 122, 0.08) !important;
 }
 
@@ -892,16 +939,16 @@ body.light-mode .hero-search-result-item:hover {
     transform: translateX(0);
   }
 }
-.home-section-card[data-section="andrology"]:hover {
+.home-section-card[data-section='andrology']:hover {
   box-shadow: 0 0 30px rgba(241, 204, 122, 0.08) !important;
 }
 
 /* Urgent action — amber/coral accent */
-.home-workbench-action[data-action="urgent"] {
+.home-workbench-action[data-action='urgent'] {
   color: #fbbf24 !important;
   border-color: rgba(251, 191, 36, 0.3) !important;
 }
-.home-workbench-action[data-action="urgent"]:hover {
+.home-workbench-action[data-action='urgent']:hover {
   background: rgba(251, 191, 36, 0.08) !important;
   border-color: rgba(251, 191, 36, 0.5) !important;
 }
@@ -1145,4 +1192,169 @@ body.light-mode .home-workbench-action:hover {
   border-top: 1px solid var(--border);
   justify-content: flex-end;
   flex-wrap: wrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HOME WORKBENCH — PREMIUM IPHONE ADAPTATION
+   Быстрые действия: на всех iPhone аккуратная сетка (2 колонки),
+   карточки сжимаются и переносят текст, никакого бокового скролла.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* iPhone 14 Pro Max и уже (<=430px) → 2 колонки, мягкий перенос */
+@media (max-width: 430px) {
+  .home-workbench-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+    padding: 0;
+    margin-bottom: 1.25rem;
+    overflow-x: visible;
+    overflow-y: visible;
+    scroll-snap-type: none;
+    -webkit-overflow-scrolling: auto;
+  }
+
+  .home-workbench-action {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 4.1rem;
+    max-width: 100%;
+    width: auto;
+    padding: 0.7rem 0.85rem;
+    border-radius: 1.1rem;
+    align-content: center;
+    gap: 0.15rem;
+  }
+
+  .home-workbench-action span {
+    font-size: 0.92rem;
+    line-height: 1.1;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .home-workbench-action small {
+    font-size: 0.66rem;
+    line-height: 1.25;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+}
+
+/* iPhone SE / mini (<=375px) → чуть плотнее, гарантированно 2 колонки */
+@media (max-width: 375px) {
+  .home-workbench-actions {
+    gap: 0.5rem;
+  }
+
+  .home-workbench-action {
+    min-height: 3.8rem;
+    padding: 0.6rem 0.7rem;
+    border-radius: 1rem;
+  }
+
+  .home-workbench-action span {
+    font-size: 0.84rem;
+  }
+
+  .home-workbench-action small {
+    font-size: 0.62rem;
+  }
+}
+
+/* Очень узкие (<=340px, iPhone SE 1-го поколения / 320px) →
+   одна колонка, чтобы текст не дробился */
+@media (max-width: 340px) {
+  .home-workbench-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .home-workbench-action {
+    min-height: 3.4rem;
+  }
+}
+
+/* Премиальное появление карточек действий (stagger) на тач-устройствах */
+@media (hover: none) and (pointer: coarse) {
+  .home-workbench-action {
+    animation: workbenchActionIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .home-workbench-action:nth-child(1) {
+    animation-delay: 0.04s;
+  }
+  .home-workbench-action:nth-child(2) {
+    animation-delay: 0.09s;
+  }
+  .home-workbench-action:nth-child(3) {
+    animation-delay: 0.14s;
+  }
+  .home-workbench-action:nth-child(4) {
+    animation-delay: 0.19s;
+  }
+}
+
+@keyframes workbenchActionIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Гарантируем, что декоративное свечение workbench не вылезает за край */
+.home-workbench::after {
+  right: -10%;
+  left: auto;
+  width: min(12rem, 60%);
+  pointer-events: none;
+}
+
+@media (max-width: 430px) {
+  .home-workbench::after {
+    display: none;
+  }
+}
+
+/* Заголовок workbench — на iPhone чуть компактнее, без вылезания */
+@media (max-width: 430px) {
+  .home-workbench-title {
+    font-size: clamp(2.2rem, 11vw, 3rem);
+    max-width: 100%;
+    letter-spacing: -0.05em;
+  }
+
+  .home-workbench-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
+
+/* Destination-карточки: на узких iPhone уменьшаем внутренние отступы,
+   чтобы контент не упирался в края */
+@media (max-width: 430px) {
+  .home-destination-card {
+    padding: 1.1rem;
+    min-height: 0;
+  }
+
+  .home-destination-description {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .destination-preview {
+    gap: 0.35rem;
+  }
+
+  .destination-preview-item {
+    font-size: 0.68rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .destination-tags {
+    flex-wrap: wrap;
+  }
 }

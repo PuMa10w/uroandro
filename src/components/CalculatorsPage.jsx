@@ -87,18 +87,93 @@ const nihQuestions = [
 ];
 
 const capraFields = [
-  { id: 'psa', label: 'ПСА', options: [{ value: 0, label: '< 4' }, { value: 1, label: '4-6' }, { value: 2, label: '6,1-10' }, { value: 3, label: '10,1-20' }, { value: 4, label: '> 20' }] },
-  { id: 'gleason', label: 'Сумма Глисона', options: [{ value: 0, label: '<= 6' }, { value: 1, label: '3+4=7' }, { value: 2, label: '4+3=7' }, { value: 3, label: '8' }, { value: 4, label: '9-10' }] },
-  { id: 'tstage', label: 'Стадия T', options: [{ value: 0, label: 'T1c-T2a' }, { value: 1, label: 'T2b' }, { value: 2, label: 'T2c-T3a' }] },
-  { id: 'biopsyCores', label: 'Позитивные биоптаты', options: [{ value: 0, label: '< 34%' }, { value: 1, label: '34-50%' }, { value: 2, label: '> 50%' }] },
-  { id: 'age', label: 'Возраст', options: [{ value: 0, label: '< 60' }, { value: 1, label: '>= 60' }] },
+  {
+    id: 'psa',
+    label: 'ПСА',
+    options: [
+      { value: 0, label: '< 4' },
+      { value: 1, label: '4-6' },
+      { value: 2, label: '6,1-10' },
+      { value: 3, label: '10,1-20' },
+      { value: 4, label: '> 20' },
+    ],
+  },
+  {
+    id: 'gleason',
+    label: 'Сумма Глисона',
+    options: [
+      { value: 0, label: '<= 6' },
+      { value: 1, label: '3+4=7' },
+      { value: 2, label: '4+3=7' },
+      { value: 3, label: '8' },
+      { value: 4, label: '9-10' },
+    ],
+  },
+  {
+    id: 'tstage',
+    label: 'Стадия T',
+    options: [
+      { value: 0, label: 'T1c-T2a' },
+      { value: 1, label: 'T2b' },
+      { value: 2, label: 'T2c-T3a' },
+    ],
+  },
+  {
+    id: 'biopsyCores',
+    label: 'Позитивные биоптаты',
+    options: [
+      { value: 0, label: '< 34%' },
+      { value: 1, label: '34-50%' },
+      { value: 2, label: '> 50%' },
+    ],
+  },
+  {
+    id: 'age',
+    label: 'Возраст',
+    options: [
+      { value: 0, label: '< 60' },
+      { value: 1, label: '>= 60' },
+    ],
+  },
 ];
 
 const renalFields = [
-  { id: 'radius', label: 'R - размер', options: [{ value: 1, label: '<= 4 см' }, { value: 2, label: '4-7 см' }, { value: 3, label: '> 7 см' }] },
-  { id: 'exophytic', label: 'E - экзофитность', options: [{ value: 1, label: '>= 50%' }, { value: 2, label: '< 50%' }, { value: 3, label: 'Эндофитная' }] },
-  { id: 'nearness', label: 'N - близость к синусу', options: [{ value: 1, label: '> 7 мм' }, { value: 2, label: '<= 7 мм' }, { value: 3, label: 'Контакт' }] },
-  { id: 'location', label: 'L - локализация', options: [{ value: 1, label: 'Полюс' }, { value: 2, label: 'Через экватор' }, { value: 3, label: 'Хилярная' }] },
+  {
+    id: 'radius',
+    label: 'R - размер',
+    options: [
+      { value: 1, label: '<= 4 см' },
+      { value: 2, label: '4-7 см' },
+      { value: 3, label: '> 7 см' },
+    ],
+  },
+  {
+    id: 'exophytic',
+    label: 'E - экзофитность',
+    options: [
+      { value: 1, label: '>= 50%' },
+      { value: 2, label: '< 50%' },
+      { value: 3, label: 'Эндофитная' },
+    ],
+  },
+  {
+    id: 'nearness',
+    label: 'N - близость к синусу',
+    options: [
+      { value: 1, label: '> 7 мм' },
+      { value: 2, label: '<= 7 мм' },
+      { value: 3, label: 'Контакт' },
+    ],
+  },
+  {
+    id: 'location',
+    label: 'L - локализация',
+    options: [
+      { value: 1, label: 'Полюс' },
+      { value: 2, label: 'Через экватор' },
+      { value: 3, label: 'Хилярная' },
+    ],
+  },
 ];
 
 const initialSpermForm = {
@@ -120,7 +195,8 @@ const initialSpermForm = {
   artFailures: '',
 };
 
-const calcSeverity = (total, ranges) => ranges.find((item) => total <= item.max) || ranges[ranges.length - 1];
+const calcSeverity = (total, ranges) =>
+  ranges.find((item) => total <= item.max) || ranges[ranges.length - 1];
 
 const ResultPanel = ({ color, children }) => (
   <div className="result-panel premium-result-panel" style={{ borderColor: `${color}44` }}>
@@ -144,25 +220,50 @@ const SimpleQuestionnaire = ({ title, kicker, color, questions, getOptions, getR
   const progress = Math.round((answeredCount / questions.length) * 100);
 
   return (
-    <article className="tool-section premium-questionnaire-panel" style={{ borderColor: `${color}33`, '--tool-color': color }}>
+    <article
+      className="tool-section premium-questionnaire-panel"
+      style={{ borderColor: `${color}33`, '--tool-color': color }}
+    >
       <div className="premium-questionnaire-head">
         <div>
           <span className="premium-questionnaire-kicker">{kicker}</span>
-          <h3 className="tool-title" style={{ color }}>{title}</h3>
+          <h3 className="tool-title" style={{ color }}>
+            {title}
+          </h3>
         </div>
         <div className="premium-questionnaire-counter" aria-label="Progress">
           <strong>{answeredCount}</strong>
           <span>/{questions.length}</span>
         </div>
       </div>
-      <div className="progress-bar premium-questionnaire-progress" style={{ borderColor: `${color}33` }}>
-        <div className="progress-fill" style={{ width: `${progress}%`, background: `linear-gradient(90deg, ${color}, ${color}88)` }} />
-        <span className="progress-text">{answeredCount}/{questions.length}</span>
+      <div
+        className="progress-bar premium-questionnaire-progress"
+        style={{ borderColor: `${color}33` }}
+      >
+        <div
+          className="progress-fill"
+          style={{
+            width: `${progress}%`,
+            background: `linear-gradient(90deg, ${color}, ${color}88)`,
+          }}
+        />
+        <span className="progress-text">
+          {answeredCount}/{questions.length}
+        </span>
       </div>
       <div className="questions-list premium-questionnaire-table">
         {questions.map((question, index) => (
-          <div key={question.id} className="question-card premium-questionnaire-row" style={{ borderColor: `${color}22` }}>
-            <div className="question-number" style={{ background: `linear-gradient(135deg, ${color}, ${color}aa)` }}>{index + 1}</div>
+          <div
+            key={question.id}
+            className="question-card premium-questionnaire-row"
+            style={{ borderColor: `${color}22` }}
+          >
+            <div
+              className="question-number"
+              style={{ background: `linear-gradient(135deg, ${color}, ${color}aa)` }}
+            >
+              {index + 1}
+            </div>
             <div className="question-content">
               <p className="question-text">{question.text}</p>
               <div className="options-grid">
@@ -181,7 +282,9 @@ const SimpleQuestionnaire = ({ title, kicker, color, questions, getOptions, getR
           </div>
         ))}
       </div>
-      <div className={`premium-questionnaire-result ${answeredCount === questions.length ? 'is-ready' : ''}`}>
+      <div
+        className={`premium-questionnaire-result ${answeredCount === questions.length ? 'is-ready' : ''}`}
+      >
         {answeredCount === questions.length ? (
           <ResultPanel color={color}>{getResult(answers, () => setAnswers({}))}</ResultPanel>
         ) : (
@@ -197,8 +300,11 @@ const SimpleQuestionnaire = ({ title, kicker, color, questions, getOptions, getR
 
 const Field = ({ label, children }) => {
   const generatedId = useId();
-  const controlId = React.isValidElement(children) && children.props.id ? children.props.id : generatedId;
-  const control = React.isValidElement(children) ? React.cloneElement(children, { id: controlId }) : children;
+  const controlId =
+    React.isValidElement(children) && children.props.id ? children.props.id : generatedId;
+  const control = React.isValidElement(children)
+    ? React.cloneElement(children, { id: controlId })
+    : children;
 
   return (
     <div className="form-group">
@@ -217,23 +323,72 @@ const PSACalculator = () => {
   const norms = age < 50 ? 2.5 : age < 60 ? 3.5 : age < 70 ? 4.5 : 6.5;
   const freeRatio = psa && freePsa ? (freePsa / psa) * 100 : null;
   const density = psa && prostateVolume ? psa / prostateVolume : null;
-  const highRisk = psa > norms || (freeRatio !== null && freeRatio < 10) || (density !== null && density > 0.15);
+  const highRisk =
+    psa > norms || (freeRatio !== null && freeRatio < 10) || (density !== null && density > 0.15);
 
   return (
     <article className="tool-section premium-form-card" style={{ borderColor: `${COLORS.gold}33` }}>
-      <h3 className="tool-title" style={{ color: COLORS.gold }}>ПСА: базовая оценка риска</h3>
+      <h3 className="tool-title" style={{ color: COLORS.gold }}>
+        ПСА: базовая оценка риска
+      </h3>
       <div className="form-grid premium-form-grid">
-        <Field label="Возраст"><input type="number" value={form.age} onChange={(e) => setForm({ ...form, age: e.target.value })} placeholder="55" /></Field>
-        <Field label="ПСА общий, нг/мл"><input type="number" step="0.1" value={form.psa} onChange={(e) => setForm({ ...form, psa: e.target.value })} placeholder="3.2" /></Field>
-        <Field label="ПСА свободный, нг/мл"><input type="number" step="0.1" value={form.freePsa} onChange={(e) => setForm({ ...form, freePsa: e.target.value })} placeholder="0.6" /></Field>
-        <Field label="Объем простаты, см3"><input type="number" step="0.1" value={form.volume} onChange={(e) => setForm({ ...form, volume: e.target.value })} placeholder="35" /></Field>
+        <Field label="Возраст">
+          <input
+            type="number"
+            value={form.age}
+            onChange={(e) => setForm({ ...form, age: e.target.value })}
+            placeholder="55"
+          />
+        </Field>
+        <Field label="ПСА общий, нг/мл">
+          <input
+            type="number"
+            step="0.1"
+            value={form.psa}
+            onChange={(e) => setForm({ ...form, psa: e.target.value })}
+            placeholder="3.2"
+          />
+        </Field>
+        <Field label="ПСА свободный, нг/мл">
+          <input
+            type="number"
+            step="0.1"
+            value={form.freePsa}
+            onChange={(e) => setForm({ ...form, freePsa: e.target.value })}
+            placeholder="0.6"
+          />
+        </Field>
+        <Field label="Объем простаты, см3">
+          <input
+            type="number"
+            step="0.1"
+            value={form.volume}
+            onChange={(e) => setForm({ ...form, volume: e.target.value })}
+            placeholder="35"
+          />
+        </Field>
       </div>
       {age && psa ? (
         <ResultPanel color={COLORS.gold}>
-          <div className="result-item"><span>Возрастная граница:</span><strong>&lt; {norms} нг/мл</strong></div>
-          <div className="result-item"><span>Свободный/общий:</span><strong>{freeRatio === null ? 'не указан' : `${freeRatio.toFixed(1)}%`}</strong></div>
-          <div className="result-item"><span>Плотность ПСА:</span><strong>{density === null ? 'не указана' : density.toFixed(2)}</strong></div>
-          <div className={`premium-result ${highRisk ? 'is-high' : 'is-good'}`}><strong>{highRisk ? 'Нужна клиническая маршрутизация' : 'Нет явного высокого риска по введенным данным'}</strong></div>
+          <div className="result-item">
+            <span>Возрастная граница:</span>
+            <strong>&lt; {norms} нг/мл</strong>
+          </div>
+          <div className="result-item">
+            <span>Свободный/общий:</span>
+            <strong>{freeRatio === null ? 'не указан' : `${freeRatio.toFixed(1)}%`}</strong>
+          </div>
+          <div className="result-item">
+            <span>Плотность ПСА:</span>
+            <strong>{density === null ? 'не указана' : density.toFixed(2)}</strong>
+          </div>
+          <div className={`premium-result ${highRisk ? 'is-high' : 'is-good'}`}>
+            <strong>
+              {highRisk
+                ? 'Нужна клиническая маршрутизация'
+                : 'Нет явного высокого риска по введенным данным'}
+            </strong>
+          </div>
         </ResultPanel>
       ) : null}
     </article>
@@ -248,23 +403,73 @@ const EGFRCalculator = () => {
   const k = form.sex === 'male' ? 0.9 : 0.7;
   const alpha = form.sex === 'male' ? -0.302 : -0.241;
   const sexMultiplier = form.sex === 'female' ? 1.012 : 1;
-  const egfr = creatinineUmol && age
-    ? Math.round(142 * Math.pow(Math.min(scr / k, 1), alpha) * Math.pow(Math.max(scr / k, 1), -1.2) * Math.pow(0.9938, age) * sexMultiplier)
-    : null;
-  const stage = egfr === null ? null : egfr >= 90 ? 'G1' : egfr >= 60 ? 'G2' : egfr >= 45 ? 'G3a' : egfr >= 30 ? 'G3b' : egfr >= 15 ? 'G4' : 'G5';
+  const egfr =
+    creatinineUmol && age
+      ? Math.round(
+          142 *
+            Math.pow(Math.min(scr / k, 1), alpha) *
+            Math.pow(Math.max(scr / k, 1), -1.2) *
+            Math.pow(0.9938, age) *
+            sexMultiplier
+        )
+      : null;
+  const stage =
+    egfr === null
+      ? null
+      : egfr >= 90
+        ? 'G1'
+        : egfr >= 60
+          ? 'G2'
+          : egfr >= 45
+            ? 'G3a'
+            : egfr >= 30
+              ? 'G3b'
+              : egfr >= 15
+                ? 'G4'
+                : 'G5';
 
   return (
-    <article className="tool-section premium-form-card" style={{ borderColor: `${COLORS.indigo}33` }}>
-      <h3 className="tool-title" style={{ color: COLORS.indigo }}>eGFR CKD-EPI 2021</h3>
+    <article
+      className="tool-section premium-form-card"
+      style={{ borderColor: `${COLORS.indigo}33` }}
+    >
+      <h3 className="tool-title" style={{ color: COLORS.indigo }}>
+        eGFR CKD-EPI 2021
+      </h3>
       <div className="form-grid premium-form-grid">
-        <Field label="Креатинин, мкмоль/л"><input type="number" value={form.creatinine} onChange={(e) => setForm({ ...form, creatinine: e.target.value })} placeholder="90" /></Field>
-        <Field label="Возраст"><input type="number" value={form.age} onChange={(e) => setForm({ ...form, age: e.target.value })} placeholder="55" /></Field>
-        <Field label="Пол"><select value={form.sex} onChange={(e) => setForm({ ...form, sex: e.target.value })}><option value="male">Мужской</option><option value="female">Женский</option></select></Field>
+        <Field label="Креатинин, мкмоль/л">
+          <input
+            type="number"
+            value={form.creatinine}
+            onChange={(e) => setForm({ ...form, creatinine: e.target.value })}
+            placeholder="90"
+          />
+        </Field>
+        <Field label="Возраст">
+          <input
+            type="number"
+            value={form.age}
+            onChange={(e) => setForm({ ...form, age: e.target.value })}
+            placeholder="55"
+          />
+        </Field>
+        <Field label="Пол">
+          <select value={form.sex} onChange={(e) => setForm({ ...form, sex: e.target.value })}>
+            <option value="male">Мужской</option>
+            <option value="female">Женский</option>
+          </select>
+        </Field>
       </div>
       {egfr !== null ? (
         <ResultPanel color={COLORS.indigo}>
-          <div className="result-score"><span className="score-value">{egfr}</span><span className="score-label">мл/мин/1,73 м2</span></div>
-          <div className="result-item"><span>Стадия:</span><strong>{stage}</strong></div>
+          <div className="result-score">
+            <span className="score-value">{egfr}</span>
+            <span className="score-label">мл/мин/1,73 м2</span>
+          </div>
+          <div className="result-item">
+            <span>Стадия:</span>
+            <strong>{stage}</strong>
+          </div>
         </ResultPanel>
       ) : null}
     </article>
@@ -276,8 +481,13 @@ const ScoreGrid = ({ title, color, fields, resultLabel }) => {
   const total = fields.reduce((sum, field) => sum + (answers[field.id] || 0), 0);
 
   return (
-    <article className="tool-section premium-questionnaire-panel" style={{ borderColor: `${color}33`, '--tool-color': color }}>
-      <h3 className="tool-title" style={{ color }}>{title}</h3>
+    <article
+      className="tool-section premium-questionnaire-panel"
+      style={{ borderColor: `${color}33`, '--tool-color': color }}
+    >
+      <h3 className="tool-title" style={{ color }}>
+        {title}
+      </h3>
       <div className="questions-list premium-questionnaire-table">
         {fields.map((field, index) => (
           <div key={field.id} className="question-card premium-questionnaire-row">
@@ -302,8 +512,14 @@ const ScoreGrid = ({ title, color, fields, resultLabel }) => {
       </div>
       {Object.keys(answers).length === fields.length ? (
         <ResultPanel color={color}>
-          <div className="result-score"><span className="score-value">{total}</span><span className="score-label">баллов</span></div>
-          <div className="result-item"><span>Интерпретация:</span><strong>{resultLabel(total)}</strong></div>
+          <div className="result-score">
+            <span className="score-value">{total}</span>
+            <span className="score-label">баллов</span>
+          </div>
+          <div className="result-item">
+            <span>Интерпретация:</span>
+            <strong>{resultLabel(total)}</strong>
+          </div>
         </ResultPanel>
       ) : null}
     </article>
@@ -319,24 +535,70 @@ const VoidingDiary = () => {
   const addEntry = () => {
     const volume = Number(form.volume);
     if (!volume) return;
-    setEntries((prev) => [...prev, { id: Date.now(), volume, urgency: Number(form.urgency), incontinence: form.incontinence === '1' }]);
+    setEntries((prev) => [
+      ...prev,
+      {
+        id: Date.now(),
+        volume,
+        urgency: Number(form.urgency),
+        incontinence: form.incontinence === '1',
+      },
+    ]);
     setForm({ volume: '', urgency: '1', incontinence: '0' });
   };
 
   return (
     <article className="tool-section premium-form-card" style={{ borderColor: `${COLORS.blue}33` }}>
-      <h3 className="tool-title" style={{ color: COLORS.blue }}>Дневник мочеиспусканий</h3>
+      <h3 className="tool-title" style={{ color: COLORS.blue }}>
+        Дневник мочеиспусканий
+      </h3>
       <div className="form-grid premium-form-grid">
-        <Field label="Объем, мл"><input type="number" value={form.volume} onChange={(e) => setForm({ ...form, volume: e.target.value })} placeholder="250" /></Field>
-        <Field label="Позыв"><select value={form.urgency} onChange={(e) => setForm({ ...form, urgency: e.target.value })}><option value="1">1 - нет</option><option value="2">2 - легкий</option><option value="3">3 - умеренный</option><option value="4">4 - сильный</option></select></Field>
-        <Field label="Подтекание"><select value={form.incontinence} onChange={(e) => setForm({ ...form, incontinence: e.target.value })}><option value="0">Нет</option><option value="1">Да</option></select></Field>
+        <Field label="Объем, мл">
+          <input
+            type="number"
+            value={form.volume}
+            onChange={(e) => setForm({ ...form, volume: e.target.value })}
+            placeholder="250"
+          />
+        </Field>
+        <Field label="Позыв">
+          <select
+            value={form.urgency}
+            onChange={(e) => setForm({ ...form, urgency: e.target.value })}
+          >
+            <option value="1">1 - нет</option>
+            <option value="2">2 - легкий</option>
+            <option value="3">3 - умеренный</option>
+            <option value="4">4 - сильный</option>
+          </select>
+        </Field>
+        <Field label="Подтекание">
+          <select
+            value={form.incontinence}
+            onChange={(e) => setForm({ ...form, incontinence: e.target.value })}
+          >
+            <option value="0">Нет</option>
+            <option value="1">Да</option>
+          </select>
+        </Field>
       </div>
-      <button className="calc-button premium-calc-btn" onClick={addEntry}>Добавить запись</button>
+      <button className="calc-button premium-calc-btn" onClick={addEntry}>
+        Добавить запись
+      </button>
       {entries.length > 0 ? (
         <ResultPanel color={COLORS.blue}>
-          <div className="result-item"><span>Эпизодов:</span><strong>{entries.length}</strong></div>
-          <div className="result-item"><span>Суммарный объем:</span><strong>{totalVolume} мл</strong></div>
-          <div className="result-item"><span>Средний объем:</span><strong>{averageVolume} мл</strong></div>
+          <div className="result-item">
+            <span>Эпизодов:</span>
+            <strong>{entries.length}</strong>
+          </div>
+          <div className="result-item">
+            <span>Суммарный объем:</span>
+            <strong>{totalVolume} мл</strong>
+          </div>
+          <div className="result-item">
+            <span>Средний объем:</span>
+            <strong>{averageVolume} мл</strong>
+          </div>
         </ResultPanel>
       ) : null}
     </article>
@@ -389,7 +651,11 @@ const SpermogramPathway = ({ onNavigate }) => {
       title: 'Качество образца',
       badge: 'до интерпретации',
       text: 'Сначала убедиться, что анализ можно клинически использовать, и не строить лечение по случайному единичному отклонению.',
-      items: ['Проверить полноту введённых параметров', 'Сопоставить с анамнезом пары и сроком бесплодия', 'При пограничном профиле — повторить анализ в валидной лаборатории'],
+      items: [
+        'Проверить полноту введённых параметров',
+        'Сопоставить с анамнезом пары и сроком бесплодия',
+        'При пограничном профиле — повторить анализ в валидной лаборатории',
+      ],
     },
     {
       step: '02',
@@ -403,21 +669,27 @@ const SpermogramPathway = ({ onNavigate }) => {
       title: 'Дообследование',
       badge: 'что проверить',
       text: 'Маршрут дообследования строится от ведущего паттерна, а не от одного числа в спермограмме.',
-      items: diagnosticsRoute.length ? diagnosticsRoute : ['Анамнез, осмотр, гормоны, УЗИ/ТРУЗИ и генетика по клиническому сценарию'],
+      items: diagnosticsRoute.length
+        ? diagnosticsRoute
+        : ['Анамнез, осмотр, гормоны, УЗИ/ТРУЗИ и генетика по клиническому сценарию'],
     },
     {
       step: '04',
       title: 'Коррекция / лечение',
       badge: 'первый шаг',
       text: 'Показывает, что можно корректировать до ART, и где нужно сразу направлять к репродуктивному урологу.',
-      items: treatmentRoute.length ? treatmentRoute : ['Коррекция факторов риска, лечение причины и совместное планирование с репродуктологом'],
+      items: treatmentRoute.length
+        ? treatmentRoute
+        : ['Коррекция факторов риска, лечение причины и совместное планирование с репродуктологом'],
     },
     {
       step: '05',
       title: 'ART и follow-up',
       badge: 'решение пары',
       text: 'Финальный маршрут: наблюдение, IUI/IVF/ICSI, sperm retrieval или донорские опции обсуждаются как клинические варианты.',
-      items: nextStepsRoute.length ? nextStepsRoute : ['Контроль динамики, консультация пары и выбор репродуктивного маршрута'],
+      items: nextStepsRoute.length
+        ? nextStepsRoute
+        : ['Контроль динамики, консультация пары и выбор репродуктивного маршрута'],
     },
   ];
 
@@ -426,9 +698,13 @@ const SpermogramPathway = ({ onNavigate }) => {
       <div className="spermogram-head">
         <div>
           <span className="premium-questionnaire-kicker">WHO + EAU + AUA/ASRM + ESHRE + RU</span>
-          <h3 className="tool-title" style={{ color: '#e7c06b' }}>Спермограмма: дерево решений</h3>
+          <h3 className="tool-title" style={{ color: '#e7c06b' }}>
+            Спермограмма: дерево решений
+          </h3>
         </div>
-        <button className="calc-button premium-calc-btn sperm-reset-btn" onClick={reset}>Сбросить</button>
+        <button className="calc-button premium-calc-btn sperm-reset-btn" onClick={reset}>
+          Сбросить
+        </button>
       </div>
 
       <div className="spermogram-summary-card" data-status={assessment.severity}>
@@ -436,11 +712,16 @@ const SpermogramPathway = ({ onNavigate }) => {
         <strong>{assessment.primaryPatternLabel}</strong>
         <p>{assessment.summary}</p>
         <div className="sperm-source-row">
-          {assessment.referenceBadges.map((badge) => <span key={badge}>{badge}</span>)}
+          {assessment.referenceBadges.map((badge) => (
+            <span key={badge}>{badge}</span>
+          ))}
         </div>
       </div>
 
-      <div className="spermogram-decision-board" aria-label="Практическое дерево решений по спермограмме">
+      <div
+        className="spermogram-decision-board"
+        aria-label="Практическое дерево решений по спермограмме"
+      >
         {decisionStages.map((stage) => (
           <section key={stage.step} className={`spermogram-board-stage is-${assessment.severity}`}>
             <div className="spermogram-board-head">
@@ -450,20 +731,30 @@ const SpermogramPathway = ({ onNavigate }) => {
             <h4>{stage.title}</h4>
             <p>{stage.text}</p>
             <ul>
-              {stage.items.map((item) => <li key={`${stage.step}-${item}`}>{item}</li>)}
+              {stage.items.map((item) => (
+                <li key={`${stage.step}-${item}`}>{item}</li>
+              ))}
             </ul>
           </section>
         ))}
       </div>
 
       <div className="spermogram-route-note">
-        <strong>Как пользоваться:</strong> идите слева направо по этапам, затем раскрывайте подробные узлы ниже. Это не ставит диагноз автоматически, а помогает выбрать дообследование, лечение и ART-маршрут по современным рекомендациям.
+        <strong>Как пользоваться:</strong> идите слева направо по этапам, затем раскрывайте
+        подробные узлы ниже. Это не ставит диагноз автоматически, а помогает выбрать дообследование,
+        лечение и ART-маршрут по современным рекомендациям.
       </div>
 
       <div className="form-grid premium-form-grid spermogram-input-grid">
         {inputFields.map(([field, label, placeholder]) => (
           <Field key={field} label={label}>
-            <input type="number" step="0.1" value={form[field]} onChange={(e) => updateField(field, e.target.value)} placeholder={placeholder} />
+            <input
+              type="number"
+              step="0.1"
+              value={form[field]}
+              onChange={(e) => updateField(field, e.target.value)}
+              placeholder={placeholder}
+            />
           </Field>
         ))}
         <Field label="Фруктоза">
@@ -474,7 +765,10 @@ const SpermogramPathway = ({ onNavigate }) => {
           </select>
         </Field>
         <Field label="Клиническое варикоцеле">
-          <select value={form.varicocele} onChange={(e) => updateField('varicocele', e.target.value)}>
+          <select
+            value={form.varicocele}
+            onChange={(e) => updateField('varicocele', e.target.value)}
+          >
             <option value="unknown">Не указано</option>
             <option value="no">Нет</option>
             <option value="yes">Да</option>
@@ -484,29 +778,53 @@ const SpermogramPathway = ({ onNavigate }) => {
 
       <div className="sperm-tree-map" aria-label="Полное дерево решений по спермограмме">
         {assessment.nodes.map((node) => (
-          <details key={node.id} className={`sperm-tree-node level-${node.level} is-${node.status}`} open={node.status !== 'neutral'}>
+          <details
+            key={node.id}
+            className={`sperm-tree-node level-${node.level} is-${node.status}`}
+            open={node.status !== 'neutral'}
+          >
             <summary>
               <span className="sperm-node-level">L{node.level}</span>
               <span className="sperm-node-title">{node.title}</span>
               <span className="sperm-node-status">{node.status}</span>
             </summary>
             <div className="sperm-node-body">
-              <p><strong>Условие:</strong> {node.condition}</p>
-              <p><strong>Клинический смысл:</strong> {node.clinicalMeaning}</p>
+              <p>
+                <strong>Условие:</strong> {node.condition}
+              </p>
+              <p>
+                <strong>Клинический смысл:</strong> {node.clinicalMeaning}
+              </p>
               <div className="sperm-node-grid">
                 <div>
                   <h4>Проверить</h4>
-                  <ul>{node.diagnostics.map((item) => <li key={item}>{item}</li>)}</ul>
+                  <ul>
+                    {node.diagnostics.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </div>
                 <div>
                   <h4>Действие</h4>
-                  <ul>{node.treatment.map((item) => <li key={item}>{item}</li>)}</ul>
+                  <ul>
+                    {node.treatment.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-              <div className="sperm-node-next"><strong>Следующий шаг:</strong> {node.nextStep}</div>
-              <div className="sperm-node-avoid"><strong>Не пропустить:</strong> {node.avoid}</div>
+              <div className="sperm-node-next">
+                <strong>Следующий шаг:</strong> {node.nextStep}
+              </div>
+              <div className="sperm-node-avoid">
+                <strong>Не пропустить:</strong> {node.avoid}
+              </div>
               <div className="sperm-source-row">
-                {node.sources.map((source) => <span key={`${node.id}-${source}`}>{assessment.sources[source]?.label || source}</span>)}
+                {node.sources.map((source) => (
+                  <span key={`${node.id}-${source}`}>
+                    {assessment.sources[source]?.label || source}
+                  </span>
+                ))}
               </div>
             </div>
           </details>
@@ -515,7 +833,9 @@ const SpermogramPathway = ({ onNavigate }) => {
 
       <div className="sperm-tree-linkbar">
         {quickLinks.map(([label, action]) => (
-          <button key={label} className="sperm-tree-linkbtn" onClick={action}>{label}</button>
+          <button key={label} className="sperm-tree-linkbtn" onClick={action}>
+            {label}
+          </button>
         ))}
       </div>
     </article>
@@ -571,14 +891,31 @@ const CalculatorsPage = ({ onNavigate }) => {
   };
 
   const heroActions = [
-    { label: 'Маршрут по спермограмме', meta: 'Fertility decision tree', onClick: () => selectCalculator('sperm-tree') },
-    { label: 'IIEF-5 для ЭД', meta: 'Sexual function screening', onClick: () => selectCalculator('iief') },
+    {
+      label: 'Маршрут по спермограмме',
+      meta: 'Fertility decision tree',
+      onClick: () => selectCalculator('sperm-tree'),
+    },
+    {
+      label: 'IIEF-5 для ЭД',
+      meta: 'Sexual function screening',
+      onClick: () => selectCalculator('iief'),
+    },
     { label: 'ПСА риск', meta: 'Oncology triage', onClick: () => selectCalculator('psa') },
-    { label: 'Открыть андрологию', meta: 'Перейти к нозологиям', onClick: () => onNavigate('andrology', 'fertility', null, { source: 'service_calculators_hero' }) },
+    {
+      label: 'Открыть андрологию',
+      meta: 'Перейти к нозологиям',
+      onClick: () =>
+        onNavigate('andrology', 'fertility', null, { source: 'service_calculators_hero' }),
+    },
   ];
 
   return (
-    <section className="section calculators-page service-page-shell" data-v20-calculator-flow="true" data-v21-tool-flow="true">
+    <section
+      className="section calculators-page service-page-shell"
+      data-v20-calculator-flow="true"
+      data-v21-tool-flow="true"
+    >
       <ServicePageHero
         eyebrow="Interactive toolkit"
         title="Калькуляторы и опросники"
@@ -601,7 +938,11 @@ const CalculatorsPage = ({ onNavigate }) => {
           <button
             key={category.id}
             className={`calc-tab calculator-category-tab ${activeCategory === category.id ? 'active' : ''}`}
-            onClick={() => selectCalculator(calculators.find((item) => item.category === category.id)?.id || activeCalc)}
+            onClick={() =>
+              selectCalculator(
+                calculators.find((item) => item.category === category.id)?.id || activeCalc
+              )
+            }
           >
             {category.label}
           </button>
@@ -609,18 +950,32 @@ const CalculatorsPage = ({ onNavigate }) => {
       </div>
 
       <div className="calc-tabs calculator-tool-tabs">
-        {calculators.filter((item) => item.category === activeCategory).map((item) => (
-          <button key={item.id} className={`calc-tab calculator-tool-tab ${activeCalc === item.id ? 'active' : ''}`} onClick={() => selectCalculator(item.id)}>
-            <span>{item.name}</span>
-            <span className="calc-tab-desc">{item.desc}</span>
-          </button>
-        ))}
+        {calculators
+          .filter((item) => item.category === activeCategory)
+          .map((item) => (
+            <button
+              key={item.id}
+              className={`calc-tab calculator-tool-tab ${activeCalc === item.id ? 'active' : ''}`}
+              onClick={() => selectCalculator(item.id)}
+            >
+              <span>{item.name}</span>
+              <span className="calc-tab-desc">{item.desc}</span>
+            </button>
+          ))}
       </div>
 
-      <div className="calculator-workbench-hint" data-v19-calculator-flow="true" data-v20-local-tool-result="true" data-local-only="true">
+      <div
+        className="calculator-workbench-hint"
+        data-v19-calculator-flow="true"
+        data-v20-local-tool-result="true"
+        data-local-only="true"
+      >
         <span>Local-only clinical support</span>
         <strong>Ввод → прогресс → интерпретация → следующий шаг</strong>
-        <p>Инструменты помогают структурировать решение, не сохраняют персональные данные и не заменяют клиническую оценку врача.</p>
+        <p>
+          Инструменты помогают структурировать решение, не сохраняют персональные данные и не
+          заменяют клиническую оценку врача.
+        </p>
       </div>
 
       {activeCalc === 'ipss' && (
@@ -637,7 +992,18 @@ const CalculatorsPage = ({ onNavigate }) => {
               { max: 19, label: 'Умеренные симптомы', color: COLORS.blue },
               { max: 35, label: 'Тяжелые симптомы', color: COLORS.red },
             ]);
-            return <><div className="result-score"><span className="score-value">{total}</span><span className="score-label">из 35</span></div><div className="result-item"><span>Категория:</span><strong style={{ color: result.color }}>{result.label}</strong></div></>;
+            return (
+              <>
+                <div className="result-score">
+                  <span className="score-value">{total}</span>
+                  <span className="score-label">из 35</span>
+                </div>
+                <div className="result-item">
+                  <span>Категория:</span>
+                  <strong style={{ color: result.color }}>{result.label}</strong>
+                </div>
+              </>
+            );
           }}
         />
       )}
@@ -657,7 +1023,18 @@ const CalculatorsPage = ({ onNavigate }) => {
               { max: 21, label: 'Легкая ЭД', color: COLORS.green },
               { max: 25, label: 'Норма', color: COLORS.green },
             ]);
-            return <><div className="result-score"><span className="score-value">{total}</span><span className="score-label">из 25</span></div><div className="result-item"><span>Категория:</span><strong style={{ color: result.color }}>{result.label}</strong></div></>;
+            return (
+              <>
+                <div className="result-score">
+                  <span className="score-value">{total}</span>
+                  <span className="score-label">из 25</span>
+                </div>
+                <div className="result-item">
+                  <span>Категория:</span>
+                  <strong style={{ color: result.color }}>{result.label}</strong>
+                </div>
+              </>
+            );
           }}
         />
       )}
@@ -670,8 +1047,20 @@ const CalculatorsPage = ({ onNavigate }) => {
           getOptions={() => pedtOptions}
           getResult={(answers) => {
             const total = Object.values(answers).reduce((sum, value) => sum + value, 0);
-            const result = total <= 8 ? 'Маловероятно' : total <= 10 ? 'Вероятно' : 'Высокая вероятность';
-            return <><div className="result-score"><span className="score-value">{total}</span><span className="score-label">из 20</span></div><div className="result-item"><span>Интерпретация:</span><strong>{result}</strong></div></>;
+            const result =
+              total <= 8 ? 'Маловероятно' : total <= 10 ? 'Вероятно' : 'Высокая вероятность';
+            return (
+              <>
+                <div className="result-score">
+                  <span className="score-value">{total}</span>
+                  <span className="score-label">из 20</span>
+                </div>
+                <div className="result-item">
+                  <span>Интерпретация:</span>
+                  <strong>{result}</strong>
+                </div>
+              </>
+            );
           }}
         />
       )}
@@ -681,17 +1070,58 @@ const CalculatorsPage = ({ onNavigate }) => {
           kicker="Pain + LUTS + QoL"
           color={COLORS.red}
           questions={nihQuestions}
-          getOptions={(question) => question.options.map((value) => ({ value, label: String(value) }))}
+          getOptions={(question) =>
+            question.options.map((value) => ({ value, label: String(value) }))
+          }
           getResult={(answers) => {
             const total = Object.values(answers).reduce((sum, value) => sum + value, 0);
-            return <><div className="result-score"><span className="score-value">{total}</span><span className="score-label">баллов</span></div><div className="result-item"><span>Фокус:</span><strong>Оценить боль, мочевые симптомы и влияние на качество жизни</strong></div></>;
+            return (
+              <>
+                <div className="result-score">
+                  <span className="score-value">{total}</span>
+                  <span className="score-label">баллов</span>
+                </div>
+                <div className="result-item">
+                  <span>Фокус:</span>
+                  <strong>Оценить боль, мочевые симптомы и влияние на качество жизни</strong>
+                </div>
+              </>
+            );
           }}
         />
       )}
       {activeCalc === 'psa' && <PSACalculator />}
       {activeCalc === 'egfr' && <EGFRCalculator />}
-      {activeCalc === 'capra' && <ScoreGrid title="CAPRA - риск рака простаты" color={COLORS.red} fields={capraFields} resultLabel={(total) => (total <= 2 ? 'Низкий риск' : total <= 4 ? 'Умеренный риск' : total <= 6 ? 'Высокий риск' : 'Очень высокий риск')} />}
-      {activeCalc === 'renal' && <ScoreGrid title="R.E.N.A.L. - нефрометрия" color={COLORS.green} fields={renalFields} resultLabel={(total) => (total <= 6 ? 'Низкая сложность' : total <= 9 ? 'Умеренная сложность' : 'Высокая сложность')} />}
+      {activeCalc === 'capra' && (
+        <ScoreGrid
+          title="CAPRA - риск рака простаты"
+          color={COLORS.red}
+          fields={capraFields}
+          resultLabel={(total) =>
+            total <= 2
+              ? 'Низкий риск'
+              : total <= 4
+                ? 'Умеренный риск'
+                : total <= 6
+                  ? 'Высокий риск'
+                  : 'Очень высокий риск'
+          }
+        />
+      )}
+      {activeCalc === 'renal' && (
+        <ScoreGrid
+          title="R.E.N.A.L. - нефрометрия"
+          color={COLORS.green}
+          fields={renalFields}
+          resultLabel={(total) =>
+            total <= 6
+              ? 'Низкая сложность'
+              : total <= 9
+                ? 'Умеренная сложность'
+                : 'Высокая сложность'
+          }
+        />
+      )}
       {activeCalc === 'diary' && <VoidingDiary />}
       {activeCalc === 'sperm-tree' && <SpermogramPathway onNavigate={onNavigate} />}
     </section>

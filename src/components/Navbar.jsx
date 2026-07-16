@@ -4,11 +4,25 @@ import { useDarkMode, useSearchHistory } from '../hooks/useLocalStorage';
 import { trackSearch, trackSearchSelect, trackSymptomRoute } from '../utils/analytics';
 import { searchDiseases } from '../data';
 import {
-  IconSearch, IconMoon, IconSun, IconMenu, IconClose,
-  IconStar, IconArrowUp, IconArrowDown,
-  IconPediatric, IconEmergency, IconSurgery, IconTools,
-  IconCalculators, IconDrugs, IconAtlas, IconSitemap,
-  IconClipboard, IconHeart, IconClock, IconFavorites,
+  IconSearch,
+  IconMoon,
+  IconSun,
+  IconMenu,
+  IconClose,
+  IconStar,
+  IconArrowUp,
+  IconArrowDown,
+  IconPediatric,
+  IconEmergency,
+  IconSurgery,
+  IconTools,
+  IconCalculators,
+  IconDrugs,
+  IconAtlas,
+  IconSitemap,
+  IconClipboard,
+  IconClock,
+  IconFavorites,
   IconChevronDown,
 } from '../icons';
 
@@ -30,22 +44,9 @@ const defaultProps = {
   viewHistory: [],
 };
 
-const navIconMap = {
-  pediatric: IconPediatric,
-  emergency: IconEmergency,
-  favorites: IconFavorites,
-  surgery: IconSurgery,
-  metaphylaxis: IconClipboard, // will import later, use generic
-  calculators: IconCalculators,
-  tools: IconTools,
-  drugs: IconDrugs,
-  atlas: IconAtlas,
-  sitemap: IconSitemap,
-};
-
-const FaClock = (props) => <IconClock {...props} />;
-const FaArrowUp = (props) => <IconArrowUp {...props} />;
 const FaArrowDown = (props) => <IconArrowDown {...props} />;
+const FaArrowUp = (props) => <IconArrowUp {...props} />;
+const FaClock = (props) => <IconClock {...props} />;
 
 const navGroups = [
   {
@@ -217,7 +218,17 @@ const commandSearchEntriesBase = [
     section: 'calculators',
     tool: 'sperm-tree',
     icon: '04A',
-    keywords: ['спермограмма', 'spermogram', 'эякулят', 'фертильность', 'бесплодие', 'azoospermia', 'oat', 'dfi', 'mar'],
+    keywords: [
+      'спермограмма',
+      'spermogram',
+      'эякулят',
+      'фертильность',
+      'бесплодие',
+      'azoospermia',
+      'oat',
+      'dfi',
+      'mar',
+    ],
   },
   {
     id: 'tools',
@@ -271,7 +282,14 @@ const commandSearchEntriesBase = [
     meta: 'Поиск влияния лекарств на сперматогенез, либидо и гормональный контекст',
     section: 'drugs',
     icon: 'F',
-    keywords: ['фертильность', 'сперматогенез', 'тестостерон', 'андрогены', 'либидо', 'беременность партнерши'],
+    keywords: [
+      'фертильность',
+      'сперматогенез',
+      'тестостерон',
+      'андрогены',
+      'либидо',
+      'беременность партнерши',
+    ],
   },
   {
     id: 'algorithm-stones',
@@ -289,7 +307,17 @@ const commandSearchEntriesBase = [
     meta: 'Почка, мочеточник, простата, яичко, тазовое дно и clinical hotspots',
     section: 'atlas',
     icon: '3D',
-    keywords: ['3d', '3д', 'атлас', 'модель', 'почка', 'простата', 'мочеточник', 'варикоцеле', 'тазовое дно'],
+    keywords: [
+      '3d',
+      '3д',
+      'атлас',
+      'модель',
+      'почка',
+      'простата',
+      'мочеточник',
+      'варикоцеле',
+      'тазовое дно',
+    ],
   },
   {
     id: 'ai-clinical-assistant',
@@ -298,7 +326,16 @@ const commandSearchEntriesBase = [
     meta: 'Безопасный поиск по нозологиям, препаратам, калькуляторам, красным флагам и источникам',
     section: 'atlas',
     icon: 'AI',
-    keywords: ['ai', 'аи', 'ассистент', 'помощник', 'поиск', 'источники', 'алгоритм', 'красные флаги'],
+    keywords: [
+      'ai',
+      'аи',
+      'ассистент',
+      'помощник',
+      'поиск',
+      'источники',
+      'алгоритм',
+      'красные флаги',
+    ],
   },
   {
     id: 'algorithm-ed-risk',
@@ -316,7 +353,9 @@ const commandSearchEntries = commandSearchEntriesBase.map((entry) => ({
   ...entry,
   workflowIntent: entry.workflowIntent || commandSearchEntryDefaults.workflowIntent,
   nextStep: entry.nextStep || commandSearchEntryDefaults.nextStep,
-  riskLevel: entry.riskLevel || (entry.category === 'redFlag' ? 'urgent' : commandSearchEntryDefaults.riskLevel),
+  riskLevel:
+    entry.riskLevel ||
+    (entry.category === 'redFlag' ? 'urgent' : commandSearchEntryDefaults.riskLevel),
   linkedTools: entry.linkedTools || (entry.tool ? [entry.tool] : []),
   linkedDrugs: entry.linkedDrugs || [],
   linkedModels: entry.linkedModels || (entry.category === 'model3d' ? [entry.id] : []),
@@ -356,7 +395,14 @@ function getRetainedSearchClusters(viewHistory = []) {
     .slice(0, 2);
 }
 
-const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNavigate, favorites = {}, viewHistory = [] }) => {
+const Navbar = ({
+  activeSection,
+  setActiveSection,
+  setActiveSubsection,
+  onNavigate,
+  favorites = {},
+  viewHistory = [],
+}) => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchDropdownStyle, setSearchDropdownStyle] = useState({});
@@ -412,7 +458,7 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
         const dropdownWidth = Math.min(544, window.innerWidth - 32);
         const maxLeft = window.innerWidth - dropdownWidth - 16;
         setSearchDropdownStyle({
-          top: (rect.bottom + 8) + 'px',
+          top: rect.bottom + 8 + 'px',
           left: Math.max(16, Math.min(rect.left - 300, maxLeft)) + 'px',
           width: dropdownWidth + 'px',
         });
@@ -477,15 +523,17 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
         if (!cancelled) {
           const drugList = drugModule.drugList || [];
           const matchedDrugs = drugList
-            .filter(drug => {
+            .filter((drug) => {
               const q = debouncedQuery.toLowerCase();
-              return drug.name.toLowerCase().includes(q)
-                || (drug.aliases || []).some(a => a.toLowerCase().includes(q))
-                || (drug.tags || []).some(t => t.toLowerCase().includes(q))
-                || (drug.indications || '').toLowerCase().includes(q);
+              return (
+                drug.name.toLowerCase().includes(q) ||
+                (drug.aliases || []).some((a) => a.toLowerCase().includes(q)) ||
+                (drug.tags || []).some((t) => t.toLowerCase().includes(q)) ||
+                (drug.indications || '').toLowerCase().includes(q)
+              );
             })
             .slice(0, 5)
-            .map(drug => ({
+            .map((drug) => ({
               id: `drug-${drug.name}`,
               name: drug.name,
               icd: drug.className || '',
@@ -544,128 +592,161 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
     }
 
     return commandSearchEntries
-      .filter((item) => `${item.label} ${item.meta} ${item.keywords.join(' ')}`.toLowerCase().includes(normalizedQuery))
+      .filter((item) =>
+        `${item.label} ${item.meta} ${item.keywords.join(' ')}`
+          .toLowerCase()
+          .includes(normalizedQuery)
+      )
       .slice(0, 6);
   }, [searchQuery]);
 
-  const groupedCommandSearchItems = useMemo(() => (
-    commandSearchItems.reduce((groups, item) => {
-      const key = item.category || 'algorithm';
-      if (!groups[key]) groups[key] = [];
-      groups[key].push(item);
-      return groups;
-    }, {})
-  ), [commandSearchItems]);
+  const groupedCommandSearchItems = useMemo(
+    () =>
+      commandSearchItems.reduce((groups, item) => {
+        const key = item.category || 'algorithm';
+        if (!groups[key]) groups[key] = [];
+        groups[key].push(item);
+        return groups;
+      }, {}),
+    [commandSearchItems]
+  );
 
-  const retainedSearchItems = useMemo(() => (
-    [...viewHistory]
-      .filter((item) => item.id && item.section && item.subsection)
-      .sort((left, right) => (right.openCount || 0) - (left.openCount || 0))
-      .slice(0, 3)
-  ), [viewHistory]);
+  const retainedSearchItems = useMemo(
+    () =>
+      [...viewHistory]
+        .filter((item) => item.id && item.section && item.subsection)
+        .sort((left, right) => (right.openCount || 0) - (left.openCount || 0))
+        .slice(0, 3),
+    [viewHistory]
+  );
 
-  const retainedSearchClusters = useMemo(() => (
-    getRetainedSearchClusters(viewHistory)
-  ), [viewHistory]);
+  const retainedSearchClusters = useMemo(
+    () => getRetainedSearchClusters(viewHistory),
+    [viewHistory]
+  );
 
   const normalizedSearchQuery = searchQuery.trim();
   const hasTypedSearch = normalizedSearchQuery.length >= 2;
   const isAwaitingDebounce = hasTypedSearch && normalizedSearchQuery !== debouncedQuery;
   const isSearchPending = searchLoading || isAwaitingDebounce;
-  const hasAnySearchSurface = displayItems.length > 0
-    || symptomSearchItems.length > 0
-    || commandSearchItems.length > 0
-    || (searchQuery.length < 2 && (retainedSearchItems.length > 0 || retainedSearchClusters.length > 0));
+  const hasAnySearchSurface =
+    displayItems.length > 0 ||
+    symptomSearchItems.length > 0 ||
+    commandSearchItems.length > 0 ||
+    (searchQuery.length < 2 &&
+      (retainedSearchItems.length > 0 || retainedSearchClusters.length > 0));
 
-  const handleSearchSelect = useCallback((disease) => {
-    if (disease.isHistory) {
-      setSearchQuery(disease.name);
-      return;
-    }
-
-    addSearchQuery(disease.name);
-    trackSearchSelect(searchQuery.trim() || disease.name, disease.id);
-    if (onNavigate) {
-      onNavigate(disease.section, disease.subsection, disease.id, { source: 'search' });
-    } else {
-      setActiveSection(disease.section);
-      setActiveSubsection(disease.subsection);
-    }
-    closeSearch();
-  }, [addSearchQuery, closeSearch, onNavigate, searchQuery, setActiveSection, setActiveSubsection]);
-
-  const handleSymptomSearchSelect = useCallback((item) => {
-    addSearchQuery(item.name);
-    trackSymptomRoute(item.name, item.targetId, 'search_overlay');
-    if (onNavigate) {
-      onNavigate(item.section, item.subsection, item.targetId, { source: 'search_overlay_symptom' });
-    } else {
-      setActiveSection(item.section);
-      setActiveSubsection(item.subsection);
-    }
-    closeSearch();
-  }, [addSearchQuery, closeSearch, onNavigate, setActiveSection, setActiveSubsection]);
-
-  const handleCommandSearchSelect = useCallback((item) => {
-    addSearchQuery(item.label);
-    if (onNavigate) {
-      onNavigate(item.section, null, null, { source: 'search_command', tool: item.tool });
-    } else {
-      setActiveSection(item.section);
-      setActiveSubsection(null);
-    }
-    closeSearch();
-    closeMobileMenu();
-    setActiveDropdown(null);
-  }, [addSearchQuery, closeMobileMenu, closeSearch, onNavigate, setActiveSection, setActiveSubsection]);
-
-  const handleKeyDown = useCallback((event) => {
-    const isCommandSearchShortcut = (event.ctrlKey || event.metaKey)
-      && !event.altKey
-      && (event.key?.toLowerCase() === 'k' || event.code === 'KeyK');
-
-    if (isCommandSearchShortcut) {
-      event.preventDefault();
-      event.stopPropagation();
-      setMobileMenuOpen(false);
-      setActiveDropdown(null);
-      setSearchOpen(true);
-      setTimeout(() => inputRef.current?.focus(), 0);
-      return;
-    }
-
-    if (!searchOpen) {
-      return;
-    }
-
-    if (event.key === 'Escape') {
-      closeSearch();
-      setActiveDropdown(null);
-      setMobileMenuOpen(false);
-      return;
-    }
-
-    if (event.key === 'ArrowDown') {
-      event.preventDefault();
-      setSelectedIndex((prev) => Math.min(prev + 1, displayItems.length - 1));
-    }
-
-    if (event.key === 'ArrowUp') {
-      event.preventDefault();
-      setSelectedIndex((prev) => Math.max(prev - 1, -1));
-    }
-
-    if (event.key === 'Enter' && selectedIndex >= 0 && displayItems[selectedIndex]) {
-      event.preventDefault();
-      const item = displayItems[selectedIndex];
-      if (item.isHistory) {
-        setSearchQuery(item.name);
-        setSelectedIndex(-1);
-      } else {
-        handleSearchSelect(item);
+  const handleSearchSelect = useCallback(
+    (disease) => {
+      if (disease.isHistory) {
+        setSearchQuery(disease.name);
+        return;
       }
-    }
-  }, [closeSearch, displayItems, handleSearchSelect, searchOpen, selectedIndex]);
+
+      addSearchQuery(disease.name);
+      trackSearchSelect(searchQuery.trim() || disease.name, disease.id);
+      if (onNavigate) {
+        onNavigate(disease.section, disease.subsection, disease.id, { source: 'search' });
+      } else {
+        setActiveSection(disease.section);
+        setActiveSubsection(disease.subsection);
+      }
+      closeSearch();
+    },
+    [addSearchQuery, closeSearch, onNavigate, searchQuery, setActiveSection, setActiveSubsection]
+  );
+
+  const handleSymptomSearchSelect = useCallback(
+    (item) => {
+      addSearchQuery(item.name);
+      trackSymptomRoute(item.name, item.targetId, 'search_overlay');
+      if (onNavigate) {
+        onNavigate(item.section, item.subsection, item.targetId, {
+          source: 'search_overlay_symptom',
+        });
+      } else {
+        setActiveSection(item.section);
+        setActiveSubsection(item.subsection);
+      }
+      closeSearch();
+    },
+    [addSearchQuery, closeSearch, onNavigate, setActiveSection, setActiveSubsection]
+  );
+
+  const handleCommandSearchSelect = useCallback(
+    (item) => {
+      addSearchQuery(item.label);
+      if (onNavigate) {
+        onNavigate(item.section, null, null, { source: 'search_command', tool: item.tool });
+      } else {
+        setActiveSection(item.section);
+        setActiveSubsection(null);
+      }
+      closeSearch();
+      closeMobileMenu();
+      setActiveDropdown(null);
+    },
+    [
+      addSearchQuery,
+      closeMobileMenu,
+      closeSearch,
+      onNavigate,
+      setActiveSection,
+      setActiveSubsection,
+    ]
+  );
+
+  const handleKeyDown = useCallback(
+    (event) => {
+      const isCommandSearchShortcut =
+        (event.ctrlKey || event.metaKey) &&
+        !event.altKey &&
+        (event.key?.toLowerCase() === 'k' || event.code === 'KeyK');
+
+      if (isCommandSearchShortcut) {
+        event.preventDefault();
+        event.stopPropagation();
+        setMobileMenuOpen(false);
+        setActiveDropdown(null);
+        setSearchOpen(true);
+        setTimeout(() => inputRef.current?.focus(), 0);
+        return;
+      }
+
+      if (!searchOpen) {
+        return;
+      }
+
+      if (event.key === 'Escape') {
+        closeSearch();
+        setActiveDropdown(null);
+        setMobileMenuOpen(false);
+        return;
+      }
+
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        setSelectedIndex((prev) => Math.min(prev + 1, displayItems.length - 1));
+      }
+
+      if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        setSelectedIndex((prev) => Math.max(prev - 1, -1));
+      }
+
+      if (event.key === 'Enter' && selectedIndex >= 0 && displayItems[selectedIndex]) {
+        event.preventDefault();
+        const item = displayItems[selectedIndex];
+        if (item.isHistory) {
+          setSearchQuery(item.name);
+          setSelectedIndex(-1);
+        } else {
+          handleSearchSelect(item);
+        }
+      }
+    },
+    [closeSearch, displayItems, handleSearchSelect, searchOpen, selectedIndex]
+  );
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown, true);
@@ -708,7 +789,11 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
 
   return (
     <>
-      <nav className={`navbar ${mobileMenuOpen ? 'mobile-open' : ''}`} role="navigation" aria-label="Главная навигация">
+      <nav
+        className={`navbar ${mobileMenuOpen ? 'mobile-open' : ''}`}
+        role="navigation"
+        aria-label="Главная навигация"
+      >
         <div className="navbar-left">
           <button
             className="hamburger-btn"
@@ -720,7 +805,8 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
           </button>
           <button className="navbar-brand" onClick={() => handleNavClick('home')}>
             <span className="navbar-brand-lockup">
-              <span className="navbar-brand-uro">Uro</span><span className="navbar-brand-accent">Med</span>
+              <span className="navbar-brand-uro">Uro</span>
+              <span className="navbar-brand-accent">Med</span>
             </span>
           </button>
         </div>
@@ -745,7 +831,9 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
         </div>
 
         {activeSection !== 'home' && !isPrimarySection && (
-          <div className="navbar-active-pill" aria-hidden="true">{activeSectionLabel}</div>
+          <div className="navbar-active-pill" aria-hidden="true">
+            {activeSectionLabel}
+          </div>
         )}
 
         <div className="navbar-center" role="menubar" ref={dropdownRef}>
@@ -781,7 +869,12 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
         </div>
 
         <div className="navbar-right">
-          <div className="search-container" ref={searchRef} role="search" aria-label="Поиск болезней">
+          <div
+            className="search-container"
+            ref={searchRef}
+            role="search"
+            aria-label="Поиск болезней"
+          >
             <button
               ref={searchButtonRef}
               className="search-toggle"
@@ -792,10 +885,19 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
               <IconSearch size={18} />
             </button>
             {searchOpen && (
-              <div className="search-dropdown" style={searchDropdownStyle} role="dialog" aria-label="Поиск по заболеваниям">
+              <div
+                className="search-dropdown"
+                style={searchDropdownStyle}
+                role="dialog"
+                aria-label="Поиск по заболеваниям"
+              >
                 <div className="search-header-row">
                   <span className="search-title">Клинический поиск</span>
-                  <button className="search-close-btn" onClick={closeSearch} aria-label="Закрыть поиск">
+                  <button
+                    className="search-close-btn"
+                    onClick={closeSearch}
+                    aria-label="Закрыть поиск"
+                  >
                     <IconClose size={16} />
                   </button>
                 </div>
@@ -815,7 +917,10 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
                   </div>
                 )}
                 {commandSearchItems.length > 0 && (
-                  <div className="search-results search-command-results" aria-label="Быстрые переходы">
+                  <div
+                    className="search-results search-command-results"
+                    aria-label="Быстрые переходы"
+                  >
                     <div className="search-section-label">
                       <span>Быстрые переходы</span>
                       <span className="search-section-caption">command center</span>
@@ -824,7 +929,11 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
                       {Object.entries(groupedCommandSearchItems).map(([groupKey, items]) => {
                         const group = commandGroupMeta[groupKey] || commandGroupMeta.algorithm;
                         return (
-                          <div key={groupKey} className="search-command-group" data-command-group={groupKey}>
+                          <div
+                            key={groupKey}
+                            className="search-command-group"
+                            data-command-group={groupKey}
+                          >
                             <div className="search-command-group-head">
                               <span>{group.label}</span>
                               <small>{group.caption}</small>
@@ -843,12 +952,19 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
                                   aria-describedby={`command-next-step-${item.id}`}
                                 >
                                   <span className="search-command-index">
-                                  {typeof item.icon === 'function' ? <item.icon size={16} /> : item.icon}
-                                </span>
-                                <span className="search-command-copy">
+                                    {typeof item.icon === 'function' ? (
+                                      <item.icon size={16} />
+                                    ) : (
+                                      item.icon
+                                    )}
+                                  </span>
+                                  <span className="search-command-copy">
                                     <span className="search-result-name">{item.label}</span>
                                     <span className="search-result-meta">{item.meta}</span>
-                                    <span id={`command-next-step-${item.id}`} className="search-result-next-step">
+                                    <span
+                                      id={`command-next-step-${item.id}`}
+                                      className="search-result-next-step"
+                                    >
                                       {item.nextStep}
                                     </span>
                                   </span>
@@ -872,7 +988,9 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
                     {debouncedQuery.length < 2 && searchHistory.length > 0 && (
                       <div className="search-section-label">
                         <FaClock /> Недавние
-                        <button className="search-clear-btn" onClick={clearSearchHistory}>Очистить</button>
+                        <button className="search-clear-btn" onClick={clearSearchHistory}>
+                          Очистить
+                        </button>
                       </div>
                     )}
                     {displayItems.map((disease, index) => (
@@ -892,9 +1010,13 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
                         <div className="search-result-text">
                           <span className="search-result-name">{disease.name}</span>
                           {!disease.isHistory && (
-                            <span className="search-result-meta">{sectionMeta[disease.section] || disease.section} · {disease.icd}</span>
+                            <span className="search-result-meta">
+                              {sectionMeta[disease.section] || disease.section} · {disease.icd}
+                            </span>
                           )}
-                          {disease.isHistory && <span className="search-result-meta">История поиска</span>}
+                          {disease.isHistory && (
+                            <span className="search-result-meta">История поиска</span>
+                          )}
                         </div>
                         {index === selectedIndex && (
                           <span className="search-result-hint">
@@ -932,7 +1054,11 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
                       <button
                         key={`retained-${item.id}`}
                         className="search-result-item"
-                        onClick={() => onNavigate(item.section, item.subsection, item.id, { source: 'search_retention' })}
+                        onClick={() =>
+                          onNavigate(item.section, item.subsection, item.id, {
+                            source: 'search_retention',
+                          })
+                        }
                         role="option"
                         aria-selected="false"
                       >
@@ -952,7 +1078,11 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
                       <button
                         key={`cluster-${cluster.key}`}
                         className="search-result-item"
-                        onClick={() => onNavigate(cluster.section, cluster.subsection, null, { source: 'search_retention_cluster' })}
+                        onClick={() =>
+                          onNavigate(cluster.section, cluster.subsection, null, {
+                            source: 'search_retention_cluster',
+                          })
+                        }
                         role="option"
                         aria-selected="false"
                       >
@@ -966,11 +1096,16 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
                   </div>
                 )}
                 {hasTypedSearch && !isSearchPending && displayItems.length === 0 && (
-                  <div className="search-no-results" role="status">Ничего не найдено</div>
+                  <div className="search-no-results" role="status">
+                    Ничего не найдено
+                  </div>
                 )}
                 {hasAnySearchSurface && (
                   <div className="search-footer-hint">
-                    <span><FaArrowUp /><FaArrowDown /> навигация</span>
+                    <span>
+                      <FaArrowUp />
+                      <FaArrowDown /> навигация
+                    </span>
                     <span>Enter выбор</span>
                     <span>Esc закрыть</span>
                   </div>
@@ -1016,7 +1151,10 @@ const Navbar = ({ activeSection, setActiveSection, setActiveSubsection, onNaviga
         <div className="mobile-menu">
           <div className="mobile-menu-header">
             <div className="mobile-menu-brand">
-              <span className="navbar-brand-lockup"><span className="navbar-brand-uro">Uro</span><span className="navbar-brand-accent">Med</span></span>
+              <span className="navbar-brand-lockup">
+                <span className="navbar-brand-uro">Uro</span>
+                <span className="navbar-brand-accent">Med</span>
+              </span>
               <span className="mobile-menu-caption">Клиническая навигация</span>
             </div>
             <div className="mobile-menu-actions">

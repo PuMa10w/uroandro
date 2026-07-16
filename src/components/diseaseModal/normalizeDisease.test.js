@@ -1,6 +1,13 @@
 import { buildLifestyleFallback, normalizeDisease } from './normalizeDisease';
 
-const mojibakeMarkers = ['Р Р†Р вЂљ', 'Р РЋРІР‚С™Р В ', 'Р В РЎСџР В ', 'Р В РЎС™Р В ', 'РЎР‚РЎСџ', 'Р Р†РЎв„ў'];
+const mojibakeMarkers = [
+  'Р Р†Р вЂљ',
+  'Р РЋРІР‚С™Р В ',
+  'Р В РЎСџР В ',
+  'Р В РЎС™Р В ',
+  'РЎР‚РЎСџ',
+  'Р Р†РЎв„ў',
+];
 
 describe.skip('normalizeDisease fallbacks', () => {
   it('injects curated premium content for flagship stone journeys', () => {
@@ -20,7 +27,11 @@ describe.skip('normalizeDisease fallbacks', () => {
         surgical: [],
       },
       guidelines: {
-        eau: { title: 'EAU', keyPoints: ['РџСѓРЅРєС‚'], url: 'https://uroweb.org/guidelines/urolithiasis' },
+        eau: {
+          title: 'EAU',
+          keyPoints: ['РџСѓРЅРєС‚'],
+          url: 'https://uroweb.org/guidelines/urolithiasis',
+        },
       },
     });
 
@@ -147,8 +158,12 @@ describe.skip('normalizeDisease fallbacks', () => {
 
     expect(disease.ultrasound.overview).toContain('РЈР—-РїСЂРёР·РЅР°РєРё');
     expect(disease.ultrasound.findings.join(' ')).toContain('Р§Р›РЎ');
-    expect(disease.ultrasound.printableProtocol).toContain('РЈР—Р РїРѕС‡РµРє Рё РјРѕС‡РµРІС‹С… РїСѓС‚РµР№');
-    expect(disease.ultrasound.printableProtocol).toContain('РћСЂРёРµРЅС‚РёСЂС‹ РґР»СЏ РѕРїРёСЃР°РЅРёСЏ');
+    expect(disease.ultrasound.printableProtocol).toContain(
+      'РЈР—Р РїРѕС‡РµРє Рё РјРѕС‡РµРІС‹С… РїСѓС‚РµР№'
+    );
+    expect(disease.ultrasound.printableProtocol).toContain(
+      'РћСЂРёРµРЅС‚РёСЂС‹ РґР»СЏ РѕРїРёСЃР°РЅРёСЏ'
+    );
 
     mojibakeMarkers.forEach((marker) => {
       expect(disease.ultrasound.printableProtocol).not.toContain(marker);
@@ -169,14 +184,18 @@ describe.skip('normalizeDisease fallbacks', () => {
 
     expect(stonesLifestyle.advice.join(' ')).toContain('РіРёРґСЂР°С‚Р°С†РёСЋ');
     expect(stonesLifestyle.patient.join(' ')).toContain('СЃСЂРѕС‡РЅРѕ');
-    expect(sexualLifestyle.advice.join(' ')).toContain('СЃРѕСЃСѓРґРёСЃС‚С‹Рµ С„Р°РєС‚РѕСЂС‹ СЂРёСЃРєР°');
+    expect(sexualLifestyle.advice.join(' ')).toContain(
+      'СЃРѕСЃСѓРґРёСЃС‚С‹Рµ С„Р°РєС‚РѕСЂС‹ СЂРёСЃРєР°'
+    );
     expect(sexualLifestyle.nutrition.join(' ')).toContain('РЎСЂРµРґРёР·РµРјРЅРѕРјРѕСЂСЃРєРёР№');
 
-    [...stonesLifestyle.advice, ...stonesLifestyle.nutrition, ...stonesLifestyle.patient].forEach((text) => {
-      mojibakeMarkers.forEach((marker) => {
-        expect(text).not.toContain(marker);
-      });
-    });
+    [...stonesLifestyle.advice, ...stonesLifestyle.nutrition, ...stonesLifestyle.patient].forEach(
+      (text) => {
+        mojibakeMarkers.forEach((marker) => {
+          expect(text).not.toContain(marker);
+        });
+      }
+    );
   });
 });
 
@@ -207,7 +226,10 @@ describe('normalizeDisease guideline sources', () => {
       name: 'Hypercalciuria',
       section: 'urology',
       subsection: 'stones',
-      guidelines: ['EAU Guidelines on Urolithiasis 2024', 'AUA Medical Management of Kidney Stones 2019'],
+      guidelines: [
+        'EAU Guidelines on Urolithiasis 2024',
+        'AUA Medical Management of Kidney Stones 2019',
+      ],
     });
 
     const adrenal = normalizeDisease({

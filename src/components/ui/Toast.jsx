@@ -39,7 +39,9 @@ export default function Toast({ message, type = 'default', duration = 4000, onCl
   if (!visible) return null;
 
   return (
-    <div className={`fixed bottom-20 left-4 right-4 mx-auto max-w-md p-4 rounded-xl border backdrop-blur-xl z-50 ${colors[type]}`}>
+    <div
+      className={`fixed bottom-20 left-4 right-4 mx-auto max-w-md p-4 rounded-xl border backdrop-blur-xl z-50 ${colors[type]}`}
+    >
       <div className="flex items-center gap-3">
         <span className="text-lg">{icons[type]}</span>
         <span className="text-text-primary text-sm font-medium flex-1">{message}</span>

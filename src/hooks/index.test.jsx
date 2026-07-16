@@ -1,9 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
-import {
-  useDebounce,
-  useToggle,
-  useKeyPress,
-} from './index';
+import { useDebounce, useToggle, useKeyPress } from './index';
 
 describe('Custom Hooks', () => {
   describe('useDebounce', () => {
@@ -15,10 +11,9 @@ describe('Custom Hooks', () => {
     it('debounces value after delay', () => {
       vi.useFakeTimers();
 
-      const { result, rerender } = renderHook(
-        ({ value, delay }) => useDebounce(value, delay),
-        { initialProps: { value: 'initial', delay: 100 } }
-      );
+      const { result, rerender } = renderHook(({ value, delay }) => useDebounce(value, delay), {
+        initialProps: { value: 'initial', delay: 100 },
+      });
 
       rerender({ value: 'updated', delay: 100 });
       expect(result.current).toBe('initial');

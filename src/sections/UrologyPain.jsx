@@ -2,8 +2,17 @@ import React, { useMemo } from 'react';
 import DiseaseSection from '../components/DiseaseSection';
 import { getSectionDiseasesByIds } from '../data/sectionData';
 
-const UrologyPain = ({ favorites, onToggleFavorite, onNavigate, selectedDiseaseId, viewHistory }) => {
-  const data = useMemo(() => getSectionDiseasesByIds(['bladder-pain-syndrome', 'malakoplakia']), []);
+const UrologyPain = ({
+  favorites,
+  onToggleFavorite,
+  onNavigate,
+  selectedDiseaseId,
+  viewHistory,
+}) => {
+  const data = useMemo(
+    () => getSectionDiseasesByIds(['bladder-pain-syndrome', 'malakoplakia']),
+    []
+  );
 
   return (
     <DiseaseSection

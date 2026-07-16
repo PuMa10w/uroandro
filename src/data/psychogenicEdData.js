@@ -6,7 +6,12 @@ const psychogenicEdData = {
   description:
     'Нарушение эрекции преимущественно психогенного генеза при отсутствии значимого органического субстрата.',
   tags: ['МКБ-10 F52.2', 'EAU Sexual and Reproductive Health', 'андрология'],
-  relatedIds: ['erectile-dysfunction', 'premature-ejaculation', 'male-pelvic-floor-dysfunction', 'metabolic-syndrome-ed'],
+  relatedIds: [
+    'erectile-dysfunction',
+    'premature-ejaculation',
+    'male-pelvic-floor-dysfunction',
+    'metabolic-syndrome-ed',
+  ],
 
   definition:
     'Психогенная ЭД - стойкая или повторяющаяся неспособность достигать/поддерживать эрекцию, где ведущими являются психологические факторы.',

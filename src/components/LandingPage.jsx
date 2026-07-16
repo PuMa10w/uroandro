@@ -1,25 +1,91 @@
 import React from 'react';
 import { IconSearch } from '../icons';
 const quickAccess = [
-  { id: 'urolithiasis', name: 'Мочекаменная болезнь', icon: '01', meta: 'камни и колика', section: 'urology', subsection: 'stones' },
-  { id: 'bph', name: 'ДГПЖ', icon: '02', meta: 'симптомы нижних мочевых путей', section: 'urology', subsection: 'functional' },
-  { id: 'erectile-dysfunction', name: 'Эректильная дисфункция', icon: '03', meta: 'сексуальная медицина', section: 'andrology', subsection: 'sexual' },
-  { id: 'male-infertility', name: 'Мужское бесплодие', icon: '04', meta: 'фертильность и спермограмма', section: 'andrology', subsection: 'fertility' },
-  { id: 'pyelonephritis', name: 'Пиелонефрит', icon: '05', meta: 'инфекции и риски', section: 'urology', subsection: 'infections' },
-  { id: 'kidney-cancer', name: 'Рак почки', icon: '06', meta: 'онкоурология', section: 'urology', subsection: 'oncology' },
+  {
+    id: 'urolithiasis',
+    name: 'Мочекаменная болезнь',
+    icon: '01',
+    meta: 'камни и колика',
+    section: 'urology',
+    subsection: 'stones',
+  },
+  {
+    id: 'bph',
+    name: 'ДГПЖ',
+    icon: '02',
+    meta: 'симптомы нижних мочевых путей',
+    section: 'urology',
+    subsection: 'functional',
+  },
+  {
+    id: 'erectile-dysfunction',
+    name: 'Эректильная дисфункция',
+    icon: '03',
+    meta: 'сексуальная медицина',
+    section: 'andrology',
+    subsection: 'sexual',
+  },
+  {
+    id: 'male-infertility',
+    name: 'Мужское бесплодие',
+    icon: '04',
+    meta: 'фертильность и спермограмма',
+    section: 'andrology',
+    subsection: 'fertility',
+  },
+  {
+    id: 'pyelonephritis',
+    name: 'Пиелонефрит',
+    icon: '05',
+    meta: 'инфекции и риски',
+    section: 'urology',
+    subsection: 'infections',
+  },
+  {
+    id: 'kidney-cancer',
+    name: 'Рак почки',
+    icon: '06',
+    meta: 'онкоурология',
+    section: 'urology',
+    subsection: 'oncology',
+  },
   { id: 'drugs', name: 'Препараты', icon: '07', meta: 'фармакодинамика и риски', section: 'drugs' },
 ];
 
 const guidelines = [
-  { name: 'EAU', full: 'European Association of Urology', url: 'https://uroweb.org/guidelines', accent: 'eau', updated: '2026' },
-  { name: 'AUA', full: 'American Urological Association', url: 'https://www.auanet.org/guidelines', accent: 'aua', updated: '2025' },
-  { name: 'РКР', full: 'Российские клинические рекомендации', url: 'https://cr.minzdrav.gov.ru', accent: 'rkr', updated: '2025' },
+  {
+    name: 'EAU',
+    full: 'European Association of Urology',
+    url: 'https://uroweb.org/guidelines',
+    accent: 'eau',
+    updated: '2026',
+  },
+  {
+    name: 'AUA',
+    full: 'American Urological Association',
+    url: 'https://www.auanet.org/guidelines',
+    accent: 'aua',
+    updated: '2025',
+  },
+  {
+    name: 'РКР',
+    full: 'Российские клинические рекомендации',
+    url: 'https://cr.minzdrav.gov.ru',
+    accent: 'rkr',
+    updated: '2025',
+  },
 ];
 
 const workbenchActions = [
   { id: 'urgent', label: 'Ургентно', meta: 'красные флаги и маршруты', target: 'emergency' },
   { id: 'drugs', label: 'Препараты', meta: 'риски, дозы, мониторинг', target: 'drugs' },
-  { id: 'sperm', label: 'Спермограмма', meta: 'fertility decision tree', target: 'calculators', tool: 'sperm-tree' },
+  {
+    id: 'sperm',
+    label: 'Спермограмма',
+    meta: 'fertility decision tree',
+    target: 'calculators',
+    tool: 'sperm-tree',
+  },
   { id: 'atlas', label: '3D атлас', meta: 'модели + hotspots', target: 'atlas' },
 ];
 
@@ -52,7 +118,7 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
   const [searchResults, setSearchResults] = React.useState([]);
   const [resultsStyle, setResultsStyle] = React.useState({});
   const searchRef = React.useRef(null);
-  
+
   // Position results dropdown below input
   React.useEffect(() => {
     if (searchResults.length === 0) return;
@@ -60,7 +126,7 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
       if (searchRef.current) {
         const rect = searchRef.current.getBoundingClientRect();
         setResultsStyle({
-          top: (rect.bottom + 8) + 'px',
+          top: rect.bottom + 8 + 'px',
           left: Math.max(16, rect.left) + 'px',
           width: Math.min(rect.width, window.innerWidth - 32) + 'px',
         });
@@ -78,7 +144,7 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
       clearTimeout(timer2);
     };
   }, [searchResults]);
-  
+
   // Click outside to close results
   React.useEffect(() => {
     if (searchResults.length === 0) return;
@@ -94,7 +160,7 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
   }, [searchResults]);
-  
+
   // Debounce search like in Navbar
   React.useEffect(() => {
     if (!searchQuery.trim()) {
@@ -109,10 +175,13 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
         ]);
         const results = [
           ...(dataModule.searchDiseases(searchQuery) || []),
-          ...(drugModule.drugList || []).filter(d => 
-            d.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            d.aliases?.some(a => a.toLowerCase().includes(searchQuery.toLowerCase()))
-          ).map(d => ({ ...d, isDrug: true })),
+          ...(drugModule.drugList || [])
+            .filter(
+              (d) =>
+                d.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                d.aliases?.some((a) => a.toLowerCase().includes(searchQuery.toLowerCase()))
+            )
+            .map((d) => ({ ...d, isDrug: true })),
         ];
         setSearchResults(results);
       } catch (e) {
@@ -121,27 +190,36 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
     }, 300);
     return () => clearTimeout(timer);
   }, [searchQuery]);
-  
-  const recentItems = viewHistory
-    .filter((item) => item?.id && item?.section)
-    .slice(0, 4);
+
+  const recentItems = viewHistory.filter((item) => item?.id && item?.section).slice(0, 4);
   const favoriteCount = Object.values(favorites).filter(Boolean).length;
 
   return (
     <div className="home-shell">
-      <section className="home-workbench" aria-label="Clinical Workbench" data-v19-workbench="true" data-v20-workbench="true" data-v21-workbench="true">
+      <section
+        className="home-workbench"
+        aria-label="Clinical Workbench"
+        data-v19-workbench="true"
+        data-v20-workbench="true"
+        data-v21-workbench="true"
+      >
         <div className="home-workbench-head">
           <span className="home-panel-kicker">Clinical Workbench</span>
           <h1 className="home-workbench-title">Рабочий старт врача</h1>
           <p className="home-workbench-subtitle">
-            Быстрый вход в диагноз, препараты, калькуляторы и 3D-модели без визуального шума: открыть, подтвердить, выбрать следующий шаг.
+            Быстрый вход в диагноз, препараты, калькуляторы и 3D-модели без визуального шума:
+            открыть, подтвердить, выбрать следующий шаг.
           </p>
           <div className="home-workbench-status" data-v20-start="true">
-            <span><strong>{favoriteCount}</strong> избранных</span>
-            <span><strong>{recentItems.length}</strong> последних</span>
+            <span>
+              <strong>{favoriteCount}</strong> избранных
+            </span>
+            <span>
+              <strong>{recentItems.length}</strong> последних
+            </span>
           </div>
         </div>
-        
+
         {/* Hero Search */}
         <div className="home-hero-search">
           <div className="hero-search-wrapper" ref={searchRef}>
@@ -157,42 +235,56 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
           {searchResults.length > 0 && (
             <div className="hero-search-results" style={resultsStyle}>
               {searchResults.slice(0, 6).map((result) => {
-                          const hit = result.disease || result;
-                          return (
-                            <button
-                              key={result.id || result.name || hit.id}
-                              type="button"
-                              className="hero-search-result-item"
-                              onClick={() => {
-                                if (result.isDrug) {
-                                  onNavigate('drugs', null, null, { drugId: result.id });
-                                } else {
-                                  onNavigate(hit.section, hit.subsection, hit.id);
-                                }
-                                setSearchQuery('');
-                                setSearchResults([]);
-                              }}
-                            >
-                              <span className="result-name">{hit.nameRu || hit.nameEn || hit.name || result.title}</span>
-                              <small>{hit.icd ? `МКБ: ${hit.icd}` : result.isDrug ? 'Препарат' : result.meta || hit.subsection}</small>
-                            </button>
-                          );
-                        })}
+                const hit = result.disease || result;
+                return (
+                  <button
+                    key={result.id || result.name || hit.id}
+                    type="button"
+                    className="hero-search-result-item"
+                    onClick={() => {
+                      if (result.isDrug) {
+                        onNavigate('drugs', null, null, { drugId: result.id });
+                      } else {
+                        onNavigate(hit.section, hit.subsection, hit.id);
+                      }
+                      setSearchQuery('');
+                      setSearchResults([]);
+                    }}
+                  >
+                    <span className="result-name">
+                      {hit.nameRu || hit.nameEn || hit.name || result.title}
+                    </span>
+                    <small>
+                      {hit.icd
+                        ? `МКБ: ${hit.icd}`
+                        : result.isDrug
+                          ? 'Препарат'
+                          : result.meta || hit.subsection}
+                    </small>
+                  </button>
+                );
+              })}
             </div>
           )}
         </div>
-        
-        <div className="home-workbench-actions" aria-label="Быстрые действия врача" data-scrollable="x">
+
+        <div
+          className="home-workbench-actions"
+          aria-label="Быстрые действия врача"
+          data-scrollable="x"
+        >
           {workbenchActions.map((action) => (
             <button
               key={action.id}
               type="button"
               className="home-workbench-action"
               data-action={action.id}
-              onClick={() => onNavigate(action.target, null, null, {
-                source: 'v19_clinical_workbench',
-                tool: action.tool,
-              })}
+              onClick={() =>
+                onNavigate(action.target, null, null, {
+                  source: 'v19_clinical_workbench',
+                  tool: action.tool,
+                })
+              }
             >
               <span>{action.label}</span>
               <small>{action.meta}</small>
@@ -206,7 +298,11 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
               <h2>{lane.title}</h2>
               <p>{lane.text}</p>
               <div className="home-workbench-points">
-                {lane.points.map((point) => <span key={point} className="workbench-point">{point}</span>)}
+                {lane.points.map((point) => (
+                  <span key={point} className="workbench-point">
+                    {point}
+                  </span>
+                ))}
               </div>
             </article>
           ))}
@@ -223,7 +319,11 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
                   key={item.id}
                   type="button"
                   className="home-workbench-recent-card"
-                  onClick={() => onNavigate(item.section, item.subsection, item.id, { source: 'v20_home_continue' })}
+                  onClick={() =>
+                    onNavigate(item.section, item.subsection, item.id, {
+                      source: 'v20_home_continue',
+                    })
+                  }
                 >
                   <strong>{item.name || item.id}</strong>
                   <span>{item.icd || item.subsection || item.section}</span>
@@ -249,7 +349,8 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
           <div className="destination-main">
             <h2 className="home-destination-title">Урология</h2>
             <p className="home-destination-description">
-              Нозологии, диагностика, лечение и маршруты ведения: от камней и инфекций до онкоурологии и функциональных нарушений.
+              Нозологии, диагностика, лечение и маршруты ведения: от камней и инфекций до
+              онкоурологии и функциональных нарушений.
             </p>
           </div>
           <div className="destination-preview">
@@ -280,7 +381,8 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
           <div className="destination-main">
             <h2 className="home-destination-title">Андрология</h2>
             <p className="home-destination-description">
-              Сексуальная функция, фертильность, эндокринные нарушения и клинические сценарии для мужского здоровья.
+              Сексуальная функция, фертильность, эндокринные нарушения и клинические сценарии для
+              мужского здоровья.
             </p>
           </div>
           <div className="destination-preview">
@@ -304,7 +406,9 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
         <div className="home-panel-head">
           <span className="home-panel-kicker">Clinical shortcuts</span>
           <h2 className="home-panel-title">Частые маршруты</h2>
-          <p className="home-panel-subtitle">Собраны как рабочая полка врача: открыть, уточнить, принять решение.</p>
+          <p className="home-panel-subtitle">
+            Собраны как рабочая полка врача: открыть, уточнить, принять решение.
+          </p>
         </div>
         <div className="quick-grid">
           {quickAccess.map((item) => (
@@ -312,9 +416,13 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
               key={item.id}
               type="button"
               className="quick-btn"
-              onClick={() => item.section === 'drugs'
-                ? onNavigate('drugs', null, null, { source: 'landing_quick_access' })
-                : onNavigate(item.section, item.subsection, item.id, { source: 'landing_quick_access' })}
+              onClick={() =>
+                item.section === 'drugs'
+                  ? onNavigate('drugs', null, null, { source: 'landing_quick_access' })
+                  : onNavigate(item.section, item.subsection, item.id, {
+                      source: 'landing_quick_access',
+                    })
+              }
             >
               <span className="quick-icon">{item.icon}</span>
               <span className="quick-copy">
@@ -331,7 +439,9 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
         <div className="home-panel-head">
           <span className="home-panel-kicker">Evidence layer</span>
           <h2 className="home-panel-title">Источники</h2>
-          <p className="home-panel-subtitle">Короткий доступ к ключевым рекомендациям без перегруза интерфейса.</p>
+          <p className="home-panel-subtitle">
+            Короткий доступ к ключевым рекомендациям без перегруза интерфейса.
+          </p>
         </div>
         <div className="guidelines-grid">
           {guidelines.map((g) => (

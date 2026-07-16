@@ -3,26 +3,53 @@ import '../styles/servicePages.css';
 import { sectionNames, sectionIcons } from '../data/navigationMeta';
 
 const serviceLinks = [
-  { id: 'drugs', name: 'Справочник препаратов', meta: 'Поиск по препаратам, фармакодинамике, рискам и мониторингу', icon: '💊' },
+  {
+    id: 'drugs',
+    name: 'Справочник препаратов',
+    meta: 'Поиск по препаратам, фармакодинамике, рискам и мониторингу',
+    icon: '💊',
+  },
   { id: 'calculators', name: 'Калькуляторы', meta: 'IPSS, шкалы, клинические расчёты', icon: '🧮' },
-  { id: 'spermogram', section: 'calculators', tool: 'sperm-tree', name: 'Спермограмма', meta: 'Fertility decision tree: WHO-пороги, OAT, азооспермия, DFI, MAR и ART-маршрут', icon: '🧬' },
+  {
+    id: 'spermogram',
+    section: 'calculators',
+    tool: 'sperm-tree',
+    name: 'Спермограмма',
+    meta: 'Fertility decision tree: WHO-пороги, OAT, азооспермия, DFI, MAR и ART-маршрут',
+    icon: '🧬',
+  },
   { id: 'tools', name: 'Опросники', meta: 'Рабочие инструменты первичной оценки', icon: '📊' },
-  { id: 'surgery', name: 'Хирургия', meta: 'Операции, доступы, периоперационные маршруты', icon: '🔪' },
-  { id: 'metaphylaxis', name: 'Диеты при МКБ', meta: 'Метафилактика и пищевые сценарии', icon: '🥗' },
-  { id: 'atlas', name: '3D Атлас', meta: 'Клинические модели нозологий, hotspots и быстрые переходы в карточки', icon: '◈' },
+  {
+    id: 'surgery',
+    name: 'Хирургия',
+    meta: 'Операции, доступы, периоперационные маршруты',
+    icon: '🔪',
+  },
+  {
+    id: 'metaphylaxis',
+    name: 'Диеты при МКБ',
+    meta: 'Метафилактика и пищевые сценарии',
+    icon: '🥗',
+  },
+  {
+    id: 'atlas',
+    name: '3D Атлас',
+    meta: 'Клинические модели нозологий, hotspots и быстрые переходы в карточки',
+    icon: '◈',
+  },
   { id: 'glossary', name: 'Глоссарий', meta: 'Короткие определения и термины', icon: '📖' },
 ];
 
 const SitemapPage = ({ onNavigate, allDiseases: propDiseases = [] }) => {
   const [search, setSearch] = useState('');
   const [allDiseases, setAllDiseases] = useState(propDiseases);
-  
+
   // Lazy load disease data only when needed (dev/test override via prop)
   useEffect(() => {
     if (propDiseases.length > 0) return;
-    import('../data').then(module => setAllDiseases(module.allDiseases || []));
+    import('../data').then((module) => setAllDiseases(module.allDiseases || []));
   }, [propDiseases.length]);
-  
+
   const allDiseasesNav = allDiseases.map((disease) => ({
     id: disease.id,
     name: disease.name,
@@ -31,11 +58,11 @@ const SitemapPage = ({ onNavigate, allDiseases: propDiseases = [] }) => {
     subsection: disease.subsection,
     icon: disease.icon,
   }));
-  
+
   const filtered = allDiseasesNav;
-  const filteredServiceLinks = serviceLinks.filter((item) => (
+  const filteredServiceLinks = serviceLinks.filter((item) =>
     [item.name, item.meta].join(' ').toLowerCase().includes(search.trim().toLowerCase())
-  ));
+  );
 
   const grouped = {};
   filtered.forEach((disease) => {
@@ -47,13 +74,13 @@ const SitemapPage = ({ onNavigate, allDiseases: propDiseases = [] }) => {
   const sectionInfo = {};
   Object.keys(sectionNames).forEach((key) => {
     if (
-      key !== 'home'
-      && key !== 'emergency'
-      && key !== 'tools'
-      && key !== 'drugs'
-      && key !== 'glossary'
-      && key !== 'calculators'
-      && key !== 'sitemap'
+      key !== 'home' &&
+      key !== 'emergency' &&
+      key !== 'tools' &&
+      key !== 'drugs' &&
+      key !== 'glossary' &&
+      key !== 'calculators' &&
+      key !== 'sitemap'
     ) {
       sectionInfo[key] = {
         name: sectionNames[key],
@@ -69,12 +96,15 @@ const SitemapPage = ({ onNavigate, allDiseases: propDiseases = [] }) => {
         <span className="service-eyebrow">Full navigation</span>
         <h2 className="section-title">Карта сайта</h2>
         <p className="section-subtitle">
-          Быстрый доступ ко всем нозологиям и разделам через единый индекс с поиском по названию и МКБ-коду.
+          Быстрый доступ ко всем нозологиям и разделам через единый индекс с поиском по названию и
+          МКБ-коду.
         </p>
       </div>
 
       <div className="sitemap-search service-card-shell">
-        <label className="sr-only" htmlFor="sitemap-search-input">Поиск по карте сайта</label>
+        <label className="sr-only" htmlFor="sitemap-search-input">
+          Поиск по карте сайта
+        </label>
         <input
           id="sitemap-search-input"
           type="text"
@@ -99,7 +129,16 @@ const SitemapPage = ({ onNavigate, allDiseases: propDiseases = [] }) => {
               <button
                 key={item.id}
                 className="sitemap-item sitemap-service-item"
-                onClick={() => onNavigate(item.section || item.id, null, null, item.tool ? { source: 'sitemap_spermogram_entry', tool: item.tool } : { source: 'sitemap_service' })}
+                onClick={() =>
+                  onNavigate(
+                    item.section || item.id,
+                    null,
+                    null,
+                    item.tool
+                      ? { source: 'sitemap_spermogram_entry', tool: item.tool }
+                      : { source: 'sitemap_service' }
+                  )
+                }
                 data-sitemap-service={item.id}
               >
                 <span className="sitemap-item-icon">{item.icon}</span>

@@ -39,15 +39,14 @@ export default function BottomNav({ activeSection = 'home', onNavigate = () => {
   };
 
   return (
-    <nav
-      className="bottom-nav"
-      style={{ paddingBottom: `${Math.max(8, insets.bottom)}px` }}
-    >
+    <nav className="bottom-nav" style={{ paddingBottom: `${Math.max(8, insets.bottom)}px` }}>
       <div className="bottom-nav-container">
         {items.map((item) => {
           const isActive = activeSection === item.path;
           const activeClass = isActive
-            ? item.variant === 'emergency' ? 'text-danger' : 'text-teal'
+            ? item.variant === 'emergency'
+              ? 'text-danger'
+              : 'text-teal'
             : 'text-text-secondary';
 
           return (

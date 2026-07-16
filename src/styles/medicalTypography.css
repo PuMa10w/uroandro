@@ -4,20 +4,26 @@
 ============================================================ */
 
 /* Modal content headings — fluid scale */
-.modal-body h1 { font-size: var(--font-2xl); }
-.modal-body h2 { font-size: var(--font-xl); }
-.modal-body h3 { font-size: var(--font-lg); }
-.modal-body h4 { 
-  font-size: var(--font-md); 
-  margin: 1.25rem 0 0.5rem; 
+.modal-body h1 {
+  font-size: var(--font-2xl);
 }
-.modal-body h5 { 
-  font-size: var(--font-base); 
+.modal-body h2 {
+  font-size: var(--font-xl);
+}
+.modal-body h3 {
+  font-size: var(--font-lg);
+}
+.modal-body h4 {
+  font-size: var(--font-md);
+  margin: 1.25rem 0 0.5rem;
+}
+.modal-body h5 {
+  font-size: var(--font-base);
   font-weight: 600;
   margin: 1rem 0 0.4rem;
 }
-.modal-body h6 { 
-  font-size: var(--font-sm); 
+.modal-body h6 {
+  font-size: var(--font-sm);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -139,14 +145,20 @@ body.light-mode .premium-clinical-table th {
 
 /* Mobile typography adjustments */
 @media (max-width: 600px) {
-  .modal-body h1 { font-size: var(--font-xl); }
-  .modal-body h2 { font-size: var(--font-lg); }
-  .modal-body h3 { font-size: var(--font-md); }
-  
+  .modal-body h1 {
+    font-size: var(--font-xl);
+  }
+  .modal-body h2 {
+    font-size: var(--font-lg);
+  }
+  .modal-body h3 {
+    font-size: var(--font-md);
+  }
+
   .section-title {
     font-size: var(--font-2xl);
   }
-  
+
   .disease-card .card-title {
     font-size: var(--font-sm);
   }
@@ -159,7 +171,7 @@ body.light-mode .premium-clinical-table th {
     line-height: 1.5;
     color: #000;
   }
-  
+
   .premium-clinical-table th {
     color: #333;
     background: #eee;
@@ -183,12 +195,12 @@ body.light-mode .premium-clinical-table th {
 }
 
 /* Swipe hint for horizontal scroll areas */
-[data-scrollable="x"] {
+[data-scrollable='x'] {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-[data-scrollable="x"]::-webkit-scrollbar {
+[data-scrollable='x']::-webkit-scrollbar {
   display: none;
 }
 
@@ -197,17 +209,17 @@ body.light-mode .premium-clinical-table th {
   .premium-card:hover {
     transform: none;
   }
-  
+
   .premium-card:active {
     transform: scale(0.98);
     transition: transform 0.1s ease;
   }
-  
+
   .btn-premium-primary:hover {
     transform: none;
     box-shadow: 0 4px 16px rgba(88, 224, 193, 0.25);
   }
-  
+
   .btn-premium-primary:active {
     transform: scale(0.97);
   }
@@ -219,19 +231,19 @@ body.light-mode .premium-clinical-table th {
   .mobile-shell-nav {
     bottom: max(0.75rem, calc(var(--sab) + 0.75rem));
   }
-  
+
   .modal-content {
     max-height: calc(100dvh - var(--sat) - var(--sab) - 2rem);
   }
-  
+
   .page-content {
     min-height: 100dvh;
   }
 }
 
 /* ─── Horizontal scroll swipe hint for iPhone ─────────────── */
-[data-scrollable="x"]::after {
-  content: "";
+[data-scrollable='x']::after {
+  content: '';
   position: absolute;
   right: 0;
   top: 0;
@@ -242,8 +254,8 @@ body.light-mode .premium-clinical-table th {
   opacity: 0.4;
 }
 
-[data-scrollable="x"]::before {
-  content: "";
+[data-scrollable='x']::before {
+  content: '';
   position: absolute;
   left: 0;
   top: 0;

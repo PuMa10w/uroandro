@@ -19,11 +19,7 @@ const BreadcrumbItem = ({ label, href, isActive, onClick, icon }) => {
   }
 
   return (
-    <a 
-      href={href || '#'} 
-      className="breadcrumb-item breadcrumb-link"
-      onClick={handleClick}
-    >
+    <a href={href || '#'} className="breadcrumb-item breadcrumb-link" onClick={handleClick}>
       {icon && <span className="breadcrumb-icon">{icon}</span>}
       {label}
     </a>
@@ -51,11 +47,7 @@ const Breadcrumb = ({ items, separator = '›', className = '' }) => {
   }
 
   return (
-    <nav 
-      className={`breadcrumb-nav ${className}`}
-      aria-label="Навигация"
-      role="navigation"
-    >
+    <nav className={`breadcrumb-nav ${className}`} aria-label="Навигация" role="navigation">
       <ol className="breadcrumb-list">
         {items.map((item, index) => (
           <li key={item.id || index} className="breadcrumb-list-item">

@@ -9,7 +9,12 @@ const diets = [
     subtitle: '70-80% всех камней',
     goal: 'Снизить оксалаты, повысить цитраты, сохранить нормальный кальций',
     icon: '💎',
-    allowed: ['Молоко, йогурт, сыр', 'Лимон, лайм, апельсин', 'Рис, макароны, крупы', 'Курица, рыба умеренно'],
+    allowed: [
+      'Молоко, йогурт, сыр',
+      'Лимон, лайм, апельсин',
+      'Рис, макароны, крупы',
+      'Курица, рыба умеренно',
+    ],
     limited: ['Шпинат, ревень, свёкла', 'Шоколад, какао', 'Орехи', 'Чай'],
     forbidden: ['Витамин C > 1000 мг/сут', 'Избыток крепкого чая', 'Избыток шоколада'],
     sampleMenu: [
@@ -44,7 +49,11 @@ const generalRules = [
   { icon: '🥩', title: 'Белок', desc: '< 1 г/кг/сут, ограничить красное мясо' },
   { icon: '🏃', title: 'Активность', desc: 'Не менее 30 минут ежедневно' },
   { icon: '⚖️', title: 'ИМТ', desc: 'Держать в диапазоне 18.5-25' },
-  { icon: '🍋', title: 'Цитраты', desc: 'Лимон, лайм, апельсин как естественные ингибиторы камнеобразования' },
+  {
+    icon: '🍋',
+    title: 'Цитраты',
+    desc: 'Лимон, лайм, апельсин как естественные ингибиторы камнеобразования',
+  },
 ];
 
 const MetaphylaxisPage = () => {
@@ -53,7 +62,9 @@ const MetaphylaxisPage = () => {
   return (
     <section className="section metastaphylaxis-page service-page-shell">
       <h2 className="section-title">Метафилактика МКБ</h2>
-      <p className="section-subtitle">Профилактика рецидивов камнеобразования: диеты, питьевой режим и образ жизни</p>
+      <p className="section-subtitle">
+        Профилактика рецидивов камнеобразования: диеты, питьевой режим и образ жизни
+      </p>
 
       <div className="meta-general-rules">
         <h3 className="meta-section-title">📋 Общие правила для всех типов камней</h3>
@@ -76,7 +87,10 @@ const MetaphylaxisPage = () => {
               key={diet.id}
               className={`meta-diet-card ${activeDiet === diet.id ? 'active' : ''}`}
               onClick={() => setActiveDiet(activeDiet === diet.id ? null : diet.id)}
-              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setActiveDiet(activeDiet === diet.id ? null : diet.id)}
+              onKeyDown={(e) =>
+                (e.key === 'Enter' || e.key === ' ') &&
+                setActiveDiet(activeDiet === diet.id ? null : diet.id)
+              }
               style={{ borderColor: diet.color }}
               role="button"
               tabIndex="0"
@@ -92,50 +106,65 @@ const MetaphylaxisPage = () => {
         </div>
       </div>
 
-      {activeDiet && (() => {
-        const diet = diets.find((item) => item.id === activeDiet);
-        if (!diet) return null;
+      {activeDiet &&
+        (() => {
+          const diet = diets.find((item) => item.id === activeDiet);
+          if (!diet) return null;
 
-        return (
-          <div className="meta-diet-details">
-            <div className="meta-diet-header" style={{ borderColor: diet.color }}>
-              <h3 style={{ color: diet.color }}>{diet.icon} {diet.name}</h3>
-              <p>{diet.goal}</p>
-            </div>
+          return (
+            <div className="meta-diet-details">
+              <div className="meta-diet-header" style={{ borderColor: diet.color }}>
+                <h3 style={{ color: diet.color }}>
+                  {diet.icon} {diet.name}
+                </h3>
+                <p>{diet.goal}</p>
+              </div>
 
-            <div className="meta-diet-columns">
-              <div className="meta-diet-col allowed">
-                <h4 style={{ color: '#16c79a' }}>Можно</h4>
-                <ul>{diet.allowed.map((item, i) => <li key={i}>{item}</li>)}</ul>
+              <div className="meta-diet-columns">
+                <div className="meta-diet-col allowed">
+                  <h4 style={{ color: '#16c79a' }}>Можно</h4>
+                  <ul>
+                    {diet.allowed.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="meta-diet-col limited">
+                  <h4 style={{ color: '#f59e0b' }}>Ограничить</h4>
+                  <ul>
+                    {diet.limited.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="meta-diet-col forbidden">
+                  <h4 style={{ color: '#ef4444' }}>Нельзя</h4>
+                  <ul>
+                    {diet.forbidden.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div className="meta-diet-col limited">
-                <h4 style={{ color: '#f59e0b' }}>Ограничить</h4>
-                <ul>{diet.limited.map((item, i) => <li key={i}>{item}</li>)}</ul>
-              </div>
-              <div className="meta-diet-col forbidden">
-                <h4 style={{ color: '#ef4444' }}>Нельзя</h4>
-                <ul>{diet.forbidden.map((item, i) => <li key={i}>{item}</li>)}</ul>
-              </div>
-            </div>
 
-            <div className="meta-sample-menu" style={{ borderColor: diet.color }}>
-              <h4 style={{ color: diet.color }}>Примерное меню на день</h4>
-              <div className="meta-meals">
-                {diet.sampleMenu.map((meal, i) => (
-                  <div key={i} className="meta-meal">
-                    <span className="meta-meal-label">{meal.meal}</span>
-                    <span className="meta-meal-food">{meal.food}</span>
-                  </div>
-                ))}
+              <div className="meta-sample-menu" style={{ borderColor: diet.color }}>
+                <h4 style={{ color: diet.color }}>Примерное меню на день</h4>
+                <div className="meta-meals">
+                  {diet.sampleMenu.map((meal, i) => (
+                    <div key={i} className="meta-meal">
+                      <span className="meta-meal-label">{meal.meal}</span>
+                      <span className="meta-meal-food">{meal.food}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="meta-tip" style={{ borderColor: diet.color }}>
+                <strong>Совет:</strong> {diet.tips}
               </div>
             </div>
-
-            <div className="meta-tip" style={{ borderColor: diet.color }}>
-              <strong>Совет:</strong> {diet.tips}
-            </div>
-          </div>
-        );
-      })()}
+          );
+        })()}
     </section>
   );
 };

@@ -50,28 +50,34 @@ function pickClinicalText(value) {
 }
 
 function getFirstPathwayItem(items) {
-  return asArray(items)
-    .map((item) => {
-      if (typeof item === 'string') return item;
-      if (item?.items?.length) return pickClinicalText(item.items[0]);
-      return pickClinicalText(item);
-    })
-    .find(Boolean) || '';
+  return (
+    asArray(items)
+      .map((item) => {
+        if (typeof item === 'string') return item;
+        if (item?.items?.length) return pickClinicalText(item.items[0]);
+        return pickClinicalText(item);
+      })
+      .find(Boolean) || ''
+  );
 }
 
 function buildClinicalActionItems(normalizedDisease) {
-  const redFlag = asArray(normalizedDisease.redFlags)[0]?.text
-    || asArray(normalizedDisease.complications)[0]
-    || buildRedFlagsFallback(normalizedDisease).items?.[0]?.text;
-  const confirm = getFirstPathwayItem(normalizedDisease.diagnostics?.steps)
-    || normalizedDisease.diagnostics?.labs
-    || normalizedDisease.quickSummary?.goldStandard;
-  const firstLine = normalizedDisease.quickSummary?.firstLine
-    || getFirstPathwayItem(normalizedDisease.treatment?.conservative)
-    || getFirstPathwayItem(normalizedDisease.treatment?.surgical);
-  const refer = getFirstPathwayItem(normalizedDisease.whenToRefer?.toEmergency)
-    || getFirstPathwayItem(normalizedDisease.whenToRefer?.toUrologist)
-    || getFirstPathwayItem(normalizedDisease.followUp?.schedule);
+  const redFlag =
+    asArray(normalizedDisease.redFlags)[0]?.text ||
+    asArray(normalizedDisease.complications)[0] ||
+    buildRedFlagsFallback(normalizedDisease).items?.[0]?.text;
+  const confirm =
+    getFirstPathwayItem(normalizedDisease.diagnostics?.steps) ||
+    normalizedDisease.diagnostics?.labs ||
+    normalizedDisease.quickSummary?.goldStandard;
+  const firstLine =
+    normalizedDisease.quickSummary?.firstLine ||
+    getFirstPathwayItem(normalizedDisease.treatment?.conservative) ||
+    getFirstPathwayItem(normalizedDisease.treatment?.surgical);
+  const refer =
+    getFirstPathwayItem(normalizedDisease.whenToRefer?.toEmergency) ||
+    getFirstPathwayItem(normalizedDisease.whenToRefer?.toUrologist) ||
+    getFirstPathwayItem(normalizedDisease.followUp?.schedule);
 
   return [
     ['exclude', 'Исключить срочно', redFlag],
@@ -89,14 +95,20 @@ function renderClinicalActionHeader(normalizedDisease) {
     <div className="clinical-action-header" data-clinical-action-ready="true">
       <div className="clinical-action-headline">
         <span>Clinical Action</span>
-        <strong>{normalizedDisease.icd ? `МКБ-10: ${normalizedDisease.icd}` : 'быстрый маршрут'}</strong>
+        <strong>
+          {normalizedDisease.icd ? `МКБ-10: ${normalizedDisease.icd}` : 'быстрый маршрут'}
+        </strong>
       </div>
       <div className="clinical-action-grid">
         {items.map(([key, label, text], index) => (
           <div key={key} className={`clinical-action-item action-${key}`}>
             <span className="clinical-action-index">{String(index + 1).padStart(2, '0')}</span>
             <span className="clinical-action-label">{label}</span>
-            <SafeClinicalMarkup as="p" html={pickClinicalText(text)} sourceId={`clinical-action-${key}`} />
+            <SafeClinicalMarkup
+              as="p"
+              html={pickClinicalText(text)}
+              sourceId={`clinical-action-${key}`}
+            />
           </div>
         ))}
       </div>
@@ -117,7 +129,11 @@ function renderRedFlags(normalizedDisease) {
         {rf.map((item, i) => (
           <li key={i} className={`red-flag-item ${item.urgent ? 'urgent' : ''}`}>
             <span className="red-flag-icon">{item.urgent ? '!' : 'i'}</span>
-            <SafeClinicalMarkup className="red-flag-text" html={item.text} sourceId={`red-flag-${i}`} />
+            <SafeClinicalMarkup
+              className="red-flag-text"
+              html={item.text}
+              sourceId={`red-flag-${i}`}
+            />
             {item.action && <span className="red-flag-action">{item.action}</span>}
           </li>
         ))}
@@ -132,7 +148,9 @@ function renderReferralCard(title, items, tone = 'default') {
     <article className={`referral-card referral-card-${tone}`}>
       <h4 className="referral-card-title">{title}</h4>
       <ul className="referral-list">
-        {items.map((item, i) => <li key={i}>{item}</li>)}
+        {items.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
       </ul>
     </article>
   );
@@ -159,15 +177,34 @@ function renderPrognosis(normalizedDisease) {
   if (!p) return <p className="text-muted">Нет данных</p>;
   return (
     <div className="content-block">
-      {p.shortTerm && <><h3>Краткосрочный прогноз (1-5 лет)</h3><p>{p.shortTerm}</p></>}
-      {p.longTerm && <><h3>Долгосрочный прогноз (5-10+ лет)</h3><p>{p.longTerm}</p></>}
+      {p.shortTerm && (
+        <>
+          <h3>Краткосрочный прогноз (1-5 лет)</h3>
+          <p>{p.shortTerm}</p>
+        </>
+      )}
+      {p.longTerm && (
+        <>
+          <h3>Долгосрочный прогноз (5-10+ лет)</h3>
+          <p>{p.longTerm}</p>
+        </>
+      )}
       {p.factors && p.factors.length > 0 && (
         <>
           <h3>Факторы прогноза</h3>
-          <ul>{p.factors.map((item, i) => <li key={i}>{item}</li>)}</ul>
+          <ul>
+            {p.factors.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
         </>
       )}
-      {p.statistics && <><h3>Статистика</h3><p>{p.statistics}</p></>}
+      {p.statistics && (
+        <>
+          <h3>Статистика</h3>
+          <p>{p.statistics}</p>
+        </>
+      )}
     </div>
   );
 }
@@ -203,14 +240,49 @@ function renderClinicalCases(normalizedDisease) {
             <h4 className="case-title">{c.title}</h4>
           </div>
           <div className="case-timeline">
-            {c.patient && <div className="case-field"><strong>Пациент</strong><span>{c.patient}</span></div>}
-            {c.complaint && <div className="case-field"><strong>Жалобы</strong><span>{c.complaint}</span></div>}
-            {c.findings && <div className="case-field"><strong>Находки</strong><span>{c.findings}</span></div>}
-            {c.diagnosis && <div className="case-field"><strong>Диагноз</strong><span>{c.diagnosis}</span></div>}
-            {c.treatment && <div className="case-field"><strong>Лечение</strong><span>{c.treatment}</span></div>}
-            {c.outcome && <div className="case-field"><strong>Исход</strong><span>{c.outcome}</span></div>}
+            {c.patient && (
+              <div className="case-field">
+                <strong>Пациент</strong>
+                <span>{c.patient}</span>
+              </div>
+            )}
+            {c.complaint && (
+              <div className="case-field">
+                <strong>Жалобы</strong>
+                <span>{c.complaint}</span>
+              </div>
+            )}
+            {c.findings && (
+              <div className="case-field">
+                <strong>Находки</strong>
+                <span>{c.findings}</span>
+              </div>
+            )}
+            {c.diagnosis && (
+              <div className="case-field">
+                <strong>Диагноз</strong>
+                <span>{c.diagnosis}</span>
+              </div>
+            )}
+            {c.treatment && (
+              <div className="case-field">
+                <strong>Лечение</strong>
+                <span>{c.treatment}</span>
+              </div>
+            )}
+            {c.outcome && (
+              <div className="case-field">
+                <strong>Исход</strong>
+                <span>{c.outcome}</span>
+              </div>
+            )}
           </div>
-          {c.lesson && <div className="case-lesson"><strong>Вывод</strong><span>{c.lesson}</span></div>}
+          {c.lesson && (
+            <div className="case-lesson">
+              <strong>Вывод</strong>
+              <span>{c.lesson}</span>
+            </div>
+          )}
         </div>
       ))}
     </div>
@@ -228,11 +300,18 @@ function renderGuidelineSourceCard(key, source) {
       </div>
       {keyPoints.length > 0 && (
         <ul className="guideline-keypoints">
-          {keyPoints.map((point, i) => <li key={i}>{point}</li>)}
+          {keyPoints.map((point, i) => (
+            <li key={i}>{point}</li>
+          ))}
         </ul>
       )}
       {source.url && (
-        <a className="guideline-source-link" href={source.url} target="_blank" rel="noopener noreferrer">
+        <a
+          className="guideline-source-link"
+          href={source.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Открыть источник
         </a>
       )}
@@ -251,10 +330,14 @@ function renderGuidelinesPanel(normalizedDisease) {
       {(normalizedDisease.lastReviewed || normalizedDisease.evidenceVersion) && (
         <div className="guidelines-freshness">
           {normalizedDisease.lastReviewed && (
-            <span className="guidelines-freshness-item">Обновлено: {normalizedDisease.lastReviewed}</span>
+            <span className="guidelines-freshness-item">
+              Обновлено: {normalizedDisease.lastReviewed}
+            </span>
           )}
           {normalizedDisease.evidenceVersion && (
-            <span className="guidelines-freshness-item">Источник: {normalizedDisease.evidenceVersion}</span>
+            <span className="guidelines-freshness-item">
+              Источник: {normalizedDisease.evidenceVersion}
+            </span>
           )}
         </div>
       )}
@@ -265,7 +348,9 @@ function renderGuidelinesPanel(normalizedDisease) {
           <div className="guidelines-consensus">
             <span className="guidelines-consensus-label">Консенсус</span>
             <ul>
-              {guidelines.consensus.map((item, i) => <li key={i}>{item}</li>)}
+              {guidelines.consensus.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
             </ul>
           </div>
         )}
@@ -287,7 +372,12 @@ function renderFAQ(normalizedDisease) {
         {faq.map((item, i) => (
           <details key={i} className="faq-item">
             <summary className="faq-question">{item.q}</summary>
-            <SafeClinicalMarkup as="div" className="faq-answer" html={item.a} sourceId={`faq-${i}`} />
+            <SafeClinicalMarkup
+              as="div"
+              className="faq-answer"
+              html={item.a}
+              sourceId={`faq-${i}`}
+            />
           </details>
         ))}
       </div>
@@ -312,8 +402,12 @@ function renderDrugDoses(normalizedDisease) {
         <tbody>
           {drugs.map((d, i) => (
             <tr key={i}>
-              <td data-label="Препарат"><strong>{d.name}</strong></td>
-              <td data-label="Дозировка"><code>{d.dose}</code></td>
+              <td data-label="Препарат">
+                <strong>{d.name}</strong>
+              </td>
+              <td data-label="Дозировка">
+                <code>{d.dose}</code>
+              </td>
               <td data-label="Примечание">{d.note || '—'}</td>
             </tr>
           ))}
@@ -329,25 +423,38 @@ function renderLifestyleAdvice(disease) {
   const lifestyle = unique([...asArray(disease.lifestyleAdvice), ...fallback.advice]);
   const nutrition = unique([...asArray(disease.nutritionAdvice), ...fallback.nutrition]);
   const patientCare = unique([...asArray(disease.patientRecommendations), ...fallback.patient]);
-  if (!lifestyle.length && !nutrition.length && !patientCare.length) return <p className="text-muted">Нет данных</p>;
+  if (!lifestyle.length && !nutrition.length && !patientCare.length)
+    return <p className="text-muted">Нет данных</p>;
   return (
     <div className="content-block">
       {lifestyle.length > 0 && (
         <>
           <h3>Рекомендации по образу жизни</h3>
-          <ul>{lifestyle.map((item, i) => <li key={i}>{item}</li>)}</ul>
+          <ul>
+            {lifestyle.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
         </>
       )}
       {nutrition.length > 0 && (
         <>
           <h3>Питание и гидратация</h3>
-          <ul>{nutrition.map((item, i) => <li key={i}>{item}</li>)}</ul>
+          <ul>
+            {nutrition.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
         </>
       )}
       {patientCare.length > 0 && (
         <>
           <h3>Памятка пациенту</h3>
-          <ul>{patientCare.map((item, i) => <li key={i}>{item}</li>)}</ul>
+          <ul>
+            {patientCare.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
         </>
       )}
     </div>
@@ -361,11 +468,19 @@ function renderLabNorms(normalizedDisease) {
     <div className="clinical-table-card">
       <h3>Лабораторные нормы</h3>
       <table className="styled-table premium-clinical-table lab-norms-table">
-        <thead><tr><th>Параметр</th><th>Норма</th><th>Примечание</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Параметр</th>
+            <th>Норма</th>
+            <th>Примечание</th>
+          </tr>
+        </thead>
         <tbody>
           {labs.map((lab, index) => (
             <tr key={index}>
-              <td data-label="Параметр"><strong>{lab.name}</strong></td>
+              <td data-label="Параметр">
+                <strong>{lab.name}</strong>
+              </td>
               <td data-label="Норма">{lab.normal}</td>
               <td data-label="Примечание">{lab.note || '—'}</td>
             </tr>
@@ -383,11 +498,19 @@ function renderDifferentialTable(normalizedDisease) {
     <div className="clinical-table-card">
       <h3>Дифференциальная диагностика</h3>
       <table className="styled-table premium-clinical-table differential-table">
-        <thead><tr><th>Заболевание</th><th>Отличительные черты</th><th>Исследование</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Заболевание</th>
+            <th>Отличительные черты</th>
+            <th>Исследование</th>
+          </tr>
+        </thead>
         <tbody>
           {dt.map((item, i) => (
             <tr key={i}>
-              <td data-label="Нозология"><strong>{item.condition}</strong></td>
+              <td data-label="Нозология">
+                <strong>{item.condition}</strong>
+              </td>
               <td data-label="Отличия">{item.distinguishingFeature}</td>
               <td data-label="Проверка">{item.investigation}</td>
             </tr>
@@ -425,8 +548,12 @@ function renderDifferentialListTable(items) {
             const parts = text.split(/\s+[—-]\s+/);
             return (
               <tr key={i}>
-                <td data-label="№"><span className="table-step-badge">{i + 1}</span></td>
-                <td data-label="Сценарий"><strong>{parts[0] || text}</strong></td>
+                <td data-label="№">
+                  <span className="table-step-badge">{i + 1}</span>
+                </td>
+                <td data-label="Сценарий">
+                  <strong>{parts[0] || text}</strong>
+                </td>
                 <td data-label="Подсказка">{parts.slice(1).join(' — ') || text}</td>
               </tr>
             );
@@ -453,7 +580,9 @@ function renderClinicalTextTable(title, text, variant = 'default') {
         <tbody>
           {rows.map((row, i) => (
             <tr key={i}>
-              <td data-label="Блок"><span className="table-step-badge">{i + 1}</span></td>
+              <td data-label="Блок">
+                <span className="table-step-badge">{i + 1}</span>
+              </td>
               <td data-label="Что оценить">{row}</td>
             </tr>
           ))}
@@ -479,9 +608,17 @@ function renderDiagnosticsTable(diagnostics) {
         <tbody>
           {steps.map((step, i) => (
             <tr key={i} className={step.main ? 'is-main-step' : ''}>
-              <td data-label="Шаг"><span className="table-step-badge">{step.step || i + 1}</span></td>
+              <td data-label="Шаг">
+                <span className="table-step-badge">{step.step || i + 1}</span>
+              </td>
               <td data-label="Действие">{step.text}</td>
-              <td data-label="Маршрут">{i < steps.length - 1 ? <span className="table-flow-arrow">→</span> : <span className="table-flow-done">итог</span>}</td>
+              <td data-label="Маршрут">
+                {i < steps.length - 1 ? (
+                  <span className="table-flow-arrow">→</span>
+                ) : (
+                  <span className="table-flow-done">итог</span>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>
@@ -506,12 +643,27 @@ function renderClinicalPathwayTable(title, items, variant = 'default') {
         </thead>
         <tbody>
           {rows.map((item, i) => {
-            const text = typeof item === 'string' ? item : item.text || item.desc || item.name || String(item);
+            const text =
+              typeof item === 'string' ? item : item.text || item.desc || item.name || String(item);
             return (
               <tr key={i}>
-                <td data-label="Шаг"><span className="table-step-badge">{i + 1}</span></td>
-                <td data-label="Действие"><SafeClinicalMarkup className="clinical-pathway-text" html={text} sourceId={`pathway-${variant}-${i}`} /></td>
-                <td data-label="Дальше">{i < rows.length - 1 ? <span className="table-flow-arrow">→</span> : <span className="table-flow-done">готово</span>}</td>
+                <td data-label="Шаг">
+                  <span className="table-step-badge">{i + 1}</span>
+                </td>
+                <td data-label="Действие">
+                  <SafeClinicalMarkup
+                    className="clinical-pathway-text"
+                    html={text}
+                    sourceId={`pathway-${variant}-${i}`}
+                  />
+                </td>
+                <td data-label="Дальше">
+                  {i < rows.length - 1 ? (
+                    <span className="table-flow-arrow">→</span>
+                  ) : (
+                    <span className="table-flow-done">готово</span>
+                  )}
+                </td>
               </tr>
             );
           })}
@@ -559,7 +711,10 @@ function renderClassificationTable(title, items, variant = 'default') {
   if (!rows.length) return null;
 
   return (
-    <div key={variant} className={`clinical-table-card classification-table-card classification-table-card-${variant}`}>
+    <div
+      key={variant}
+      className={`clinical-table-card classification-table-card classification-table-card-${variant}`}
+    >
       <h3>{title}</h3>
       <table className="styled-table premium-clinical-table classification-table">
         <thead>
@@ -574,8 +729,12 @@ function renderClassificationTable(title, items, variant = 'default') {
             const row = normalizeClassificationRow(item, i);
             return (
               <tr key={`${variant}-${i}`}>
-                <td data-label="№"><span className="table-step-badge">{i + 1}</span></td>
-                <td data-label="Группа"><strong>{row.title}</strong></td>
+                <td data-label="№">
+                  <span className="table-step-badge">{i + 1}</span>
+                </td>
+                <td data-label="Группа">
+                  <strong>{row.title}</strong>
+                </td>
                 <td data-label="Критерий">{row.detail || 'Уточнить по клиническому контексту'}</td>
               </tr>
             );
@@ -599,7 +758,10 @@ function renderTnmClassification(tnm) {
       const rows = asArray(tnm[key]);
       if (!rows.length) return null;
       return (
-        <div key={key} className="clinical-table-card classification-table-card classification-table-card-tnm">
+        <div
+          key={key}
+          className="clinical-table-card classification-table-card classification-table-card-tnm"
+        >
           <h3>{labels[key]}</h3>
           <table className="styled-table premium-clinical-table classification-table tnm-premium-table">
             <thead>
@@ -611,7 +773,9 @@ function renderTnmClassification(tnm) {
             <tbody>
               {rows.map((item, i) => (
                 <tr key={`${key}-${i}`}>
-                  <td data-label="Код"><strong>{item.code || `${key}${i}`}</strong></td>
+                  <td data-label="Код">
+                    <strong>{item.code || `${key}${i}`}</strong>
+                  </td>
                   <td data-label="Описание">{item.desc || item.text || ''}</td>
                 </tr>
               ))}
@@ -637,7 +801,9 @@ function renderClassification(normalizedDisease) {
       {classification.title && <h3>{classification.title}</h3>}
       {renderedSections}
       {renderedTnm}
-      {renderedSections.length === 0 && renderedTnm.length === 0 && <p className="text-muted">Нет данных</p>}
+      {renderedSections.length === 0 && renderedTnm.length === 0 && (
+        <p className="text-muted">Нет данных</p>
+      )}
     </div>
   );
 }
@@ -654,35 +820,55 @@ function renderUltrasound(normalizedDisease) {
       {us.findings?.length > 0 && (
         <>
           <h4>Типичная УЗ-картина</h4>
-          <ul>{us.findings.map((item, i) => <li key={i}>{item}</li>)}</ul>
+          <ul>
+            {us.findings.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
         </>
       )}
 
       {us.doppler?.length > 0 && (
         <>
           <h4>Допплерография</h4>
-          <ul>{us.doppler.map((item, i) => <li key={i}>{item}</li>)}</ul>
+          <ul>
+            {us.doppler.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
         </>
       )}
 
       {us.protocol?.length > 0 && (
         <>
           <h4>Минимальный протокол</h4>
-          <ul>{us.protocol.map((item, i) => <li key={i}>{item}</li>)}</ul>
+          <ul>
+            {us.protocol.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
         </>
       )}
 
       {us.report?.length > 0 && (
         <>
           <h4>Что указать в заключении</h4>
-          <ul>{us.report.map((item, i) => <li key={i}>{item}</li>)}</ul>
+          <ul>
+            {us.report.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
         </>
       )}
 
       {us.limitations?.length > 0 && (
         <>
           <h4>Ограничения метода</h4>
-          <ul>{us.limitations.map((item, i) => <li key={i}>{item}</li>)}</ul>
+          <ul>
+            {us.limitations.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
         </>
       )}
     </div>
@@ -707,36 +893,77 @@ export default function DiseaseModalContent({
           <h3>Эпидемиология</h3>
           <p>{normalizedDisease.epidemiology}</p>
           <h3>Этиология и факторы риска</h3>
-          <ul>{normalizedDisease.etiology.map((item, i) => <li key={i}>{item}</li>)}</ul>
+          <ul>
+            {normalizedDisease.etiology.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
           <h3>Клиническая картина</h3>
-          <ul>{normalizedDisease.symptoms.map((item, i) => <li key={i}>{item}</li>)}</ul>
-          {normalizedDisease.pathogenesis && <><h3>Патогенез</h3><p>{normalizedDisease.pathogenesis}</p></>}
-          {normalizedDisease.complications.length > 0 && <><h3>Осложнения</h3><ul>{normalizedDisease.complications.map((item, i) => <li key={i}>{item}</li>)}</ul></>}
-          {renderDifferentialTable(normalizedDisease)}
-          {normalizedDisease.differentialDiagnosis.length > 0 && normalizedDisease.differentialTable.length === 0 && (
-            <><h3>Дифференциальная диагностика</h3>{renderDifferentialListTable(normalizedDisease.differentialDiagnosis)}</>
-          )}
-          {renderLabNorms(normalizedDisease)}
-          {renderWhenToRefer(normalizedDisease)}
-          {normalizedDisease.relatedIds && normalizedDisease.relatedIds.length > 0 && onNavigateToDisease && (
+          <ul>
+            {normalizedDisease.symptoms.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+          {normalizedDisease.pathogenesis && (
             <>
-              <h3>Связанные нозологии</h3>
-              <div className="related-diseases">
-                {normalizedDisease.relatedIds.map((rid, i) => {
-                  const relatedDisease = diseaseById[rid];
-                  if (!relatedDisease) return null;
-                  return (
-                    <button key={i} className="related-disease-btn" onClick={() => { onClose(); onNavigateToDisease(relatedDisease.section, relatedDisease.subsection, rid); }}>
-                      <span className="related-disease-title">{relatedDisease.name}</span>
-                      <span className="related-disease-meta">
-                        {relatedDisease.icd ? `МКБ-10: ${relatedDisease.icd}` : relatedDisease.subsection || relatedDisease.section}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
+              <h3>Патогенез</h3>
+              <p>{normalizedDisease.pathogenesis}</p>
             </>
           )}
+          {normalizedDisease.complications.length > 0 && (
+            <>
+              <h3>Осложнения</h3>
+              <ul>
+                {normalizedDisease.complications.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </>
+          )}
+          {renderDifferentialTable(normalizedDisease)}
+          {normalizedDisease.differentialDiagnosis.length > 0 &&
+            normalizedDisease.differentialTable.length === 0 && (
+              <>
+                <h3>Дифференциальная диагностика</h3>
+                {renderDifferentialListTable(normalizedDisease.differentialDiagnosis)}
+              </>
+            )}
+          {renderLabNorms(normalizedDisease)}
+          {renderWhenToRefer(normalizedDisease)}
+          {normalizedDisease.relatedIds &&
+            normalizedDisease.relatedIds.length > 0 &&
+            onNavigateToDisease && (
+              <>
+                <h3>Связанные нозологии</h3>
+                <div className="related-diseases">
+                  {normalizedDisease.relatedIds.map((rid, i) => {
+                    const relatedDisease = diseaseById[rid];
+                    if (!relatedDisease) return null;
+                    return (
+                      <button
+                        key={i}
+                        className="related-disease-btn"
+                        onClick={() => {
+                          onClose();
+                          onNavigateToDisease(
+                            relatedDisease.section,
+                            relatedDisease.subsection,
+                            rid
+                          );
+                        }}
+                      >
+                        <span className="related-disease-title">{relatedDisease.name}</span>
+                        <span className="related-disease-meta">
+                          {relatedDisease.icd
+                            ? `МКБ-10: ${relatedDisease.icd}`
+                            : relatedDisease.subsection || relatedDisease.section}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </>
+            )}
         </div>
       );
 
@@ -744,9 +971,27 @@ export default function DiseaseModalContent({
       return (
         <div className="content-block">
           <h3>Симптомы и клиническая картина</h3>
-          <ul>{asArray(normalizedDisease.symptoms).map((item, i) => <li key={i}>{typeof item === 'string' ? item : item.text || item}</li>)}</ul>
-          {normalizedDisease.pathogenesis && <><h3>Патогенез</h3><p>{normalizedDisease.pathogenesis}</p></>}
-          {asArray(normalizedDisease.complications).length > 0 && <><h3>Осложнения</h3><ul>{asArray(normalizedDisease.complications).map((item, i) => <li key={i}>{typeof item === 'string' ? item : item.text || item}</li>)}</ul></>}
+          <ul>
+            {asArray(normalizedDisease.symptoms).map((item, i) => (
+              <li key={i}>{typeof item === 'string' ? item : item.text || item}</li>
+            ))}
+          </ul>
+          {normalizedDisease.pathogenesis && (
+            <>
+              <h3>Патогенез</h3>
+              <p>{normalizedDisease.pathogenesis}</p>
+            </>
+          )}
+          {asArray(normalizedDisease.complications).length > 0 && (
+            <>
+              <h3>Осложнения</h3>
+              <ul>
+                {asArray(normalizedDisease.complications).map((item, i) => (
+                  <li key={i}>{typeof item === 'string' ? item : item.text || item}</li>
+                ))}
+              </ul>
+            </>
+          )}
         </div>
       );
 
@@ -754,7 +999,9 @@ export default function DiseaseModalContent({
       return (
         <div className="content-block">
           <h3>Дифференциальная диагностика</h3>
-          {normalizedDisease.differentialDiagnosis && asArray(normalizedDisease.differentialDiagnosis).length > 0 && renderDifferentialListTable(normalizedDisease.differentialDiagnosis)}
+          {normalizedDisease.differentialDiagnosis &&
+            asArray(normalizedDisease.differentialDiagnosis).length > 0 &&
+            renderDifferentialListTable(normalizedDisease.differentialDiagnosis)}
           {renderDifferentialTable(normalizedDisease)}
         </div>
       );
@@ -767,8 +1014,16 @@ export default function DiseaseModalContent({
         <div className="content-block">
           <h3>{normalizedDisease.diagnostics?.title || 'Диагностика'}</h3>
           {renderDiagnosticsTable(normalizedDisease.diagnostics)}
-          {renderClinicalTextTable('Визуализация', normalizedDisease.diagnostics?.imaging, 'imaging')}
-          {renderClinicalTextTable('Лабораторная диагностика', normalizedDisease.diagnostics?.labs, 'labs')}
+          {renderClinicalTextTable(
+            'Визуализация',
+            normalizedDisease.diagnostics?.imaging,
+            'imaging'
+          )}
+          {renderClinicalTextTable(
+            'Лабораторная диагностика',
+            normalizedDisease.diagnostics?.labs,
+            'labs'
+          )}
         </div>
       );
 
@@ -783,12 +1038,19 @@ export default function DiseaseModalContent({
               {renderClinicalPathwayTable(section.title, section.items, 'conservative')}
             </div>
           ))}
-          {normalizedDisease.treatment?.surgical && normalizedDisease.treatment.surgical.length > 0 && normalizedDisease.treatment.surgical.map((section, i) => (
-            <div key={i} className="treatment-pathway-section">
-              {renderClinicalPathwayTable(section.title, section.items, 'surgical')}
-            </div>
-          ))}
-          {normalizedDisease.treatment?.metaphylaxis && renderClinicalPathwayTable('Профилактика и наблюдение', normalizedDisease.treatment.metaphylaxis, 'metaphylaxis')}
+          {normalizedDisease.treatment?.surgical &&
+            normalizedDisease.treatment.surgical.length > 0 &&
+            normalizedDisease.treatment.surgical.map((section, i) => (
+              <div key={i} className="treatment-pathway-section">
+                {renderClinicalPathwayTable(section.title, section.items, 'surgical')}
+              </div>
+            ))}
+          {normalizedDisease.treatment?.metaphylaxis &&
+            renderClinicalPathwayTable(
+              'Профилактика и наблюдение',
+              normalizedDisease.treatment.metaphylaxis,
+              'metaphylaxis'
+            )}
         </div>
       );
 

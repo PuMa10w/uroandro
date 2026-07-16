@@ -1,16 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const mojibakeMarkers = [
-  'вЂ',
-  'РІР‚',
-  'РЎвЂљР ',
-  'Р СџР ',
-  'Р СљР ',
-  'СЂСџ',
-  'РІС™',
-  'РџР',
-];
+const mojibakeMarkers = ['вЂ', 'РІР‚', 'РЎвЂљР ', 'Р СџР ', 'Р СљР ', 'СЂСџ', 'РІС™', 'РџР'];
 
 const scanExtensions = new Set(['.js', '.jsx', '.html', '.json']);
 
@@ -23,12 +14,12 @@ function collectProjectFiles(rootDir) {
       const relativePath = path.relative(rootDir, absolutePath);
 
       if (
-        relativePath.startsWith('node_modules')
-        || relativePath.startsWith('build')
-        || relativePath.startsWith('.git')
-        || relativePath.startsWith('.wrangler')
-        || relativePath.endsWith('.test.js')
-        || relativePath.endsWith('.test.jsx')
+        relativePath.startsWith('node_modules') ||
+        relativePath.startsWith('build') ||
+        relativePath.startsWith('.git') ||
+        relativePath.startsWith('.wrangler') ||
+        relativePath.endsWith('.test.js') ||
+        relativePath.endsWith('.test.jsx')
       ) {
         return;
       }

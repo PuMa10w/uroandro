@@ -2,10 +2,41 @@ import React, { useState } from 'react';
 import '../styles/servicePages.css';
 
 const jokes = [
-  { id: 1, category: 'urology', emoji: '🔬', setup: 'Пациент урологу:', punchline: 'Доктор, я пью 2 литра воды в день.\nОтлично. А сколько из них чай?\n...все два.', reaction: '😂' },
-  { id: 2, category: 'andrology', emoji: '⚡', setup: 'Андролог мужу:', punchline: 'Ваша жена говорит, что у вас проблемы...\nКакие проблемы? Я как кролик!\nКролики живут 8 лет. А вам 62.', reaction: '🤣' },
-  { id: 3, category: 'stones', emoji: '💎', setup: 'Уролог пациенту с камнем:', punchline: 'У вас камень 8 мм. Рекомендую ДУВЛТ.\nА можно без операции?\nМожно. Но тогда он будет с вами дольше, чем жена.', reaction: '😅' },
-  { id: 4, category: 'bph', emoji: '🔬', setup: 'Мужчина 70 лет урологу:', punchline: 'Доктор, я встаю ночью 7 раз.\nЭто не проблема. Проблема — что вы не ложитесь обратно.', reaction: '🤣' },
+  {
+    id: 1,
+    category: 'urology',
+    emoji: '🔬',
+    setup: 'Пациент урологу:',
+    punchline: 'Доктор, я пью 2 литра воды в день.\nОтлично. А сколько из них чай?\n...все два.',
+    reaction: '😂',
+  },
+  {
+    id: 2,
+    category: 'andrology',
+    emoji: '⚡',
+    setup: 'Андролог мужу:',
+    punchline:
+      'Ваша жена говорит, что у вас проблемы...\nКакие проблемы? Я как кролик!\nКролики живут 8 лет. А вам 62.',
+    reaction: '🤣',
+  },
+  {
+    id: 3,
+    category: 'stones',
+    emoji: '💎',
+    setup: 'Уролог пациенту с камнем:',
+    punchline:
+      'У вас камень 8 мм. Рекомендую ДУВЛТ.\nА можно без операции?\nМожно. Но тогда он будет с вами дольше, чем жена.',
+    reaction: '😅',
+  },
+  {
+    id: 4,
+    category: 'bph',
+    emoji: '🔬',
+    setup: 'Мужчина 70 лет урологу:',
+    punchline:
+      'Доктор, я встаю ночью 7 раз.\nЭто не проблема. Проблема — что вы не ложитесь обратно.',
+    reaction: '🤣',
+  },
 ];
 
 const categories = [
@@ -21,7 +52,8 @@ const UroHumorPage = () => {
   const [revealedJokes, setRevealedJokes] = useState({});
   const [laughCount, setLaughCount] = useState(0);
 
-  const filtered = activeCategory === 'all' ? jokes : jokes.filter((joke) => joke.category === activeCategory);
+  const filtered =
+    activeCategory === 'all' ? jokes : jokes.filter((joke) => joke.category === activeCategory);
 
   const toggleReveal = (id) => {
     setRevealedJokes((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -34,11 +66,10 @@ const UroHumorPage = () => {
 
   return (
     <section className="section uro-humor-page service-page-shell">
-      <h2 className="section-title">
-        😂 Урологический юмор
-      </h2>
+      <h2 className="section-title">😂 Урологический юмор</h2>
       <p className="section-subtitle">
-        Медицина — серьезная наука. Но без юмора — никуда! {laughCount > 0 && <span className="laugh-counter">😂×{laughCount}</span>}
+        Медицина — серьезная наука. Но без юмора — никуда!{' '}
+        {laughCount > 0 && <span className="laugh-counter">😂×{laughCount}</span>}
       </p>
 
       <div className="humor-tabs" role="tablist">
@@ -84,7 +115,9 @@ const UroHumorPage = () => {
               ) : (
                 <div className="humor-punchline">
                   {joke.punchline.split('\n').map((line, i) => (
-                    <span key={i} className="humor-punchline-line">{line}</span>
+                    <span key={i} className="humor-punchline-line">
+                      {line}
+                    </span>
                   ))}
                 </div>
               )}

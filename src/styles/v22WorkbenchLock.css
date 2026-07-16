@@ -128,8 +128,12 @@ textarea:focus-visible,
     -webkit-overflow-scrolling: touch !important;
     overscroll-behavior: contain !important;
     scroll-padding-top: calc(var(--v22-tabs-total) + 0.9rem) !important;
-    scroll-padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--v22-modal-actions-height) + 1.6rem) !important;
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--v22-modal-actions-height) + 1.9rem) !important;
+    scroll-padding-bottom: calc(
+      env(safe-area-inset-bottom, 0px) + var(--v22-modal-actions-height) + 1.6rem
+    ) !important;
+    padding-bottom: calc(
+      env(safe-area-inset-bottom, 0px) + var(--v22-modal-actions-height) + 1.9rem
+    ) !important;
     background:
       radial-gradient(circle at top left, rgba(34, 211, 178, 0.08), transparent 34%),
       linear-gradient(180deg, rgba(5, 12, 23, 0.99), rgba(6, 13, 25, 0.995)) !important;
@@ -153,7 +157,9 @@ textarea:focus-visible,
     position: relative !important;
     z-index: 1 !important;
     min-height: 0 !important;
-    padding-top: calc(env(safe-area-inset-top, 0px) + var(--v22-modal-tabs-height) + 0.78rem) !important;
+    padding-top: calc(
+      env(safe-area-inset-top, 0px) + var(--v22-modal-tabs-height) + 0.78rem
+    ) !important;
     padding-bottom: 0.84rem !important;
     overflow: visible !important;
   }
@@ -165,7 +171,9 @@ textarea:focus-visible,
     max-width: 100vw !important;
     min-width: 0 !important;
     padding-top: 0 !important;
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--v22-modal-actions-height) + 2rem) !important;
+    padding-bottom: calc(
+      env(safe-area-inset-bottom, 0px) + var(--v22-modal-actions-height) + 2rem
+    ) !important;
     pointer-events: none !important;
   }
 
@@ -193,8 +201,7 @@ textarea:focus-visible,
     box-sizing: border-box !important;
     transform: translate3d(0, 0, 0) !important;
     background:
-      linear-gradient(180deg, rgba(5, 11, 21, 0.995), rgba(7, 15, 27, 0.975)),
-      rgba(7, 15, 27, 0.98) !important;
+      linear-gradient(180deg, rgba(5, 11, 21, 0.995), rgba(7, 15, 27, 0.975)), rgba(7, 15, 27, 0.98) !important;
     border-top: 1px solid rgba(148, 163, 184, 0.1) !important;
     border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.34) !important;
@@ -222,7 +229,8 @@ textarea:focus-visible,
     min-width: 0 !important;
     max-width: 100% !important;
     margin: 0 !important;
-    padding: 0.04rem max(3.8rem, env(safe-area-inset-right, 0px) + 1rem) 0.08rem max(0.82rem, env(safe-area-inset-left, 0px) + 0.82rem) !important;
+    padding: 0.04rem max(3.8rem, env(safe-area-inset-right, 0px) + 1rem) 0.08rem
+      max(0.82rem, env(safe-area-inset-left, 0px) + 0.82rem) !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch !important;
@@ -245,7 +253,9 @@ textarea:focus-visible,
   body.modal-open .modal-tabpanel > .content-block {
     max-width: 100% !important;
     min-width: 0 !important;
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--v22-modal-actions-height) + 2rem) !important;
+    padding-bottom: calc(
+      env(safe-area-inset-bottom, 0px) + var(--v22-modal-actions-height) + 2rem
+    ) !important;
   }
 
   body.modal-open .modal-mobile-quickbar,
@@ -275,13 +285,21 @@ textarea:focus-visible,
   }
 
   body.modal-open .modal-content {
-    scroll-padding-top: calc(env(safe-area-inset-top, 0px) + var(--v22-modal-tabs-height) + 0.5rem) !important;
-    scroll-padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--v22-modal-actions-height) + 1rem) !important;
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--v22-modal-actions-height) + 1.2rem) !important;
+    scroll-padding-top: calc(
+      env(safe-area-inset-top, 0px) + var(--v22-modal-tabs-height) + 0.5rem
+    ) !important;
+    scroll-padding-bottom: calc(
+      env(safe-area-inset-bottom, 0px) + var(--v22-modal-actions-height) + 1rem
+    ) !important;
+    padding-bottom: calc(
+      env(safe-area-inset-bottom, 0px) + var(--v22-modal-actions-height) + 1.2rem
+    ) !important;
   }
 
   body.modal-open .modal-header {
-    padding-top: calc(env(safe-area-inset-top, 0px) + var(--v22-modal-tabs-height) + 0.42rem) !important;
+    padding-top: calc(
+      env(safe-area-inset-top, 0px) + var(--v22-modal-tabs-height) + 0.42rem
+    ) !important;
     padding-bottom: 0.48rem !important;
   }
 
@@ -314,7 +332,9 @@ textarea:focus-visible,
   body.modal-open .modal-body,
   body.modal-open .modal-tabpanel,
   body.modal-open .modal-tabpanel > .content-block {
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--v22-modal-actions-height) + 1.2rem) !important;
+    padding-bottom: calc(
+      env(safe-area-inset-bottom, 0px) + var(--v22-modal-actions-height) + 1.2rem
+    ) !important;
   }
 
   body.modal-open .modal-mobile-quickbar,

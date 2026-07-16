@@ -7,16 +7,16 @@ body.light-mode {
   --bg-card-hover: rgba(242, 248, 255, 0.99);
   --bg-elevated: rgba(240, 248, 255, 0.96);
   --bg-panel: rgba(238, 246, 255, 0.97);
-  
+
   --text-primary: #0a1629;
   --text-secondary: #2d3e50;
   --text-muted: #5a6b7c;
   --text-disabled: #8a9bad;
-  
+
   --border: rgba(45, 119, 210, 0.18);
   --border-light: rgba(45, 119, 210, 0.12);
   --border-strong: rgba(12, 139, 118, 0.25);
-  
+
   --shadow-card: 0 20px 48px rgba(45, 119, 210, 0.12);
   --shadow-card-hover: 0 28px 64px rgba(45, 119, 210, 0.18);
   --shadow-teal: 0 0 0 1px rgba(12, 139, 118, 0.15), 0 14px 30px rgba(12, 139, 118, 0.08);

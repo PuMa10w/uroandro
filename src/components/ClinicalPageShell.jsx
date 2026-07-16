@@ -13,7 +13,12 @@ function ClinicalPageShell({
   ...rest
 }) {
   return (
-    <Element className={`clinical-page-shell ${className}`.trim()} data-v20-clinical-page-shell="true" data-v21-workbench-shell="true" {...rest}>
+    <Element
+      className={`clinical-page-shell ${className}`.trim()}
+      data-v20-clinical-page-shell="true"
+      data-v21-workbench-shell="true"
+      {...rest}
+    >
       {(eyebrow || title || subtitle || trustPills.length > 0 || actions) && (
         <header className="clinical-page-shell-head">
           <div className="clinical-page-shell-copy">
@@ -22,7 +27,11 @@ function ClinicalPageShell({
             {subtitle && <p className="section-subtitle">{subtitle}</p>}
             {trustPills.length > 0 && (
               <div className="service-hero-trust-row">
-                {trustPills.map((pill) => <span key={pill} className="service-hero-trust-pill">{pill}</span>)}
+                {trustPills.map((pill) => (
+                  <span key={pill} className="service-hero-trust-pill">
+                    {pill}
+                  </span>
+                ))}
               </div>
             )}
           </div>

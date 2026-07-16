@@ -18,11 +18,13 @@ const SUBSECTION_PROFILES = {
     tags: ['Симптомы', 'LUTS', 'Поведенческая терапия', 'Качество жизни'],
   },
   reconstructive: {
-    summary: 'анатомическая оценка, показания к реконструкции, этапность лечения и послеоперационный контроль',
+    summary:
+      'анатомическая оценка, показания к реконструкции, этапность лечения и послеоперационный контроль',
     tags: ['Реконструкция', 'Анатомия', 'Показания', 'Контроль'],
   },
   nephrology: {
-    summary: 'лабораторный профиль, стратификация риска почечной дисфункции и план динамического наблюдения',
+    summary:
+      'лабораторный профиль, стратификация риска почечной дисфункции и план динамического наблюдения',
     tags: ['Почки', 'Лаборатория', 'Риск', 'Мониторинг'],
   },
   pain: {
@@ -30,7 +32,8 @@ const SUBSECTION_PROFILES = {
     tags: ['Боль', 'Дифференциал', 'Красные флаги', 'Тактика'],
   },
   sexual: {
-    summary: 'оценка сексуальной функции, факторов риска, психосоматических триггеров и маршрута лечения',
+    summary:
+      'оценка сексуальной функции, факторов риска, психосоматических триггеров и маршрута лечения',
     tags: ['Сексуальная функция', 'Андрология', 'Оценка риска', 'Лечение'],
   },
   fertility: {
@@ -38,7 +41,8 @@ const SUBSECTION_PROFILES = {
     tags: ['Фертильность', 'Спермограмма', 'Дообследование', 'Маршрутизация'],
   },
   endocrine: {
-    summary: 'гормональный профиль, метаболические факторы и план безопасного долгосрочного контроля',
+    summary:
+      'гормональный профиль, метаболические факторы и план безопасного долгосрочного контроля',
     tags: ['Гормоны', 'Метаболизм', 'Контроль', 'Долгосрочно'],
   },
 };
@@ -74,7 +78,9 @@ function buildDescription(disease) {
 }
 
 function buildTags(disease) {
-  const subsectionTags = disease.subsection ? SUBSECTION_PROFILES[disease.subsection]?.tags || [] : [];
+  const subsectionTags = disease.subsection
+    ? SUBSECTION_PROFILES[disease.subsection]?.tags || []
+    : [];
   const sectionTags = SECTION_TAGS[disease.section] || [];
   const icdTag = disease.icd ? [`МКБ ${disease.icd}`] : [];
 
@@ -85,7 +91,8 @@ export function enrichDiseaseMetadata(disease) {
   return {
     ...disease,
     description: disease.description || buildDescription(disease),
-    tags: Array.isArray(disease.tags) && disease.tags.length > 0 ? disease.tags : buildTags(disease),
+    tags:
+      Array.isArray(disease.tags) && disease.tags.length > 0 ? disease.tags : buildTags(disease),
   };
 }
 

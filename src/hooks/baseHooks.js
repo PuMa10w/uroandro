@@ -127,10 +127,13 @@ export function useWindowSize() {
   return windowSize;
 }
 
-export function useAsync(asyncFn, dependencies = [], immediate = true) {
+export function useAsync(asyncFn, immediate = true) {
   const [status, setStatus] = useState('idle');
   const [value, setValue] = useState(null);
   const [error, setError] = useState(null);
+
+  const asyncFnRef = useRef(asyncFn);
+  asyncFnRef.current = asyncFn;
 
   const execute = useCallback(async (...args) => {
     setStatus('pending');
@@ -138,7 +141,7 @@ export function useAsync(asyncFn, dependencies = [], immediate = true) {
     setError(null);
 
     try {
-      const response = await asyncFn(...args);
+      const response = await asyncFnRef.current(...args);
       setValue(response);
       setStatus('success');
       return response;
@@ -147,7 +150,7 @@ export function useAsync(asyncFn, dependencies = [], immediate = true) {
       setStatus('error');
       throw err;
     }
-  }, dependencies);
+  }, []);
 
   useEffect(() => {
     if (immediate) {
@@ -174,29 +177,32 @@ export function useToggle(initialValue = false) {
 export function useListKeyboard(items, onSelect) {
   const [activeIndex, setActiveIndex] = useState(-1);
 
-  const handleKeyDown = useCallback((event) => {
-    switch (event.key) {
-      case 'ArrowDown':
-        event.preventDefault();
-        setActiveIndex((prev) => (prev < items.length - 1 ? prev + 1 : prev));
-        break;
-      case 'ArrowUp':
-        event.preventDefault();
-        setActiveIndex((prev) => (prev > 0 ? prev - 1 : 0));
-        break;
-      case 'Enter':
-        event.preventDefault();
-        if (activeIndex >= 0 && items[activeIndex]) {
-          onSelect(items[activeIndex]);
-        }
-        break;
-      case 'Escape':
-        setActiveIndex(-1);
-        break;
-      default:
-        break;
-    }
-  }, [items, activeIndex, onSelect]);
+  const handleKeyDown = useCallback(
+    (event) => {
+      switch (event.key) {
+        case 'ArrowDown':
+          event.preventDefault();
+          setActiveIndex((prev) => (prev < items.length - 1 ? prev + 1 : prev));
+          break;
+        case 'ArrowUp':
+          event.preventDefault();
+          setActiveIndex((prev) => (prev > 0 ? prev - 1 : 0));
+          break;
+        case 'Enter':
+          event.preventDefault();
+          if (activeIndex >= 0 && items[activeIndex]) {
+            onSelect(items[activeIndex]);
+          }
+          break;
+        case 'Escape':
+          setActiveIndex(-1);
+          break;
+        default:
+          break;
+      }
+    },
+    [items, activeIndex, onSelect]
+  );
 
   return { activeIndex, setActiveIndex, handleKeyDown };
 }

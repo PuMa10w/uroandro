@@ -29,7 +29,9 @@ function getOpenCountLabel(openCount) {
 }
 
 function getTopRetainedItem(history) {
-  return [...history].sort((left, right) => (right.openCount || 0) - (left.openCount || 0))[0] || null;
+  return (
+    [...history].sort((left, right) => (right.openCount || 0) - (left.openCount || 0))[0] || null
+  );
 }
 
 function getTopRetainedSource(history) {
@@ -40,7 +42,8 @@ function getTopRetainedSource(history) {
     return acc;
   }, {});
 
-  const [source, count] = Object.entries(sourceTotals).sort((left, right) => right[1] - left[1])[0] || [];
+  const [source, count] =
+    Object.entries(sourceTotals).sort((left, right) => right[1] - left[1])[0] || [];
   if (!source) return null;
 
   return {
@@ -68,7 +71,11 @@ const HistoryPanel = ({ history = [], onNavigate, onClear }) => {
 
   const topRetainedItem = getTopRetainedItem(history);
   const topRetainedSource = getTopRetainedSource(history);
-  const retentionRecommendations = getRetentionRecommendations(history, topRetainedItem, topRetainedSource);
+  const retentionRecommendations = getRetentionRecommendations(
+    history,
+    topRetainedItem,
+    topRetainedSource
+  );
 
   return (
     <div className="history-panel service-card-shell">
@@ -77,17 +84,23 @@ const HistoryPanel = ({ history = [], onNavigate, onClear }) => {
           <span className="service-eyebrow">Recent views</span>
           <h4>Недавние открытия</h4>
         </div>
-        <button className="history-clear-btn" onClick={onClear}>Очистить</button>
+        <button className="history-clear-btn" onClick={onClear}>
+          Очистить
+        </button>
       </div>
 
       {(topRetainedItem || topRetainedSource) && (
         <div className="history-list">
           {topRetainedItem && (
             <div className="history-item" role="note" aria-label="Most revisited condition">
-              <span className="history-icon">{diseaseIcons[topRetainedItem.id] || topRetainedItem.icon || '📈'}</span>
+              <span className="history-icon">
+                {diseaseIcons[topRetainedItem.id] || topRetainedItem.icon || '📈'}
+              </span>
               <div className="history-info">
                 <span className="history-name">Most revisited: {topRetainedItem.name}</span>
-                <span className="history-time">{getOpenCountLabel(topRetainedItem.openCount || 1)}</span>
+                <span className="history-time">
+                  {getOpenCountLabel(topRetainedItem.openCount || 1)}
+                </span>
               </div>
             </div>
           )}
@@ -115,15 +128,21 @@ const HistoryPanel = ({ history = [], onNavigate, onClear }) => {
             <button
               key={`retention-${item.id}`}
               className="history-item"
-              onClick={() => onNavigate(item.section, item.subsection, item.id, { source: 'retention_recommendation' })}
+              onClick={() =>
+                onNavigate(item.section, item.subsection, item.id, {
+                  source: 'retention_recommendation',
+                })
+              }
             >
-              <span className="history-icon">
-                {diseaseIcons[item.id] || item.icon || '📘'}
-              </span>
+              <span className="history-icon">{diseaseIcons[item.id] || item.icon || '📘'}</span>
               <div className="history-info">
                 <span className="history-name">{item.name}</span>
-                {item.lastSource && <span className="history-time">{getHistorySourceLabel(item.lastSource)}</span>}
-                {item.openCount && <span className="history-time">{getOpenCountLabel(item.openCount)}</span>}
+                {item.lastSource && (
+                  <span className="history-time">{getHistorySourceLabel(item.lastSource)}</span>
+                )}
+                {item.openCount && (
+                  <span className="history-time">{getOpenCountLabel(item.openCount)}</span>
+                )}
               </div>
             </button>
           ))}
@@ -140,13 +159,15 @@ const HistoryPanel = ({ history = [], onNavigate, onClear }) => {
               onNavigate(item.section, item.subsection, item.id, { source: 'history_reopen' });
             }}
           >
-            <span className="history-icon">
-              {diseaseIcons[item.id] || item.icon || '📋'}
-            </span>
+            <span className="history-icon">{diseaseIcons[item.id] || item.icon || '📋'}</span>
             <div className="history-info">
               <span className="history-name">{item.name}</span>
-              {item.lastSource && <span className="history-time">{getHistorySourceLabel(item.lastSource)}</span>}
-              {item.openCount && <span className="history-time">{getOpenCountLabel(item.openCount)}</span>}
+              {item.lastSource && (
+                <span className="history-time">{getHistorySourceLabel(item.lastSource)}</span>
+              )}
+              {item.openCount && (
+                <span className="history-time">{getOpenCountLabel(item.openCount)}</span>
+              )}
               <span className="history-time">{item.time}</span>
             </div>
           </button>

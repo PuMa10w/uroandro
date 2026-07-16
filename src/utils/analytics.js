@@ -35,7 +35,9 @@ const getCachedTelemetry = () => {
   }
 
   if (!Array.isArray(window.__uroTelemetryEvents)) {
-    window.__uroTelemetryEvents = safeParseTelemetry(window.sessionStorage?.getItem(TELEMETRY_STORAGE_KEY));
+    window.__uroTelemetryEvents = safeParseTelemetry(
+      window.sessionStorage?.getItem(TELEMETRY_STORAGE_KEY)
+    );
   }
 
   return window.__uroTelemetryEvents;
@@ -52,7 +54,9 @@ const persistTelemetry = (events) => {
     window.sessionStorage?.setItem(TELEMETRY_STORAGE_KEY, JSON.stringify(events));
   } catch {}
 
-  window.dispatchEvent(new CustomEvent('uro-telemetry-update', { detail: { count: events.length } }));
+  window.dispatchEvent(
+    new CustomEvent('uro-telemetry-update', { detail: { count: events.length } })
+  );
 };
 
 const recordTelemetry = (category, action, label = '', value = null, extra = {}) => {
@@ -99,7 +103,7 @@ export const clearTelemetryEvents = () => {
   persistTelemetry([]);
 };
 
-const getTopEntries = (entries, metricKey, limit = 5) => (
+const getTopEntries = (entries, metricKey, limit = 5) =>
   [...entries]
     .sort((left, right) => {
       if ((right[metricKey] || 0) !== (left[metricKey] || 0)) {
@@ -108,13 +112,14 @@ const getTopEntries = (entries, metricKey, limit = 5) => (
 
       return String(left.label || '').localeCompare(String(right.label || ''));
     })
-    .slice(0, limit)
-);
+    .slice(0, limit);
 
 export const getTelemetrySnapshot = () => {
   const events = getTelemetryEvents();
   const sectionSteps = events.filter((event) => event.category === AnalyticsEvent.SECTION_PATHWAY);
-  const modalOpens = events.filter((event) => event.category === AnalyticsEvent.MODAL_OPEN && event.action === 'open');
+  const modalOpens = events.filter(
+    (event) => event.category === AnalyticsEvent.MODAL_OPEN && event.action === 'open'
+  );
 
   const pathwayTotals = sectionSteps.reduce((acc, event, index) => {
     const key = `${event.section || 'unknown'}|${event.subsection || 'none'}|${event.action}|${event.source || 'direct'}`;
@@ -131,11 +136,14 @@ export const getTelemetrySnapshot = () => {
     current.count += 1;
 
     if (event.action === 'focus_cta' || event.action === 'subsection_card') {
-      const progressed = sectionSteps.slice(index + 1).some((candidate) => (
-        candidate.action === 'disease_recommendation'
-        && candidate.section === event.section
-        && candidate.subsection === event.subsection
-      ));
+      const progressed = sectionSteps
+        .slice(index + 1)
+        .some(
+          (candidate) =>
+            candidate.action === 'disease_recommendation' &&
+            candidate.section === event.section &&
+            candidate.subsection === event.subsection
+        );
 
       if (progressed) {
         current.progressed += 1;
@@ -162,10 +170,12 @@ export const getTelemetrySnapshot = () => {
 
       current.recommendations += 1;
 
-      const converted = modalOpens.slice(index).some((modalEvent) => (
-        modalEvent.target_id === event.target_id
-        && modalEvent.source === event.source
-      ));
+      const converted = modalOpens
+        .slice(index)
+        .some(
+          (modalEvent) =>
+            modalEvent.target_id === event.target_id && modalEvent.source === event.source
+        );
 
       if (converted) {
         current.modalOpens += 1;
@@ -180,15 +190,16 @@ export const getTelemetrySnapshot = () => {
       ...item,
       progressRate: item.count > 0 ? Math.round((item.progressed / item.count) * 100) : 0,
     })),
-    'count',
+    'count'
   );
 
   const topRecommendations = getTopEntries(
     Object.values(recommendationTotals).map((item) => ({
       ...item,
-      modalRate: item.recommendations > 0 ? Math.round((item.modalOpens / item.recommendations) * 100) : 0,
+      modalRate:
+        item.recommendations > 0 ? Math.round((item.modalOpens / item.recommendations) * 100) : 0,
     })),
-    'recommendations',
+    'recommendations'
   );
 
   const weakestDropoffs = [...Object.values(pathwayTotals)]
@@ -223,7 +234,9 @@ export const trackPageView = (pagePath, pageTitle) => {
   if (ANALYTICS_ID && typeof window !== 'undefined') {
     if (!window.gtag) {
       window.dataLayer = window.dataLayer || [];
-      window.gtag = function() { window.dataLayer.push(arguments); };
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
       window.gtag('js', new Date());
       window.gtag('config', ANALYTICS_ID, {
         page_path: pagePath,
@@ -239,47 +252,29 @@ export const trackPageView = (pagePath, pageTitle) => {
 };
 
 export const trackSearch = (query, resultsCount) => {
-  logEvent(
-    AnalyticsEvent.SEARCH,
-    query,
-    `${resultsCount} results`,
-    resultsCount,
-    {
-      query_length: query.trim().length,
-      results_count: resultsCount,
-      result_state: resultsCount > 0 ? 'results' : 'zero_results',
-    },
-  );
+  logEvent(AnalyticsEvent.SEARCH, query, `${resultsCount} results`, resultsCount, {
+    query_length: query.trim().length,
+    results_count: resultsCount,
+    result_state: resultsCount > 0 ? 'results' : 'zero_results',
+  });
 };
 
 export const trackSearchSelect = (query, diseaseId, source = 'search') => {
-  logEvent(
-    AnalyticsEvent.SEARCH_SELECT,
+  logEvent(AnalyticsEvent.SEARCH_SELECT, source, `${query} -> ${diseaseId}`, null, {
+    query,
+    target_id: diseaseId,
     source,
-    `${query} -> ${diseaseId}`,
-    null,
-    {
-      query,
-      target_id: diseaseId,
-      source,
-      conversion_type: 'search_to_disease',
-    },
-  );
+    conversion_type: 'search_to_disease',
+  });
 };
 
 export const trackSymptomRoute = (routeName, targetId, source = 'search_overlay') => {
-  logEvent(
-    AnalyticsEvent.SYMPTOM_ROUTE,
+  logEvent(AnalyticsEvent.SYMPTOM_ROUTE, source, `${routeName} -> ${targetId}`, null, {
+    complaint: routeName,
+    target_id: targetId,
     source,
-    `${routeName} -> ${targetId}`,
-    null,
-    {
-      complaint: routeName,
-      target_id: targetId,
-      source,
-      conversion_type: 'complaint_to_pathway',
-    },
-  );
+    conversion_type: 'complaint_to_pathway',
+  });
 };
 
 export const trackHistoryReopen = (diseaseId, previousSource, openCount) => {
@@ -293,7 +288,7 @@ export const trackHistoryReopen = (diseaseId, previousSource, openCount) => {
       previous_source: previousSource || 'unknown',
       open_count: openCount,
       conversion_type: 'history_reopen',
-    },
+    }
   );
 };
 
@@ -314,25 +309,26 @@ export const trackSection = (section, subsection) => {
   logEvent(AnalyticsEvent.SECTION_ENTER, path);
 };
 
-export const trackSectionPathway = ({ step, section, subsection = null, targetId = null, source = 'direct', retained = false }) => {
+export const trackSectionPathway = ({
+  step,
+  section,
+  subsection = null,
+  targetId = null,
+  source = 'direct',
+  retained = false,
+}) => {
   const path = subsection ? `${section}/${subsection}` : section;
   const label = targetId ? `${path} -> ${targetId}` : path;
 
-  logEvent(
-    AnalyticsEvent.SECTION_PATHWAY,
+  logEvent(AnalyticsEvent.SECTION_PATHWAY, step, label, null, {
     step,
-    label,
-    null,
-    {
-      step,
-      section,
-      subsection: subsection || '',
-      target_id: targetId || '',
-      source,
-      retained: retained ? 'retained' : 'default',
-      conversion_type: 'section_pathway_step',
-    },
-  );
+    section,
+    subsection: subsection || '',
+    target_id: targetId || '',
+    source,
+    retained: retained ? 'retained' : 'default',
+    conversion_type: 'section_pathway_step',
+  });
 };
 
 export const trackCalculator = (calculatorName, score) => {
@@ -362,7 +358,7 @@ export const initAnalytics = () => {
   }
 };
 
-export default {
+export const analytics = {
   trackPageView,
   trackSearch,
   trackSearchSelect,

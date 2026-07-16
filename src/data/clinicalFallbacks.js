@@ -129,7 +129,8 @@ function toRedFlag(text) {
 
 export function buildRedFlagsFallback(disease) {
   const area = getClinicalArea(disease);
-  const items = redFlagTemplates[area] || redFlagTemplates[disease.section] || redFlagTemplates.functional;
+  const items =
+    redFlagTemplates[area] || redFlagTemplates[disease.section] || redFlagTemplates.functional;
   return {
     isFallback: true,
     title: 'Клинический минимум красных флагов',
@@ -140,7 +141,8 @@ export function buildRedFlagsFallback(disease) {
 
 export function buildFollowUpFallback(disease) {
   const area = getClinicalArea(disease);
-  const schedule = followUpTemplates[area] || followUpTemplates[disease.section] || followUpTemplates.functional;
+  const schedule =
+    followUpTemplates[area] || followUpTemplates[disease.section] || followUpTemplates.functional;
   return {
     isFallback: true,
     title: 'Минимальный план наблюдения',

@@ -20,7 +20,11 @@ const asymptomaticBacteriuriaData = {
   symptoms: ['Клинические симптомы ИМП отсутствуют'],
   classification: {
     title: 'Клинические группы',
-    byType: ['У небеременных пациентов', 'У беременных', 'Перед инвазивными урологическими манипуляциями'],
+    byType: [
+      'У небеременных пациентов',
+      'У беременных',
+      'Перед инвазивными урологическими манипуляциями',
+    ],
   },
   diagnostics: {
     title: 'Диагностика',
@@ -82,7 +86,7 @@ const asymptomaticBacteriuriaData = {
         'Treatment in pregnancy mandatory (Strong; Level: 1).',
       ],
       url: 'https://www.urology.org.au/guidelines',
-    }
+    },
   },
 };
 

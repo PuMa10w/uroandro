@@ -2,17 +2,27 @@ import React, { useMemo } from 'react';
 import DiseaseSection from '../components/DiseaseSection';
 import { getSectionDiseasesByIds } from '../data/sectionData';
 
-const PediatricUrology = ({ favorites, onToggleFavorite, onNavigate, selectedDiseaseId, viewHistory }) => {
-  const data = useMemo(() => getSectionDiseasesByIds([
-    'enuresis',
-    'phimosis',
-    'hydrocele',
-    'hypospadias',
-    'posterior-urethral-valves',
-    'spermatocele',
-    'balanoposthitis',
-    'cryptorchidism',
-  ]), []);
+const PediatricUrology = ({
+  favorites,
+  onToggleFavorite,
+  onNavigate,
+  selectedDiseaseId,
+  viewHistory,
+}) => {
+  const data = useMemo(
+    () =>
+      getSectionDiseasesByIds([
+        'enuresis',
+        'phimosis',
+        'hydrocele',
+        'hypospadias',
+        'posterior-urethral-valves',
+        'spermatocele',
+        'balanoposthitis',
+        'cryptorchidism',
+      ]),
+    []
+  );
 
   return (
     <DiseaseSection

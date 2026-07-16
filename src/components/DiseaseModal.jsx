@@ -18,7 +18,12 @@ const IPHONE_SHELL_MAX_WIDTH = 940;
 function isTypingTarget(target) {
   if (!target || !(target instanceof HTMLElement)) return false;
   const tagName = target.tagName;
-  return target.isContentEditable || tagName === 'INPUT' || tagName === 'TEXTAREA' || tagName === 'SELECT';
+  return (
+    target.isContentEditable ||
+    tagName === 'INPUT' ||
+    tagName === 'TEXTAREA' ||
+    tagName === 'SELECT'
+  );
 }
 
 const propTypes = {
@@ -70,7 +75,14 @@ const defaultProps = {
   onNavigateToDisease: () => {},
 };
 
-const DiseaseModal = ({ disease, allDiseases = [], currentIndex = 0, onNavigate = () => {}, onClose, onNavigateToDisease }) => {
+const DiseaseModal = ({
+  disease,
+  allDiseases = [],
+  currentIndex = 0,
+  onNavigate = () => {},
+  onClose,
+  onNavigateToDisease,
+}) => {
   const normalizedDisease = normalizeDisease(disease);
   const [activeTab, setActiveTab] = useState(DEFAULT_TAB);
   const [isMobile, setIsMobile] = useState(false);
@@ -180,7 +192,9 @@ const DiseaseModal = ({ disease, allDiseases = [], currentIndex = 0, onNavigate 
     };
     const ref = modalRef.current;
     if (ref) ref.addEventListener('scroll', handleScroll, { passive: true });
-    return () => { if (ref) ref.removeEventListener('scroll', handleScroll); };
+    return () => {
+      if (ref) ref.removeEventListener('scroll', handleScroll);
+    };
   }, [activeTab, isMobile]);
 
   const handleScrollToTop = () => {
@@ -232,10 +246,13 @@ const DiseaseModal = ({ disease, allDiseases = [], currentIndex = 0, onNavigate 
 
   const handleTouchStart = (e) => {
     const startTarget = e.target;
-    const startedFromHeader = startTarget instanceof HTMLElement && Boolean(startTarget.closest('.modal-header'));
+    const startedFromHeader =
+      startTarget instanceof HTMLElement && Boolean(startTarget.closest('.modal-header'));
     touchStartY.current = e.touches[0].clientY;
     touchStartX.current = e.touches[0].clientX;
-    canDragClose.current = Boolean(isMobile && startedFromHeader && modalRef.current?.scrollTop === 0);
+    canDragClose.current = Boolean(
+      isMobile && startedFromHeader && modalRef.current?.scrollTop === 0
+    );
   };
 
   const handleTouchMove = (e) => {
@@ -258,8 +275,7 @@ const DiseaseModal = ({ disease, allDiseases = [], currentIndex = 0, onNavigate 
       } else if (touchDeltaX.current < 0 && currentIndex < allDiseases.length - 1) {
         onNavigate(1);
       }
-    }
-    else if (dragOffset > DRAG_CLOSE_THRESHOLD) {
+    } else if (dragOffset > DRAG_CLOSE_THRESHOLD) {
       onClose();
     }
     setDragOffset(0);
@@ -283,7 +299,9 @@ const DiseaseModal = ({ disease, allDiseases = [], currentIndex = 0, onNavigate 
       <div
         ref={modalRef}
         className="modal-content"
-        style={isMobile && dragOffset > 0 ? { transform: `translateY(${dragOffset}px)` } : undefined}
+        style={
+          isMobile && dragOffset > 0 ? { transform: `translateY(${dragOffset}px)` } : undefined
+        }
         onClick={(e) => e.stopPropagation()}
         onKeyDown={(e) => e.key === 'Escape' && onClose()}
         onTouchStart={handleTouchStart}
@@ -320,15 +338,23 @@ const DiseaseModal = ({ disease, allDiseases = [], currentIndex = 0, onNavigate 
             />
           </div>
         </div>
-
       </div>
 
       {isMobile && (
-        <div className="modal-mobile-quickbar is-fixed" onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.key === 'Escape' && onClose()} tabIndex={-1}>
+        <div
+          className="modal-mobile-quickbar is-fixed"
+          onClick={(e) => e.stopPropagation()}
+          onKeyDown={(e) => e.key === 'Escape' && onClose()}
+          tabIndex={-1}
+        >
           <button className="modal-mobile-quickbtn" onClick={handleScrollToTop} aria-label="Наверх">
             Наверх
           </button>
-          <button className="modal-mobile-quickbtn primary" onClick={onClose} aria-label="Закрыть карточку">
+          <button
+            className="modal-mobile-quickbtn primary"
+            onClick={onClose}
+            aria-label="Закрыть карточку"
+          >
             Закрыть
           </button>
         </div>

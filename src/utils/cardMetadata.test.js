@@ -10,7 +10,9 @@ import {
 describe('cardMetadata helpers', () => {
   it('returns disease description when present', () => {
     expect(getCardDescription({ description: 'Test description' })).toBe('Test description');
-    expect(getFavoriteDescription({ description: 'Favorite description' })).toBe('Favorite description');
+    expect(getFavoriteDescription({ description: 'Favorite description' })).toBe(
+      'Favorite description'
+    );
   });
 
   it('returns fallback descriptions when missing', () => {

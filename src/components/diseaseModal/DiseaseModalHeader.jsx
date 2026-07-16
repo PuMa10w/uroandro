@@ -6,11 +6,7 @@ import { sectionNames, subsectionLabels } from '../../data';
 import ExportDiseaseCard from '../ExportDiseaseCard';
 
 const getLeadText = (disease) => {
-  const source =
-    disease.description
-    || disease.quickSummary?.firstLine
-    || disease.definition
-    || '';
+  const source = disease.description || disease.quickSummary?.firstLine || disease.definition || '';
 
   if (!source) return '';
   return source.length > 220 ? `${source.slice(0, 217).trim()}...` : source;
@@ -65,7 +61,11 @@ const getRiskMarkers = (disease) => {
     markers.push({ tone: 'renal', label: 'Почечный контекст' });
   }
 
-  if (disease.followUp || disease.subsection === 'functional' || disease.subsection === 'endocrine') {
+  if (
+    disease.followUp ||
+    disease.subsection === 'functional' ||
+    disease.subsection === 'endocrine'
+  ) {
     markers.push({ tone: 'monitoring', label: 'Нуждается в наблюдении' });
   }
 
@@ -94,20 +94,25 @@ const getPathwayMarkers = (disease) => {
   return markers.slice(0, 4);
 };
 
-const getPatientSummary = (disease) => (
-  disease.quickSummary?.firstLine
-  || disease.definition
-  || disease.description
-  || 'Материал помогает быстро понять суть состояния, уровень риска и следующий клинический шаг.'
-);
+const getPatientSummary = (disease) =>
+  disease.quickSummary?.firstLine ||
+  disease.definition ||
+  disease.description ||
+  'Материал помогает быстро понять суть состояния, уровень риска и следующий клинический шаг.';
 
 const getClinicalFocus = (disease) => {
-  if (disease.subsection === 'stones') return 'Оценить обструкцию, инфекцию, необходимость визуализации и тактику декомпрессии.';
-  if (disease.subsection === 'infections') return 'Разделить амбулаторный и ургентный сценарий, исключить сепсис и обструкцию.';
-  if (disease.subsection === 'oncology') return 'Уточнить риск, стадирование и маршрут дообследования без задержек.';
-  if (disease.subsection === 'sexual') return 'Оценить сосудистые, психогенные и эндокринные факторы, не теряя patient-safe tone.';
-  if (disease.subsection === 'fertility') return 'Сопоставить спермограмму, гормональный контур и репродуктивный маршрут пары.';
-  if (disease.subsection === 'endocrine') return 'Интерпретировать гормональный профиль в связке с симптомами и репродуктивными планами.';
+  if (disease.subsection === 'stones')
+    return 'Оценить обструкцию, инфекцию, необходимость визуализации и тактику декомпрессии.';
+  if (disease.subsection === 'infections')
+    return 'Разделить амбулаторный и ургентный сценарий, исключить сепсис и обструкцию.';
+  if (disease.subsection === 'oncology')
+    return 'Уточнить риск, стадирование и маршрут дообследования без задержек.';
+  if (disease.subsection === 'sexual')
+    return 'Оценить сосудистые, психогенные и эндокринные факторы, не теряя patient-safe tone.';
+  if (disease.subsection === 'fertility')
+    return 'Сопоставить спермограмму, гормональный контур и репродуктивный маршрут пары.';
+  if (disease.subsection === 'endocrine')
+    return 'Интерпретировать гормональный профиль в связке с симптомами и репродуктивными планами.';
 
   return 'Используйте карточку как клинический dossier: симптомы, red flags, диагностика, лечение и follow-up в одном потоке.';
 };
@@ -132,7 +137,11 @@ export default function DiseaseModalHeader({
   return (
     <div className="modal-header">
       <div className="modal-header-main">
-        {isMobile && <button className="modal-back-btn" onClick={onClose}>Назад</button>}
+        {isMobile && (
+          <button className="modal-back-btn" onClick={onClose}>
+            Назад
+          </button>
+        )}
         <div className="modal-header-identity">
           <div className="modal-header-icon">
             {diseaseIcons[disease.id] || <span style={{ fontSize: '3rem' }}>{disease.icon}</span>}
@@ -140,9 +149,13 @@ export default function DiseaseModalHeader({
           <div className="modal-header-copy">
             <div className="modal-header-eyebrow">
               <span className="modal-header-section">{sectionLabel}</span>
-              {subsectionLabel && <span className="modal-header-subsection">{subsectionLabel}</span>}
+              {subsectionLabel && (
+                <span className="modal-header-subsection">{subsectionLabel}</span>
+              )}
             </div>
-            <h2 className="modal-title" id="modal-title">{disease.name}</h2>
+            <h2 className="modal-title" id="modal-title">
+              {disease.name}
+            </h2>
             <div className="modal-header-meta">
               <div className="modal-header-icd">МКБ-10: {disease.icd}</div>
               {disease.evidenceVersion && (
@@ -151,7 +164,10 @@ export default function DiseaseModalHeader({
             </div>
             <div className="modal-header-badges">
               {getHeaderTags(disease).map((tag, i) => (
-                <span key={i} className={`badge ${i === 0 ? 'badge-eau' : i === 1 ? 'badge-aua' : 'badge-ru'}`}>
+                <span
+                  key={i}
+                  className={`badge ${i === 0 ? 'badge-eau' : i === 1 ? 'badge-aua' : 'badge-ru'}`}
+                >
                   {tag}
                 </span>
               ))}
@@ -168,7 +184,10 @@ export default function DiseaseModalHeader({
             {pathwayMarkers.length > 0 && (
               <div className="modal-pathway-row">
                 {pathwayMarkers.map((marker) => (
-                  <span key={marker.label} className={`modal-pathway-badge modal-pathway-${marker.tone}`}>
+                  <span
+                    key={marker.label}
+                    className={`modal-pathway-badge modal-pathway-${marker.tone}`}
+                  >
                     {marker.label}
                   </span>
                 ))}
@@ -184,51 +203,69 @@ export default function DiseaseModalHeader({
               </div>
             )}
             {leadText && <p className="modal-header-lead">{leadText}</p>}
-                        <div className="modal-summary-grid">
-                          <div className="modal-summary-card">
-                            <span className="modal-summary-kicker">КРАТКО</span>
-                            <p>{patientSummary}</p>
-                          </div>
-                          <div className="modal-summary-card modal-summary-card-accent">
-                            <span className="modal-summary-kicker">ФОКУС</span>
-                            <p>{clinicalFocus}</p>
-                          </div>
-                        </div>
-                        {/* Compact summary pills for mobile */}
-                        {isMobile && (
-                                        <div className="modal-summary-pills">
-                                          <span className="modal-summary-pill is-primary">
-                                            <span className="modal-summary-pill-kicker">КРАТКО</span>
-                                            {patientSummary}
-                                          </span>
-                                          <span className="modal-summary-pill is-accent">
-                                            <span className="modal-summary-pill-kicker">ФОКУС</span>
-                                            {clinicalFocus}
-                                          </span>
-                                        </div>
-                                      )}
+            <div className="modal-summary-grid">
+              <div className="modal-summary-card">
+                <span className="modal-summary-kicker">КРАТКО</span>
+                <p>{patientSummary}</p>
+              </div>
+              <div className="modal-summary-card modal-summary-card-accent">
+                <span className="modal-summary-kicker">ФОКУС</span>
+                <p>{clinicalFocus}</p>
+              </div>
+            </div>
+            {/* Compact summary pills for mobile */}
+            {isMobile && (
+              <div className="modal-summary-pills">
+                <span className="modal-summary-pill is-primary">
+                  <span className="modal-summary-pill-kicker">КРАТКО</span>
+                  {patientSummary}
+                </span>
+                <span className="modal-summary-pill is-accent">
+                  <span className="modal-summary-pill-kicker">ФОКУС</span>
+                  {clinicalFocus}
+                </span>
+              </div>
+            )}
           </div>
         </div>
       </div>
       <div className="modal-header-actions">
         {allDiseases.length > 1 && (
           <>
-            <button className="modal-nav-btn" onClick={() => onNavigate(-1)} disabled={currentIndex <= 0} aria-label="Предыдущая статья">←</button>
-            <span className="modal-nav-counter" aria-live="polite">{currentIndex + 1} из {allDiseases.length}</span>
-            <button className="modal-nav-btn" onClick={() => onNavigate(1)} disabled={currentIndex >= allDiseases.length - 1} aria-label="Следующая статья">→</button>
+            <button
+              className="modal-nav-btn"
+              onClick={() => onNavigate(-1)}
+              disabled={currentIndex <= 0}
+              aria-label="Предыдущая статья"
+            >
+              ←
+            </button>
+            <span className="modal-nav-counter" aria-live="polite">
+              {currentIndex + 1} из {allDiseases.length}
+            </span>
+            <button
+              className="modal-nav-btn"
+              onClick={() => onNavigate(1)}
+              disabled={currentIndex >= allDiseases.length - 1}
+              aria-label="Следующая статья"
+            >
+              →
+            </button>
           </>
         )}
-        <button className="modal-close" onClick={onClose} aria-label="Закрыть">✕</button>
+        <button className="modal-close" onClick={onClose} aria-label="Закрыть">
+          ✕
+        </button>
       </div>
-      
+
       {/* Export actions */}
       <div className="modal-export-actions">
         <ExportDiseaseCard disease={disease} />
         {disease.subsection === 'functional' && (
-          <button 
-            type="button" 
+          <button
+            type="button"
             className="btn-premium btn-premium-ghost"
-            onClick={() => window.location.hash = '#/compare/tamsulosin_silodosin'}
+            onClick={() => (window.location.hash = '#/compare/tamsulosin_silodosin')}
           >
             Сравнить α1-блокаторы
           </button>

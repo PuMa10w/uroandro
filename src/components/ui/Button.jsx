@@ -11,7 +11,8 @@ import PropTypes from 'prop-types';
  *  - onClick: handler
  */
 export default function Button({ children, variant = 'primary', size = 'md', onClick, ...rest }) {
-  const base = 'font-medium rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2';
+  const base =
+    'font-medium rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2';
   const variants = {
     primary: 'bg-primary text-white hover:bg-primary-dark focus-visible:ring-primary',
     secondary: 'bg-secondary text-white hover:bg-primary-dark focus-visible:ring-secondary',

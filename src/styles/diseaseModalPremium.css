@@ -38,7 +38,9 @@
     overflow-y: auto !important;
     overscroll-behavior: contain !important;
     -webkit-overflow-scrolling: touch !important;
-    scroll-padding-top: calc(var(--modal-header-offset, calc(var(--sat) + 6.25rem)) + 4.3rem) !important;
+    scroll-padding-top: calc(
+      var(--modal-header-offset, calc(var(--sat) + 6.25rem)) + 4.3rem
+    ) !important;
     scroll-padding-bottom: calc(var(--sab) + 8.9rem) !important;
     padding-bottom: calc(var(--sab) + 8.9rem) !important;
   }
@@ -62,8 +64,7 @@
     margin-inline: calc(50% - 50vw) !important;
     padding: 0.42rem 0 !important;
     background:
-      linear-gradient(180deg, rgba(5, 11, 21, 0.99), rgba(7, 15, 27, 0.965)),
-      rgba(7, 15, 27, 0.98) !important;
+      linear-gradient(180deg, rgba(5, 11, 21, 0.99), rgba(7, 15, 27, 0.965)), rgba(7, 15, 27, 0.98) !important;
     border-block: 1px solid rgba(148, 163, 184, 0.13) !important;
     box-shadow: 0 16px 38px rgba(0, 0, 0, 0.38) !important;
     backdrop-filter: blur(20px) saturate(1.22) !important;
@@ -226,7 +227,9 @@
       linear-gradient(180deg, rgba(4, 10, 19, 0.995), rgba(7, 15, 27, 0.982)),
       rgba(7, 15, 27, 0.985) !important;
     border-block: 1px solid rgba(148, 163, 184, 0.14) !important;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.42), 0 1px 0 rgba(255, 255, 255, 0.04) inset !important;
+    box-shadow:
+      0 16px 36px rgba(0, 0, 0, 0.42),
+      0 1px 0 rgba(255, 255, 255, 0.04) inset !important;
     backdrop-filter: blur(22px) saturate(1.2) !important;
     -webkit-backdrop-filter: blur(22px) saturate(1.2) !important;
     transform: translateZ(0) !important;
@@ -384,7 +387,9 @@
     overflow-y: auto !important;
     overscroll-behavior: contain !important;
     -webkit-overflow-scrolling: touch !important;
-    scroll-padding-top: calc(var(--modal-header-offset, calc(var(--sat) + 6.25rem)) + 4.3rem) !important;
+    scroll-padding-top: calc(
+      var(--modal-header-offset, calc(var(--sat) + 6.25rem)) + 4.3rem
+    ) !important;
     scroll-padding-bottom: calc(var(--sab) + 8.9rem) !important;
     padding-bottom: calc(var(--sab) + 8.9rem) !important;
   }
@@ -407,8 +412,7 @@
     margin-inline: calc(50% - 50vw) !important;
     padding: 0.42rem 0 !important;
     background:
-      linear-gradient(180deg, rgba(5, 11, 21, 0.99), rgba(7, 15, 27, 0.965)),
-      rgba(7, 15, 27, 0.98) !important;
+      linear-gradient(180deg, rgba(5, 11, 21, 0.99), rgba(7, 15, 27, 0.965)), rgba(7, 15, 27, 0.98) !important;
     border-block: 1px solid rgba(148, 163, 184, 0.13) !important;
     box-shadow: 0 16px 38px rgba(0, 0, 0, 0.38) !important;
     backdrop-filter: blur(20px) saturate(1.22) !important;
@@ -1041,8 +1045,7 @@
     border-bottom: 0;
     background:
       radial-gradient(circle at 16% 0%, rgba(241, 204, 122, 0.11), transparent 28%),
-      radial-gradient(circle at 86% 4%, rgba(88, 224, 193, 0.11), transparent 32%),
-      var(--bg-panel);
+      radial-gradient(circle at 86% 4%, rgba(88, 224, 193, 0.11), transparent 32%), var(--bg-panel);
     overflow: hidden;
   }
 
@@ -1065,17 +1068,14 @@
     z-index: 3;
     padding: calc(var(--sat) + 0.95rem) 0.92rem 0.62rem;
     border-bottom: 0.5px solid var(--border-light);
-    background:
-      linear-gradient(180deg, rgba(7, 14, 25, 0.96), rgba(7, 14, 25, 0.82)),
-      transparent;
+    background: linear-gradient(180deg, rgba(7, 14, 25, 0.96), rgba(7, 14, 25, 0.82)), transparent;
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
   }
 
   body.light-mode .modal-header {
     background:
-      linear-gradient(180deg, rgba(255, 251, 245, 0.96), rgba(255, 251, 245, 0.82)),
-      transparent;
+      linear-gradient(180deg, rgba(255, 251, 245, 0.96), rgba(255, 251, 245, 0.82)), transparent;
   }
 
   .modal-header-main {
@@ -1212,15 +1212,13 @@
     z-index: 2;
     margin: 0;
     padding: 0.42rem 0 0.38rem;
-    background:
-      linear-gradient(180deg, rgba(7, 14, 25, 0.94), rgba(7, 14, 25, 0.74));
+    background: linear-gradient(180deg, rgba(7, 14, 25, 0.94), rgba(7, 14, 25, 0.74));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
 
   body.light-mode .tabs-shell {
-    background:
-      linear-gradient(180deg, rgba(255, 251, 245, 0.94), rgba(255, 251, 245, 0.74));
+    background: linear-gradient(180deg, rgba(255, 251, 245, 0.94), rgba(255, 251, 245, 0.74));
   }
 
   .tabs-shell .tabs {
@@ -2101,7 +2099,7 @@ body.light-mode .related-disease-btn {
 
   .tabs-shell::before,
   .tabs-shell::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     bottom: 0;
@@ -2250,8 +2248,7 @@ body.light-mode .related-disease-btn {
   border: 1px solid rgba(148, 163, 184, 0.16);
   border-radius: 16px;
   background:
-    linear-gradient(145deg, rgba(17, 31, 48, 0.92), rgba(11, 22, 37, 0.92)),
-    rgba(15, 23, 42, 0.86);
+    linear-gradient(145deg, rgba(17, 31, 48, 0.92), rgba(11, 22, 37, 0.92)), rgba(15, 23, 42, 0.86);
   color: rgba(235, 244, 255, 0.9);
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.15);
 }
@@ -2314,8 +2311,7 @@ body.light-mode .clinical-minimum-block .red-flag-item {
     border: 1px solid rgba(148, 163, 184, 0.16);
     border-radius: 1.35rem;
     background:
-      linear-gradient(180deg, rgba(10, 23, 40, 0.86), rgba(5, 12, 24, 0.78)),
-      rgba(6, 15, 29, 0.82);
+      linear-gradient(180deg, rgba(10, 23, 40, 0.86), rgba(5, 12, 24, 0.78)), rgba(6, 15, 29, 0.82);
     box-shadow:
       0 22px 48px rgba(2, 8, 23, 0.34),
       0 1px 0 rgba(255, 255, 255, 0.08) inset;
@@ -2353,7 +2349,7 @@ body.light-mode .clinical-minimum-block .red-flag-item {
   }
 
   .modal-mobile-quickbtn::before {
-    content: "↑";
+    content: '↑';
     display: grid;
     place-items: center;
     width: 1.42rem;
@@ -2369,8 +2365,7 @@ body.light-mode .clinical-minimum-block .red-flag-item {
   .modal-mobile-quickbtn.primary {
     border-color: rgba(241, 204, 122, 0.24);
     background:
-      linear-gradient(135deg, rgba(241, 204, 122, 0.96), rgba(224, 161, 71, 0.92)),
-      var(--gold);
+      linear-gradient(135deg, rgba(241, 204, 122, 0.96), rgba(224, 161, 71, 0.92)), var(--gold);
     color: #07111f;
     box-shadow:
       0 12px 28px rgba(241, 204, 122, 0.18),
@@ -2378,7 +2373,7 @@ body.light-mode .clinical-minimum-block .red-flag-item {
   }
 
   .modal-mobile-quickbtn.primary::before {
-    content: "×";
+    content: '×';
     background: rgba(7, 17, 31, 0.12);
     color: #07111f;
     font-size: 1.05rem;
@@ -3098,8 +3093,7 @@ body.light-mode .clinical-pathway-table td:nth-child(2) {
   border: 1px solid rgba(148, 163, 184, 0.13);
   border-radius: 20px;
   background:
-    linear-gradient(180deg, rgba(15, 29, 47, 0.82), rgba(9, 18, 31, 0.9)),
-    rgba(255, 255, 255, 0.03);
+    linear-gradient(180deg, rgba(15, 29, 47, 0.82), rgba(9, 18, 31, 0.9)), rgba(255, 255, 255, 0.03);
 }
 
 .guideline-source-head {
@@ -3546,7 +3540,9 @@ body.light-mode .referral-card {
   font-size: 1.05rem;
   font-weight: 900;
   line-height: 1;
-  transition: transform 180ms ease, background 180ms ease;
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
 }
 
 .faq-item[open] .faq-question::after {
@@ -3644,8 +3640,12 @@ body.light-mode .drug-doses-table code {
     padding: 0.46rem 0 0.42rem;
     overflow: hidden;
     touch-action: auto;
-    background:
-      linear-gradient(180deg, rgba(7, 14, 25, 0.98), rgba(7, 14, 25, 0.82) 76%, rgba(7, 14, 25, 0));
+    background: linear-gradient(
+      180deg,
+      rgba(7, 14, 25, 0.98),
+      rgba(7, 14, 25, 0.82) 76%,
+      rgba(7, 14, 25, 0)
+    );
     border-bottom: 1px solid rgba(148, 163, 184, 0.08);
   }
 
@@ -3671,8 +3671,12 @@ body.light-mode .drug-doses-table code {
   }
 
   body.light-mode .tabs-shell {
-    background:
-      linear-gradient(180deg, rgba(255, 251, 245, 0.98), rgba(255, 251, 245, 0.84) 76%, rgba(255, 251, 245, 0));
+    background: linear-gradient(
+      180deg,
+      rgba(255, 251, 245, 0.98),
+      rgba(255, 251, 245, 0.84) 76%,
+      rgba(255, 251, 245, 0)
+    );
     border-bottom-color: rgba(15, 23, 42, 0.08);
   }
 
@@ -3943,8 +3947,7 @@ body.light-mode .drug-doses-table code {
     padding: 0.34rem;
     border-radius: 18px;
     background:
-      linear-gradient(180deg, rgba(13, 25, 41, 0.92), rgba(7, 14, 25, 0.84)),
-      rgba(7, 14, 25, 0.78);
+      linear-gradient(180deg, rgba(13, 25, 41, 0.92), rgba(7, 14, 25, 0.84)), rgba(7, 14, 25, 0.78);
     box-shadow:
       0 18px 46px rgba(2, 8, 23, 0.48),
       inset 0 1px 0 rgba(255, 255, 255, 0.11);
@@ -4097,15 +4100,13 @@ body.light-mode .drug-doses-table code {
     contain: none;
     border-top: 1px solid rgba(148, 163, 184, 0.06);
     border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-    background:
-      linear-gradient(180deg, rgba(7, 14, 25, 0.98), rgba(8, 17, 30, 0.9));
+    background: linear-gradient(180deg, rgba(7, 14, 25, 0.98), rgba(8, 17, 30, 0.9));
     backdrop-filter: blur(18px) saturate(1.2);
     -webkit-backdrop-filter: blur(18px) saturate(1.2);
   }
 
   body.light-mode .tabs-shell {
-    background:
-      linear-gradient(180deg, rgba(255, 251, 245, 0.98), rgba(255, 248, 239, 0.9));
+    background: linear-gradient(180deg, rgba(255, 251, 245, 0.98), rgba(255, 248, 239, 0.9));
   }
 
   .tabs-shell .tabs {
@@ -4454,8 +4455,7 @@ body.modal-open .scroll-top-btn {
     border: 1px solid rgba(241, 204, 122, 0.22) !important;
     border-radius: 1.2rem !important;
     background:
-      linear-gradient(180deg, rgba(22, 35, 53, 0.9), rgba(8, 15, 27, 0.86)),
-      rgba(7, 14, 25, 0.82) !important;
+      linear-gradient(180deg, rgba(22, 35, 53, 0.9), rgba(8, 15, 27, 0.86)), rgba(7, 14, 25, 0.82) !important;
     box-shadow:
       0 18px 54px rgba(0, 0, 0, 0.52),
       inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
@@ -4507,7 +4507,9 @@ body.modal-open .scroll-top-btn {
 
 /* v13 iPhone clinical reading: plain lists become compact premium cards. */
 @media (max-width: 900px) {
-  .modal-tabpanel .content-block > ul:not(.red-flags-list):not(.referral-list):not(.guideline-keypoints) {
+  .modal-tabpanel
+    .content-block
+    > ul:not(.red-flags-list):not(.referral-list):not(.guideline-keypoints) {
     box-sizing: border-box;
     display: grid;
     gap: 0.56rem;
@@ -4519,7 +4521,10 @@ body.modal-open .scroll-top-btn {
     list-style: none;
   }
 
-  .modal-tabpanel .content-block > ul:not(.red-flags-list):not(.referral-list):not(.guideline-keypoints) > li {
+  .modal-tabpanel
+    .content-block
+    > ul:not(.red-flags-list):not(.referral-list):not(.guideline-keypoints)
+    > li {
     position: relative;
     box-sizing: border-box;
     width: 100%;
@@ -4528,16 +4533,18 @@ body.modal-open .scroll-top-btn {
     border: 1px solid rgba(148, 163, 184, 0.14);
     border-radius: 1rem;
     background:
-      linear-gradient(180deg, rgba(20, 32, 49, 0.9), rgba(13, 23, 38, 0.86)),
-      rgba(15, 23, 42, 0.72);
+      linear-gradient(180deg, rgba(20, 32, 49, 0.9), rgba(13, 23, 38, 0.86)), rgba(15, 23, 42, 0.72);
     color: var(--text-primary);
     line-height: 1.62;
     overflow-wrap: anywhere;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
   }
 
-  .modal-tabpanel .content-block > ul:not(.red-flags-list):not(.referral-list):not(.guideline-keypoints) > li::before {
-    content: "";
+  .modal-tabpanel
+    .content-block
+    > ul:not(.red-flags-list):not(.referral-list):not(.guideline-keypoints)
+    > li::before {
+    content: '';
     position: absolute;
     left: 0.92rem;
     top: 1.28rem;
@@ -4548,7 +4555,11 @@ body.modal-open .scroll-top-btn {
     box-shadow: 0 0 0 0.28rem rgba(74, 222, 198, 0.1);
   }
 
-  body.light-mode .modal-tabpanel .content-block > ul:not(.red-flags-list):not(.referral-list):not(.guideline-keypoints) > li {
+  body.light-mode
+    .modal-tabpanel
+    .content-block
+    > ul:not(.red-flags-list):not(.referral-list):not(.guideline-keypoints)
+    > li {
     border-color: rgba(42, 63, 86, 0.12);
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 238, 0.9)),
@@ -4575,7 +4586,7 @@ body.modal-open .scroll-top-btn {
 }
 
 .classification-table-card > h3::before {
-  content: "";
+  content: '';
   width: 0.42rem;
   height: 1.35rem;
   flex: 0 0 auto;
@@ -4729,7 +4740,9 @@ body.modal-open .scroll-top-btn {
 
   .modal-content {
     contain: layout paint;
-    scroll-padding-top: calc(var(--modal-header-offset, calc(var(--sat) + 6rem)) + var(--modal-tabs-height) + 0.6rem) !important;
+    scroll-padding-top: calc(
+      var(--modal-header-offset, calc(var(--sat) + 6rem)) + var(--modal-tabs-height) + 0.6rem
+    ) !important;
     scroll-padding-bottom: calc(var(--sab) + var(--modal-action-height) + 1.65rem) !important;
     padding-bottom: calc(var(--sab) + var(--modal-action-height) + 2rem) !important;
   }
@@ -4748,8 +4761,7 @@ body.modal-open .scroll-top-btn {
     padding: 0.36rem 0 0.38rem !important;
     border-bottom: 1px solid rgba(148, 163, 184, 0.1) !important;
     background:
-      linear-gradient(180deg, rgba(8, 15, 27, 0.98), rgba(8, 15, 27, 0.9)),
-      rgba(8, 15, 27, 0.96) !important;
+      linear-gradient(180deg, rgba(8, 15, 27, 0.98), rgba(8, 15, 27, 0.9)), rgba(8, 15, 27, 0.96) !important;
     box-shadow:
       0 14px 34px rgba(0, 0, 0, 0.24),
       inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
@@ -4842,7 +4854,7 @@ body.modal-open .scroll-top-btn {
 }
 
 .clinical-table-card::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0 0 auto;
   height: 0.18rem;
@@ -4859,7 +4871,7 @@ body.modal-open .scroll-top-btn {
 }
 
 .clinical-table-card > h3::before {
-  content: "";
+  content: '';
   flex: 0 0 auto;
   width: 0.56rem;
   height: 0.56rem;
@@ -4882,7 +4894,7 @@ body.modal-open .scroll-top-btn {
 }
 
 .diagnostic-flow-table .table-flow-arrow::after {
-  content: "";
+  content: '';
   position: absolute;
   top: calc(100% + 0.32rem);
   left: 50%;
@@ -4928,8 +4940,7 @@ body.modal-open .scroll-top-btn {
     border: 1px solid rgba(148, 163, 184, 0.12) !important;
     border-radius: 0.9rem !important;
     background:
-      linear-gradient(180deg, rgba(17, 29, 45, 0.92), rgba(10, 19, 32, 0.9)),
-      rgba(15, 23, 42, 0.72) !important;
+      linear-gradient(180deg, rgba(17, 29, 45, 0.92), rgba(10, 19, 32, 0.9)), rgba(15, 23, 42, 0.72) !important;
   }
 
   .premium-clinical-table td {
@@ -4962,16 +4973,16 @@ body.modal-open .scroll-top-btn {
     white-space: normal;
   }
 
-  .diagnostic-flow-table td[data-label="Шаг"],
-  .clinical-pathway-table td[data-label="Шаг"],
-  .differential-list-table td[data-label="№"],
-  .classification-table td[data-label="№"] {
+  .diagnostic-flow-table td[data-label='Шаг'],
+  .clinical-pathway-table td[data-label='Шаг'],
+  .differential-list-table td[data-label='№'],
+  .classification-table td[data-label='№'] {
     grid-template-columns: minmax(0, auto) minmax(0, 1fr) !important;
     align-items: center !important;
   }
 
-  .diagnostic-flow-table td[data-label="Маршрут"],
-  .clinical-pathway-table td[data-label="Дальше"] {
+  .diagnostic-flow-table td[data-label='Маршрут'],
+  .clinical-pathway-table td[data-label='Дальше'] {
     grid-template-columns: minmax(4.9rem, 31%) minmax(0, auto) !important;
   }
 
@@ -5008,8 +5019,8 @@ body.modal-open .scroll-top-btn {
     margin-bottom: -0.18rem;
   }
 
-  .diagnostic-flow-table td[data-label="Маршрут"],
-  .clinical-pathway-table td[data-label="Дальше"] {
+  .diagnostic-flow-table td[data-label='Маршрут'],
+  .clinical-pathway-table td[data-label='Дальше'] {
     grid-template-columns: minmax(0, 1fr) !important;
   }
 }
@@ -5065,7 +5076,9 @@ body.modal-open .scroll-top-btn {
     overflow-y: auto !important;
     overscroll-behavior: contain !important;
     -webkit-overflow-scrolling: touch !important;
-    scroll-padding-top: calc(var(--modal-header-offset, calc(var(--sat) + 6.25rem)) + 3.95rem) !important;
+    scroll-padding-top: calc(
+      var(--modal-header-offset, calc(var(--sat) + 6.25rem)) + 3.95rem
+    ) !important;
     scroll-padding-bottom: calc(var(--sab) + 7.8rem) !important;
     padding-bottom: calc(var(--sab) + 7.8rem) !important;
   }
@@ -5090,8 +5103,7 @@ body.modal-open .scroll-top-btn {
     padding-top: 0.44rem !important;
     padding-bottom: 0.44rem !important;
     background:
-      linear-gradient(180deg, rgba(6, 12, 23, 0.99), rgba(7, 15, 27, 0.96)),
-      rgba(7, 15, 27, 0.98) !important;
+      linear-gradient(180deg, rgba(6, 12, 23, 0.99), rgba(7, 15, 27, 0.96)), rgba(7, 15, 27, 0.98) !important;
     border-top: 1px solid rgba(148, 163, 184, 0.08) !important;
     border-bottom: 1px solid rgba(148, 163, 184, 0.14) !important;
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.34) !important;
@@ -5408,8 +5420,7 @@ body.modal-open .scroll-top-btn {
     margin-inline: calc(50% - 50vw) !important;
     padding: 0.42rem 0 !important;
     background:
-      linear-gradient(180deg, rgba(5, 11, 21, 0.99), rgba(7, 15, 27, 0.965)),
-      rgba(7, 15, 27, 0.98) !important;
+      linear-gradient(180deg, rgba(5, 11, 21, 0.99), rgba(7, 15, 27, 0.965)), rgba(7, 15, 27, 0.98) !important;
     border-block: 1px solid rgba(148, 163, 184, 0.13) !important;
     box-shadow: 0 16px 38px rgba(0, 0, 0, 0.38) !important;
     backdrop-filter: blur(20px) saturate(1.22) !important;

@@ -1,14 +1,17 @@
-import {
-  timeAgo,
-  parseHash,
-  parseLocation,
-  buildPath,
-  buildHash,
-} from './utils';
+import { timeAgo, parseHash, parseLocation, buildPath, buildHash } from './utils';
 
 const MOCK_SUBSECTION_TITLES = {
-  urology: { stones: 'Мочекаменная болезнь', infections: 'Инфекции', oncology: 'Онкология', functional: 'Функциональная' },
-  andrology: { sexual: 'Сексуальная дисфункция', fertility: 'Фертильность', endocrine: 'Эндокринология' },
+  urology: {
+    stones: 'Мочекаменная болезнь',
+    infections: 'Инфекции',
+    oncology: 'Онкология',
+    functional: 'Функциональная',
+  },
+  andrology: {
+    sexual: 'Сексуальная дисфункция',
+    fertility: 'Фертильность',
+    endocrine: 'Эндокринология',
+  },
 };
 
 describe('App Utility Functions', () => {
@@ -37,33 +40,61 @@ describe('App Utility Functions', () => {
   describe('parseHash', () => {
     it('parses home page', () => {
       expect(parseHash('', {})).toEqual({ section: 'home', subsection: null, diseaseId: null });
-      expect(parseHash('#home', {})).toEqual({ section: 'home', subsection: null, diseaseId: null });
+      expect(parseHash('#home', {})).toEqual({
+        section: 'home',
+        subsection: null,
+        diseaseId: null,
+      });
     });
 
     it('parses section without subsection', () => {
-      expect(parseHash('#urology', {})).toEqual({ section: 'urology', subsection: null, diseaseId: null });
+      expect(parseHash('#urology', {})).toEqual({
+        section: 'urology',
+        subsection: null,
+        diseaseId: null,
+      });
     });
 
     it('parses section with subsection', () => {
-      expect(parseHash('#urology/stones', MOCK_SUBSECTION_TITLES)).toEqual({ section: 'urology', subsection: 'stones', diseaseId: null });
+      expect(parseHash('#urology/stones', MOCK_SUBSECTION_TITLES)).toEqual({
+        section: 'urology',
+        subsection: 'stones',
+        diseaseId: null,
+      });
     });
 
     it('parses section with disease id', () => {
-      expect(parseHash('#urology/bph', {})).toEqual({ section: 'urology', subsection: null, diseaseId: 'bph' });
+      expect(parseHash('#urology/bph', {})).toEqual({
+        section: 'urology',
+        subsection: null,
+        diseaseId: 'bph',
+      });
     });
 
     it('parses section with subsection and disease id', () => {
-      expect(parseHash('#urology/stones/urolithiasis', MOCK_SUBSECTION_TITLES)).toEqual({ section: 'urology', subsection: 'stones', diseaseId: 'urolithiasis' });
+      expect(parseHash('#urology/stones/urolithiasis', MOCK_SUBSECTION_TITLES)).toEqual({
+        section: 'urology',
+        subsection: 'stones',
+        diseaseId: 'urolithiasis',
+      });
     });
 
     it('handles unknown hash parts', () => {
-      expect(parseHash('#unknown', {})).toEqual({ section: 'unknown', subsection: null, diseaseId: null });
+      expect(parseHash('#unknown', {})).toEqual({
+        section: 'unknown',
+        subsection: null,
+        diseaseId: null,
+      });
     });
   });
 
   describe('parseLocation', () => {
     it('parses pathname-based home route', () => {
-      expect(parseLocation('/', '', {})).toEqual({ section: 'home', subsection: null, diseaseId: null });
+      expect(parseLocation('/', '', {})).toEqual({
+        section: 'home',
+        subsection: null,
+        diseaseId: null,
+      });
     });
 
     it('parses pathname-based subsection route', () => {
@@ -83,7 +114,9 @@ describe('App Utility Functions', () => {
     });
 
     it('falls back to legacy hash route when pathname is home', () => {
-      expect(parseLocation('/', '#andrology/sexual/erectile-dysfunction', MOCK_SUBSECTION_TITLES)).toEqual({
+      expect(
+        parseLocation('/', '#andrology/sexual/erectile-dysfunction', MOCK_SUBSECTION_TITLES)
+      ).toEqual({
         section: 'andrology',
         subsection: 'sexual',
         diseaseId: 'erectile-dysfunction',

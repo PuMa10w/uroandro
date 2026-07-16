@@ -60,7 +60,7 @@ export const DrugsComparison = ({ drugId = 'tamsulosin_vs_silodosin', onClose })
         </table>
         
         <div className="drugs-comparison-footer">
-          <p>Данные EAU Guidelines 2026 • Для мужчин >40 лет с СНМП</p>
+          <p>Данные EAU Guidelines 2026 • Для мужчин &gt;40 лет с СНМП</p>
         </div>
       </div>
     </div>

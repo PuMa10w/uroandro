@@ -118,7 +118,9 @@ describe('buildSpermogramAssessment', () => {
     expect(result.nextNodeHints.join(' ')).toMatch(/DFI|ART/i);
     expect(result.artRecommendation).toMatch(/IVF|ICSI|IUI/i);
     expect(result.coupleFactorPathway.length).toBeGreaterThan(0);
-    expect(result.referenceBadges).toEqual(expect.arrayContaining(['WHO 2021', 'EAU 2026', 'ESHRE 2023']));
+    expect(result.referenceBadges).toEqual(
+      expect.arrayContaining(['WHO 2021', 'EAU 2026', 'ESHRE 2023'])
+    );
     expect(result.nodes.find((node) => node.id === 'high-dfi').sources).toContain('ESHRE');
   });
 
@@ -176,9 +178,24 @@ describe('buildSpermogramAssessment', () => {
   });
 
   test('keeps isolated branches explicit for oligo, astheno and terato profiles', () => {
-    const oligo = buildSpermogramAssessment({ concentration: '8', motility: '45', morphology: '5', volume: '2' });
-    const astheno = buildSpermogramAssessment({ concentration: '20', motility: '30', morphology: '5', volume: '2' });
-    const terato = buildSpermogramAssessment({ concentration: '20', motility: '45', morphology: '2', volume: '2' });
+    const oligo = buildSpermogramAssessment({
+      concentration: '8',
+      motility: '45',
+      morphology: '5',
+      volume: '2',
+    });
+    const astheno = buildSpermogramAssessment({
+      concentration: '20',
+      motility: '30',
+      morphology: '5',
+      volume: '2',
+    });
+    const terato = buildSpermogramAssessment({
+      concentration: '20',
+      motility: '45',
+      morphology: '2',
+      volume: '2',
+    });
 
     expect(oligo.primaryPattern).toBe('oligo');
     expect(oligo.nodes.some((node) => node.id === 'oligo-branch')).toBe(true);

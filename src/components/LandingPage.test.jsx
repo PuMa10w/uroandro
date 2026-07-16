@@ -9,9 +9,9 @@ describe('LandingPage', () => {
 
     render(<LandingPage onNavigate={onNavigate} />);
 
-    const urologyButton = screen.getAllByRole('button').find((button) => (
-      button.classList.contains('is-urology')
-    ));
+    const urologyButton = screen
+      .getAllByRole('button')
+      .find((button) => button.classList.contains('is-urology'));
     const andrologyButton = screen.getByRole('button', { name: /Андрология/i });
 
     expect(urologyButton).toBeInTheDocument();

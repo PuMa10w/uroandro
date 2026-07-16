@@ -26,7 +26,7 @@ export function validateDiseaseData(diseases) {
     idSet.add(disease.id);
 
     const required = ['name', 'section', 'icd'];
-    required.forEach(field => {
+    required.forEach((field) => {
       if (!disease[field]) {
         errors.push(`Disease ${disease.id}: missing ${field}`);
       }
@@ -37,11 +37,11 @@ export function validateDiseaseData(diseases) {
 }
 
 export function getDiseasesBySection(section) {
-  return allDiseases.filter(d => d.section === section);
+  return allDiseases.filter((d) => d.section === section);
 }
 
 export function getDiseasesBySubsection(section, subsection) {
-  return allDiseases.filter(d => d.section === section && d.subsection === subsection);
+  return allDiseases.filter((d) => d.section === section && d.subsection === subsection);
 }
 
 export function searchDiseases(query) {

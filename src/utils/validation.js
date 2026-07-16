@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 const validateDisease = (disease) => {
   const errors = [];
 
@@ -23,7 +21,22 @@ const validateDisease = (disease) => {
     errors.push('Missing or invalid icd');
   }
 
-  const validSections = ['home', 'urology', 'andrology', 'pediatric', 'emergency', 'surgery', 'metaphylaxis', 'tools', 'games', 'drugs', 'glossary', 'calculators', 'sitemap', 'favorites'];
+  const validSections = [
+    'home',
+    'urology',
+    'andrology',
+    'pediatric',
+    'emergency',
+    'surgery',
+    'metaphylaxis',
+    'tools',
+    'games',
+    'drugs',
+    'glossary',
+    'calculators',
+    'sitemap',
+    'favorites',
+  ];
   if (disease.section && !validSections.includes(disease.section)) {
     errors.push(`Invalid section: ${disease.section}`);
   }
@@ -37,12 +50,19 @@ const validateDisease = (disease) => {
 const validateDiseaseData = (disease) => {
   const result = validateDisease(disease);
 
-  const recommendedFields = ['description', 'tags', 'definition', 'symptoms', 'diagnostics', 'treatment'];
-  const missingFields = recommendedFields.filter(field => !disease[field]);
+  const recommendedFields = [
+    'description',
+    'tags',
+    'definition',
+    'symptoms',
+    'diagnostics',
+    'treatment',
+  ];
+  const missingFields = recommendedFields.filter((field) => !disease[field]);
 
   if (missingFields.length > 0) {
     result.warnings = result.warnings || [];
-    result.warnings.push(...missingFields.map(f => `Missing recommended field: ${f}`));
+    result.warnings.push(...missingFields.map((f) => `Missing recommended field: ${f}`));
   }
 
   return result;
@@ -58,16 +78,16 @@ const validateDiseasesArray = (diseases) => {
     ...validateDisease(disease),
   }));
 
-  const validCount = results.filter(r => r.valid).length;
-  const invalidResults = results.filter(r => !r.valid);
+  const validCount = results.filter((r) => r.valid).length;
+  const invalidResults = results.filter((r) => !r.valid);
 
   return {
     valid: invalidResults.length === 0,
     count: diseases.length,
     validCount,
     invalidCount: invalidResults.length,
-    errors: invalidResults.flatMap(r => r.errors.map(e => `[${r.index}] ${e}`)),
-    warnings: results.flatMap(r => r.warnings || []),
+    errors: invalidResults.flatMap((r) => r.errors.map((e) => `[${r.index}] ${e}`)),
+    warnings: results.flatMap((r) => r.warnings || []),
   };
 };
 
@@ -117,7 +137,7 @@ export {
   validateAppState,
 };
 
-export default {
+export const validation = {
   validateDisease,
   validateDiseaseData,
   validateDiseasesArray,

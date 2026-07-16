@@ -101,8 +101,7 @@
   padding: 1rem 1.05rem;
   border-radius: 22px;
   border: 1px solid rgba(154, 180, 214, 0.1);
-  background:
-    linear-gradient(155deg, rgba(11, 21, 38, 0.96), rgba(8, 16, 31, 0.98));
+  background: linear-gradient(155deg, rgba(11, 21, 38, 0.96), rgba(8, 16, 31, 0.98));
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
 }
 
@@ -163,7 +162,10 @@
   color: #eef4fb;
   text-align: left;
   cursor: pointer;
-  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
 }
 
 .service-hero-action:hover {
@@ -252,8 +254,7 @@
 .meta-tip,
 .humor-card,
 .surgery-card {
-  background:
-    linear-gradient(155deg, rgba(11, 21, 38, 0.96), rgba(8, 16, 31, 0.98)) !important;
+  background: linear-gradient(155deg, rgba(11, 21, 38, 0.96), rgba(8, 16, 31, 0.98)) !important;
   border: 1px solid rgba(154, 180, 214, 0.1) !important;
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28) !important;
   color: #eef4fb !important;
@@ -272,7 +273,11 @@
   height: 72px;
   margin: 0 auto 0.9rem;
   border-radius: 999px;
-  background: radial-gradient(circle at 30% 30%, rgba(241, 205, 117, 0.2), rgba(99, 234, 213, 0.08));
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(241, 205, 117, 0.2),
+    rgba(99, 234, 213, 0.08)
+  );
   border: 1px solid rgba(154, 180, 214, 0.12);
   font-size: 2rem;
   color: #f3d27c;
@@ -456,8 +461,7 @@
   padding: 0.64rem 0.88rem;
   border: 1px solid rgba(154, 180, 214, 0.12) !important;
   border-radius: 999px;
-  background:
-    linear-gradient(135deg, rgba(15, 32, 54, 0.96), rgba(10, 21, 38, 0.92)) !important;
+  background: linear-gradient(135deg, rgba(15, 32, 54, 0.96), rgba(10, 21, 38, 0.92)) !important;
   color: #eaf2fb !important;
   font-weight: 900;
   font-size: 0.82rem;
@@ -484,8 +488,11 @@
 .surgery-page .surgery-tab.active,
 .surgery-page .surgery-tab[aria-selected='true'] {
   border-color: rgba(240, 201, 106, 0.42) !important;
-  background:
-    linear-gradient(135deg, rgba(240, 201, 106, 0.96), rgba(255, 227, 154, 0.86)) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(240, 201, 106, 0.96),
+    rgba(255, 227, 154, 0.86)
+  ) !important;
   color: #07111f !important;
   box-shadow: 0 12px 24px rgba(240, 201, 106, 0.16) !important;
 }
@@ -541,8 +548,7 @@
 .meta-diet-details {
   padding: 1.1rem 1.15rem;
   border-radius: 22px;
-  background:
-    linear-gradient(155deg, rgba(11, 21, 38, 0.96), rgba(8, 16, 31, 0.98)) !important;
+  background: linear-gradient(155deg, rgba(11, 21, 38, 0.96), rgba(8, 16, 31, 0.98)) !important;
   border: 1px solid rgba(154, 180, 214, 0.1) !important;
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28) !important;
 }
@@ -556,8 +562,7 @@
 .humor-empty {
   padding: 1.8rem 1.2rem;
   border-radius: 22px;
-  background:
-    linear-gradient(155deg, rgba(11, 21, 38, 0.96), rgba(8, 16, 31, 0.98)) !important;
+  background: linear-gradient(155deg, rgba(11, 21, 38, 0.96), rgba(8, 16, 31, 0.98)) !important;
   border: 1px solid rgba(154, 180, 214, 0.1) !important;
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28) !important;
 }
@@ -653,7 +658,12 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(90deg, rgba(243, 210, 124, 0.08), transparent 28%, rgba(99, 234, 213, 0.08));
+  background: linear-gradient(
+    90deg,
+    rgba(243, 210, 124, 0.08),
+    transparent 28%,
+    rgba(99, 234, 213, 0.08)
+  );
   opacity: 0.62;
 }
 
@@ -882,8 +892,11 @@
 .option-btn.selected,
 .meta-diet-card.active,
 .surgery-card.selected {
-  background:
-    linear-gradient(135deg, rgba(99, 234, 213, 0.18), rgba(57, 201, 255, 0.12)) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 234, 213, 0.18),
+    rgba(57, 201, 255, 0.12)
+  ) !important;
   border-color: rgba(99, 234, 213, 0.28) !important;
   color: #f6fbff !important;
 }
@@ -918,7 +931,11 @@
 .guideline-card .guideline-badge,
 .drug-group-badge,
 .drug-class-badge {
-  background: linear-gradient(135deg, rgba(99, 234, 213, 0.92), rgba(84, 205, 255, 0.88)) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 234, 213, 0.92),
+    rgba(84, 205, 255, 0.88)
+  ) !important;
   color: #06233a !important;
   border-color: transparent !important;
 }
@@ -1008,13 +1025,14 @@
 .drug-search-input:focus,
 .search-input:focus {
   border-color: rgba(241, 205, 117, 0.22) !important;
-  box-shadow: 0 0 0 1px rgba(241, 205, 117, 0.08), 0 0 0 6px rgba(241, 205, 117, 0.05) !important;
+  box-shadow:
+    0 0 0 1px rgba(241, 205, 117, 0.08),
+    0 0 0 6px rgba(241, 205, 117, 0.05) !important;
 }
 
 .empty-favorites,
 .humor-empty {
-  background:
-    linear-gradient(155deg, rgba(11, 21, 38, 0.94), rgba(8, 16, 31, 0.96)) !important;
+  background: linear-gradient(155deg, rgba(11, 21, 38, 0.94), rgba(8, 16, 31, 0.96)) !important;
   border: 1px solid rgba(154, 180, 214, 0.1) !important;
   box-shadow: 0 22px 52px rgba(0, 0, 0, 0.3) !important;
 }
@@ -1179,8 +1197,7 @@
     padding: 1rem;
     border-radius: 1.25rem !important;
     background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.055), transparent 46%),
-      var(--bg-card);
+      linear-gradient(135deg, rgba(255, 255, 255, 0.055), transparent 46%), var(--bg-card);
   }
 
   .service-page-intro .section-title,
@@ -1330,8 +1347,7 @@ body.light-mode .drug-risk-chip.active {
   border: 1px solid rgba(154, 180, 214, 0.08);
   border-radius: 24px;
   background:
-    linear-gradient(135deg, rgba(99, 234, 213, 0.08), transparent 44%),
-    rgba(8, 17, 31, 0.82);
+    linear-gradient(135deg, rgba(99, 234, 213, 0.08), transparent 44%), rgba(8, 17, 31, 0.82);
 }
 
 .premium-tools-hero p {
@@ -1595,8 +1611,11 @@ body.light-mode .drug-risk-chip.active {
 
 .premium-score-btn.selected {
   border-color: color-mix(in srgb, var(--tool-color) 60%, white 10%) !important;
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--tool-color) 24%, transparent), rgba(255, 255, 255, 0.035)) !important;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--tool-color) 24%, transparent),
+    rgba(255, 255, 255, 0.035)
+  ) !important;
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--tool-color) 28%, transparent) inset !important;
 }
 
@@ -1752,8 +1771,7 @@ body.light-mode .drug-risk-chip.active {
   padding: 0.72rem !important;
   border-radius: 16px !important;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.045), transparent 48%),
-    rgba(11, 24, 40, 0.68) !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.045), transparent 48%), rgba(11, 24, 40, 0.68) !important;
 }
 
 .premium-questionnaire-row .question-number {
@@ -1781,8 +1799,11 @@ body.light-mode .drug-risk-chip.active {
 }
 
 .premium-questionnaire-row .option-btn.selected {
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--tool-color) 22%, transparent), rgba(255, 255, 255, 0.035)) !important;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--tool-color) 22%, transparent),
+    rgba(255, 255, 255, 0.035)
+  ) !important;
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--tool-color) 24%, transparent) inset;
 }
 
@@ -1800,8 +1821,7 @@ body.light-mode .drug-risk-chip.active {
   padding: 0.78rem 0.9rem;
   border: 1px solid rgba(154, 180, 214, 0.1);
   border-radius: 16px;
-  background:
-    linear-gradient(180deg, rgba(20, 33, 51, 0.92), rgba(10, 18, 31, 0.88));
+  background: linear-gradient(180deg, rgba(20, 33, 51, 0.92), rgba(10, 18, 31, 0.88));
   box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22);
 }
 
@@ -1986,8 +2006,7 @@ body.light-mode .drug-risk-chip.active {
     padding: 0.88rem !important;
     border-radius: 18px !important;
     background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.052), transparent 45%),
-      rgba(11, 24, 40, 0.78) !important;
+      linear-gradient(135deg, rgba(255, 255, 255, 0.052), transparent 45%), rgba(11, 24, 40, 0.78) !important;
   }
 
   .calculators-page .question-number {
@@ -2207,7 +2226,7 @@ body.light-mode .drug-risk-chip.active {
 
 .drug-detail.positive::before,
 .drug-detail.negative::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0 auto 0 0;
   width: 0.22rem;
@@ -2232,7 +2251,7 @@ body.light-mode .drug-risk-chip.active {
 .premium-tools-hero::after,
 .drug-reference-hero::after,
 .calculators-page .service-page-hero::after {
-  content: "";
+  content: '';
   position: absolute;
   pointer-events: none;
   right: -12%;
@@ -2559,8 +2578,7 @@ body.light-mode .drug-risk-chip.active {
   border: 1px solid rgba(154, 180, 214, 0.12);
   border-radius: 18px;
   background:
-    linear-gradient(150deg, rgba(99, 234, 213, 0.08), transparent 42%),
-    rgba(9, 19, 33, 0.92);
+    linear-gradient(150deg, rgba(99, 234, 213, 0.08), transparent 42%), rgba(9, 19, 33, 0.92);
   overflow: hidden;
 }
 
@@ -2683,8 +2701,7 @@ body.light-mode .drug-risk-chip.active {
   border: 1px solid rgba(154, 180, 214, 0.11);
   border-radius: 18px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.045), transparent 42%),
-    rgba(9, 19, 33, 0.9);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.045), transparent 42%), rgba(9, 19, 33, 0.9);
 }
 
 .sperm-tree-node.is-good {
@@ -2982,7 +2999,7 @@ body.light-mode .drug-risk-chip.active {
 }
 
 .calculators-page .spermogram-premium-shell::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -3366,7 +3383,9 @@ body.light-mode .drug-risk-chip.active {
   height: 54px;
   border: 3px solid rgba(255, 255, 255, 0.78);
   background: radial-gradient(circle, rgba(243, 210, 124, 0.95), rgba(245, 110, 110, 0.65));
-  box-shadow: 0 0 0 10px rgba(243, 210, 124, 0.12), 0 0 34px rgba(243, 210, 124, 0.55);
+  box-shadow:
+    0 0 0 10px rgba(243, 210, 124, 0.12),
+    0 0 34px rgba(243, 210, 124, 0.55);
 }
 
 .clinical-model-caption {
@@ -3562,8 +3581,13 @@ body.light-mode .drug-risk-chip.active {
 }
 
 @keyframes atlas-float {
-  0%, 100% { transform: rotateX(8deg) rotateY(-10deg) translateY(0); }
-  50% { transform: rotateX(12deg) rotateY(12deg) translateY(-10px); }
+  0%,
+  100% {
+    transform: rotateX(8deg) rotateY(-10deg) translateY(0);
+  }
+  50% {
+    transform: rotateX(12deg) rotateY(12deg) translateY(-10px);
+  }
 }
 
 @media (max-width: 700px) {

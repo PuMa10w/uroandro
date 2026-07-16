@@ -18,12 +18,12 @@ export async function loadDiseaseData(section) {
   if (loadedData.has(section)) {
     return loadedData.get(section);
   }
-  
+
   const loader = dataLoaders[section];
   if (!loader) {
     return [];
   }
-  
+
   try {
     const module = await loader();
     const data = module.default || module[Object.keys(module)[0]] || [];

@@ -8,7 +8,7 @@ describe('data metadata integrity', () => {
         expect.objectContaining({ id: 'urology', label: 'Урология', icon: '🔬' }),
         expect.objectContaining({ id: 'andrology', label: 'Андрология', icon: '⚡' }),
         expect.objectContaining({ id: 'sitemap', label: 'Карта', icon: '🗺️' }),
-      ]),
+      ])
     );
   });
 

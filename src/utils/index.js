@@ -11,11 +11,16 @@ export const timeAgo = (ts) => {
 };
 
 // Navigation utilities
-const normalizeRouteValue = (value = '') => String(value).replace(/^#/, '').replace(/^\/+|\/+$/g, '');
+const normalizeRouteValue = (value = '') =>
+  String(value)
+    .replace(/^#/, '')
+    .replace(/^\/+|\/+$/g, '');
 
 const parseRouteValue = (routeValue, SUBSECTION_TITLES = {}) => {
   const normalized = normalizeRouteValue(routeValue);
-  const [section = 'home', second = null, third = null] = normalized ? normalized.split('/') : ['home'];
+  const [section = 'home', second = null, third = null] = normalized
+    ? normalized.split('/')
+    : ['home'];
 
   if (!second) {
     return { section: section || 'home', subsection: null, diseaseId: null };
@@ -38,9 +43,8 @@ const parseRouteValue = (routeValue, SUBSECTION_TITLES = {}) => {
   };
 };
 
-export const parseHash = (hashValue, SUBSECTION_TITLES = {}) => (
-  parseRouteValue(hashValue, SUBSECTION_TITLES)
-);
+export const parseHash = (hashValue, SUBSECTION_TITLES = {}) =>
+  parseRouteValue(hashValue, SUBSECTION_TITLES);
 
 export const parseLocation = (pathname = '/', hashValue = '', SUBSECTION_TITLES = {}) => {
   const normalizedPath = normalizeRouteValue(pathname);

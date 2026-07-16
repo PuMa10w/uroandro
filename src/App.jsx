@@ -20,8 +20,8 @@ import { trackModal } from './utils/analytics';
 import { IconBack, IconHome, IconStar, IconArrowUp } from './icons';
 
 function App() {
-  const showDebugPanel = process.env.NODE_ENV === 'development'
-    && window.location.search.includes('debug=1');
+  const showDebugPanel =
+    process.env.NODE_ENV === 'development' && window.location.search.includes('debug=1');
   const [favorites, setFavorites, toggleFavorite] = useFavorites();
   const [viewHistory, addToHistory, clearHistory] = useViewHistory();
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -91,11 +91,16 @@ function App() {
   };
 
   const getPageKeywords = () => {
-    if (activeSection === 'home') return 'урология, андрология, медицина, мочеполовая система, простатит, цистит, эректильная дисфункция, бесплодие';
-    if (activeSection === 'urology') return 'урология, мочекаменная болезнь, инфекции мочевыводящих путей, онкология, нефрология';
-    if (activeSection === 'andrology') return 'андрология, мужское здоровье, фертильность, эректильная дисфункция, гипогонадизм';
-    if (activeSection === 'pediatric') return 'детская урология, фимоз, гипоспадия, крипторхизм, энурез';
-    if (activeSection === 'emergency') return 'урологическая помощь, экстренные состояния, почечная колика';
+    if (activeSection === 'home')
+      return 'урология, андрология, медицина, мочеполовая система, простатит, цистит, эректильная дисфункция, бесплодие';
+    if (activeSection === 'urology')
+      return 'урология, мочекаменная болезнь, инфекции мочевыводящих путей, онкология, нефрология';
+    if (activeSection === 'andrology')
+      return 'андрология, мужское здоровье, фертильность, эректильная дисфункция, гипогонадизм';
+    if (activeSection === 'pediatric')
+      return 'детская урология, фимоз, гипоспадия, крипторхизм, энурез';
+    if (activeSection === 'emergency')
+      return 'урологическая помощь, экстренные состояния, почечная колика';
     return 'урология, андрология, медицина';
   };
 
@@ -161,27 +166,29 @@ function App() {
     lastTrackedDiseaseOpenRef.current = trackingKey;
   }, [navigationSource, selectedDisease]);
 
-  const pageTitle = activeSection === 'home'
-    ? 'UroMed — Урология и Андрология | Доказательная медицина'
-    : activeSection === 'favorites'
-      ? 'Избранное | UroMed'
-      : activeSection === 'emergency'
-        ? 'Экстренные состояния | UroMed'
-        : activeSection === 'sitemap'
-          ? 'Карта сайта | UroMed'
-          : activeSection === 'calculators'
-            ? 'Калькуляторы уролога | UroMed'
-            : activeSection === 'games'
-              ? 'Обучение | UroMed'
-              : selectedDisease
-                ? `${selectedDisease.name} (${selectedDisease.icd}) | UroMed`
-                : `${sectionNames[activeSection] || activeSection} | UroMed`;
+  const pageTitle =
+    activeSection === 'home'
+      ? 'UroMed — Урология и Андрология | Доказательная медицина'
+      : activeSection === 'favorites'
+        ? 'Избранное | UroMed'
+        : activeSection === 'emergency'
+          ? 'Экстренные состояния | UroMed'
+          : activeSection === 'sitemap'
+            ? 'Карта сайта | UroMed'
+            : activeSection === 'calculators'
+              ? 'Калькуляторы уролога | UroMed'
+              : activeSection === 'games'
+                ? 'Обучение | UroMed'
+                : selectedDisease
+                  ? `${selectedDisease.name} (${selectedDisease.icd}) | UroMed`
+                  : `${sectionNames[activeSection] || activeSection} | UroMed`;
 
-  const pageDescription = activeSection === 'home'
-    ? 'UroMed — современный медицинский справочник по урологии и андрологии. Доказательные клинические рекомендации EAU, AUA, РКР. Диагностика, лечение, калькуляторы.'
-    : selectedDisease
-      ? `${selectedDisease.name} — подробная информация о диагностике, лечении и профилактике. Коды МКБ-10: ${selectedDisease.icd}. Рекомендации EAU/AUA.`
-      : `${sectionNames[activeSection] || activeSection} — справочник по урологии и андрологии. Доказательная медицина, клинические рекомендации, калькуляторы.`;
+  const pageDescription =
+    activeSection === 'home'
+      ? 'UroMed — современный медицинский справочник по урологии и андрологии. Доказательные клинические рекомендации EAU, AUA, РКР. Диагностика, лечение, калькуляторы.'
+      : selectedDisease
+        ? `${selectedDisease.name} — подробная информация о диагностике, лечении и профилактике. Коды МКБ-10: ${selectedDisease.icd}. Рекомендации EAU/AUA.`
+        : `${sectionNames[activeSection] || activeSection} — справочник по урологии и андрологии. Доказательная медицина, клинические рекомендации, калькуляторы.`;
 
   const renderBreadcrumbs = () => {
     if (activeSection === 'home') return null;
@@ -204,7 +211,9 @@ function App() {
         {items.map((item, i) => (
           <React.Fragment key={i}>
             {item.action ? (
-              <button className="breadcrumb-item" onClick={item.action}>{item.label}</button>
+              <button className="breadcrumb-item" onClick={item.action}>
+                {item.label}
+              </button>
             ) : (
               <span className="breadcrumb-current">{item.label}</span>
             )}
@@ -227,8 +236,14 @@ function App() {
       />
 
       <ErrorBoundary>
-        <div className={`App ${isMobileShell ? 'has-mobile-shell' : ''}`} role="main" data-v23-workbench="true">
-          <a href="#main-content" className="skip-link">Перейти к основному контенту</a>
+        <div
+          className={`App ${isMobileShell ? 'has-mobile-shell' : ''}`}
+          role="main"
+          data-v23-workbench="true"
+        >
+          <a href="#main-content" className="skip-link">
+            Перейти к основному контенту
+          </a>
           {!isOnline && (
             <div className="offline-indicator" role="alert">
               Вы сейчас офлайн. Часть функций может быть недоступна.
@@ -315,7 +330,11 @@ function App() {
             />
           )}
           {isMobileShell && activeSection !== 'home' && !selectedDiseaseId && (
-            <div className={`mobile-shell-nav ${!navVisible ? 'scroll-hide' : ''}`} role="navigation" aria-label="Быстрая навигация">
+            <div
+              className={`mobile-shell-nav ${!navVisible ? 'scroll-hide' : ''}`}
+              role="navigation"
+              aria-label="Быстрая навигация"
+            >
               <button className="mobile-shell-btn" onClick={handleMobileBack} aria-label="Назад">
                 <IconBack className="mobile-shell-icon" size={18} />
                 <span className="mobile-shell-label">Назад</span>
@@ -343,7 +362,9 @@ function App() {
             </div>
           )}
           {showScrollTop && (
-            <button className="scroll-top-btn" onClick={scrollToTop} aria-label="Наверх"><IconArrowUp size={20} /></button>
+            <button className="scroll-top-btn" onClick={scrollToTop} aria-label="Наверх">
+              <IconArrowUp size={20} />
+            </button>
           )}
           {isMobileShell && <BottomNav />}
         </div>

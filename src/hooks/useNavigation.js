@@ -21,7 +21,7 @@ export const useHashNavigation = (SUBSECTION_TITLES = {}) => {
     setNavigation(newNav);
 
     if (!options.skipHistory) {
-      setHistory(prev => [...prev.slice(-19), { ...newNav, timestamp: Date.now() }]);
+      setHistory((prev) => [...prev.slice(-19), { ...newNav, timestamp: Date.now() }]);
     }
 
     return newPath;
@@ -42,7 +42,9 @@ export const useHashNavigation = (SUBSECTION_TITLES = {}) => {
 
   useEffect(() => {
     const syncNavigation = () => {
-      setNavigation(parseLocation(window.location.pathname, window.location.hash, SUBSECTION_TITLES));
+      setNavigation(
+        parseLocation(window.location.pathname, window.location.hash, SUBSECTION_TITLES)
+      );
     };
 
     window.addEventListener('hashchange', syncNavigation);
@@ -83,9 +85,12 @@ export const useUrlParams = () => {
     setParams(Object.fromEntries(url.searchParams));
   }, []);
 
-  const removeParam = useCallback((key) => {
-    updateParam(key, null);
-  }, [updateParam]);
+  const removeParam = useCallback(
+    (key) => {
+      updateParam(key, null);
+    },
+    [updateParam]
+  );
 
   return { params, updateParam, removeParam };
 };
@@ -118,21 +123,24 @@ export const useQueryParams = (defaultValues = {}) => {
     return () => window.removeEventListener('popstate', handlePopState);
   }, [defaultValues]);
 
-  const setValue = useCallback((key, value) => {
-    setValues(prev => {
-      const newValues = { ...prev, [key]: value };
-      const url = new URL(window.location.href);
-      Object.entries(newValues).forEach(([k, v]) => {
-        if (v === defaultValues[k]) {
-          url.searchParams.delete(k);
-        } else {
-          url.searchParams.set(k, v);
-        }
+  const setValue = useCallback(
+    (key, value) => {
+      setValues((prev) => {
+        const newValues = { ...prev, [key]: value };
+        const url = new URL(window.location.href);
+        Object.entries(newValues).forEach(([k, v]) => {
+          if (v === defaultValues[k]) {
+            url.searchParams.delete(k);
+          } else {
+            url.searchParams.set(k, v);
+          }
+        });
+        window.history.pushState(null, '', url);
+        return newValues;
       });
-      window.history.pushState(null, '', url);
-      return newValues;
-    });
-  }, [defaultValues]);
+    },
+    [defaultValues]
+  );
 
   const reset = useCallback(() => {
     const url = new URL(window.location.href);
@@ -144,7 +152,7 @@ export const useQueryParams = (defaultValues = {}) => {
   return { values, setValue, reset };
 };
 
-export default {
+export const navigationHooks = {
   useHashNavigation,
   useUrlParams,
   useQueryParams,

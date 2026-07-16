@@ -79,7 +79,7 @@ function showAppUpdateBanner(onRefresh) {
       banner.remove();
       onRefresh();
     },
-    { once: true },
+    { once: true }
   );
 
   document.body.appendChild(banner);

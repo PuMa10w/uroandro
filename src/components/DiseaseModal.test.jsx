@@ -6,16 +6,29 @@ import DiseaseModal from './DiseaseModal';
 const mockPreloadDiseaseBatch = vi.fn();
 
 vi.mock('framer-motion', () => ({
-  motion: new Proxy({}, {
-    get: (_, tag) => {
-      const mockReact = require('react');
-      const Component = ({ children, whileHover, whileTap, whileInView, initial, animate, exit, transition, viewport, layout, ...props }) => (
-        mockReact.createElement(tag, props, children)
-      );
-      Component.displayName = `motion.${String(tag)}`;
-      return Component;
-    },
-  }),
+  motion: new Proxy(
+    {},
+    {
+      get: (_, tag) => {
+        const mockReact = require('react');
+        const Component = ({
+          children,
+          whileHover,
+          whileTap,
+          whileInView,
+          initial,
+          animate,
+          exit,
+          transition,
+          viewport,
+          layout,
+          ...props
+        }) => mockReact.createElement(tag, props, children);
+        Component.displayName = `motion.${String(tag)}`;
+        return Component;
+      },
+    }
+  ),
   AnimatePresence: ({ children }) => {
     const mockReact = require('react');
     return mockReact.createElement(mockReact.Fragment, null, children);
@@ -175,7 +188,7 @@ describe('DiseaseModal', () => {
     expect(screen.getByText('ФОКУС')).toBeInTheDocument();
   });
 
-it('renders andrology pathway badges', () => {
+  it('renders andrology pathway badges', () => {
     render(
       <DiseaseModal
         disease={fertilityDisease}

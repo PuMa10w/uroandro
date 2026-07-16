@@ -6,16 +6,29 @@ import { preloadDiseaseData } from '../data/lazyData';
 import { trackSectionPathway } from '../utils/analytics';
 
 vi.mock('framer-motion', () => ({
-  motion: new Proxy({}, {
-    get: (_, tag) => {
-      const mockReact = require('react');
-      const Component = ({ children, whileHover, whileTap, whileInView, initial, animate, exit, transition, viewport, layout, ...props }) => (
-        mockReact.createElement(tag, props, children)
-      );
-      Component.displayName = `motion.${String(tag)}`;
-      return Component;
-    },
-  }),
+  motion: new Proxy(
+    {},
+    {
+      get: (_, tag) => {
+        const mockReact = require('react');
+        const Component = ({
+          children,
+          whileHover,
+          whileTap,
+          whileInView,
+          initial,
+          animate,
+          exit,
+          transition,
+          viewport,
+          layout,
+          ...props
+        }) => mockReact.createElement(tag, props, children);
+        Component.displayName = `motion.${String(tag)}`;
+        return Component;
+      },
+    }
+  ),
   AnimatePresence: ({ children }) => {
     const mockReact = require('react');
     return mockReact.createElement(mockReact.Fragment, null, children);
@@ -24,15 +37,15 @@ vi.mock('framer-motion', () => ({
 
 vi.mock('./DiseaseModal', () => ({
   default: ({ disease, onClose, onNavigate }) => {
-  const mockReact = require('react');
-  return mockReact.createElement(
-    'div',
-    { 'data-testid': 'disease-modal' },
-    mockReact.createElement('span', null, disease.name),
-    mockReact.createElement('button', { onClick: () => onNavigate(1) }, 'next'),
-    mockReact.createElement('button', { onClick: onClose }, 'close'),
-  );
-}
+    const mockReact = require('react');
+    return mockReact.createElement(
+      'div',
+      { 'data-testid': 'disease-modal' },
+      mockReact.createElement('span', null, disease.name),
+      mockReact.createElement('button', { onClick: () => onNavigate(1) }, 'next'),
+      mockReact.createElement('button', { onClick: onClose }, 'close')
+    );
+  },
 }));
 
 vi.mock('../data/lazyData', () => ({
@@ -55,12 +68,19 @@ describe('DiseaseSection', () => {
       <DiseaseSection
         title="Тестовый раздел"
         data={[
-          { id: 'stone', name: 'Камень', icd: 'N20', section: 'urology', subsection: 'stones', icon: '💎' },
+          {
+            id: 'stone',
+            name: 'Камень',
+            icd: 'N20',
+            section: 'urology',
+            subsection: 'stones',
+            icon: '💎',
+          },
         ]}
         favorites={{}}
         onToggleFavorite={vi.fn()}
         onNavigate={vi.fn()}
-      />,
+      />
     );
 
     const diseaseCards = container.querySelectorAll('.disease-card');
@@ -77,9 +97,30 @@ describe('DiseaseSection', () => {
       <DiseaseSection
         title="Stone pathway"
         data={[
-          { id: 'urolithiasis', name: 'Urolithiasis', icd: 'N20', section: 'urology', subsection: 'stones', icon: 'stone' },
-          { id: 'renal-colic', name: 'Renal colic', icd: 'N23', section: 'urology', subsection: 'stones', icon: 'stone' },
-          { id: 'bladder-stones', name: 'Bladder stones', icd: 'N21', section: 'urology', subsection: 'stones', icon: 'stone' },
+          {
+            id: 'urolithiasis',
+            name: 'Urolithiasis',
+            icd: 'N20',
+            section: 'urology',
+            subsection: 'stones',
+            icon: 'stone',
+          },
+          {
+            id: 'renal-colic',
+            name: 'Renal colic',
+            icd: 'N23',
+            section: 'urology',
+            subsection: 'stones',
+            icon: 'stone',
+          },
+          {
+            id: 'bladder-stones',
+            name: 'Bladder stones',
+            icd: 'N21',
+            section: 'urology',
+            subsection: 'stones',
+            icon: 'stone',
+          },
         ]}
         favorites={{}}
         onToggleFavorite={vi.fn()}
@@ -93,7 +134,7 @@ describe('DiseaseSection', () => {
             openCount: 5,
           },
         ]}
-      />,
+      />
     );
 
     const recommendationRegion = screen.getByLabelText('Pathway recommendations');
@@ -123,14 +164,28 @@ describe('DiseaseSection', () => {
       <DiseaseSection
         title="Stone pathway"
         data={[
-          { id: 'urolithiasis', name: 'Мочекаменная болезнь', icd: 'N20', section: 'urology', subsection: 'stones', icon: '💎' },
-          { id: 'renal-colic', name: 'Почечная колика', icd: 'N23', section: 'urology', subsection: 'stones', icon: '💎' },
+          {
+            id: 'urolithiasis',
+            name: 'Мочекаменная болезнь',
+            icd: 'N20',
+            section: 'urology',
+            subsection: 'stones',
+            icon: '💎',
+          },
+          {
+            id: 'renal-colic',
+            name: 'Почечная колика',
+            icd: 'N23',
+            section: 'urology',
+            subsection: 'stones',
+            icon: '💎',
+          },
         ]}
         favorites={{}}
         onToggleFavorite={vi.fn()}
         onNavigate={onNavigate}
         viewHistory={[]}
-      />,
+      />
     );
 
     const recommendationRegion = screen.getByLabelText('Pathway recommendations');
@@ -166,12 +221,19 @@ describe('DiseaseSection', () => {
       <DiseaseSection
         title="Тестовый раздел"
         data={[
-          { id: 'stone', name: 'Камень', icd: 'N20', section: 'urology', subsection: 'stones', icon: '💎' },
+          {
+            id: 'stone',
+            name: 'Камень',
+            icd: 'N20',
+            section: 'urology',
+            subsection: 'stones',
+            icon: '💎',
+          },
         ]}
         favorites={{}}
         onToggleFavorite={vi.fn()}
         onNavigate={vi.fn()}
-      />,
+      />
     );
 
     fireEvent.click(container.querySelector('.disease-card'));
@@ -190,12 +252,19 @@ describe('DiseaseSection', () => {
       <DiseaseSection
         title="Тестовый раздел"
         data={[
-          { id: 'stone', name: 'Камень', icd: 'N20', section: 'urology', subsection: 'stones', icon: '💎' },
+          {
+            id: 'stone',
+            name: 'Камень',
+            icd: 'N20',
+            section: 'urology',
+            subsection: 'stones',
+            icon: '💎',
+          },
         ]}
         favorites={{}}
         onToggleFavorite={vi.fn()}
         onNavigate={vi.fn()}
-      />,
+      />
     );
 
     fireEvent.mouseEnter(container.querySelector('.disease-card'));
@@ -216,12 +285,19 @@ describe('DiseaseSection', () => {
       <DiseaseSection
         title="Тестовый раздел"
         data={[
-          { id: 'stone', name: 'Камень', icd: 'N20', section: 'urology', subsection: 'stones', icon: '💎' },
+          {
+            id: 'stone',
+            name: 'Камень',
+            icd: 'N20',
+            section: 'urology',
+            subsection: 'stones',
+            icon: '💎',
+          },
         ]}
         favorites={{}}
         onToggleFavorite={vi.fn()}
         onNavigate={vi.fn()}
-      />,
+      />
     );
 
     fireEvent.click(container.querySelector('.disease-card'));

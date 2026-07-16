@@ -1,8 +1,8 @@
 export function getDiseaseModalTabs(normalizedDisease) {
   const hasClassification = Boolean(
-    normalizedDisease.classification
-    && typeof normalizedDisease.classification === 'object'
-    && Object.keys(normalizedDisease.classification).length
+    normalizedDisease.classification &&
+    typeof normalizedDisease.classification === 'object' &&
+    Object.keys(normalizedDisease.classification).length
   );
 
   return [

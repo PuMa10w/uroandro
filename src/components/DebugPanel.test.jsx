@@ -1,7 +1,12 @@
 import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { vi } from 'vitest';
-import DebugPanel, { buildTelemetryExport, compareTelemetryExports, formatTelemetrySummary, getCompareVerdict } from './DebugPanel';
+import DebugPanel, {
+  buildTelemetryExport,
+  compareTelemetryExports,
+  formatTelemetrySummary,
+  getCompareVerdict,
+} from './DebugPanel';
 import { clearTelemetryEvents, getTelemetrySnapshot } from '../utils/analytics';
 
 vi.mock('../utils/analytics', () => ({
@@ -84,9 +89,15 @@ describe('DebugPanel', () => {
 
     expect(summary).toContain('UroMed telemetry snapshot');
     expect(summary).toContain('Total events: 12');
-    expect(summary).toContain('1. urology / stones | section_retention_cluster | retained | 4 opens | 75% progressed');
-    expect(summary).toContain('1. urology / stones -> urolithiasis | section_retained_disease_recommendation | retained | 2 recommendations | 100% modal conversion');
-    expect(summary).toContain('1. andrology / fertility | section_subsection | default | 2 entries | 50% dropoff');
+    expect(summary).toContain(
+      '1. urology / stones | section_retention_cluster | retained | 4 opens | 75% progressed'
+    );
+    expect(summary).toContain(
+      '1. urology / stones -> urolithiasis | section_retained_disease_recommendation | retained | 2 recommendations | 100% modal conversion'
+    );
+    expect(summary).toContain(
+      '1. andrology / fertility | section_subsection | default | 2 entries | 50% dropoff'
+    );
   });
 
   it('builds telemetry export json with snapshot payload', () => {
@@ -181,7 +192,7 @@ describe('DebugPanel', () => {
         showState
         initialState={{ activeSection: 'urology' }}
         exportContext={exportContext}
-      />,
+      />
     );
 
     fireEvent.click(screen.getByRole('button', { name: 'Open debug panel' }));

@@ -2,9 +2,7 @@ import { act, renderHook } from '@testing-library/react';
 import useAppNavigationState from './useAppNavigationState';
 
 vi.mock('../data', () => ({
-  allDiseases: [
-    { id: 'urolithiasis', name: 'МКБ', section: 'urology', subsection: 'stones' },
-  ],
+  allDiseases: [{ id: 'urolithiasis', name: 'МКБ', section: 'urology', subsection: 'stones' }],
   diseaseById: {
     urolithiasis: { id: 'urolithiasis', name: 'МКБ', section: 'urology', subsection: 'stones' },
   },
@@ -86,10 +84,12 @@ describe('useAppNavigationState', () => {
       await Promise.resolve();
     });
 
-    expect(addToHistory).toHaveBeenCalledWith(expect.objectContaining({
-      id: 'urolithiasis',
-      source: 'search',
-    }));
+    expect(addToHistory).toHaveBeenCalledWith(
+      expect.objectContaining({
+        id: 'urolithiasis',
+        source: 'search',
+      })
+    );
   });
 
   it('keeps repeated opens visible for downstream history retention metrics', async () => {
@@ -123,19 +123,23 @@ describe('useAppNavigationState', () => {
     });
 
     await act(async () => {
-      result.current.handleNavigate('urology', 'stones', 'urolithiasis', { source: 'history_reopen' });
+      result.current.handleNavigate('urology', 'stones', 'urolithiasis', {
+        source: 'history_reopen',
+      });
       await Promise.resolve();
     });
 
-    expect(historyState[0]).toEqual(expect.objectContaining({
-      id: 'urolithiasis',
-      openCount: 2,
-      lastSource: 'history_reopen',
-      sourceCounts: expect.objectContaining({
-        search: 1,
-        history_reopen: 1,
-      }),
-    }));
+    expect(historyState[0]).toEqual(
+      expect.objectContaining({
+        id: 'urolithiasis',
+        openCount: 2,
+        lastSource: 'history_reopen',
+        sourceCounts: expect.objectContaining({
+          search: 1,
+          history_reopen: 1,
+        }),
+      })
+    );
   });
 
   it('returns to article origin when closing disease', () => {

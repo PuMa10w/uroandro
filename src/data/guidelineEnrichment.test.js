@@ -12,7 +12,10 @@ describe('guidelineEnrichment', () => {
     expect(enriched.diagnostics.title).toEqual(expect.any(String));
     expect(enriched.diagnostics.steps.length).toBeGreaterThanOrEqual(4);
     expect(enriched.classification).toBeTruthy();
-    expect((enriched.classification.byType || []).length + (enriched.classification.byCourse || []).length).toBeGreaterThan(0);
+    expect(
+      (enriched.classification.byType || []).length +
+        (enriched.classification.byCourse || []).length
+    ).toBeGreaterThan(0);
     expect(enriched.treatment.conservative.length).toBeGreaterThan(0);
     expect(enriched.guidelines.eau).toBeTruthy();
     expect(enriched.guidelines.aua).toBeTruthy();
@@ -76,7 +79,9 @@ describe('guidelineEnrichment', () => {
     expect(enriched.patientQuestions.some((item) => item.q === 'Existing question?')).toBe(true);
     expect(enriched.clinicalCases.some((item) => item.title === 'Existing case')).toBe(true);
     expect(enriched.patientRecommendations).toContain('Existing recommendation');
-    expect(enriched.treatment.conservative.some((item) => item.title === 'Клинические приоритеты')).toBe(true);
+    expect(
+      enriched.treatment.conservative.some((item) => item.title === 'Клинические приоритеты')
+    ).toBe(true);
     expect(enriched.diagnostics.steps.length).toBeGreaterThanOrEqual(4);
   });
   it('adds disease-specific clinical enrichment for key existing diagnoses', () => {
@@ -97,11 +102,15 @@ describe('guidelineEnrichment', () => {
     expect(stone.patientQuestions.some((item) => item.q.includes('состав камня'))).toBe(true);
     expect(stone.clinicalCases.some((item) => item.title.includes('камнеобразование'))).toBe(true);
     expect(stone.followUp.monitoring.some((item) => item.includes('метафилактики'))).toBe(true);
-    expect(stone.diagnostics.additional.some((item) => item.includes('метаболическим профилем'))).toBe(true);
+    expect(
+      stone.diagnostics.additional.some((item) => item.includes('метаболическим профилем'))
+    ).toBe(true);
 
     expect(infertility.patientQuestions.some((item) => item.q.includes('спермограмма'))).toBe(true);
     expect(infertility.clinicalCases.some((item) => item.title.includes('бесплодие'))).toBe(true);
-    expect(infertility.followUp.monitoring.some((item) => item.includes('сперматогенеза'))).toBe(true);
+    expect(infertility.followUp.monitoring.some((item) => item.includes('сперматогенеза'))).toBe(
+      true
+    );
   });
   it('adds second-wave disease-specific enrichment for oncology nephrology and reconstruction', () => {
     const prostateCancer = enrichDiseaseGuidelines({
@@ -125,7 +134,11 @@ describe('guidelineEnrichment', () => {
       subsection: 'reconstructive',
     });
 
-    expect(prostateCancer.patientQuestions.some((item) => item.q.includes('немедленное активное лечение'))).toBe(true);
+    expect(
+      prostateCancer.patientQuestions.some((item) =>
+        item.q.includes('немедленное активное лечение')
+      )
+    ).toBe(true);
     expect(prostateCancer.followUp.monitoring.some((item) => item.includes('PSA'))).toBe(true);
 
     expect(ckd.patientQuestions.some((item) => item.q.includes('креатинин'))).toBe(true);

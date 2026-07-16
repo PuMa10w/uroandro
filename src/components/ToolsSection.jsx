@@ -1,5 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { drugList as premiumDrugList, drugReferenceMeta, drugSearchHints } from '../data/drugReferenceData';
+import {
+  drugList as premiumDrugList,
+  drugReferenceMeta,
+  drugSearchHints,
+} from '../data/drugReferenceData';
 import '../styles/servicePages.css';
 
 const COLORS = {
@@ -24,11 +28,31 @@ const drugRiskFilters = [
 ];
 
 const drugCockpitSteps = [
-  { id: 'task', title: 'Клиническая задача', text: 'ДГПЖ, ИМП, камни, боль, ЭД, фертильность, онко или ургентный сценарий.' },
-  { id: 'group', title: 'Группа', text: 'Сужение до класса без простыни фильтров и случайных чипов.' },
-  { id: 'drug', title: 'Препарат', text: 'МНН, синонимы, режим и показания в одном readable-блоке.' },
-  { id: 'risk', title: 'Риски', text: 'QT, ХБП, фертильность, антикоагулянты, ESBL и взаимодействия.' },
-  { id: 'monitoring', title: 'Мониторинг', text: 'Что проверить до старта, во время терапии и при follow-up.' },
+  {
+    id: 'task',
+    title: 'Клиническая задача',
+    text: 'ДГПЖ, ИМП, камни, боль, ЭД, фертильность, онко или ургентный сценарий.',
+  },
+  {
+    id: 'group',
+    title: 'Группа',
+    text: 'Сужение до класса без простыни фильтров и случайных чипов.',
+  },
+  {
+    id: 'drug',
+    title: 'Препарат',
+    text: 'МНН, синонимы, режим и показания в одном readable-блоке.',
+  },
+  {
+    id: 'risk',
+    title: 'Риски',
+    text: 'QT, ХБП, фертильность, антикоагулянты, ESBL и взаимодействия.',
+  },
+  {
+    id: 'monitoring',
+    title: 'Мониторинг',
+    text: 'Что проверить до старта, во время терапии и при follow-up.',
+  },
 ];
 
 function getDrugSearchHaystack(item) {
@@ -50,22 +74,40 @@ function getDrugSearchHaystack(item) {
     item.interactions,
     item.sourceIds?.join(' '),
     item.tags?.join(' '),
-  ].filter(Boolean).join(' ').toLowerCase();
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
 }
 
 function getDrugClinicalTask(item) {
   const haystack = getDrugSearchHaystack(item);
-  if (haystack.includes('эрекц') || haystack.includes('тестостерон') || haystack.includes('фертиль')) return 'андрология';
-  if (haystack.includes('esbl') || haystack.includes('антибиот') || haystack.includes('имп')) return 'инфекции';
-  if (haystack.includes('камн') || haystack.includes('цитрат') || haystack.includes('колик')) return 'камни';
-  if (haystack.includes('дгпж') || haystack.includes('задержк') || haystack.includes('лутс')) return 'СНМП / ДГПЖ';
-  if (haystack.includes('онко') || haystack.includes('рак') || haystack.includes('bсg')) return 'онкоурология';
+  if (
+    haystack.includes('эрекц') ||
+    haystack.includes('тестостерон') ||
+    haystack.includes('фертиль')
+  )
+    return 'андрология';
+  if (haystack.includes('esbl') || haystack.includes('антибиот') || haystack.includes('имп'))
+    return 'инфекции';
+  if (haystack.includes('камн') || haystack.includes('цитрат') || haystack.includes('колик'))
+    return 'камни';
+  if (haystack.includes('дгпж') || haystack.includes('задержк') || haystack.includes('лутс'))
+    return 'СНМП / ДГПЖ';
+  if (haystack.includes('онко') || haystack.includes('рак') || haystack.includes('bсg'))
+    return 'онкоурология';
   return item.group || 'урология';
 }
 
 function getDrugMonitoringPriority(item) {
   const haystack = getDrugSearchHaystack(item);
-  if (haystack.includes('qt') || haystack.includes('нефро') || haystack.includes('креатинин') || haystack.includes('антикоагулян')) return 'high';
+  if (
+    haystack.includes('qt') ||
+    haystack.includes('нефро') ||
+    haystack.includes('креатинин') ||
+    haystack.includes('антикоагулян')
+  )
+    return 'high';
   if (haystack.includes('контроль') || haystack.includes('монитор')) return 'watch';
   return 'routine';
 }
@@ -122,11 +164,12 @@ const toolDefinitions = [
       'Необходимость натуживаться',
       'Никтурия: сколько раз за ночь',
     ],
-    interpret: (total) => scoreSeverity(total, [
-      { max: 7, label: 'Лёгкие симптомы', tone: 'low' },
-      { max: 19, label: 'Умеренные симптомы', tone: 'mid' },
-      { max: 35, label: 'Тяжёлые симптомы', tone: 'high' },
-    ]),
+    interpret: (total) =>
+      scoreSeverity(total, [
+        { max: 7, label: 'Лёгкие симптомы', tone: 'low' },
+        { max: 19, label: 'Умеренные симптомы', tone: 'mid' },
+        { max: 35, label: 'Тяжёлые симптомы', tone: 'high' },
+      ]),
   },
   {
     id: 'iief5',
@@ -149,13 +192,14 @@ const toolDefinitions = [
       'Трудность удержания эрекции до завершения акта',
       'Удовлетворённость половым актом',
     ],
-    interpret: (total) => scoreSeverity(total, [
-      { max: 7, label: 'Выраженная ЭД', tone: 'high' },
-      { max: 11, label: 'Умеренная ЭД', tone: 'mid' },
-      { max: 16, label: 'Лёгко-умеренная ЭД', tone: 'mid' },
-      { max: 21, label: 'Лёгкая ЭД', tone: 'low' },
-      { max: 25, label: 'Клинически значимой ЭД не видно', tone: 'good' },
-    ]),
+    interpret: (total) =>
+      scoreSeverity(total, [
+        { max: 7, label: 'Выраженная ЭД', tone: 'high' },
+        { max: 11, label: 'Умеренная ЭД', tone: 'mid' },
+        { max: 16, label: 'Лёгко-умеренная ЭД', tone: 'mid' },
+        { max: 21, label: 'Лёгкая ЭД', tone: 'low' },
+        { max: 25, label: 'Клинически значимой ЭД не видно', tone: 'good' },
+      ]),
   },
   {
     id: 'pedt',
@@ -172,11 +216,12 @@ const toolDefinitions = [
       'Ситуация беспокоит пациента',
       'Партнёр недоволен продолжительностью акта',
     ],
-    interpret: (total) => scoreSeverity(total, [
-      { max: 8, label: 'ПЭ не подтверждается по опроснику', tone: 'good' },
-      { max: 10, label: 'ПЭ возможна', tone: 'mid' },
-      { max: 20, label: 'ПЭ вероятна', tone: 'high' },
-    ]),
+    interpret: (total) =>
+      scoreSeverity(total, [
+        { max: 8, label: 'ПЭ не подтверждается по опроснику', tone: 'good' },
+        { max: 10, label: 'ПЭ возможна', tone: 'mid' },
+        { max: 20, label: 'ПЭ вероятна', tone: 'high' },
+      ]),
   },
   {
     id: 'nih-cpsi',
@@ -198,11 +243,12 @@ const toolDefinitions = [
       'Частые мочеиспускания',
       'Влияние симптомов на качество жизни',
     ],
-    interpret: (total) => scoreSeverity(total, [
-      { max: 14, label: 'Лёгкая симптоматика', tone: 'low' },
-      { max: 29, label: 'Умеренная симптоматика', tone: 'mid' },
-      { max: 43, label: 'Тяжёлая симптоматика', tone: 'high' },
-    ]),
+    interpret: (total) =>
+      scoreSeverity(total, [
+        { max: 14, label: 'Лёгкая симптоматика', tone: 'low' },
+        { max: 29, label: 'Умеренная симптоматика', tone: 'mid' },
+        { max: 43, label: 'Тяжёлая симптоматика', tone: 'high' },
+      ]),
   },
   {
     id: 'oab-v8',
@@ -222,11 +268,12 @@ const toolDefinitions = [
       'Снижение уверенности вне дома',
       'Нарушение сна',
     ],
-    interpret: (total) => scoreSeverity(total, [
-      { max: 7, label: 'Низкая вероятность клинически значимого ГАМП', tone: 'good' },
-      { max: 16, label: 'Симптомы требуют уточнения', tone: 'mid' },
-      { max: 40, label: 'Высокая выраженность симптомов ГАМП', tone: 'high' },
-    ]),
+    interpret: (total) =>
+      scoreSeverity(total, [
+        { max: 7, label: 'Низкая вероятность клинически значимого ГАМП', tone: 'good' },
+        { max: 16, label: 'Симптомы требуют уточнения', tone: 'mid' },
+        { max: 40, label: 'Высокая выраженность симптомов ГАМП', tone: 'high' },
+      ]),
   },
   {
     id: 'iciq-ui',
@@ -249,11 +296,12 @@ const toolDefinitions = [
       'Объём потери мочи',
       'Влияние недержания на повседневную жизнь',
     ],
-    interpret: (total) => scoreSeverity(total, [
-      { max: 5, label: 'Лёгкое влияние', tone: 'low' },
-      { max: 12, label: 'Умеренное влияние', tone: 'mid' },
-      { max: 21, label: 'Выраженное влияние', tone: 'high' },
-    ]),
+    interpret: (total) =>
+      scoreSeverity(total, [
+        { max: 5, label: 'Лёгкое влияние', tone: 'low' },
+        { max: 12, label: 'Умеренное влияние', tone: 'mid' },
+        { max: 21, label: 'Выраженное влияние', tone: 'high' },
+      ]),
   },
   {
     id: 'adam',
@@ -277,7 +325,11 @@ const toolDefinitions = [
     ],
     interpret: (total, answers) => {
       const sexualSignal = answers[1] === 1 || answers[7] === 1;
-      if (sexualSignal || total >= 3) return { label: 'Скрининг положительный, нужны утренний тестостерон и контекст', tone: 'mid' };
+      if (sexualSignal || total >= 3)
+        return {
+          label: 'Скрининг положительный, нужны утренний тестостерон и контекст',
+          tone: 'mid',
+        };
       return { label: 'Скрининг отрицательный', tone: 'good' };
     },
   },
@@ -305,11 +357,12 @@ const toolDefinitions = [
       'Снижение либидо',
       'Снижение эрекций',
     ],
-    interpret: (total) => scoreSeverity(total, [
-      { max: 16, label: 'Низкая выраженность', tone: 'good' },
-      { max: 26, label: 'Умеренная выраженность', tone: 'mid' },
-      { max: 40, label: 'Высокая выраженность', tone: 'high' },
-    ]),
+    interpret: (total) =>
+      scoreSeverity(total, [
+        { max: 16, label: 'Низкая выраженность', tone: 'good' },
+        { max: 26, label: 'Умеренная выраженность', tone: 'mid' },
+        { max: 40, label: 'Высокая выраженность', tone: 'high' },
+      ]),
   },
   {
     id: 'mshq-ejd',
@@ -326,11 +379,12 @@ const toolDefinitions = [
       'Снижение удовлетворённости эякуляцией',
       'Беспокойство из-за эякуляторной функции',
     ],
-    interpret: (total) => scoreSeverity(total, [
-      { max: 5, label: 'Минимальные жалобы', tone: 'good' },
-      { max: 12, label: 'Умеренные жалобы', tone: 'mid' },
-      { max: 20, label: 'Выраженные жалобы', tone: 'high' },
-    ]),
+    interpret: (total) =>
+      scoreSeverity(total, [
+        { max: 5, label: 'Минимальные жалобы', tone: 'good' },
+        { max: 12, label: 'Умеренные жалобы', tone: 'mid' },
+        { max: 20, label: 'Выраженные жалобы', tone: 'high' },
+      ]),
   },
   {
     id: 'udi6',
@@ -353,11 +407,12 @@ const toolDefinitions = [
       'Трудность опорожнения',
       'Боль или дискомфорт внизу живота/гениталиях',
     ],
-    interpret: (total) => scoreSeverity(total, [
-      { max: 5, label: 'Лёгкий дистресс', tone: 'low' },
-      { max: 11, label: 'Умеренный дистресс', tone: 'mid' },
-      { max: 18, label: 'Выраженный дистресс', tone: 'high' },
-    ]),
+    interpret: (total) =>
+      scoreSeverity(total, [
+        { max: 5, label: 'Лёгкий дистресс', tone: 'low' },
+        { max: 11, label: 'Умеренный дистресс', tone: 'mid' },
+        { max: 18, label: 'Выраженный дистресс', tone: 'high' },
+      ]),
   },
   {
     id: 'stone',
@@ -367,17 +422,50 @@ const toolDefinitions = [
     color: COLORS.blue,
     scale: '0-13',
     questions: [
-      { text: 'Пол', options: [{ value: 0, label: 'Женщина' }, { value: 2, label: 'Мужчина' }] },
-      { text: 'Длительность боли', options: [{ value: 0, label: '>24 ч' }, { value: 1, label: '6-24 ч' }, { value: 3, label: '<6 ч' }] },
-      { text: 'Тошнота/рвота', options: [{ value: 0, label: 'Нет' }, { value: 1, label: 'Тошнота' }, { value: 2, label: 'Рвота' }] },
-      { text: 'Гематурия', options: [{ value: 0, label: 'Нет' }, { value: 3, label: 'Есть' }] },
-      { text: 'Раса/анамнестический риск', options: [{ value: 0, label: 'Низкий' }, { value: 3, label: 'Высокий' }] },
+      {
+        text: 'Пол',
+        options: [
+          { value: 0, label: 'Женщина' },
+          { value: 2, label: 'Мужчина' },
+        ],
+      },
+      {
+        text: 'Длительность боли',
+        options: [
+          { value: 0, label: '>24 ч' },
+          { value: 1, label: '6-24 ч' },
+          { value: 3, label: '<6 ч' },
+        ],
+      },
+      {
+        text: 'Тошнота/рвота',
+        options: [
+          { value: 0, label: 'Нет' },
+          { value: 1, label: 'Тошнота' },
+          { value: 2, label: 'Рвота' },
+        ],
+      },
+      {
+        text: 'Гематурия',
+        options: [
+          { value: 0, label: 'Нет' },
+          { value: 3, label: 'Есть' },
+        ],
+      },
+      {
+        text: 'Раса/анамнестический риск',
+        options: [
+          { value: 0, label: 'Низкий' },
+          { value: 3, label: 'Высокий' },
+        ],
+      },
     ],
-    interpret: (total) => scoreSeverity(total, [
-      { max: 5, label: 'Низкая вероятность камня', tone: 'low' },
-      { max: 9, label: 'Средняя вероятность', tone: 'mid' },
-      { max: 13, label: 'Высокая вероятность', tone: 'high' },
-    ]),
+    interpret: (total) =>
+      scoreSeverity(total, [
+        { max: 5, label: 'Низкая вероятность камня', tone: 'low' },
+        { max: 9, label: 'Средняя вероятность', tone: 'mid' },
+        { max: 13, label: 'Высокая вероятность', tone: 'high' },
+      ]),
   },
   {
     id: 'capra',
@@ -387,17 +475,54 @@ const toolDefinitions = [
     color: COLORS.red,
     scale: '0-10',
     questions: [
-      { text: 'PSA', options: [{ value: 0, label: '<6' }, { value: 1, label: '6-10' }, { value: 2, label: '10-20' }, { value: 3, label: '>20' }] },
-      { text: 'Gleason/ISUP', options: [{ value: 0, label: '<=6' }, { value: 1, label: '3+4' }, { value: 2, label: '4+3' }, { value: 3, label: '8-10' }] },
-      { text: 'Клиническая стадия', options: [{ value: 0, label: 'T1/T2a' }, { value: 1, label: 'T2b' }, { value: 2, label: 'T2c/T3a' }] },
-      { text: 'Позитивные биоптаты', options: [{ value: 0, label: '<34%' }, { value: 1, label: '34-50%' }, { value: 2, label: '>50%' }] },
-      { text: 'Возраст', options: [{ value: 0, label: '<50' }, { value: 1, label: '>=50' }] },
+      {
+        text: 'PSA',
+        options: [
+          { value: 0, label: '<6' },
+          { value: 1, label: '6-10' },
+          { value: 2, label: '10-20' },
+          { value: 3, label: '>20' },
+        ],
+      },
+      {
+        text: 'Gleason/ISUP',
+        options: [
+          { value: 0, label: '<=6' },
+          { value: 1, label: '3+4' },
+          { value: 2, label: '4+3' },
+          { value: 3, label: '8-10' },
+        ],
+      },
+      {
+        text: 'Клиническая стадия',
+        options: [
+          { value: 0, label: 'T1/T2a' },
+          { value: 1, label: 'T2b' },
+          { value: 2, label: 'T2c/T3a' },
+        ],
+      },
+      {
+        text: 'Позитивные биоптаты',
+        options: [
+          { value: 0, label: '<34%' },
+          { value: 1, label: '34-50%' },
+          { value: 2, label: '>50%' },
+        ],
+      },
+      {
+        text: 'Возраст',
+        options: [
+          { value: 0, label: '<50' },
+          { value: 1, label: '>=50' },
+        ],
+      },
     ],
-    interpret: (total) => scoreSeverity(total, [
-      { max: 2, label: 'Низкий риск', tone: 'good' },
-      { max: 5, label: 'Промежуточный риск', tone: 'mid' },
-      { max: 10, label: 'Высокий риск', tone: 'high' },
-    ]),
+    interpret: (total) =>
+      scoreSeverity(total, [
+        { max: 2, label: 'Низкий риск', tone: 'good' },
+        { max: 5, label: 'Промежуточный риск', tone: 'mid' },
+        { max: 10, label: 'Высокий риск', tone: 'high' },
+      ]),
   },
   {
     id: 'renal',
@@ -407,16 +532,45 @@ const toolDefinitions = [
     color: COLORS.teal,
     scale: '4-12',
     questions: [
-      { text: 'Размер опухоли', options: [{ value: 1, label: '<=4 см' }, { value: 2, label: '4-7 см' }, { value: 3, label: '>7 см' }] },
-      { text: 'Экзофитность', options: [{ value: 1, label: '>=50%' }, { value: 2, label: '<50%' }, { value: 3, label: 'Эндофитная' }] },
-      { text: 'Близость к синусу/системе', options: [{ value: 1, label: '>7 мм' }, { value: 2, label: '4-7 мм' }, { value: 3, label: '<=4 мм' }] },
-      { text: 'Расположение относительно полюсных линий', options: [{ value: 1, label: 'Вне линий' }, { value: 2, label: 'Пересекает' }, { value: 3, label: '>50% между' }] },
+      {
+        text: 'Размер опухоли',
+        options: [
+          { value: 1, label: '<=4 см' },
+          { value: 2, label: '4-7 см' },
+          { value: 3, label: '>7 см' },
+        ],
+      },
+      {
+        text: 'Экзофитность',
+        options: [
+          { value: 1, label: '>=50%' },
+          { value: 2, label: '<50%' },
+          { value: 3, label: 'Эндофитная' },
+        ],
+      },
+      {
+        text: 'Близость к синусу/системе',
+        options: [
+          { value: 1, label: '>7 мм' },
+          { value: 2, label: '4-7 мм' },
+          { value: 3, label: '<=4 мм' },
+        ],
+      },
+      {
+        text: 'Расположение относительно полюсных линий',
+        options: [
+          { value: 1, label: 'Вне линий' },
+          { value: 2, label: 'Пересекает' },
+          { value: 3, label: '>50% между' },
+        ],
+      },
     ],
-    interpret: (total) => scoreSeverity(total, [
-      { max: 6, label: 'Низкая сложность', tone: 'good' },
-      { max: 9, label: 'Средняя сложность', tone: 'mid' },
-      { max: 12, label: 'Высокая сложность', tone: 'high' },
-    ]),
+    interpret: (total) =>
+      scoreSeverity(total, [
+        { max: 6, label: 'Низкая сложность', tone: 'good' },
+        { max: 9, label: 'Средняя сложность', tone: 'mid' },
+        { max: 12, label: 'Высокая сложность', tone: 'high' },
+      ]),
   },
   {
     id: 'qsofa',
@@ -430,9 +584,10 @@ const toolDefinitions = [
       { text: 'САД <= 100 мм рт. ст.', options: yesNo },
       { text: 'Изменение сознания', options: yesNo },
     ],
-    interpret: (total) => total >= 2
-      ? { label: 'Высокий риск неблагоприятного исхода, нужна срочная оценка', tone: 'high' }
-      : { label: 'qSOFA < 2, оценивать клинику и полные критерии сепсиса', tone: 'low' },
+    interpret: (total) =>
+      total >= 2
+        ? { label: 'Высокий риск неблагоприятного исхода, нужна срочная оценка', tone: 'high' }
+        : { label: 'qSOFA < 2, оценивать клинику и полные критерии сепсиса', tone: 'low' },
   },
 ];
 
@@ -446,11 +601,11 @@ function ToolTable({ tool }) {
       return {};
     }
   });
-  const rows = tool.questions.map((question, index) => (
+  const rows = tool.questions.map((question, index) =>
     typeof question === 'string'
       ? { id: index + 1, text: question, options: tool.options }
       : { id: index + 1, options: tool.options, ...question }
-  ));
+  );
   const answeredCount = Object.keys(answers).length;
   const total = Object.values(answers).reduce((sum, value) => sum + value, 0);
   const result = answeredCount === rows.length ? tool.interpret(total, answers) : null;
@@ -515,7 +670,9 @@ function ToolTable({ tool }) {
         <div>
           <span>Итог</span>
           <strong>{result ? result.label : 'Заполните все пункты для расчёта'}</strong>
-          {answeredCount > 0 && <small className="premium-local-save">Сохранено локально на устройстве</small>}
+          {answeredCount > 0 && (
+            <small className="premium-local-save">Сохранено локально на устройстве</small>
+          )}
         </div>
         {answeredCount > 0 && (
           <button type="button" className="reset-btn" onClick={() => setAnswers({})}>
@@ -541,12 +698,16 @@ function PSAForm() {
     const norm = age < 50 ? 2.5 : age < 60 ? 3.5 : age < 70 ? 4.5 : 6.5;
     const freeRatio = freePsa ? (freePsa / psa) * 100 : null;
     const density = volume ? psa / volume : null;
-    const elevated = psa > norm || (density !== null && density > 0.15) || (freeRatio !== null && freeRatio < 10);
+    const elevated =
+      psa > norm || (density !== null && density > 0.15) || (freeRatio !== null && freeRatio < 10);
     setResult({ norm, psa, freeRatio, density, elevated });
   };
 
   return (
-    <article className="tool-section premium-tool-card premium-form-card" style={{ '--tool-color': COLORS.gold }}>
+    <article
+      className="tool-section premium-tool-card premium-form-card"
+      style={{ '--tool-color': COLORS.gold }}
+    >
       <div className="premium-tool-head">
         <div>
           <span className="premium-tool-kicker">Онко</span>
@@ -555,18 +716,63 @@ function PSAForm() {
         </div>
       </div>
       <div className="premium-form-grid">
-        <label>Возраст<input type="number" value={form.age} onChange={(e) => setForm({ ...form, age: e.target.value })} placeholder="55" /></label>
-        <label>PSA общий<input type="number" step="0.1" value={form.psa} onChange={(e) => setForm({ ...form, psa: e.target.value })} placeholder="3.2" /></label>
-        <label>PSA свободный<input type="number" step="0.1" value={form.freePsa} onChange={(e) => setForm({ ...form, freePsa: e.target.value })} placeholder="0.6" /></label>
-        <label>Объём простаты<input type="number" step="0.1" value={form.volume} onChange={(e) => setForm({ ...form, volume: e.target.value })} placeholder="35" /></label>
+        <label>
+          Возраст
+          <input
+            type="number"
+            value={form.age}
+            onChange={(e) => setForm({ ...form, age: e.target.value })}
+            placeholder="55"
+          />
+        </label>
+        <label>
+          PSA общий
+          <input
+            type="number"
+            step="0.1"
+            value={form.psa}
+            onChange={(e) => setForm({ ...form, psa: e.target.value })}
+            placeholder="3.2"
+          />
+        </label>
+        <label>
+          PSA свободный
+          <input
+            type="number"
+            step="0.1"
+            value={form.freePsa}
+            onChange={(e) => setForm({ ...form, freePsa: e.target.value })}
+            placeholder="0.6"
+          />
+        </label>
+        <label>
+          Объём простаты
+          <input
+            type="number"
+            step="0.1"
+            value={form.volume}
+            onChange={(e) => setForm({ ...form, volume: e.target.value })}
+            placeholder="35"
+          />
+        </label>
       </div>
-      <button className="calc-button premium-calc-btn" onClick={calculate}>Рассчитать</button>
+      <button className="calc-button premium-calc-btn" onClick={calculate}>
+        Рассчитать
+      </button>
       {result && (
         <div className={`premium-result ${result.elevated ? 'is-high' : 'is-good'}`}>
           <div>
             <span>Итог</span>
-            <strong>{result.elevated ? 'Есть факторы настороженности' : 'Базово без выраженной настороженности'}</strong>
-            <p>Норма: &lt; {result.norm} нг/мл. {result.freeRatio !== null ? `Св./общ.: ${result.freeRatio.toFixed(1)}%. ` : ''}{result.density !== null ? `Плотность: ${result.density.toFixed(2)}.` : ''}</p>
+            <strong>
+              {result.elevated
+                ? 'Есть факторы настороженности'
+                : 'Базово без выраженной настороженности'}
+            </strong>
+            <p>
+              Норма: &lt; {result.norm} нг/мл.{' '}
+              {result.freeRatio !== null ? `Св./общ.: ${result.freeRatio.toFixed(1)}%. ` : ''}
+              {result.density !== null ? `Плотность: ${result.density.toFixed(2)}.` : ''}
+            </p>
           </div>
         </div>
       )}
@@ -581,7 +787,15 @@ function VoidingDiary() {
   const addEntry = () => {
     const volume = Number(form.volume);
     if (!volume) return;
-    setEntries((prev) => [...prev, { id: Date.now(), volume, urgency: Number(form.urgency), incontinence: Number(form.incontinence) }]);
+    setEntries((prev) => [
+      ...prev,
+      {
+        id: Date.now(),
+        volume,
+        urgency: Number(form.urgency),
+        incontinence: Number(form.incontinence),
+      },
+    ]);
     setForm({ volume: '', urgency: '1', incontinence: '0' });
   };
 
@@ -589,7 +803,10 @@ function VoidingDiary() {
   const averageVolume = entries.length ? Math.round(totalVolume / entries.length) : 0;
 
   return (
-    <article className="tool-section premium-tool-card premium-form-card" style={{ '--tool-color': COLORS.blue }}>
+    <article
+      className="tool-section premium-tool-card premium-form-card"
+      style={{ '--tool-color': COLORS.blue }}
+    >
       <div className="premium-tool-head">
         <div>
           <span className="premium-tool-kicker">LUTS</span>
@@ -602,19 +819,56 @@ function VoidingDiary() {
         </div>
       </div>
       <div className="premium-form-grid">
-        <label>Объём, мл<input type="number" value={form.volume} onChange={(e) => setForm({ ...form, volume: e.target.value })} placeholder="250" /></label>
-        <label>Ургентность<select value={form.urgency} onChange={(e) => setForm({ ...form, urgency: e.target.value })}><option value="1">1 - нет</option><option value="2">2 - лёгкая</option><option value="3">3 - умеренная</option><option value="4">4 - сильная</option></select></label>
-        <label>Подтекание<select value={form.incontinence} onChange={(e) => setForm({ ...form, incontinence: e.target.value })}><option value="0">Нет</option><option value="1">Да</option></select></label>
+        <label>
+          Объём, мл
+          <input
+            type="number"
+            value={form.volume}
+            onChange={(e) => setForm({ ...form, volume: e.target.value })}
+            placeholder="250"
+          />
+        </label>
+        <label>
+          Ургентность
+          <select
+            value={form.urgency}
+            onChange={(e) => setForm({ ...form, urgency: e.target.value })}
+          >
+            <option value="1">1 - нет</option>
+            <option value="2">2 - лёгкая</option>
+            <option value="3">3 - умеренная</option>
+            <option value="4">4 - сильная</option>
+          </select>
+        </label>
+        <label>
+          Подтекание
+          <select
+            value={form.incontinence}
+            onChange={(e) => setForm({ ...form, incontinence: e.target.value })}
+          >
+            <option value="0">Нет</option>
+            <option value="1">Да</option>
+          </select>
+        </label>
       </div>
-      <button className="calc-button premium-calc-btn" onClick={addEntry}>Добавить запись</button>
+      <button className="calc-button premium-calc-btn" onClick={addEntry}>
+        Добавить запись
+      </button>
       {entries.length > 0 && (
         <div className="premium-result is-low">
           <div>
             <span>Сводка</span>
-            <strong>{totalVolume} мл суммарно, {averageVolume} мл в среднем</strong>
-            <p>Эпизоды недержания: {entries.filter((entry) => entry.incontinence).length}. Максимальная ургентность: {Math.max(...entries.map((entry) => entry.urgency))}.</p>
+            <strong>
+              {totalVolume} мл суммарно, {averageVolume} мл в среднем
+            </strong>
+            <p>
+              Эпизоды недержания: {entries.filter((entry) => entry.incontinence).length}.
+              Максимальная ургентность: {Math.max(...entries.map((entry) => entry.urgency))}.
+            </p>
           </div>
-          <button type="button" className="reset-btn" onClick={() => setEntries([])}>Очистить</button>
+          <button type="button" className="reset-btn" onClick={() => setEntries([])}>
+            Очистить
+          </button>
         </div>
       )}
     </article>
@@ -622,10 +876,16 @@ function VoidingDiary() {
 }
 
 const glossaryTerms = [
-  { term: 'IPSS', def: 'International Prostate Symptom Score - шкала оценки симптомов мочеиспускания.' },
+  {
+    term: 'IPSS',
+    def: 'International Prostate Symptom Score - шкала оценки симптомов мочеиспускания.',
+  },
   { term: 'IIEF-5', def: 'Краткий индекс эректильной функции для скрининговой оценки ЭД.' },
   { term: 'PEDT', def: 'Опросник для оценки вероятности преждевременной эякуляции.' },
-  { term: 'СНМП', def: 'Симптомы нижних мочевых путей: накопления, опорожнения и постмикционные симптомы.' },
+  {
+    term: 'СНМП',
+    def: 'Симптомы нижних мочевых путей: накопления, опорожнения и постмикционные симптомы.',
+  },
   { term: 'ДГПЖ', def: 'Доброкачественная гиперплазия предстательной железы.' },
   { term: 'ГАМП', def: 'Гиперактивный мочевой пузырь с ургентностью и/или ургентным недержанием.' },
   { term: 'MET', def: 'Medical expulsive therapy - медикаментозная поддержка отхождения камня.' },
@@ -647,13 +907,15 @@ function DrugReference() {
 
   const filteredGroups = useMemo(() => {
     const q = search.trim().toLowerCase();
-    const riskQuery = drugRiskFilters.find((filter) => filter.id === activeRisk)?.query.toLowerCase() || '';
+    const riskQuery =
+      drugRiskFilters.find((filter) => filter.id === activeRisk)?.query.toLowerCase() || '';
     const riskTokens = riskQuery.split(/\s+/).filter(Boolean);
     return Object.entries(grouped).reduce((acc, [group, items]) => {
       const nextItems = items.filter((item) => {
         const haystack = getDrugSearchHaystack(item);
         const matchesText = !q || haystack.includes(q);
-        const matchesRisk = activeRisk === 'all' || riskTokens.some((token) => haystack.includes(token));
+        const matchesRisk =
+          activeRisk === 'all' || riskTokens.some((token) => haystack.includes(token));
         return matchesText && matchesRisk;
       });
       if (nextItems.length) acc[group] = nextItems;
@@ -664,23 +926,38 @@ function DrugReference() {
   const totalResults = Object.values(filteredGroups).reduce((sum, items) => sum + items.length, 0);
 
   return (
-    <section className="section drug-reference service-page-shell" data-v20-drug-cockpit="true" data-v21-drug-cockpit="true">
+    <section
+      className="section drug-reference service-page-shell"
+      data-v20-drug-cockpit="true"
+      data-v21-drug-cockpit="true"
+    >
       <div className="drug-reference-hero service-card-shell">
         <span className="service-eyebrow">UroMed PharmacoMap</span>
         <h2 className="section-title">Справочник препаратов</h2>
         <p className="section-subtitle">
-          Расширенный клинический каталог по урологии и андрологии: поиск по названию, группе, показаниям,
-          положительной фармакодинамике, рискам, противопоказаниям и мониторингу.
+          Расширенный клинический каталог по урологии и андрологии: поиск по названию, группе,
+          показаниям, положительной фармакодинамике, рискам, противопоказаниям и мониторингу.
         </p>
         <div className="drug-reference-stats">
-          <span><strong>{premiumDrugList.length}</strong> препаратов и классов</span>
-          <span><strong>{Object.keys(grouped).length}</strong> клинических групп</span>
-          <span><strong>500+</strong> Drug Intelligence v15</span>
+          <span>
+            <strong>{premiumDrugList.length}</strong> препаратов и классов
+          </span>
+          <span>
+            <strong>{Object.keys(grouped).length}</strong> клинических групп
+          </span>
+          <span>
+            <strong>500+</strong> Drug Intelligence v15
+          </span>
           <span>Обновлено: {drugReferenceMeta.lastReviewed}</span>
         </div>
       </div>
 
-      <div className="drug-cockpit-flow service-card-shell" data-v19-drug-cockpit="true" data-v20-drug-flow="true" aria-label="Drug cockpit workflow">
+      <div
+        className="drug-cockpit-flow service-card-shell"
+        data-v19-drug-cockpit="true"
+        data-v20-drug-flow="true"
+        aria-label="Drug cockpit workflow"
+      >
         {drugCockpitSteps.map((step, index) => (
           <div key={step.id} className="drug-cockpit-step">
             <span className="drug-cockpit-index">{String(index + 1).padStart(2, '0')}</span>
@@ -696,9 +973,14 @@ function DrugReference() {
             <span className="drug-command-kicker">Drug Command</span>
             <div className="drug-command-title">Клиническая задача → препарат</div>
           </div>
-          <div className="drug-command-meta">Риск, дозирование, фертильность, ХБП, взаимодействия и мониторинг в одном клиническом cockpit.</div>
+          <div className="drug-command-meta">
+            Риск, дозирование, фертильность, ХБП, взаимодействия и мониторинг в одном клиническом
+            cockpit.
+          </div>
         </div>
-        <label className="drug-search-label" htmlFor="drug-search-input">Поиск по МНН, торговому названию, эффекту или риску</label>
+        <label className="drug-search-label" htmlFor="drug-search-input">
+          Поиск по МНН, торговому названию, эффекту или риску
+        </label>
         <input
           id="drug-search-input"
           type="text"
@@ -709,7 +991,12 @@ function DrugReference() {
         />
         <div className="drug-search-hints" aria-label="Быстрые поисковые подсказки">
           {drugSearchHints.map((hint) => (
-            <button key={hint} type="button" className="drug-hint-chip" onClick={() => setSearch(hint)}>
+            <button
+              key={hint}
+              type="button"
+              className="drug-hint-chip"
+              onClick={() => setSearch(hint)}
+            >
               {hint}
             </button>
           ))}
@@ -730,61 +1017,116 @@ function DrugReference() {
         ))}
       </div>
 
-      <div className="drug-count">Найдено: <strong>{totalResults}</strong> из {premiumDrugList.length} <span data-active-risk={activeRisk}>{drugRiskFilters.find((filter) => filter.id === activeRisk)?.label}</span></div>
+      <div className="drug-count">
+        Найдено: <strong>{totalResults}</strong> из {premiumDrugList.length}{' '}
+        <span data-active-risk={activeRisk}>
+          {drugRiskFilters.find((filter) => filter.id === activeRisk)?.label}
+        </span>
+      </div>
 
-      {Object.keys(filteredGroups).length > 0 ? Object.entries(filteredGroups).map(([group, items]) => (
-        <div key={group} className="drug-group">
-          <div className="drug-group-title">{group} <span className="drug-group-count">{items.length}</span></div>
-          <div className="drug-list">
-            {items.map((drug) => (
-              <div
-                key={drug.name}
-                className="drug-card"
-                data-clinical-task={getDrugClinicalTask(drug)}
-                data-monitoring-priority={getDrugMonitoringPriority(drug)}
-              >
-                <div className="drug-card-topline">
-                  <div>
-                    <h3 className="drug-card-name">{drug.name}</h3>
-                    <div className="drug-card-group">{drug.className || drug.group}</div>
+      {Object.keys(filteredGroups).length > 0 ? (
+        Object.entries(filteredGroups).map(([group, items]) => (
+          <div key={group} className="drug-group">
+            <div className="drug-group-title">
+              {group} <span className="drug-group-count">{items.length}</span>
+            </div>
+            <div className="drug-list">
+              {items.map((drug) => (
+                <div
+                  key={drug.name}
+                  className="drug-card"
+                  data-clinical-task={getDrugClinicalTask(drug)}
+                  data-monitoring-priority={getDrugMonitoringPriority(drug)}
+                >
+                  <div className="drug-card-topline">
+                    <div>
+                      <h3 className="drug-card-name">{drug.name}</h3>
+                      <div className="drug-card-group">{drug.className || drug.group}</div>
+                    </div>
+                    <span className="drug-class-badge">{drug.group}</span>
                   </div>
-                  <span className="drug-class-badge">{drug.group}</span>
-                </div>
-                {drug.tags?.length > 0 && (
-                  <div className="drug-tag-row">
-                    {drug.tags.slice(0, 5).map((tag) => <span key={tag} className="drug-tag">{tag}</span>)}
+                  {drug.tags?.length > 0 && (
+                    <div className="drug-tag-row">
+                      {drug.tags.slice(0, 5).map((tag) => (
+                        <span key={tag} className="drug-tag">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  <div className="drug-card-details">
+                    <div className="drug-detail">
+                      <span className="drug-detail-label">Режим / ориентир</span>
+                      <div className="drug-detail-value">{drug.dose}</div>
+                    </div>
+                    <div className="drug-detail">
+                      <span className="drug-detail-label">Показания</span>
+                      <div className="drug-detail-value">{drug.indications}</div>
+                    </div>
+                    <div className="drug-detail positive">
+                      <span className="drug-detail-label">Положительная фармакодинамика</span>
+                      <div className="drug-detail-value">{drug.positivePharmacodynamics}</div>
+                    </div>
+                    <div className="drug-detail negative">
+                      <span className="drug-detail-label">
+                        Риски / отрицательная фармакодинамика
+                      </span>
+                      <div className="drug-detail-value">{drug.negativePharmacodynamics}</div>
+                    </div>
+                    <div className="drug-detail">
+                      <span className="drug-detail-label">Мониторинг</span>
+                      <div className="drug-detail-value">{drug.monitoring}</div>
+                    </div>
+                    <div className="drug-detail">
+                      <span className="drug-detail-label">ХБП / renal-dose</span>
+                      <div className="drug-detail-value">{drug.ckdAdjustment}</div>
+                    </div>
+                    <div className="drug-detail">
+                      <span className="drug-detail-label">Фертильность</span>
+                      <div className="drug-detail-value">{drug.fertilityImpact}</div>
+                    </div>
+                    <div className="drug-detail">
+                      <span className="drug-detail-label">Взаимодействия</span>
+                      <div className="drug-detail-value">{drug.interactions}</div>
+                    </div>
+                    <div className="drug-detail">
+                      <span className="drug-detail-label">Ограничения</span>
+                      <div className="drug-detail-value">{drug.contraindications}</div>
+                    </div>
                   </div>
-                )}
-                <div className="drug-card-details">
-                  <div className="drug-detail"><span className="drug-detail-label">Режим / ориентир</span><div className="drug-detail-value">{drug.dose}</div></div>
-                  <div className="drug-detail"><span className="drug-detail-label">Показания</span><div className="drug-detail-value">{drug.indications}</div></div>
-                  <div className="drug-detail positive"><span className="drug-detail-label">Положительная фармакодинамика</span><div className="drug-detail-value">{drug.positivePharmacodynamics}</div></div>
-                  <div className="drug-detail negative"><span className="drug-detail-label">Риски / отрицательная фармакодинамика</span><div className="drug-detail-value">{drug.negativePharmacodynamics}</div></div>
-                  <div className="drug-detail"><span className="drug-detail-label">Мониторинг</span><div className="drug-detail-value">{drug.monitoring}</div></div>
-                  <div className="drug-detail"><span className="drug-detail-label">ХБП / renal-dose</span><div className="drug-detail-value">{drug.ckdAdjustment}</div></div>
-                  <div className="drug-detail"><span className="drug-detail-label">Фертильность</span><div className="drug-detail-value">{drug.fertilityImpact}</div></div>
-                  <div className="drug-detail"><span className="drug-detail-label">Взаимодействия</span><div className="drug-detail-value">{drug.interactions}</div></div>
-                  <div className="drug-detail"><span className="drug-detail-label">Ограничения</span><div className="drug-detail-value">{drug.contraindications}</div></div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      )) : <p className="service-empty-state">Ничего не найдено. Попробуйте искать по эффекту: «эрекция», «QT», «камни», «задержка мочи», «ESBL».</p>}
+        ))
+      ) : (
+        <p className="service-empty-state">
+          Ничего не найдено. Попробуйте искать по эффекту: «эрекция», «QT», «камни», «задержка
+          мочи», «ESBL».
+        </p>
+      )}
     </section>
   );
 }
 
 function Glossary() {
   const [search, setSearch] = useState('');
-  const filtered = glossaryTerms.filter((item) => [item.term, item.def].join(' ').toLowerCase().includes(search.trim().toLowerCase()));
+  const filtered = glossaryTerms.filter((item) =>
+    [item.term, item.def].join(' ').toLowerCase().includes(search.trim().toLowerCase())
+  );
 
   return (
     <section className="section glossary-page service-page-shell">
       <h2 className="section-title">Глоссарий</h2>
       <p className="section-subtitle">Быстрые определения ключевых терминов и аббревиатур.</p>
       <div className="drug-search">
-        <input type="text" placeholder="Поиск термина..." value={search} onChange={(e) => setSearch(e.target.value)} className="drug-search-input" />
+        <input
+          type="text"
+          placeholder="Поиск термина..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="drug-search-input"
+        />
       </div>
       <div className="glossary-grid">
         {filtered.map((item) => (
@@ -810,12 +1152,21 @@ function ToolsSectionExport({ showDrugs, showGlossary, onNavigate }) {
   };
 
   return (
-    <section className="section tools-section service-page-shell premium-tools-shell" data-v20-tool-flow="true" data-v21-tool-flow="true">
+    <section
+      className="section tools-section service-page-shell premium-tools-shell"
+      data-v20-tool-flow="true"
+      data-v21-tool-flow="true"
+    >
       <div className="premium-tools-hero">
         <span className="service-eyebrow">Clinical questionnaires</span>
-        <p>Премиум-таблицы для быстрого заполнения, мгновенного подсчёта и понятного результата по урологии и андрологии.</p>
+        <p>
+          Премиум-таблицы для быстрого заполнения, мгновенного подсчёта и понятного результата по
+          урологии и андрологии.
+        </p>
         <div>
-          <span><strong>{toolDefinitions.length + 2}</strong> инструментов</span>
+          <span>
+            <strong>{toolDefinitions.length + 2}</strong> инструментов
+          </span>
           <span>LUTS</span>
           <span>Андрология</span>
           <span>Онко</span>
@@ -831,11 +1182,16 @@ function ToolsSectionExport({ showDrugs, showGlossary, onNavigate }) {
       >
         <span className="spermogram-entry-kicker">Fertility decision tree</span>
         <strong>Спермограмма</strong>
-        <span>WHO-пороги, OAT / азооспермия / DFI / MAR, ART-маршрут и follow-up в одном клиническом дереве.</span>
+        <span>
+          WHO-пороги, OAT / азооспермия / DFI / MAR, ART-маршрут и follow-up в одном клиническом
+          дереве.
+        </span>
       </button>
 
       <div className="premium-tools-grid">
-        {toolDefinitions.map((tool) => <ToolTable key={tool.id} tool={tool} />)}
+        {toolDefinitions.map((tool) => (
+          <ToolTable key={tool.id} tool={tool} />
+        ))}
         <PSAForm />
         <VoidingDiary />
       </div>

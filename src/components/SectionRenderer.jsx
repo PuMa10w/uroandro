@@ -41,15 +41,15 @@ function renderSubsectionSelector(section, onNavigate) {
       <p className="section-subtitle">{getSectionSubtitle(section)}</p>
       <div className="subsection-grid">
         {subsectionEntries.map(([key, data]) => (
-            <button
-              key={key}
-              className="subsection-card"
-              onClick={() => onNavigate(section, key, null, { source: 'section_subsection' })}
-            >
-              <span className="subsection-icon">{data.icon}</span>
-              <h3>{data.title}</h3>
-              <p>{data.desc}</p>
-            </button>
+          <button
+            key={key}
+            className="subsection-card"
+            onClick={() => onNavigate(section, key, null, { source: 'section_subsection' })}
+          >
+            <span className="subsection-icon">{data.icon}</span>
+            <h3>{data.title}</h3>
+            <p>{data.desc}</p>
+          </button>
         ))}
       </div>
     </div>
@@ -132,8 +132,10 @@ export default function SectionRenderer({
   }
 
   if (activeSection === 'tools') return renderLazyPage(ToolsSection, { onNavigate });
-  if (activeSection === 'drugs') return renderLazyPage(ToolsSection, { showDrugs: true, onNavigate });
-  if (activeSection === 'glossary') return renderLazyPage(ToolsSection, { showGlossary: true, onNavigate });
+  if (activeSection === 'drugs')
+    return renderLazyPage(ToolsSection, { showDrugs: true, onNavigate });
+  if (activeSection === 'glossary')
+    return renderLazyPage(ToolsSection, { showGlossary: true, onNavigate });
 
   return null;
 }

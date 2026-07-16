@@ -6,13 +6,13 @@ import { getFavoriteDescription, getFavoriteTags } from '../utils/cardMetadata';
 
 const FavoritesPage = ({ favorites = {}, allDiseases: propDiseases = [], onNavigate }) => {
   const [allDiseases, setAllDiseases] = useState(propDiseases);
-  
+
   // Lazy load disease data only when needed (dev/test override via prop)
   useEffect(() => {
     if (propDiseases.length > 0) return; // Use prop if provided
-    import('../data').then(module => setAllDiseases(module.allDiseases || []));
+    import('../data').then((module) => setAllDiseases(module.allDiseases || []));
   }, [propDiseases.length]);
-  
+
   const favoriteIds = Object.keys(favorites).filter((id) => favorites[id]);
   const favoriteDiseases = favoriteIds
     .map((id) => allDiseases.find((disease) => disease.id === id))
@@ -28,12 +28,14 @@ const FavoritesPage = ({ favorites = {}, allDiseases: propDiseases = [], onNavig
   if (favoriteDiseases.length === 0) {
     return (
       <div className="empty-favorites service-empty-state service-page-shell">
-        <span className="empty-icon" aria-hidden="true">☆</span>
+        <span className="empty-icon" aria-hidden="true">
+          ☆
+        </span>
         <span className="service-eyebrow">Saved knowledge</span>
         <h2>Избранное пока пустое</h2>
         <p>
-          Сохраняйте важные нозологии, чтобы собирать свой быстрый clinical shortlist без
-          лишнего поиска.
+          Сохраняйте важные нозологии, чтобы собирать свой быстрый clinical shortlist без лишнего
+          поиска.
         </p>
         <button className="go-home-btn" onClick={() => onNavigate('home')}>
           На главную
@@ -48,8 +50,8 @@ const FavoritesPage = ({ favorites = {}, allDiseases: propDiseases = [], onNavig
         <span className="service-eyebrow">Personal workspace</span>
         <h2 className="section-title">Избранное ({favoriteDiseases.length})</h2>
         <p className="section-subtitle">
-          Личный clinical shortlist для быстрых возвратов к тем темам, которые вы открываете
-          чаще всего.
+          Личный clinical shortlist для быстрых возвратов к тем темам, которые вы открываете чаще
+          всего.
         </p>
       </div>
 

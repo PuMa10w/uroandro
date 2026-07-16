@@ -4,16 +4,26 @@ import { vi } from 'vitest';
 import FavoritesPage from './FavoritesPage';
 
 vi.mock('framer-motion', () => ({
-  motion: new Proxy({}, {
-    get: (_, tag) => {
-      const mockReact = require('react');
-      const Component = ({ children, whileHover, whileTap, initial, animate, transition, viewport, ...props }) => (
-        mockReact.createElement(tag, props, children)
-      );
-      Component.displayName = `motion.${String(tag)}`;
-      return Component;
-    },
-  }),
+  motion: new Proxy(
+    {},
+    {
+      get: (_, tag) => {
+        const mockReact = require('react');
+        const Component = ({
+          children,
+          whileHover,
+          whileTap,
+          initial,
+          animate,
+          transition,
+          viewport,
+          ...props
+        }) => mockReact.createElement(tag, props, children);
+        Component.displayName = `motion.${String(tag)}`;
+        return Component;
+      },
+    }
+  ),
 }));
 
 describe('FavoritesPage', () => {
@@ -51,13 +61,17 @@ describe('FavoritesPage', () => {
 
     expect(screen.getByText(/Избранное \(1\)/)).toBeInTheDocument();
     expect(screen.getByText('Мочекаменная болезнь')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Открыть карточку: Мочекаменная болезнь' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Открыть карточку: Мочекаменная болезнь' })
+    ).toBeInTheDocument();
     expect(screen.getAllByText('Избранное')[0]).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('Мочекаменная болезнь'));
     expect(onNavigate).toHaveBeenCalledWith('urology', 'stones', 'urolithiasis');
 
-    fireEvent.click(screen.getByRole('button', { name: 'Удалить из избранного: Мочекаменная болезнь' }));
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Удалить из избранного: Мочекаменная болезнь' })
+    );
     expect(onNavigate).toHaveBeenCalledWith('remove-fav', 'urolithiasis');
   });
 });

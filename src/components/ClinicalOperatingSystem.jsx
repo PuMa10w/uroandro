@@ -6,7 +6,13 @@ const osActions = [
   { id: 'search', label: 'Поиск', meta: 'Ctrl/⌘ K', target: null },
   { id: 'emergency', label: 'Urgent', meta: 'красные флаги', target: 'emergency' },
   { id: 'drugs', label: 'Препараты', meta: 'риски и мониторинг', target: 'drugs' },
-  { id: 'sperm', label: 'Спермограмма', meta: 'fertility tree', target: 'calculators', tool: 'sperm-tree' },
+  {
+    id: 'sperm',
+    label: 'Спермограмма',
+    meta: 'fertility tree',
+    target: 'calculators',
+    tool: 'sperm-tree',
+  },
   { id: 'atlas', label: '3D', meta: 'clinical atlas', target: 'atlas' },
 ];
 
@@ -18,16 +24,20 @@ function ClinicalOperatingSystem({
   onNavigate,
 }) {
   const sectionLabel = sectionNames[activeSection] || 'UroMed';
-  const subsectionLabel = activeSubsection ? subsectionLabels[activeSubsection] : 'рабочий контекст';
+  const subsectionLabel = activeSubsection
+    ? subsectionLabels[activeSubsection]
+    : 'рабочий контекст';
 
   const handleAction = (action) => {
     if (!action.target) {
-      window.dispatchEvent(new KeyboardEvent('keydown', {
-        key: 'k',
-        code: 'KeyK',
-        ctrlKey: true,
-        bubbles: true,
-      }));
+      window.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'k',
+          code: 'KeyK',
+          ctrlKey: true,
+          bubbles: true,
+        })
+      );
       return;
     }
 
@@ -54,7 +64,11 @@ function ClinicalOperatingSystem({
         <span>{historyCount} последних</span>
         <span>local-only tools</span>
       </div>
-      <div className="clinical-os-actions home-workbench-actions" data-scrollable="x" aria-label="Быстрые действия">
+      <div
+        className="clinical-os-actions home-workbench-actions"
+        data-scrollable="x"
+        aria-label="Быстрые действия"
+      >
         {osActions.map((action) => (
           <button
             key={action.id}

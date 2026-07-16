@@ -10,7 +10,9 @@ export default function useSafeAreaInsets() {
 
   useEffect(() => {
     const getInset = (name) => {
-      const val = getComputedStyle(document.documentElement).getPropertyValue(`env(safe-area-inset-${name})`).trim();
+      const val = getComputedStyle(document.documentElement)
+        .getPropertyValue(`env(safe-area-inset-${name})`)
+        .trim();
       // browsers return something like "20px" or empty string; parseInt fallback to 0.
       return parseInt(val, 10) || 0;
     };

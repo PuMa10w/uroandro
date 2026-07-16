@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 
 const PageMetadata = ({ title, description, keywords, canonical, noIndex = false }) => {
   if (noIndex) {
-    return (
-      <meta name="robots" content="noindex, nofollow" />
-    );
+    return <meta name="robots" content="noindex, nofollow" />;
   }
 
   return (
@@ -41,14 +39,7 @@ PageMetadata.defaultProps = {
   noIndex: false,
 };
 
-const SectionHeader = ({ 
-  title, 
-  subtitle, 
-  icon, 
-  badge, 
-  action, 
-  actionLabel 
-}) => {
+const SectionHeader = ({ title, subtitle, icon, badge, action, actionLabel }) => {
   return (
     <div className="section-header">
       <div className="section-header-left">
@@ -89,7 +80,7 @@ SectionHeader.defaultProps = {
 
 export { PageMetadata, SectionHeader };
 
-export default {
+export const pageMetadata = {
   PageMetadata,
   SectionHeader,
 };

@@ -6,14 +6,12 @@ export default function Switch({ checked = false, onChange, label = '' }) {
   const id = `switch-${Math.random().toString(36).substr(2, 9)}`;
   return (
     <div className="flex items-center">
-      {label && <label htmlFor={id} className="mr-2 text-sm">{label}</label>}
-      <input
-        type="checkbox"
-        id={id}
-        checked={checked}
-        onChange={onChange}
-        className="hidden"
-      />
+      {label && (
+        <label htmlFor={id} className="mr-2 text-sm">
+          {label}
+        </label>
+      )}
+      <input type="checkbox" id={id} checked={checked} onChange={onChange} className="hidden" />
       <label
         htmlFor={id}
         className="cursor-pointer w-10 h-6 bg-surface rounded-full relative transition-colors duration-200"

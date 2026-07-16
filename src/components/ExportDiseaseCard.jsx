@@ -10,7 +10,7 @@ export const ExportDiseaseCard = ({ disease }) => {
     // Запускаем браузерный диалог печати → Save as PDF
     const printWindow = window.open('', '_blank', 'width=800,height=600');
     if (!printWindow) return;
-    
+
     const html = `
       <!DOCTYPE html>
       <html>
@@ -39,11 +39,15 @@ export const ExportDiseaseCard = ({ disease }) => {
         <h1>${disease.nameRu || disease.nameEn}</h1>
         ${disease.icd ? `<p class="icd">МКБ-10: ${disease.icd}</p>` : ''}
         ${disease.overview ? `<p>${disease.overview}</p>` : ''}
-        ${disease.redFlags?.length ? `
+        ${
+          disease.redFlags?.length
+            ? `
           <div class="warning">
             <strong>Red Flags (неотложные):</strong>
-            <ul>${disease.redFlags.map(f => `<li>${f}</li>`).join('')}</ul>
-          </div>` : ''}
+            <ul>${disease.redFlags.map((f) => `<li>${f}</li>`).join('')}</ul>
+          </div>`
+            : ''
+        }
         <div class="section">
           <h2>Diagnostic Approach</h2>
           <p>Данные из EAU/AUA Guidelines, актуально на ${new Date().getFullYear()} год.</p>
@@ -56,7 +60,7 @@ export const ExportDiseaseCard = ({ disease }) => {
     printWindow.document.write(html);
     printWindow.document.close();
   };
-  
+
   return (
     <button
       type="button"

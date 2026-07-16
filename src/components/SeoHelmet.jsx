@@ -47,10 +47,14 @@ export default function SeoHelmet({
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:site_name" content="UroMed" />
       <meta property="og:locale" content="ru_RU" />
+      <meta property="og:image" content={`${SITE_URL}/logo512.png`} />
+      <meta property="og:image:width" content="512" />
+      <meta property="og:image:height" content="512" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDescription} />
+      <meta name="twitter:image" content={`${SITE_URL}/logo512.png`} />
 
       {selectedDisease ? (
         <script type="application/ld+json">

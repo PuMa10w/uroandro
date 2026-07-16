@@ -237,9 +237,7 @@ body.light-mode ::selection {
 ============================================================ */
 *:focus-visible {
   outline: 0;
-  box-shadow:
-    0 0 0 3px rgba(61, 214, 189, 0.25),
-    0 0 12px rgba(61, 214, 189, 0.1);
+  box-shadow: var(--up-focus-ring), 0 0 12px rgba(61, 214, 189, 0.1);
   border-radius: var(--radius-sm);
   position: relative;
 }

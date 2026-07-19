@@ -1,0 +1,277 @@
+/* ============================================================
+   HOME WOW — Clinical Aurora visual layer (landing only)
+   Imported LAST in App.jsx. Only the landing page (.home-shell).
+   Pure cascade override — no !important on colors.
+   ============================================================ */
+
+/* ─── Aurora ambient background ─────────────────────────── */
+.home-shell::before {
+  content: '';
+  position: fixed;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(42% 34% at 18% 12%, rgba(77, 227, 194, 0.10), transparent 62%),
+    radial-gradient(38% 30% at 82% 8%,  rgba(139, 124, 246, 0.08), transparent 60%),
+    radial-gradient(46% 38% at 55% 95%, rgba(242, 200, 121, 0.07), transparent 64%);
+  animation: auroraDrift 26s var(--ease-out-expo) infinite alternate;
+  will-change: transform;
+}
+@keyframes auroraDrift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(2.5%, -2%, 0) scale(1.06); }
+}
+body.light-mode .home-shell::before {
+  background:
+    radial-gradient(42% 34% at 18% 12%, rgba(13, 148, 136, 0.07), transparent 62%),
+    radial-gradient(38% 30% at 82% 8%,  rgba(109, 90, 224, 0.05), transparent 60%),
+    radial-gradient(46% 38% at 55% 95%, rgba(201, 138, 45, 0.05), transparent 64%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-shell::before { animation: none; }
+}
+
+/* ─── Hero typography ───────────────────────────────────── */
+.home-workbench-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  background: var(--gradient-aurora-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-wrap: balance;
+}
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .home-workbench-title { color: var(--text-primary); -webkit-text-fill-color: currentColor; }
+}
+
+.home-panel-kicker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--teal-300);
+  letter-spacing: 0.16em;
+}
+.home-panel-kicker::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--teal-300), transparent);
+}
+body.light-mode .home-panel-kicker { color: var(--teal-300); }
+
+.home-workbench-subtitle { max-width: 56ch; }
+
+/* Status pills → glass chips with teal numerals */
+.home-workbench-status span {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: 0.5px solid var(--surface-glass-border-strong);
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.home-workbench-status strong { color: var(--teal-300); }
+body.light-mode .home-workbench-status span { backdrop-filter: none; -webkit-backdrop-filter: none; }
+
+/* ─── Hero search ───────────────────────────────────────── */
+.hero-search-wrapper {
+  border-radius: var(--radius-full);
+  border: 0.5px solid var(--surface-glass-border-strong);
+  background: var(--surface-glass);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.hero-search-wrapper:focus-within {
+  border-color: rgba(77, 227, 194, 0.45);
+  box-shadow: var(--shadow-soft), var(--glow-teal), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.hero-search-icon { color: var(--teal-300); }
+
+.hero-search-results {
+  border-radius: var(--radius-xl);
+  border: 0.5px solid var(--surface-glass-border-strong);
+  background: var(--surface-glass-strong);
+  backdrop-filter: blur(32px) saturate(170%);
+  -webkit-backdrop-filter: blur(32px) saturate(170%);
+  box-shadow: 0 24px 64px rgba(2, 6, 12, 0.5);
+  overflow: hidden;
+}
+.hero-search-result-item { transition: background var(--transition-fast), padding-left var(--transition-fast); }
+.hero-search-result-item:hover {
+  background: rgba(77, 227, 194, 0.07);
+  padding-left: 20px; /* light slide — micro-interaction */
+}
+.hero-search-result-item small { color: var(--gold-300); }
+body.light-mode .hero-search-wrapper,
+body.light-mode .hero-search-results { backdrop-filter: none; -webkit-backdrop-filter: none; }
+body.light-mode .hero-search-result-item:hover { background: rgba(13, 148, 136, 0.06); }
+
+/* ─── Destination cards — gradient border + glow ────────── */
+.home-destination-card {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bg-card-solid, #0d1626), var(--bg-card-solid, #0d1626)) padding-box,
+    linear-gradient(135deg, rgba(77,227,194,.35), rgba(139,124,246,.18) 45%, rgba(242,200,121,.30)) border-box;
+  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: transform 380ms var(--ease-out-expo), box-shadow 380ms var(--ease-out-expo);
+}
+.home-destination-card.is-urology:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover), var(--glow-teal);
+}
+.home-destination-card.is-andrology:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover), var(--glow-gold);
+}
+.home-destination-card .destination-orb {
+  position: absolute; top: -60px; right: -40px;
+  width: 220px; height: 220px; border-radius: 50%;
+  pointer-events: none; filter: blur(46px); opacity: .5;
+  transition: opacity 480ms var(--ease-out-expo);
+}
+.is-urology .destination-orb { background: radial-gradient(circle, rgba(77,227,194,.35), transparent 70%); }
+.is-andrology .destination-orb { background: radial-gradient(circle, rgba(242,200,121,.32), transparent 70%); }
+.home-destination-card:hover .destination-orb { opacity: .9; }
+body.light-mode .destination-orb { opacity: .3; }
+body.light-mode .home-destination-card:hover .destination-orb { opacity: .5; }
+
+body.light-mode .home-destination-card {
+  background:
+    linear-gradient(#ffffff, #fbfdff) padding-box,
+    linear-gradient(135deg, rgba(13,148,136,.4), rgba(109,90,224,.18) 45%, rgba(201,138,45,.35)) border-box;
+}
+
+.destination-index { color: var(--violet-300); opacity: .7; }
+.home-destination-card:hover .destination-arrow { color: var(--teal-300); transform: translateX(6px); }
+.home-destination-card.is-andrology:hover .destination-arrow { color: var(--gold-300); }
+
+.destination-preview-item {
+  border-color: var(--surface-glass-border-strong);
+  background: rgba(255, 255, 255, 0.03);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+.home-destination-card:hover .destination-preview-item { color: var(--text-secondary); }
+
+/* ─── Quick access buttons ──────────────────────────────── */
+.quick-btn {
+  position: relative;
+  border: 0.5px solid var(--surface-glass-border);
+  background: var(--surface-glass);
+  border-radius: var(--radius-xl);
+  transition: transform 280ms var(--ease-out-expo), box-shadow 280ms var(--ease-out-expo), border-color 280ms var(--ease-out-expo);
+  overflow: hidden;
+}
+.quick-btn::before { /* top accent bar on hover */
+  content: '';
+  position: absolute; top: 0; left: 12%; right: 12%;
+  height: 2px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--teal-300), var(--gold-300));
+  opacity: 0; transform: scaleX(.4);
+  transition: opacity 280ms var(--ease-out-expo), transform 280ms var(--ease-out-expo);
+}
+.quick-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--surface-glass-border-strong);
+  box-shadow: var(--shadow-soft), var(--glow-teal);
+}
+.quick-btn:hover::before { opacity: 1; transform: scaleX(1); }
+.quick-icon { color: var(--violet-300); font-variant-numeric: tabular-nums; }
+.quick-btn:hover .quick-icon { color: var(--teal-300); }
+
+/* ─── Guideline cards ───────────────────────────────────── */
+.guideline-card {
+  border: 0.5px solid var(--surface-glass-border);
+  background: var(--surface-glass);
+  border-radius: var(--radius-xl);
+  transition: transform 280ms var(--ease-out-expo), box-shadow 280ms var(--ease-out-expo);
+}
+.guideline-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft), var(--glow-violet); }
+.guideline-badge {
+  background: linear-gradient(135deg, rgba(77,227,194,.16), rgba(139,124,246,.12));
+  border: 0.5px solid var(--surface-glass-border-strong);
+  color: var(--teal-300);
+}
+.guideline-card-aua .guideline-badge { color: var(--gold-300); }
+.guideline-updated { color: var(--text-muted); }
+
+/* ─── Workbench action chips ────────────────────────────── */
+.home-workbench-action {
+  border: 0.5px solid var(--surface-glass-border);
+  background: var(--surface-glass);
+  border-radius: var(--radius-lg);
+  transition: transform 240ms var(--ease-out-expo), box-shadow 240ms var(--ease-out-expo), border-color 240ms var(--ease-out-expo);
+}
+.home-workbench-action:hover { transform: translateY(-2px); border-color: rgba(77,227,194,.35); box-shadow: var(--glow-teal); }
+.home-workbench-action[data-action="urgent"]:hover {
+  border-color: rgba(255, 92, 138, 0.45);
+  box-shadow: 0 0 28px rgba(255, 92, 138, 0.14);
+}
+.home-workbench-action[data-action="urgent"] span { color: var(--rose-300); }
+.home-workbench-action[data-action="atlas"]:hover { border-color: rgba(139,124,246,.4); box-shadow: var(--glow-violet); }
+.home-workbench-action small { color: var(--text-muted); }
+
+/* ─── Workbench lanes (01/02/03) ────────────────────────── */
+.home-workbench-lane {
+  border-top: 1px solid var(--surface-glass-border);
+  transition: background var(--transition-base);
+}
+.home-workbench-lane:hover { background: rgba(255, 255, 255, 0.02); }
+.home-workbench-index {
+  background: var(--gradient-aurora-text);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.workbench-point {
+  border: 0.5px solid var(--surface-glass-border);
+  border-radius: var(--radius-full);
+  padding: 3px 10px;
+  color: var(--text-muted);
+}
+
+/* ─── Reveal choreography ───────────────────────────────── */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 640ms var(--ease-out-expo), transform 640ms var(--ease-out-expo);
+}
+.reveal-section.is-visible { opacity: 1; transform: none; }
+
+.reveal-section.is-visible .home-destination-card,
+.reveal-section.is-visible .quick-btn,
+.reveal-section.is-visible .guideline-card {
+  animation: cardRise 560ms var(--ease-out-expo) both;
+}
+.reveal-section.is-visible .home-destination-card:nth-child(2),
+.reveal-section.is-visible .quick-btn:nth-child(2),
+.reveal-section.is-visible .guideline-card:nth-child(2) { animation-delay: 70ms; }
+.reveal-section.is-visible .quick-btn:nth-child(3),
+.reveal-section.is-visible .guideline-card:nth-child(3) { animation-delay: 140ms; }
+.reveal-section.is-visible .quick-btn:nth-child(4) { animation-delay: 210ms; }
+.reveal-section.is-visible .quick-btn:nth-child(5) { animation-delay: 280ms; }
+.reveal-section.is-visible .quick-btn:nth-child(6) { animation-delay: 350ms; }
+.reveal-section.is-visible .quick-btn:nth-child(7) { animation-delay: 420ms; }
+@keyframes cardRise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-section { opacity: 1; transform: none; transition: none; }
+  .reveal-section.is-visible .home-destination-card,
+  .reveal-section.is-visible .quick-btn,
+  .reveal-section.is-visible .guideline-card { animation: none; }
+}
+
+/* ─── Focus rings (violet) ──────────────────────────────── */
+.home-shell :is(button, a, input):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(139, 124, 246, 0.35), 0 0 0 1.5px rgba(139, 124, 246, 0.6);
+  border-radius: var(--radius-lg);
+}
+.hero-search-wrapper:focus-within { border-radius: var(--radius-full); }

@@ -367,6 +367,7 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
           data-section="urology"
           onClick={() => onNavigate('urology')}
         >
+          <span className="destination-orb" aria-hidden="true" />
           <div className="destination-head">
             <span className="destination-kicker">Клиническая библиотека</span>
             <span className="destination-index">01</span>
@@ -399,6 +400,7 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
           data-section="andrology"
           onClick={() => onNavigate('andrology')}
         >
+          <span className="destination-orb" aria-hidden="true" />
           <div className="destination-head">
             <span className="destination-kicker">Андрологический фокус</span>
             <span className="destination-index">02</span>

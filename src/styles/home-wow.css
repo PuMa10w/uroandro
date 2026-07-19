@@ -152,12 +152,41 @@ body.light-mode .home-destination-card {
 .home-destination-card:hover .destination-arrow { color: var(--teal-300); transform: translateX(6px); }
 .home-destination-card.is-andrology:hover .destination-arrow { color: var(--gold-300); }
 
-.destination-preview-item {
-  border-color: var(--surface-glass-border-strong);
-  background: rgba(255, 255, 255, 0.03);
-  transition: color var(--transition-fast), border-color var(--transition-fast);
+/* Kill old App.css radial glow — it duplicates .destination-orb + fights gradient border */
+.home-destination-card::before { content: none; }
+
+/* Destination preview chips — slim, intentional, no "peppering" */
+.destination-preview {
+  gap: 0.4rem;
+  margin: 1.1rem 0 0;
 }
-.home-destination-card:hover .destination-preview-item { color: var(--text-secondary); }
+.destination-preview-item {
+  padding: 0.28rem 0.62rem;
+  border-radius: var(--radius-full);
+  border: 0.5px solid var(--surface-glass-border-strong);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--text-muted);
+  transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+}
+.home-destination-card:hover .destination-preview-item {
+  color: var(--text-secondary);
+  border-color: rgba(77, 227, 194, 0.22);
+}
+.home-destination-card.is-andrology:hover .destination-preview-item {
+  border-color: rgba(242, 200, 121, 0.22);
+}
+.destination-footer {
+  margin-top: 1.15rem;
+  padding-top: 0.85rem;
+  border-top: 0.5px solid var(--surface-glass-border);
+}
+.destination-arrow {
+  font-size: 1.35rem;
+  line-height: 1;
+}
 
 /* ─── Quick access buttons ──────────────────────────────── */
 .quick-btn {

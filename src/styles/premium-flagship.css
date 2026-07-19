@@ -1353,10 +1353,6 @@ body.light-mode .home-workbench-action:hover {
     font-size: 0.68rem;
     padding: 0.3rem 0.6rem;
   }
-
-  .destination-tags {
-    flex-wrap: wrap;
-  }
 }
 
 /* ═══════════════════════════════════════════════════════════════

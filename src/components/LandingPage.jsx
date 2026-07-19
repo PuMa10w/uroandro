@@ -386,10 +386,6 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
             <span className="destination-preview-item">Онкоурология</span>
           </div>
           <div className="destination-footer">
-            <div className="destination-tags">
-              <span className="destination-tag">60+ нозологий</span>
-              <span className="destination-tag">7 категорий</span>
-            </div>
             <span className="destination-arrow">→</span>
           </div>
         </button>
@@ -419,10 +415,6 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
             <span className="destination-preview-item">Болезнь Пейрони</span>
           </div>
           <div className="destination-footer">
-            <div className="destination-tags">
-              <span className="destination-tag">30+ нозологий</span>
-              <span className="destination-tag">3 категории</span>
-            </div>
             <span className="destination-arrow">→</span>
           </div>
         </button>

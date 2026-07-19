@@ -1,37 +1,12 @@
 {
-  "status": "fail",
-  "updated_at": "2026-07-19T15:18:18.456Z",
+  "status": "pass",
+  "updated_at": "2026-07-19T15:40:11.148Z",
   "visual_iPhone_gate": {
     "name": "visual_iPhone_gate",
-    "status": "fail",
+    "status": "pass",
     "checkedRoutes": 25,
     "checkedViewports": 6,
-    "blockers": [
-      {
-        "route": "/",
-        "viewport": "iPhone 15 portrait",
-        "size": "393x852",
-        "kind": "main_content_negative_top",
-        "detail": {
-          "navbar": {
-            "top": 7,
-            "left": 12,
-            "right": 381,
-            "bottom": 131,
-            "width": 370,
-            "height": 124
-          },
-          "main": {
-            "top": -3,
-            "left": 0,
-            "right": 393,
-            "bottom": 3540,
-            "width": 393,
-            "height": 3543
-          }
-        }
-      }
-    ],
+    "blockers": [],
     "screenshots": [
       {
         "route": "/",
@@ -80,7 +55,7 @@
       "route": "/",
       "viewport": "iPhone 15 portrait",
       "size": "393x852",
-      "status": "fail",
+      "status": "pass",
       "metrics": {
         "innerWidth": 393,
         "innerHeight": 852,
@@ -99,20 +74,20 @@
           },
           "clinicalOs": null,
           "main": {
-            "top": -3,
+            "top": 0,
             "left": 0,
             "right": 393,
-            "bottom": 3540,
+            "bottom": 3545,
             "width": 393,
-            "height": 3543
+            "height": 3545
           },
           "title": {
-            "top": 1566,
+            "top": 1569,
             "left": 25,
             "right": 368,
-            "bottom": 1869,
+            "bottom": 1873,
             "width": 343,
-            "height": 303
+            "height": 304
           },
           "modal": null,
           "tabs": null,
@@ -123,10 +98,10 @@
         "smallControls": [
           {
             "text": "Перейти к основному контенту",
-            "top": -4,
+            "top": -1,
             "left": -1,
             "right": 0,
-            "bottom": 40,
+            "bottom": 43,
             "width": 1,
             "height": 44,
             "inHorizontalRail": false
@@ -1403,10 +1378,10 @@
           },
           {
             "text": "Добавить в избранное",
-            "top": 1490,
+            "top": 1489,
             "left": 321,
             "right": 355,
-            "bottom": 1534,
+            "bottom": 1533,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -1533,10 +1508,10 @@
           },
           {
             "text": "Добавить в избранное",
-            "top": 1471,
+            "top": 1470,
             "left": 321,
             "right": 355,
-            "bottom": 1515,
+            "bottom": 1514,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -1923,10 +1898,10 @@
           },
           {
             "text": "Добавить в избранное",
-            "top": 1507,
+            "top": 1508,
             "left": 321,
             "right": 355,
-            "bottom": 1551,
+            "bottom": 1552,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -2481,17 +2456,17 @@
             "top": 0,
             "left": 0,
             "right": 402,
-            "bottom": 3547,
+            "bottom": 3549,
             "width": 402,
-            "height": 3547
+            "height": 3549
           },
           "title": {
             "top": 1570,
             "left": 26,
             "right": 376,
-            "bottom": 1874,
+            "bottom": 1875,
             "width": 351,
-            "height": 304
+            "height": 305
           },
           "modal": null,
           "tabs": null,
@@ -3502,10 +3477,10 @@
           },
           {
             "text": "Добавить в избранное",
-            "top": 1045,
+            "top": 1044,
             "left": 330,
             "right": 364,
-            "bottom": 1089,
+            "bottom": 1088,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -3522,10 +3497,10 @@
           },
           {
             "text": "Добавить в избранное",
-            "top": 1473,
+            "top": 1472,
             "left": 330,
             "right": 364,
-            "bottom": 1517,
+            "bottom": 1516,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -3652,10 +3627,10 @@
           },
           {
             "text": "Добавить в избранное",
-            "top": 1462,
+            "top": 1463,
             "left": 330,
             "right": 364,
-            "bottom": 1506,
+            "bottom": 1507,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -3762,30 +3737,30 @@
           },
           {
             "text": "Добавить в избранное",
-            "top": 1065,
+            "top": 1064,
             "left": 330,
             "right": 364,
-            "bottom": 1109,
+            "bottom": 1108,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
             "text": "Добавить в избранное",
-            "top": 1279,
+            "top": 1278,
             "left": 330,
             "right": 364,
-            "bottom": 1323,
+            "bottom": 1322,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
             "text": "Добавить в избранное",
-            "top": 1494,
+            "top": 1493,
             "left": 330,
             "right": 364,
-            "bottom": 1538,
+            "bottom": 1537,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -4860,17 +4835,17 @@
             "top": 0,
             "left": 0,
             "right": 430,
-            "bottom": 3470,
+            "bottom": 3472,
             "width": 430,
-            "height": 3470
+            "height": 3472
           },
           "title": {
             "top": 1504,
             "left": 28,
             "right": 403,
-            "bottom": 1811,
+            "bottom": 1812,
             "width": 375,
-            "height": 307
+            "height": 308
           },
           "modal": null,
           "tabs": null,
@@ -7181,10 +7156,10 @@
           },
           {
             "text": "Добавить в избранное",
-            "top": 1085,
+            "top": 1084,
             "left": 356,
             "right": 390,
-            "bottom": 1129,
+            "bottom": 1128,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -7239,17 +7214,17 @@
             "top": 0,
             "left": 0,
             "right": 852,
-            "bottom": 2801,
+            "bottom": 2796,
             "width": 852,
-            "height": 2801
+            "height": 2796
           },
           "title": {
             "top": 905,
             "left": 29,
             "right": 823,
-            "bottom": 1205,
+            "bottom": 1202,
             "width": 794,
-            "height": 300
+            "height": 297
           },
           "modal": null,
           "tabs": null,
@@ -8400,10 +8375,10 @@
           },
           {
             "text": "Добавить в избранное",
-            "top": 1376,
+            "top": 1377,
             "left": 792,
             "right": 826,
-            "bottom": 1420,
+            "bottom": 1421,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -9050,10 +9025,10 @@
           },
           {
             "text": "Добавить в избранное",
-            "top": 1376,
+            "top": 1377,
             "left": 792,
             "right": 826,
-            "bottom": 1420,
+            "bottom": 1421,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -9608,17 +9583,17 @@
             "top": 0,
             "left": 0,
             "right": 874,
-            "bottom": 2805,
+            "bottom": 2799,
             "width": 874,
-            "height": 2805
+            "height": 2799
           },
           "title": {
             "top": 906,
             "left": 29,
             "right": 845,
-            "bottom": 1207,
+            "bottom": 1204,
             "width": 816,
-            "height": 301
+            "height": 298
           },
           "modal": null,
           "tabs": null,
@@ -10769,10 +10744,10 @@
           },
           {
             "text": "Добавить в избранное",
-            "top": 1376,
+            "top": 1377,
             "left": 814,
             "right": 848,
-            "bottom": 1420,
+            "bottom": 1421,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -11977,17 +11952,17 @@
             "top": 0,
             "left": 0,
             "right": 932,
-            "bottom": 2524,
+            "bottom": 2517,
             "width": 932,
-            "height": 2524
+            "height": 2517
           },
           "title": {
             "top": 878,
             "left": 32,
             "right": 499,
-            "bottom": 1243,
+            "bottom": 1236,
             "width": 467,
-            "height": 365
+            "height": 359
           },
           "modal": null,
           "tabs": null,
@@ -12225,10 +12200,10 @@
           },
           {
             "text": "Добавить в избранное",
-            "top": 728,
+            "top": 727,
             "left": 562,
             "right": 598,
-            "bottom": 772,
+            "bottom": 771,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
@@ -13160,10 +13135,10 @@
           },
           {
             "text": "Добавить в избранное",
-            "top": 726,
+            "top": 727,
             "left": 258,
             "right": 294,
-            "bottom": 770,
+            "bottom": 771,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
@@ -14210,10 +14185,10 @@
           },
           {
             "text": "Добавить в избранное",
-            "top": 728,
+            "top": 727,
             "left": 562,
             "right": 598,
-            "bottom": 772,
+            "bottom": 771,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false

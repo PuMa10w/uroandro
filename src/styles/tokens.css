@@ -95,6 +95,34 @@
   --font-2xl: 1.875rem;   /* 30px - h1 */
   --font-3xl: 2.25rem;    /* 36px - section title */
   --font-hero: clamp(2.6rem, 6vw, 4.5rem); /* landing hero */
+
+  /* ===== Clinical Aurora palette (2026) ===== */
+  --bg-aurora-0: #060b16;
+  --bg-aurora-1: #0a1220;
+  --surface-glass: rgba(11, 21, 38, 0.78);
+  --surface-glass-strong: rgba(8, 16, 30, 0.92);
+  --surface-glass-border: rgba(160, 184, 214, 0.08);
+  --surface-glass-border-strong: rgba(160, 184, 214, 0.16);
+
+  --teal-300: #4de3c2;   /* brand */
+  --teal-hot: #2ee6a8;
+  --gold-300: #f2c879;   /* champagne */
+  --gold-deep: #e8a94c;
+  --violet-300: #8b7cf6;
+  --rose-300: #ff5c8a;
+
+  --accent-color: var(--teal-300); /* fix undefined token (App.css:1787) */
+
+  --glow-teal: 0 0 32px rgba(77, 227, 194, 0.14);
+  --glow-gold: 0 0 32px rgba(242, 200, 121, 0.12);
+  --glow-violet: 0 0 28px rgba(139, 124, 246, 0.12);
+
+  --gradient-aurora-text: linear-gradient(120deg, #eef4fb 0%, #4de3c2 55%, #f2c879 100%);
+  --gradient-aurora-border: linear-gradient(135deg, rgba(77,227,194,.5), rgba(139,124,246,.35), rgba(242,200,121,.5));
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --bg-card-solid: #0d1626;
 }
 
 /* ============================================================
@@ -136,4 +164,21 @@ body.light-mode {
   --up-card-border: 1px solid var(--border-strong);
   --up-card-inset-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.6) inset;
   --up-card-hover-glow: 0 0 18px rgba(14, 124, 116, 0.08);
+
+  /* ===== Clinical Aurora palette — light overrides (2026) ===== */
+  --surface-glass: rgba(255, 255, 255, 0.82);
+  --surface-glass-strong: rgba(255, 255, 255, 0.95);
+  --surface-glass-border: rgba(13, 148, 136, 0.10);
+  --surface-glass-border-strong: rgba(13, 148, 136, 0.20);
+  --teal-300: #0d9488;
+  --teal-hot: #0f766e;
+  --gold-300: #c98a2d;
+  --gold-deep: #a66a1d;
+  --violet-300: #6d5ae0;
+  --rose-300: #e11d48;
+  --glow-teal: 0 8px 28px rgba(13, 148, 136, 0.12);
+  --glow-gold: 0 8px 28px rgba(201, 138, 45, 0.12);
+  --glow-violet: 0 8px 24px rgba(109, 90, 224, 0.10);
+  --gradient-aurora-text: linear-gradient(120deg, #0f172a 0%, #0d9488 55%, #c98a2d 100%);
+  --bg-card-solid: #ffffff;
 }

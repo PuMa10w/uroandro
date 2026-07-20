@@ -1,0 +1,151 @@
+/* ============================================================
+   ULTRA-PREMIUM ENHANCEMENT LAYER
+   Additive polish on top of the existing premium shell.
+   Nothing here overrides layout — only elevates surface,
+   motion and typographic rhythm using existing design tokens.
+   ============================================================ */
+
+/* ─── Aurora hero titles across all sections ───────────────
+   Turns plain section headings into the brand gradient moment
+   already used on the landing hero. Safe: falls back to the
+   token gradient, never breaks text colour. */
+.section-title,
+.page-title,
+.disease-section-title,
+.modal-title {
+  background: var(--gradient-aurora-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-wrap: balance;
+}
+
+/* Keep the modal title legible on its own surface (it already
+   ships a gradient background, so clip only the text). */
+.modal-title {
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Eyebrow / kicker rhythm ──────────────────────────────
+   Small uppercase label that precedes a title — a hallmark of
+   editorial / premium layouts. Reuses the existing kicker token. */
+.eyebrow,
+.section-eyebrow,
+.page-eyebrow {
+  display: inline-block;
+  font-size: var(--font-xs);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal-300);
+  margin-bottom: 0.5rem;
+}
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 1.6rem;
+  height: 1px;
+  margin-right: 0.55rem;
+  vertical-align: middle;
+  background: linear-gradient(90deg, transparent, var(--teal-300));
+}
+
+/* ─── Glass cards: aurora edge on hover ────────────────────
+   subsection / premium / service cards already have glass +
+   teal hover. We add a subtle aurora gradient border ring and
+   a lift glow so the surface feels alive, not flat. */
+.subsection-card,
+.premium-card,
+.service-card,
+.disease-card {
+  position: relative;
+  transition: transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base),
+    background var(--transition-base);
+}
+
+.subsection-card:hover,
+.premium-card:hover,
+.service-card:hover,
+.disease-card:hover {
+  transform: translateY(-4px);
+  border-color: transparent;
+  box-shadow: var(--shadow-card-hover), var(--glow-teal);
+}
+
+.subsection-card:hover::after,
+.premium-card:hover::after,
+.service-card:hover::after,
+.disease-card:hover::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--gradient-aurora-border);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* ─── Fluid section title scale ────────────────────────────
+   Replaces the fixed 36px with a fluid clamp so big screens
+   breathe and small screens stay tight. */
+.section-title,
+.page-title {
+  font-size: clamp(1.75rem, 1.1rem + 2.4vw, 3rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+/* ─── Staggered entrance for card grids ───────────────────
+   Subtle rise-in. Gated by reduced-motion below. */
+@supports (animation-timeline: view()) {
+  .subsection-grid > *,
+  .premium-grid > *,
+  .service-grid > *,
+  .disease-grid > * {
+    animation: riseIn 0.6s var(--ease-out-expo) both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 28%;
+  }
+  .subsection-grid > *:nth-child(2) { animation-delay: 60ms; }
+  .subsection-grid > *:nth-child(3) { animation-delay: 120ms; }
+  .subsection-grid > *:nth-child(4) { animation-delay: 180ms; }
+  .subsection-grid > *:nth-child(5) { animation-delay: 240ms; }
+  .subsection-grid > *:nth-child(6) { animation-delay: 300ms; }
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Focusable premium buttons: glow ring ──────────────── */
+.btn-premium-primary:focus-visible,
+.btn-premium:focus-visible,
+.subsection-card:focus-visible {
+  outline: none;
+  box-shadow: var(--up-focus-ring), var(--glow-teal);
+}
+
+/* ─── Respect reduced motion (already guarded globally,
+   but kill the scroll-driven entrance too) ─────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .subsection-grid > *,
+  .premium-grid > *,
+  .service-grid > *,
+  .disease-grid > * {
+    animation: none !important;
+  }
+  .subsection-card:hover,
+  .premium-card:hover,
+  .service-card:hover,
+  .disease-card:hover {
+    transform: none;
+  }
+}

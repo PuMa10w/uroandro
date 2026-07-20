@@ -265,8 +265,6 @@ export const IconPerson = createIcon(
   </>
 );
 
-export { IconDocument as IconDownload }; // alias for PDF export
-
 export const iconsIndex = {
   IconSearch,
   IconMenu,

@@ -45,8 +45,25 @@ export default defineConfig(({ mode }) => {
         },
         workbox: {
           globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
-          maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
-          runtimeCaching: [{
+          // Per-disease data chunks are lazy-loaded on demand, so they must
+          // NOT be precached — that blew the initial cache to 5 MB. Keep only
+          // the app shell + entry chunks in the precache; disease data is
+          // fetched (and runtime-cached) when the user opens a disease.
+          globIgnores: ['**/*Data-*.js', '**/sectionData-*.js', '**/drugReferenceData-*.js', '**/extraDrugReferenceData-*.js'],
+          maximumFileSizeToCacheInBytes: 2 * 1024 * 1024,
+          runtimeCaching: [
+            {
+              // Cache lazily-loaded disease data chunks after first open so
+              // revisits / offline work without bloating the initial precache.
+              urlPattern: /\/assets\/.*Data-.*\.js$/i,
+              handler: 'StaleWhileRevalidate',
+              options: {
+                cacheName: 'disease-data-cache',
+                expiration: { maxEntries: 300, maxAgeSeconds: 60 * 60 * 24 * 30 },
+                cacheableResponse: { statuses: [0, 200] },
+              },
+            },
+            {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
             handler: 'CacheFirst',
             options: {
@@ -68,7 +85,7 @@ export default defineConfig(({ mode }) => {
       cssCodeSplit: true,
       cssMinify: true,
       minify: 'esbuild',
-      chunkSizeWarningLimit: 700,
+      chunkSizeWarningLimit: 500,
       reportCompressedSize: false,
       esbuild: {
         legalComments: 'none',
@@ -81,42 +98,18 @@ export default defineConfig(({ mode }) => {
           manualChunks(id) {
             const normalizedId = id.replace(/\\/g, '/');
 
-            // React / scheduler → single vendor chunk
+            // React / scheduler → single vendor chunk (stable cache)
             if (id.includes('react') || id.includes('scheduler')) {
               return 'vendor-react';
             }
 
-            // Aggregate ALL disease data files into a FEW chunks instead of
-            // 190 tiny per-file chunks (waterfall on first section open).
-            // Group by section folder/file-prefix so each section stays
-            // a single lazy-loadable chunk.
-            if (
-              normalizedId.includes('/src/data/') &&
-              /Data\.js$/.test(normalizedId) &&
-              !normalizedId.endsWith('/sectionData.js') &&
-              !normalizedId.includes('drugReferenceData') &&
-              !normalizedId.includes('extraDrugReferenceData')
-            ) {
-              const filename = (normalizedId.split('/').pop() || '').replace('.js', '').toLowerCase();
-              // map a few known cross-cutting files; default = urology bucket
-              let bucket = 'urology';
-              if (/andr|erectile|fert|hypogon|peyron|sexual|endocrine/.test(filename)) bucket = 'andrology';
-              else if (/pediatric|child|neonat/.test(filename)) bucket = 'pediatric';
-              else if (/emerg|urgent|trauma|acute/.test(filename)) bucket = 'emergency';
-              else if (/surgery|surgical|reconstruct|fistula/.test(filename)) bucket = 'surgery';
-              else if (/metaphyl|diet|nutrition/.test(filename)) bucket = 'metaphylaxis';
-              else if (/tool|questionnaire|score|index|scale/.test(filename)) bucket = 'tools';
-              else if (/game|quiz|train/.test(filename)) bucket = 'games';
-              return `data-${bucket}`;
-            }
-
-            if (
-              normalizedId.includes('/src/data/') &&
-              (normalizedId.includes('drugReferenceData') ||
-                normalizedId.includes('extraDrugReferenceData'))
-            ) {
-              return 'data-drugs';
-            }
+            // NOTE: do NOT force-aggregate the ~190 per-disease *Data.js files
+            // into one chunk. They are loaded via dynamic import() in
+            // src/data/lazyData.js, so Rollup produces one small chunk per
+            // disease — exactly the per-file lazy loading that is intended.
+            // Forcing them into a single 1.9 MB "data-urology" chunk defeated
+            // the whole lazy-loading strategy (opening ANY disease pulled the
+            // entire bundle).
 
             return undefined;
           },

@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "updated_at": "2026-07-20T08:28:08.705Z",
+  "updated_at": "2026-07-20T09:41:38.699Z",
   "visual_iPhone_gate_v23": {
     "name": "visual_iPhone_gate_v23",
     "status": "pass",
@@ -89,10 +89,10 @@
             "height": 122
           },
           "title": {
-            "top": 1793,
+            "top": 1732,
             "left": 22,
             "right": 298,
-            "bottom": 2108,
+            "bottom": 2047,
             "width": 277,
             "height": 315
           },
@@ -130,7 +130,7 @@
             "top": 143,
             "left": 22,
             "right": 298,
-            "bottom": 180,
+            "bottom": 181,
             "width": 277,
             "height": 37
           },
@@ -175,7 +175,7 @@
             "top": 143,
             "left": 22,
             "right": 298,
-            "bottom": 181,
+            "bottom": 180,
             "width": 277,
             "height": 37
           },
@@ -434,14 +434,7 @@
             "width": 297,
             "height": 122
           },
-          "title": {
-            "top": 197,
-            "left": 40,
-            "right": 280,
-            "bottom": 272,
-            "width": 240,
-            "height": 75
-          },
+          "title": null,
           "modal": null,
           "tabs": null,
           "quickbar": null,
@@ -979,10 +972,10 @@
             "height": 0
           },
           "title": {
-            "top": 132,
+            "top": 129,
             "left": 22,
             "right": 298,
-            "bottom": 207,
+            "bottom": 204,
             "width": 277,
             "height": 75
           },
@@ -1097,10 +1090,10 @@
             "height": 0
           },
           "title": {
-            "top": 129,
+            "top": 132,
             "left": 22,
             "right": 298,
-            "bottom": 391,
+            "bottom": 393,
             "width": 277,
             "height": 262
           },
@@ -1156,10 +1149,10 @@
             "height": 0
           },
           "title": {
-            "top": 132,
+            "top": 129,
             "left": 22,
             "right": 298,
-            "bottom": 282,
+            "bottom": 278,
             "width": 277,
             "height": 150
           },
@@ -1215,10 +1208,10 @@
             "height": 0
           },
           "title": {
-            "top": 132,
+            "top": 129,
             "left": 22,
             "right": 298,
-            "bottom": 244,
+            "bottom": 241,
             "width": 277,
             "height": 112
           },
@@ -1313,7 +1306,7 @@
     }
   ],
   "inheritedV22": {
-    "updated_at": "2026-07-20T08:27:42.300Z",
+    "updated_at": "2026-07-20T09:41:07.857Z",
     "status": "pass",
     "checkedRoutes": 25,
     "checkedViewports": 6

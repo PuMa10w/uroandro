@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "updated_at": "2026-07-20T08:27:42.300Z",
+  "updated_at": "2026-07-20T09:41:07.857Z",
   "visual_iPhone_gate_v22": {
     "name": "visual_iPhone_gate_v22",
     "status": "pass",
@@ -70,21 +70,14 @@
             "height": 124
           },
           "main": {
-            "top": 0,
+            "top": 5,
             "left": 0,
             "right": 393,
-            "bottom": 3545,
+            "bottom": 1632,
             "width": 393,
-            "height": 3545
+            "height": 1627
           },
-          "title": {
-            "top": 1569,
-            "left": 25,
-            "right": 368,
-            "bottom": 1873,
-            "width": 343,
-            "height": 304
-          },
+          "title": null,
           "modal": null,
           "tabs": null,
           "quickbar": null,
@@ -256,28 +249,28 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 662,
+            "top": 663,
             "left": 321,
             "right": 355,
-            "bottom": 706,
+            "bottom": 707,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 877,
+            "top": 879,
             "left": 321,
             "right": 355,
-            "bottom": 921,
+            "bottom": 923,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1095,
+            "top": 1088,
             "left": 321,
             "right": 355,
-            "bottom": 1139,
+            "bottom": 1132,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -319,9 +312,9 @@
             "top": 0,
             "left": 0,
             "right": 393,
-            "bottom": 732525,
+            "bottom": 732795,
             "width": 393,
-            "height": 732525
+            "height": 732795
           },
           "title": {
             "top": 183,
@@ -420,9 +413,9 @@
             "top": 0,
             "left": 0,
             "right": 393,
-            "bottom": 6078,
+            "bottom": 5903,
             "width": 393,
-            "height": 6078
+            "height": 5903
           },
           "title": {
             "top": 188,
@@ -448,10 +441,10 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 772,
+            "top": 707,
             "left": 275,
             "right": 353,
-            "bottom": 809,
+            "bottom": 744,
             "width": 78,
             "height": 37,
             "inHorizontalRail": false
@@ -484,9 +477,9 @@
             "top": 0,
             "left": 0,
             "right": 393,
-            "bottom": 14210,
+            "bottom": 14215,
             "width": 393,
-            "height": 14210
+            "height": 14215
           },
           "title": {
             "top": 197,
@@ -538,18 +531,11 @@
             "top": 0,
             "left": 0,
             "right": 393,
-            "bottom": 3833,
+            "bottom": 852,
             "width": 393,
-            "height": 3833
+            "height": 852
           },
-          "title": {
-            "top": 197,
-            "left": 44,
-            "right": 349,
-            "bottom": 289,
-            "width": 306,
-            "height": 92
-          },
+          "title": null,
           "modal": null,
           "tabs": null,
           "quickbar": null,
@@ -693,9 +679,9 @@
             "top": 0,
             "left": 0,
             "right": 393,
-            "bottom": 8703,
+            "bottom": 8647,
             "width": 393,
-            "height": 8703
+            "height": 8647
           },
           "title": {
             "top": 163,
@@ -883,28 +869,28 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 617,
+            "top": 616,
             "left": 321,
             "right": 355,
-            "bottom": 661,
+            "bottom": 660,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 832,
+            "top": 831,
             "left": 321,
             "right": 355,
-            "bottom": 876,
+            "bottom": 875,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1052,
+            "top": 1049,
             "left": 321,
             "right": 355,
-            "bottom": 1096,
+            "bottom": 1093,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -997,19 +983,19 @@
             "inHorizontalRail": false
           },
           {
-            "top": 805,
+            "top": 804,
             "left": 321,
             "right": 355,
-            "bottom": 849,
+            "bottom": 848,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1025,
+            "top": 1022,
             "left": 321,
             "right": 355,
-            "bottom": 1069,
+            "bottom": 1066,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -1102,19 +1088,19 @@
             "inHorizontalRail": false
           },
           {
-            "top": 850,
+            "top": 851,
             "left": 321,
             "right": 355,
-            "bottom": 894,
+            "bottom": 895,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1068,
+            "top": 1071,
             "left": 321,
             "right": 355,
-            "bottom": 1112,
+            "bottom": 1115,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -1258,18 +1244,18 @@
             "height": 0
           },
           "main": {
-            "top": 0,
+            "top": 3,
             "left": 0,
             "right": 393,
-            "bottom": 4659,
+            "bottom": 4662,
             "width": 393,
             "height": 4659
           },
           "title": {
-            "top": 129,
+            "top": 132,
             "left": 25,
             "right": 368,
-            "bottom": 221,
+            "bottom": 223,
             "width": 343,
             "height": 92
           },
@@ -1303,37 +1289,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 617,
+            "top": 619,
             "left": 321,
             "right": 355,
-            "bottom": 661,
+            "bottom": 663,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 832,
+            "top": 835,
             "left": 321,
             "right": 355,
-            "bottom": 876,
+            "bottom": 879,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1052,
+            "top": 1055,
             "left": 321,
             "right": 355,
-            "bottom": 1096,
+            "bottom": 1099,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1256,
+            "top": 1258,
             "left": 321,
             "right": 355,
-            "bottom": 1300,
+            "bottom": 1302,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -1363,18 +1349,18 @@
             "height": 0
           },
           "main": {
-            "top": 0,
+            "top": 3,
             "left": 0,
             "right": 393,
-            "bottom": 4659,
+            "bottom": 4662,
             "width": 393,
             "height": 4659
           },
           "title": {
-            "top": 129,
+            "top": 132,
             "left": 25,
             "right": 368,
-            "bottom": 221,
+            "bottom": 223,
             "width": 343,
             "height": 92
           },
@@ -1408,37 +1394,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 616,
+            "top": 619,
             "left": 321,
             "right": 355,
-            "bottom": 660,
+            "bottom": 663,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 831,
+            "top": 835,
             "left": 321,
             "right": 355,
-            "bottom": 875,
+            "bottom": 879,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1049,
+            "top": 1055,
             "left": 321,
             "right": 355,
-            "bottom": 1093,
+            "bottom": 1099,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1256,
+            "top": 1258,
             "left": 321,
             "right": 355,
-            "bottom": 1300,
+            "bottom": 1302,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -1573,18 +1559,18 @@
             "height": 0
           },
           "main": {
-            "top": 3,
+            "top": 0,
             "left": 0,
             "right": 393,
-            "bottom": 5992,
+            "bottom": 5989,
             "width": 393,
             "height": 5989
           },
           "title": {
-            "top": 132,
+            "top": 129,
             "left": 25,
             "right": 368,
-            "bottom": 453,
+            "bottom": 451,
             "width": 343,
             "height": 322
           },
@@ -1618,37 +1604,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 849,
+            "top": 847,
             "left": 321,
             "right": 355,
-            "bottom": 893,
+            "bottom": 891,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1082,
+            "top": 1079,
             "left": 321,
             "right": 355,
-            "bottom": 1126,
+            "bottom": 1123,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1318,
+            "top": 1315,
             "left": 321,
             "right": 355,
-            "bottom": 1362,
+            "bottom": 1359,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1522,
+            "top": 1519,
             "left": 321,
             "right": 355,
-            "bottom": 1566,
+            "bottom": 1563,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -1723,28 +1709,28 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 682,
+            "top": 681,
             "left": 321,
             "right": 355,
-            "bottom": 726,
+            "bottom": 725,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 898,
+            "top": 897,
             "left": 321,
             "right": 355,
-            "bottom": 942,
+            "bottom": 941,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1107,
+            "top": 1117,
             "left": 321,
             "right": 355,
-            "bottom": 1151,
+            "bottom": 1161,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -2094,18 +2080,18 @@
             "height": 124
           },
           "main": {
-            "top": 2,
+            "top": 3,
             "left": 0,
             "right": 402,
-            "bottom": 876,
+            "bottom": 877,
             "width": 402,
             "height": 874
           },
           "title": {
-            "top": 141,
+            "top": 142,
             "left": 26,
             "right": 376,
-            "bottom": 188,
+            "bottom": 189,
             "width": 351,
             "height": 47
           },
@@ -2242,9 +2228,9 @@
             "top": 0,
             "left": 0,
             "right": 402,
-            "bottom": 720527,
+            "bottom": 720798,
             "width": 402,
-            "height": 720527
+            "height": 720798
           },
           "title": {
             "top": 183,
@@ -2343,9 +2329,9 @@
             "top": 0,
             "left": 0,
             "right": 402,
-            "bottom": 6039,
+            "bottom": 5863,
             "width": 402,
-            "height": 6039
+            "height": 5863
           },
           "title": {
             "top": 188,
@@ -2371,10 +2357,10 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 766,
+            "top": 701,
             "left": 283,
             "right": 362,
-            "bottom": 803,
+            "bottom": 738,
             "width": 78,
             "height": 37,
             "inHorizontalRail": false
@@ -2407,9 +2393,9 @@
             "top": 0,
             "left": 0,
             "right": 402,
-            "bottom": 14127,
+            "bottom": 14132,
             "width": 402,
-            "height": 14127
+            "height": 14132
           },
           "title": {
             "top": 197,
@@ -2461,18 +2447,11 @@
             "top": 0,
             "left": 0,
             "right": 402,
-            "bottom": 3835,
+            "bottom": 874,
             "width": 402,
-            "height": 3835
+            "height": 874
           },
-          "title": {
-            "top": 197,
-            "left": 44,
-            "right": 358,
-            "bottom": 291,
-            "width": 314,
-            "height": 94
-          },
+          "title": null,
           "modal": null,
           "tabs": null,
           "quickbar": null,
@@ -2616,9 +2595,9 @@
             "top": 0,
             "left": 0,
             "right": 402,
-            "bottom": 8634,
+            "bottom": 8578,
             "width": 402,
-            "height": 8634
+            "height": 8578
           },
           "title": {
             "top": 163,
@@ -2806,28 +2785,28 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 619,
+            "top": 618,
             "left": 330,
             "right": 364,
-            "bottom": 663,
+            "bottom": 662,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 834,
+            "top": 833,
             "left": 330,
             "right": 364,
-            "bottom": 878,
+            "bottom": 877,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1054,
+            "top": 1052,
             "left": 330,
             "right": 364,
-            "bottom": 1098,
+            "bottom": 1096,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -2911,28 +2890,28 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 592,
+            "top": 591,
             "left": 330,
             "right": 364,
-            "bottom": 636,
+            "bottom": 635,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 808,
+            "top": 806,
             "left": 330,
             "right": 364,
-            "bottom": 852,
+            "bottom": 850,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1017,
+            "top": 1024,
             "left": 330,
             "right": 364,
-            "bottom": 1061,
+            "bottom": 1068,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -2971,18 +2950,18 @@
             "height": 0
           },
           "main": {
-            "top": 0,
+            "top": 2,
             "left": 0,
             "right": 402,
-            "bottom": 5681,
+            "bottom": 5682,
             "width": 402,
             "height": 5681
           },
           "title": {
-            "top": 129,
+            "top": 131,
             "left": 26,
             "right": 376,
-            "bottom": 270,
+            "bottom": 272,
             "width": 351,
             "height": 141
           },
@@ -3016,37 +2995,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 639,
+            "top": 641,
             "left": 330,
             "right": 364,
-            "bottom": 683,
+            "bottom": 685,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 854,
+            "top": 857,
             "left": 330,
             "right": 364,
-            "bottom": 898,
+            "bottom": 901,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1074,
+            "top": 1066,
             "left": 330,
             "right": 364,
-            "bottom": 1118,
+            "bottom": 1110,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1278,
+            "top": 1279,
             "left": 330,
             "right": 364,
-            "bottom": 1322,
+            "bottom": 1323,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -3181,18 +3160,18 @@
             "height": 0
           },
           "main": {
-            "top": 0,
+            "top": 3,
             "left": 0,
             "right": 402,
-            "bottom": 4628,
+            "bottom": 4630,
             "width": 402,
             "height": 4628
           },
           "title": {
-            "top": 129,
+            "top": 132,
             "left": 26,
             "right": 376,
-            "bottom": 223,
+            "bottom": 226,
             "width": 351,
             "height": 94
           },
@@ -3226,37 +3205,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 618,
+            "top": 622,
             "left": 330,
             "right": 364,
-            "bottom": 662,
+            "bottom": 666,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 833,
+            "top": 837,
             "left": 330,
             "right": 364,
-            "bottom": 877,
+            "bottom": 881,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1050,
+            "top": 1057,
             "left": 330,
             "right": 364,
-            "bottom": 1094,
+            "bottom": 1101,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1258,
+            "top": 1260,
             "left": 330,
             "right": 364,
-            "bottom": 1302,
+            "bottom": 1304,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -3286,18 +3265,18 @@
             "height": 0
           },
           "main": {
-            "top": 0,
+            "top": 3,
             "left": 0,
             "right": 402,
-            "bottom": 4628,
+            "bottom": 4630,
             "width": 402,
             "height": 4628
           },
           "title": {
-            "top": 129,
+            "top": 132,
             "left": 26,
             "right": 376,
-            "bottom": 223,
+            "bottom": 226,
             "width": 351,
             "height": 94
           },
@@ -3331,37 +3310,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 618,
+            "top": 622,
             "left": 330,
             "right": 364,
-            "bottom": 662,
+            "bottom": 666,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 833,
+            "top": 837,
             "left": 330,
             "right": 364,
-            "bottom": 877,
+            "bottom": 881,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1052,
+            "top": 1057,
             "left": 330,
             "right": 364,
-            "bottom": 1096,
+            "bottom": 1101,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1258,
+            "top": 1260,
             "left": 330,
             "right": 364,
-            "bottom": 1302,
+            "bottom": 1304,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -3436,28 +3415,28 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 639,
+            "top": 640,
             "left": 330,
             "right": 364,
-            "bottom": 683,
+            "bottom": 684,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 854,
+            "top": 857,
             "left": 330,
             "right": 364,
-            "bottom": 898,
+            "bottom": 901,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1091,
+            "top": 1081,
             "left": 330,
             "right": 364,
-            "bottom": 1135,
+            "bottom": 1125,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -3655,19 +3634,19 @@
             "inHorizontalRail": false
           },
           {
-            "top": 902,
+            "top": 901,
             "left": 330,
             "right": 364,
-            "bottom": 946,
+            "bottom": 945,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1111,
+            "top": 1121,
             "left": 330,
             "right": 364,
-            "bottom": 1155,
+            "bottom": 1165,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -3706,18 +3685,18 @@
             "height": 0
           },
           "main": {
-            "top": 0,
+            "top": 3,
             "left": 0,
             "right": 402,
-            "bottom": 3547,
+            "bottom": 3550,
             "width": 402,
             "height": 3547
           },
           "title": {
-            "top": 129,
+            "top": 132,
             "left": 26,
             "right": 376,
-            "bottom": 270,
+            "bottom": 273,
             "width": 351,
             "height": 141
           },
@@ -3751,37 +3730,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 639,
+            "top": 641,
             "left": 330,
             "right": 364,
-            "bottom": 683,
+            "bottom": 685,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 854,
+            "top": 857,
             "left": 330,
             "right": 364,
-            "bottom": 898,
+            "bottom": 901,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1074,
+            "top": 1077,
             "left": 330,
             "right": 364,
-            "bottom": 1118,
+            "bottom": 1121,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1278,
+            "top": 1280,
             "left": 330,
             "right": 364,
-            "bottom": 1322,
+            "bottom": 1324,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -3966,15 +3945,15 @@
             "top": 3,
             "left": 0,
             "right": 430,
-            "bottom": 1374,
+            "bottom": 1375,
             "width": 430,
             "height": 1372
           },
           "title": {
-            "top": 143,
+            "top": 144,
             "left": 28,
             "right": 403,
-            "bottom": 193,
+            "bottom": 194,
             "width": 375,
             "height": 50
           },
@@ -4025,10 +4004,10 @@
             "height": 932
           },
           "title": {
-            "top": 143,
+            "top": 144,
             "left": 28,
             "right": 403,
-            "bottom": 193,
+            "bottom": 194,
             "width": 375,
             "height": 50
           },
@@ -4165,9 +4144,9 @@
             "top": 0,
             "left": 0,
             "right": 430,
-            "bottom": 680712,
+            "bottom": 680967,
             "width": 430,
-            "height": 680712
+            "height": 680967
           },
           "title": {
             "top": 183,
@@ -4266,9 +4245,9 @@
             "top": 0,
             "left": 0,
             "right": 430,
-            "bottom": 5833,
+            "bottom": 5657,
             "width": 430,
-            "height": 5833
+            "height": 5657
           },
           "title": {
             "top": 188,
@@ -4294,10 +4273,10 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 773,
+            "top": 708,
             "left": 309,
             "right": 388,
-            "bottom": 810,
+            "bottom": 745,
             "width": 78,
             "height": 37,
             "inHorizontalRail": false
@@ -4330,9 +4309,9 @@
             "top": 0,
             "left": 0,
             "right": 430,
-            "bottom": 14128,
+            "bottom": 14133,
             "width": 430,
-            "height": 14128
+            "height": 14133
           },
           "title": {
             "top": 198,
@@ -4384,18 +4363,11 @@
             "top": 0,
             "left": 0,
             "right": 430,
-            "bottom": 3775,
+            "bottom": 932,
             "width": 430,
-            "height": 3775
+            "height": 932
           },
-          "title": {
-            "top": 198,
-            "left": 46,
-            "right": 384,
-            "bottom": 299,
-            "width": 338,
-            "height": 101
-          },
+          "title": null,
           "modal": null,
           "tabs": null,
           "quickbar": null,
@@ -4539,9 +4511,9 @@
             "top": 0,
             "left": 0,
             "right": 430,
-            "bottom": 8155,
+            "bottom": 8099,
             "width": 430,
-            "height": 8155
+            "height": 8099
           },
           "title": {
             "top": 163,
@@ -4729,28 +4701,28 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 635,
+            "top": 636,
             "left": 356,
             "right": 390,
-            "bottom": 679,
+            "bottom": 680,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 850,
+            "top": 851,
             "left": 356,
             "right": 390,
-            "bottom": 894,
+            "bottom": 895,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1069,
+            "top": 1071,
             "left": 356,
             "right": 390,
-            "bottom": 1113,
+            "bottom": 1115,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -4834,28 +4806,28 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 608,
+            "top": 609,
             "left": 356,
             "right": 390,
-            "bottom": 652,
+            "bottom": 653,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 823,
+            "top": 824,
             "left": 356,
             "right": 390,
-            "bottom": 867,
+            "bottom": 868,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1041,
+            "top": 1044,
             "left": 356,
             "right": 390,
-            "bottom": 1085,
+            "bottom": 1088,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -4999,18 +4971,18 @@
             "height": 0
           },
           "main": {
-            "top": 2,
+            "top": 0,
             "left": 0,
             "right": 430,
-            "bottom": 4647,
+            "bottom": 4645,
             "width": 430,
             "height": 4645
           },
           "title": {
-            "top": 141,
+            "top": 139,
             "left": 28,
             "right": 403,
-            "bottom": 242,
+            "bottom": 240,
             "width": 375,
             "height": 101
           },
@@ -5044,37 +5016,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 638,
+            "top": 635,
             "left": 356,
             "right": 390,
-            "bottom": 682,
+            "bottom": 679,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 853,
+            "top": 850,
             "left": 356,
             "right": 390,
-            "bottom": 897,
+            "bottom": 894,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1073,
+            "top": 1069,
             "left": 356,
             "right": 390,
-            "bottom": 1117,
+            "bottom": 1113,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1277,
+            "top": 1275,
             "left": 356,
             "right": 390,
-            "bottom": 1321,
+            "bottom": 1319,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -5209,18 +5181,18 @@
             "height": 0
           },
           "main": {
-            "top": 0,
+            "top": 2,
             "left": 0,
             "right": 430,
-            "bottom": 4645,
+            "bottom": 4646,
             "width": 430,
             "height": 4645
           },
           "title": {
-            "top": 139,
+            "top": 141,
             "left": 28,
             "right": 403,
-            "bottom": 240,
+            "bottom": 242,
             "width": 375,
             "height": 101
           },
@@ -5254,37 +5226,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 635,
+            "top": 637,
             "left": 356,
             "right": 390,
-            "bottom": 679,
+            "bottom": 681,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 850,
+            "top": 852,
             "left": 356,
             "right": 390,
-            "bottom": 894,
+            "bottom": 896,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1067,
+            "top": 1070,
             "left": 356,
             "right": 390,
-            "bottom": 1111,
+            "bottom": 1114,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1275,
+            "top": 1276,
             "left": 356,
             "right": 390,
-            "bottom": 1319,
+            "bottom": 1320,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -5314,18 +5286,18 @@
             "height": 0
           },
           "main": {
-            "top": 0,
+            "top": 2,
             "left": 0,
             "right": 430,
-            "bottom": 6128,
+            "bottom": 6129,
             "width": 430,
             "height": 6128
           },
           "title": {
-            "top": 139,
+            "top": 141,
             "left": 28,
             "right": 403,
-            "bottom": 290,
+            "bottom": 292,
             "width": 375,
             "height": 151
           },
@@ -5359,37 +5331,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 659,
+            "top": 660,
             "left": 356,
             "right": 390,
-            "bottom": 703,
+            "bottom": 704,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 874,
+            "top": 875,
             "left": 356,
             "right": 390,
-            "bottom": 918,
+            "bottom": 919,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1111,
+            "top": 1108,
             "left": 356,
             "right": 390,
-            "bottom": 1155,
+            "bottom": 1152,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1315,
+            "top": 1316,
             "left": 356,
             "right": 390,
-            "bottom": 1359,
+            "bottom": 1360,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -5419,18 +5391,18 @@
             "height": 0
           },
           "main": {
-            "top": 0,
+            "top": 2,
             "left": 0,
             "right": 430,
-            "bottom": 5997,
+            "bottom": 5999,
             "width": 430,
             "height": 5997
           },
           "title": {
-            "top": 139,
+            "top": 141,
             "left": 28,
             "right": 403,
-            "bottom": 491,
+            "bottom": 494,
             "width": 375,
             "height": 352
           },
@@ -5464,37 +5436,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 887,
+            "top": 889,
             "left": 356,
             "right": 390,
-            "bottom": 931,
+            "bottom": 933,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1119,
+            "top": 1121,
             "left": 356,
             "right": 390,
-            "bottom": 1163,
+            "bottom": 1165,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1354,
+            "top": 1356,
             "left": 356,
             "right": 390,
-            "bottom": 1398,
+            "bottom": 1400,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1560,
+            "top": 1562,
             "left": 356,
             "right": 390,
-            "bottom": 1604,
+            "bottom": 1606,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -5629,18 +5601,18 @@
             "height": 0
           },
           "main": {
-            "top": 0,
+            "top": 2,
             "left": 0,
             "right": 430,
-            "bottom": 3551,
+            "bottom": 3553,
             "width": 430,
             "height": 3551
           },
           "title": {
-            "top": 139,
+            "top": 141,
             "left": 28,
             "right": 403,
-            "bottom": 290,
+            "bottom": 292,
             "width": 375,
             "height": 151
           },
@@ -5674,37 +5646,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 658,
+            "top": 661,
             "left": 356,
             "right": 390,
-            "bottom": 702,
+            "bottom": 705,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 873,
+            "top": 876,
             "left": 356,
             "right": 390,
-            "bottom": 917,
+            "bottom": 920,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1090,
+            "top": 1094,
             "left": 356,
             "right": 390,
-            "bottom": 1134,
+            "bottom": 1138,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1298,
+            "top": 1300,
             "left": 356,
             "right": 390,
-            "bottom": 1342,
+            "bottom": 1344,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -5734,18 +5706,18 @@
             "height": 0
           },
           "main": {
-            "top": 0,
+            "top": 3,
             "left": 0,
             "right": 430,
-            "bottom": 2467,
+            "bottom": 2470,
             "width": 430,
             "height": 2467
           },
           "title": {
-            "top": 139,
+            "top": 142,
             "left": 28,
             "right": 403,
-            "bottom": 290,
+            "bottom": 293,
             "width": 375,
             "height": 151
           },
@@ -5779,37 +5751,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 659,
+            "top": 662,
             "left": 356,
             "right": 390,
-            "bottom": 703,
+            "bottom": 706,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 874,
+            "top": 877,
             "left": 356,
             "right": 390,
-            "bottom": 918,
+            "bottom": 921,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1094,
+            "top": 1097,
             "left": 356,
             "right": 390,
-            "bottom": 1138,
+            "bottom": 1141,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1298,
+            "top": 1301,
             "left": 356,
             "right": 390,
-            "bottom": 1342,
+            "bottom": 1345,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -5894,10 +5866,10 @@
             "height": 1198
           },
           "title": {
-            "top": 90,
+            "top": 89,
             "left": 186,
             "right": 666,
-            "bottom": 132,
+            "bottom": 131,
             "width": 481,
             "height": 42
           },
@@ -6088,9 +6060,9 @@
             "top": 0,
             "left": 0,
             "right": 852,
-            "bottom": 498294,
+            "bottom": 498442,
             "width": 852,
-            "height": 498294
+            "height": 498442
           },
           "title": {
             "top": 137,
@@ -6189,9 +6161,9 @@
             "top": 0,
             "left": 0,
             "right": 852,
-            "bottom": 5306,
+            "bottom": 5240,
             "width": 852,
-            "height": 5306
+            "height": 5240
           },
           "title": {
             "top": 149,
@@ -6243,14 +6215,14 @@
             "top": 0,
             "left": 0,
             "right": 852,
-            "bottom": 13992,
+            "bottom": 13997,
             "width": 852,
-            "height": 13992
+            "height": 13997
           },
           "title": {
             "top": 152,
-            "left": 88,
-            "right": 568,
+            "left": 47,
+            "right": 528,
             "bottom": 235,
             "width": 481,
             "height": 83
@@ -6297,18 +6269,11 @@
             "top": 0,
             "left": 0,
             "right": 852,
-            "bottom": 2901,
+            "bottom": 393,
             "width": 852,
-            "height": 2901
+            "height": 393
           },
-          "title": {
-            "top": 152,
-            "left": 47,
-            "right": 528,
-            "bottom": 193,
-            "width": 481,
-            "height": 42
-          },
+          "title": null,
           "modal": null,
           "tabs": null,
           "quickbar": null,
@@ -6404,8 +6369,8 @@
           },
           "title": {
             "top": 136,
-            "left": 104,
-            "right": 584,
+            "left": 47,
+            "right": 528,
             "bottom": 177,
             "width": 481,
             "height": 42
@@ -6452,9 +6417,9 @@
             "top": 0,
             "left": 0,
             "right": 852,
-            "bottom": 3552,
+            "bottom": 3464,
             "width": 852,
-            "height": 3552
+            "height": 3464
           },
           "title": {
             "top": 108,
@@ -6702,18 +6667,18 @@
             "height": 0
           },
           "main": {
-            "top": 2,
+            "top": 0,
             "left": 0,
             "right": 852,
-            "bottom": 1894,
+            "bottom": 1892,
             "width": 852,
             "height": 1892
           },
           "title": {
-            "top": 95,
+            "top": 93,
             "left": 186,
             "right": 666,
-            "bottom": 178,
+            "bottom": 176,
             "width": 481,
             "height": 83
           },
@@ -6747,19 +6712,19 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 513,
+            "top": 511,
             "left": 792,
             "right": 826,
-            "bottom": 557,
+            "bottom": 555,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 731,
+            "top": 730,
             "left": 792,
             "right": 826,
-            "bottom": 775,
+            "bottom": 774,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -6774,10 +6739,10 @@
             "inHorizontalRail": false
           },
           {
-            "top": 1160,
+            "top": 1159,
             "left": 792,
             "right": 826,
-            "bottom": 1204,
+            "bottom": 1203,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -6861,19 +6826,19 @@
             "inHorizontalRail": false
           },
           {
-            "top": 730,
+            "top": 728,
             "left": 792,
             "right": 826,
-            "bottom": 774,
+            "bottom": 772,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 952,
+            "top": 948,
             "left": 792,
             "right": 826,
-            "bottom": 996,
+            "bottom": 992,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -7017,18 +6982,18 @@
             "height": 0
           },
           "main": {
-            "top": 2,
+            "top": 0,
             "left": 0,
             "right": 852,
-            "bottom": 4508,
+            "bottom": 4506,
             "width": 852,
             "height": 4506
           },
           "title": {
-            "top": 95,
+            "top": 93,
             "left": 186,
             "right": 666,
-            "bottom": 178,
+            "bottom": 176,
             "width": 481,
             "height": 83
           },
@@ -7062,19 +7027,19 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 534,
+            "top": 532,
             "left": 792,
             "right": 826,
-            "bottom": 578,
+            "bottom": 576,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 752,
+            "top": 751,
             "left": 792,
             "right": 826,
-            "bottom": 796,
+            "bottom": 795,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -7089,10 +7054,10 @@
             "inHorizontalRail": false
           },
           {
-            "top": 1182,
+            "top": 1180,
             "left": 792,
             "right": 826,
-            "bottom": 1226,
+            "bottom": 1224,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -7377,28 +7342,28 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 594,
+            "top": 595,
             "left": 792,
             "right": 826,
-            "bottom": 638,
+            "bottom": 639,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 812,
+            "top": 813,
             "left": 792,
             "right": 826,
-            "bottom": 856,
+            "bottom": 857,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1033,
+            "top": 1035,
             "left": 792,
             "right": 826,
-            "bottom": 1077,
+            "bottom": 1079,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -7437,18 +7402,18 @@
             "height": 0
           },
           "main": {
-            "top": 2,
+            "top": 0,
             "left": 0,
             "right": 852,
-            "bottom": 2758,
+            "bottom": 2756,
             "width": 852,
             "height": 2756
           },
           "title": {
-            "top": 95,
+            "top": 93,
             "left": 186,
             "right": 666,
-            "bottom": 178,
+            "bottom": 176,
             "width": 481,
             "height": 83
           },
@@ -7482,37 +7447,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 513,
+            "top": 511,
             "left": 792,
             "right": 826,
-            "bottom": 557,
+            "bottom": 555,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 731,
+            "top": 730,
             "left": 792,
             "right": 826,
-            "bottom": 775,
+            "bottom": 774,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 954,
+            "top": 952,
             "left": 792,
             "right": 826,
-            "bottom": 998,
+            "bottom": 996,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1160,
+            "top": 1159,
             "left": 792,
             "right": 826,
-            "bottom": 1204,
+            "bottom": 1203,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -7596,10 +7561,10 @@
             "inHorizontalRail": false
           },
           {
-            "top": 731,
+            "top": 732,
             "left": 792,
             "right": 826,
-            "bottom": 775,
+            "bottom": 776,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -8001,9 +7966,9 @@
             "top": 0,
             "left": 0,
             "right": 874,
-            "bottom": 486145,
+            "bottom": 486293,
             "width": 874,
-            "height": 486145
+            "height": 486293
           },
           "title": {
             "top": 137,
@@ -8102,9 +8067,9 @@
             "top": 0,
             "left": 0,
             "right": 874,
-            "bottom": 5224,
+            "bottom": 5158,
             "width": 874,
-            "height": 5224
+            "height": 5158
           },
           "title": {
             "top": 149,
@@ -8156,14 +8121,14 @@
             "top": 0,
             "left": 0,
             "right": 874,
-            "bottom": 13908,
+            "bottom": 13913,
             "width": 874,
-            "height": 13908
+            "height": 13913
           },
           "title": {
             "top": 152,
-            "left": 99,
-            "right": 579,
+            "left": 47,
+            "right": 528,
             "bottom": 235,
             "width": 481,
             "height": 83
@@ -8210,18 +8175,11 @@
             "top": 0,
             "left": 0,
             "right": 874,
-            "bottom": 2904,
+            "bottom": 402,
             "width": 874,
-            "height": 2904
+            "height": 402
           },
-          "title": {
-            "top": 152,
-            "left": 47,
-            "right": 528,
-            "bottom": 193,
-            "width": 481,
-            "height": 42
-          },
+          "title": null,
           "modal": null,
           "tabs": null,
           "quickbar": null,
@@ -8317,8 +8275,8 @@
           },
           "title": {
             "top": 136,
-            "left": 115,
-            "right": 595,
+            "left": 47,
+            "right": 528,
             "bottom": 177,
             "width": 481,
             "height": 42
@@ -8365,9 +8323,9 @@
             "top": 0,
             "left": 0,
             "right": 874,
-            "bottom": 3420,
+            "bottom": 3332,
             "width": 874,
-            "height": 3420
+            "height": 3332
           },
           "title": {
             "top": 108,
@@ -8669,19 +8627,19 @@
             "inHorizontalRail": false
           },
           {
-            "top": 730,
+            "top": 729,
             "left": 814,
             "right": 848,
-            "bottom": 774,
+            "bottom": 773,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 952,
+            "top": 950,
             "left": 814,
             "right": 848,
-            "bottom": 996,
+            "bottom": 994,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -8774,19 +8732,19 @@
             "inHorizontalRail": false
           },
           {
-            "top": 729,
+            "top": 730,
             "left": 814,
             "right": 848,
-            "bottom": 773,
+            "bottom": 774,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 950,
+            "top": 952,
             "left": 814,
             "right": 848,
-            "bottom": 994,
+            "bottom": 996,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -8879,19 +8837,19 @@
             "inHorizontalRail": false
           },
           {
-            "top": 751,
+            "top": 749,
             "left": 814,
             "right": 848,
-            "bottom": 795,
+            "bottom": 793,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 973,
+            "top": 969,
             "left": 814,
             "right": 848,
-            "bottom": 1017,
+            "bottom": 1013,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -8984,19 +8942,19 @@
             "inHorizontalRail": false
           },
           {
-            "top": 751,
+            "top": 750,
             "left": 814,
             "right": 848,
-            "bottom": 795,
+            "bottom": 794,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 973,
+            "top": 971,
             "left": 814,
             "right": 848,
-            "bottom": 1017,
+            "bottom": 1015,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -9089,19 +9047,19 @@
             "inHorizontalRail": false
           },
           {
-            "top": 751,
+            "top": 750,
             "left": 814,
             "right": 848,
-            "bottom": 795,
+            "bottom": 794,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 973,
+            "top": 971,
             "left": 814,
             "right": 848,
-            "bottom": 1017,
+            "bottom": 1015,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -9245,18 +9203,18 @@
             "height": 0
           },
           "main": {
-            "top": 0,
+            "top": 2,
             "left": 0,
             "right": 874,
-            "bottom": 5649,
+            "bottom": 5651,
             "width": 874,
             "height": 5649
           },
           "title": {
-            "top": 93,
+            "top": 95,
             "left": 197,
             "right": 677,
-            "bottom": 259,
+            "bottom": 261,
             "width": 481,
             "height": 166
           },
@@ -9290,37 +9248,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 594,
+            "top": 596,
             "left": 814,
             "right": 848,
-            "bottom": 638,
+            "bottom": 640,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 812,
+            "top": 814,
             "left": 814,
             "right": 848,
-            "bottom": 856,
+            "bottom": 858,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1033,
+            "top": 1035,
             "left": 814,
             "right": 848,
-            "bottom": 1077,
+            "bottom": 1079,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 1242,
+            "top": 1244,
             "left": 814,
             "right": 848,
-            "bottom": 1286,
+            "bottom": 1288,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -9404,10 +9362,10 @@
             "inHorizontalRail": false
           },
           {
-            "top": 732,
+            "top": 731,
             "left": 814,
             "right": 848,
-            "bottom": 776,
+            "bottom": 775,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -9509,10 +9467,10 @@
             "inHorizontalRail": false
           },
           {
-            "top": 731,
+            "top": 732,
             "left": 814,
             "right": 848,
-            "bottom": 775,
+            "bottom": 776,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -9614,19 +9572,19 @@
             "inHorizontalRail": false
           },
           {
-            "top": 730,
+            "top": 729,
             "left": 814,
             "right": 848,
-            "bottom": 774,
+            "bottom": 773,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 929,
+            "top": 927,
             "left": 814,
             "right": 848,
-            "bottom": 973,
+            "bottom": 971,
             "width": 34,
             "height": 44,
             "inHorizontalRail": false
@@ -9712,7 +9670,7 @@
             "height": 66
           },
           "main": {
-            "top": 135,
+            "top": 134,
             "left": 0,
             "right": 932,
             "bottom": 844,
@@ -9723,7 +9681,7 @@
             "top": 221,
             "left": 16,
             "right": 497,
-            "bottom": 263,
+            "bottom": 262,
             "width": 481,
             "height": 42
           },
@@ -9767,10 +9725,10 @@
             "height": 430
           },
           "title": {
-            "top": 221,
+            "top": 222,
             "left": 16,
             "right": 497,
-            "bottom": 263,
+            "bottom": 264,
             "width": 481,
             "height": 42
           },
@@ -9893,9 +9851,9 @@
             "top": 132,
             "left": 0,
             "right": 932,
-            "bottom": 330530,
+            "bottom": 330645,
             "width": 932,
-            "height": 330398
+            "height": 330513
           },
           "title": {
             "top": 270,
@@ -9980,9 +9938,9 @@
             "top": 132,
             "left": 0,
             "right": 932,
-            "bottom": 4448,
+            "bottom": 4382,
             "width": 932,
-            "height": 4316
+            "height": 4250
           },
           "title": {
             "top": 284,
@@ -10027,9 +9985,9 @@
             "top": 132,
             "left": 0,
             "right": 932,
-            "bottom": 12080,
+            "bottom": 12085,
             "width": 932,
-            "height": 11948
+            "height": 11953
           },
           "title": {
             "top": 284,
@@ -10074,18 +10032,11 @@
             "top": 132,
             "left": 0,
             "right": 932,
-            "bottom": 2850,
+            "bottom": 562,
             "width": 932,
-            "height": 2718
+            "height": 430
           },
-          "title": {
-            "top": 284,
-            "left": 50,
-            "right": 530,
-            "bottom": 325,
-            "width": 481,
-            "height": 42
-          },
+          "title": null,
           "modal": null,
           "tabs": null,
           "quickbar": null,
@@ -10208,9 +10159,9 @@
             "top": 132,
             "left": 0,
             "right": 932,
-            "bottom": 3127,
+            "bottom": 3082,
             "width": 932,
-            "height": 2995
+            "height": 2950
           },
           "title": {
             "top": 240,
@@ -10388,10 +10339,10 @@
             "inHorizontalRail": false
           },
           {
-            "top": 533,
+            "top": 536,
             "left": 867,
             "right": 903,
-            "bottom": 577,
+            "bottom": 580,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
@@ -10430,18 +10381,18 @@
             "height": 0
           },
           "main": {
-            "top": 135,
+            "top": 132,
             "left": 0,
             "right": 932,
-            "bottom": 1015,
+            "bottom": 1012,
             "width": 932,
             "height": 880
           },
           "title": {
-            "top": 229,
+            "top": 225,
             "left": 16,
             "right": 497,
-            "bottom": 312,
+            "bottom": 308,
             "width": 481,
             "height": 83
           },
@@ -10475,37 +10426,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 510,
+            "top": 507,
             "left": 258,
             "right": 294,
+            "bottom": 551,
+            "width": 36,
+            "height": 44,
+            "inHorizontalRail": false
+          },
+          {
+            "top": 510,
+            "left": 562,
+            "right": 598,
             "bottom": 554,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 513,
-            "left": 562,
-            "right": 598,
-            "bottom": 557,
-            "width": 36,
-            "height": 44,
-            "inHorizontalRail": false
-          },
-          {
-            "top": 509,
+            "top": 505,
             "left": 867,
             "right": 903,
-            "bottom": 553,
+            "bottom": 549,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 729,
+            "top": 726,
             "left": 258,
             "right": 294,
-            "bottom": 773,
+            "bottom": 770,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
@@ -10580,28 +10531,28 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 506,
+            "top": 507,
             "left": 258,
             "right": 294,
-            "bottom": 550,
+            "bottom": 551,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 508,
+            "top": 510,
             "left": 562,
             "right": 598,
-            "bottom": 552,
+            "bottom": 554,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 515,
+            "top": 505,
             "left": 867,
             "right": 903,
-            "bottom": 559,
+            "bottom": 549,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
@@ -10685,28 +10636,28 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 528,
+            "top": 527,
             "left": 258,
             "right": 294,
-            "bottom": 572,
+            "bottom": 571,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 531,
+            "top": 529,
             "left": 562,
             "right": 598,
-            "bottom": 575,
+            "bottom": 573,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 526,
+            "top": 533,
             "left": 867,
             "right": 903,
-            "bottom": 570,
+            "bottom": 577,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
@@ -10808,10 +10759,10 @@
             "inHorizontalRail": false
           },
           {
-            "top": 536,
+            "top": 533,
             "left": 867,
             "right": 903,
-            "bottom": 580,
+            "bottom": 577,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
@@ -10850,12 +10801,117 @@
             "height": 0
           },
           "main": {
+            "top": 134,
+            "left": 0,
+            "right": 932,
+            "bottom": 1973,
+            "width": 932,
+            "height": 1839
+          },
+          "title": {
+            "top": 227,
+            "left": 16,
+            "right": 497,
+            "bottom": 310,
+            "width": 481,
+            "height": 83
+          },
+          "modal": {
+            "top": 0,
+            "left": 0,
+            "right": 932,
+            "bottom": 430,
+            "width": 932,
+            "height": 430
+          },
+          "tabs": {
+            "top": 0,
+            "left": 0,
+            "right": 932,
+            "bottom": 58,
+            "width": 932,
+            "height": 58
+          },
+          "quickbar": {
+            "top": 374,
+            "left": 722,
+            "right": 924,
+            "bottom": 423,
+            "width": 202,
+            "height": 49
+          },
+          "bottomNav": null
+        },
+        "railIssues": [],
+        "clippedControls": [],
+        "smallControls": [
+          {
+            "top": 529,
+            "left": 258,
+            "right": 294,
+            "bottom": 573,
+            "width": 36,
+            "height": 44,
+            "inHorizontalRail": false
+          },
+          {
+            "top": 532,
+            "left": 562,
+            "right": 598,
+            "bottom": 576,
+            "width": 36,
+            "height": 44,
+            "inHorizontalRail": false
+          },
+          {
+            "top": 538,
+            "left": 867,
+            "right": 903,
+            "bottom": 582,
+            "width": 36,
+            "height": 44,
+            "inHorizontalRail": false
+          },
+          {
+            "top": 749,
+            "left": 258,
+            "right": 294,
+            "bottom": 793,
+            "width": 36,
+            "height": 44,
+            "inHorizontalRail": false
+          }
+        ]
+      }
+    },
+    {
+      "route": "/urology/reconstructive/urethral-stricture",
+      "viewport": "iPhone Pro Max landscape",
+      "size": "932x430",
+      "status": "pass",
+      "metrics": {
+        "innerWidth": 932,
+        "innerHeight": 430,
+        "documentScrollWidth": 932,
+        "bodyScrollWidth": 932,
+        "hasModal": true,
+        "diseaseCardCount": 25,
+        "rects": {
+          "navbar": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "main": {
             "top": 132,
             "left": 0,
             "right": 932,
-            "bottom": 1971,
+            "bottom": 2738,
             "width": 932,
-            "height": 1839
+            "height": 2606
           },
           "title": {
             "top": 225,
@@ -10895,142 +10951,37 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 527,
+            "top": 507,
             "left": 258,
             "right": 294,
-            "bottom": 571,
+            "bottom": 551,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 529,
+            "top": 510,
             "left": 562,
             "right": 598,
-            "bottom": 573,
+            "bottom": 554,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 536,
+            "top": 505,
             "left": 867,
             "right": 903,
-            "bottom": 580,
+            "bottom": 549,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 747,
+            "top": 746,
             "left": 258,
             "right": 294,
-            "bottom": 791,
-            "width": 36,
-            "height": 44,
-            "inHorizontalRail": false
-          }
-        ]
-      }
-    },
-    {
-      "route": "/urology/reconstructive/urethral-stricture",
-      "viewport": "iPhone Pro Max landscape",
-      "size": "932x430",
-      "status": "pass",
-      "metrics": {
-        "innerWidth": 932,
-        "innerHeight": 430,
-        "documentScrollWidth": 932,
-        "bodyScrollWidth": 932,
-        "hasModal": true,
-        "diseaseCardCount": 25,
-        "rects": {
-          "navbar": {
-            "top": 0,
-            "left": 0,
-            "right": 0,
-            "bottom": 0,
-            "width": 0,
-            "height": 0
-          },
-          "main": {
-            "top": 135,
-            "left": 0,
-            "right": 932,
-            "bottom": 2741,
-            "width": 932,
-            "height": 2606
-          },
-          "title": {
-            "top": 228,
-            "left": 16,
-            "right": 497,
-            "bottom": 311,
-            "width": 481,
-            "height": 83
-          },
-          "modal": {
-            "top": 0,
-            "left": 0,
-            "right": 932,
-            "bottom": 430,
-            "width": 932,
-            "height": 430
-          },
-          "tabs": {
-            "top": 0,
-            "left": 0,
-            "right": 932,
-            "bottom": 58,
-            "width": 932,
-            "height": 58
-          },
-          "quickbar": {
-            "top": 374,
-            "left": 722,
-            "right": 924,
-            "bottom": 423,
-            "width": 202,
-            "height": 49
-          },
-          "bottomNav": null
-        },
-        "railIssues": [],
-        "clippedControls": [],
-        "smallControls": [
-          {
-            "top": 509,
-            "left": 258,
-            "right": 294,
-            "bottom": 553,
-            "width": 36,
-            "height": 44,
-            "inHorizontalRail": false
-          },
-          {
-            "top": 511,
-            "left": 562,
-            "right": 598,
-            "bottom": 555,
-            "width": 36,
-            "height": 44,
-            "inHorizontalRail": false
-          },
-          {
-            "top": 518,
-            "left": 867,
-            "right": 903,
-            "bottom": 562,
-            "width": 36,
-            "height": 44,
-            "inHorizontalRail": false
-          },
-          {
-            "top": 749,
-            "left": 258,
-            "right": 294,
-            "bottom": 793,
+            "bottom": 790,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
@@ -11060,18 +11011,18 @@
             "height": 0
           },
           "main": {
-            "top": 132,
+            "top": 134,
             "left": 0,
             "right": 932,
-            "bottom": 2448,
+            "bottom": 2450,
             "width": 932,
             "height": 2316
           },
           "title": {
-            "top": 225,
+            "top": 227,
             "left": 16,
             "right": 497,
-            "bottom": 391,
+            "bottom": 393,
             "width": 481,
             "height": 166
           },
@@ -11105,10 +11056,10 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 654,
+            "top": 655,
             "left": 258,
             "right": 294,
-            "bottom": 698,
+            "bottom": 699,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
@@ -11123,19 +11074,19 @@
             "inHorizontalRail": false
           },
           {
-            "top": 652,
+            "top": 662,
             "left": 867,
             "right": 903,
-            "bottom": 696,
+            "bottom": 706,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 873,
+            "top": 875,
             "left": 258,
             "right": 294,
-            "bottom": 917,
+            "bottom": 919,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
@@ -11210,28 +11161,28 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 506,
+            "top": 507,
             "left": 258,
             "right": 294,
-            "bottom": 550,
+            "bottom": 551,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 508,
+            "top": 510,
             "left": 562,
             "right": 598,
-            "bottom": 552,
+            "bottom": 554,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 515,
+            "top": 505,
             "left": 867,
             "right": 903,
-            "bottom": 559,
+            "bottom": 549,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
@@ -11315,28 +11266,28 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 506,
+            "top": 507,
             "left": 258,
             "right": 294,
-            "bottom": 550,
+            "bottom": 551,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 508,
+            "top": 510,
             "left": 562,
             "right": 598,
-            "bottom": 552,
+            "bottom": 554,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 515,
+            "top": 505,
             "left": 867,
             "right": 903,
-            "bottom": 559,
+            "bottom": 549,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
@@ -11420,28 +11371,28 @@
         "clippedControls": [],
         "smallControls": [
           {
-            "top": 506,
+            "top": 507,
             "left": 258,
             "right": 294,
-            "bottom": 550,
+            "bottom": 551,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 508,
+            "top": 510,
             "left": 562,
             "right": 598,
-            "bottom": 552,
+            "bottom": 554,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
           },
           {
-            "top": 515,
+            "top": 505,
             "left": 867,
             "right": 903,
-            "bottom": 559,
+            "bottom": 549,
             "width": 36,
             "height": 44,
             "inHorizontalRail": false
@@ -11477,7 +11428,7 @@
       "status": "pass",
       "tokens": {
         "bodyBg": "rgba(0, 0, 0, 0)",
-        "bodyColor": "rgb(43, 53, 67)",
+        "bodyColor": "rgb(49, 59, 73)",
         "mainBg": "rgba(0, 0, 0, 0)",
         "mainColor": "rgb(24, 34, 49)"
       }
@@ -11521,7 +11472,7 @@
       "status": "pass",
       "tokens": {
         "bodyBg": "rgba(0, 0, 0, 0)",
-        "bodyColor": "rgb(58, 68, 82)",
+        "bodyColor": "rgb(43, 53, 67)",
         "mainBg": "rgba(0, 0, 0, 0)",
         "mainColor": "rgb(24, 34, 49)"
       }
@@ -11543,7 +11494,7 @@
       "status": "pass",
       "tokens": {
         "bodyBg": "rgba(0, 0, 0, 0)",
-        "bodyColor": "rgb(43, 53, 67)",
+        "bodyColor": "rgb(49, 59, 73)",
         "mainBg": "rgba(0, 0, 0, 0)",
         "mainColor": "rgb(24, 34, 49)"
       }

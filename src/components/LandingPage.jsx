@@ -86,7 +86,6 @@ const workbenchActions = [
     target: 'calculators',
     tool: 'sperm-tree',
   },
-  { id: 'atlas', label: '3D атлас', meta: 'модели + hotspots', target: 'atlas' },
 ];
 
 const workbenchLanes = [

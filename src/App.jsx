@@ -20,6 +20,10 @@ import ErrorBoundary from './components/ErrorBoundary';
 import { trackModal } from './utils/analytics';
 import { IconBack, IconHome, IconStar, IconArrowUp } from './icons';
 
+// Module-level memo so the (large) data/index.js metadata module is imported
+// only once across all disease opens, instead of on every navigation.
+let dataModulePromise = null;
+
 function App() {
   const showDebugPanel =
     process.env.NODE_ENV === 'development' && window.location.search.includes('debug=1');
@@ -131,7 +135,12 @@ function App() {
       };
     }
 
-    import('./data')
+    // Memoize the import of data/index.js so repeated disease opens
+    // don't reload the (large) metadata module on every navigation.
+    if (!dataModulePromise) {
+      dataModulePromise = import('./data');
+    }
+    dataModulePromise
       .then(({ getDiseaseById }) => {
         if (!cancelled) {
           setSelectedDisease(getDiseaseById(selectedDiseaseId));

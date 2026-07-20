@@ -13,7 +13,6 @@ const SurgeryPage = lazy(() => import('./SurgeryPage'));
 const MetaphylaxisPage = lazy(() => import('./MetaphylaxisPage'));
 const UroHumorPage = lazy(() => import('./UroHumorPage'));
 const PediatricUrology = lazy(() => import('../sections/PediatricUrology'));
-const Clinical3DAtlas = lazy(() => import('./Clinical3DAtlas'));
 
 const lazySections = {
   urology: {
@@ -93,7 +92,6 @@ export default function SectionRenderer({
   if (activeSection === 'surgery') return renderLazyPage(SurgeryPage, { onNavigate });
   if (activeSection === 'metaphylaxis') return renderLazyPage(MetaphylaxisPage);
   if (activeSection === 'humor') return renderLazyPage(UroHumorPage);
-  if (activeSection === 'atlas') return renderLazyPage(Clinical3DAtlas, { onNavigate });
 
   if (activeSection === 'urology') {
     if (activeSubsection && SUBSECTION_TITLES.urology[activeSubsection]) {

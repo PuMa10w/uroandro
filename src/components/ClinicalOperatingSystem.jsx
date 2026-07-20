@@ -13,7 +13,6 @@ const osActions = [
     target: 'calculators',
     tool: 'sperm-tree',
   },
-  { id: 'atlas', label: '3D', meta: 'clinical atlas', target: 'atlas' },
 ];
 
 function ClinicalOperatingSystem({

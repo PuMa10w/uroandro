@@ -184,14 +184,6 @@ export const IconDrugs = createIcon(
   </>
 );
 
-export const IconAtlas = createIcon(
-  <>
-    <path d="M12 21a9.004 9.004 0 0 0 8.468-5.648c-.5-.187-1.04-.29-1.595-.29H5.127a7.964 7.964 0 0 0-1.595.29A9.004 9.004 0 0 0 12 21Z" />
-    <path d="M12 21a9.004 9.004 0 0 0 8.468-5.648c-.5-.187-1.04-.29-1.595-.29H5.127a7.964 7.964 0 0 0-1.595.29A9.004 9.004 0 0 0 12 21Z" />
-    <circle cx="12" cy="9" r="6" />
-  </>
-);
-
 export const IconSitemap = createIcon(
   <>
     <path d="M2.25 21h19.5m-18-18v18m10.5-18v18M15.75 3h4.5a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-.75.75h-4.5a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 1 .75-.75ZM3.75 12h4.5a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-.75.75h-4.5a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 1 .75-.75ZM12 3h4.5a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-4.5A.75.75 0 0 1 12 3Z" />
@@ -301,7 +293,6 @@ export const iconsIndex = {
   IconSurgery,
   IconCalculators,
   IconDrugs,
-  IconAtlas,
   IconSitemap,
   IconGames,
   IconExternal,

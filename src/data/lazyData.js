@@ -157,6 +157,7 @@ const lazyLoadMap = new Map(
     'renal-tuberculosis': () => import('./renalTuberculosisData.js'),
     'renal-vein-thrombosis': () => import('./renalVeinThrombosisData.js'),
     'retrograde-ejaculation': () => import('./retrogradeEjaculationData.js'),
+    'metastasis-mkd': () => import('./metastasisMkdData.js'),
     'retroperitoneal-fibrosis': () => import('./retroperitonealFibrosisData.js'),
     'sarcoma-prostate': () => import('./sarcomaProstateData.js'),
     'schistosomiasis-gu': () => import('./schistosomiasisGuData.js'),

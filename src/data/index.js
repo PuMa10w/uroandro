@@ -1592,6 +1592,13 @@ export const allDiseases = [
     subsection: 'functional',
     icon: '⚠️',
   },
+  {
+    id: 'metastasis-mkd',
+    name: 'Метафилактика мочекаменной болезни',
+    icd: 'N20-N23',
+    section: 'metaphylaxis',
+    icon: '🥗',
+  },
 ];
 
 // ===== MAP для быстрого поиска по ID =====

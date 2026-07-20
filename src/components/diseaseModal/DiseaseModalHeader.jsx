@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { diseaseIcons } from '../diseaseIcons';
 import { getHeaderTags } from '../../utils/cardMetadata';
 import { sectionNames, subsectionLabels } from '../../data/navigationMeta';
-import ExportDiseaseCard from '../ExportDiseaseCard';
 
 const getLeadText = (disease) => {
   const source = disease.description || disease.quickSummary?.firstLine || disease.definition || '';
@@ -260,7 +259,6 @@ export default function DiseaseModalHeader({
 
       {/* Export actions */}
       <div className="modal-export-actions">
-        <ExportDiseaseCard disease={disease} />
         {disease.subsection === 'functional' && (
           <button
             type="button"

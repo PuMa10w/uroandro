@@ -27,3 +27,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 /.vite
+
+# temp audit scripts & shots
+scripts/_*.mjs
+.shots/

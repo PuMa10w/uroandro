@@ -265,3 +265,70 @@ body.light-mode .premium-clinical-table th {
   pointer-events: none;
   opacity: 0.4;
 }
+
+/* ─── 2026 Typographic refinements ─────────────────────────
+   Modern text-wrapping, optical sizing and fluid rhythm that
+   lift the editorial feel of clinical content without changing
+   layout. Applied globally; safe to layer on top of existing rules. */
+
+:root {
+  font-optical-sizing: auto;
+}
+
+/* Balanced headlines + pretty body — kills orphan/widow ugliness */
+h1, h2, h3, h4, .section-title, .modal-title, .card-title {
+  text-wrap: balance;
+  text-wrap: pretty;
+}
+
+p, li, .section-subtitle, .modal-body p, .modal-body li {
+  text-wrap: pretty;
+}
+
+/* Playfair Display optical sizing for display headings */
+.modal-title,
+.section-title,
+h1,
+h2[data-display] {
+  font-optical-sizing: auto;
+  font-variation-settings: 'opsz' 36;
+}
+
+/* Aurora-gradient display text — premium brand moment for hero titles */
+.aurora-text,
+.hero-title,
+.landing-hero-title,
+.home-workbench-title {
+  background: var(--gradient-aurora-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-wrap: balance;
+}
+
+/* Comfortable measure for long-form clinical reading */
+.modal-body,
+.content-block,
+.section-body {
+  max-width: var(--up-reading-width, 68ch);
+}
+
+/* Respect users who prefer reduced motion (a11y best practice) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible, on-brand focus ring for keyboard users */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--up-focus-ring);
+  border-radius: var(--radius-sm);
+}

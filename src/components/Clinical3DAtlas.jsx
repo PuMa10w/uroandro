@@ -1,9 +1,5 @@
-import React, { useMemo, useState } from 'react';
-import {
-  anatomyModels,
-  clinicalAssistantCards,
-  icdCoverageTargets,
-} from '../data/clinicalAtlasData';
+import React, { useMemo, useState, useEffect } from 'react';
+import LoadingSkeleton from './LoadingSkeleton';
 import '../styles/servicePages.css';
 
 function ClinicalModelFigure({ model, activeHotspot }) {
@@ -26,13 +22,31 @@ function ClinicalModelFigure({ model, activeHotspot }) {
 }
 
 function Clinical3DAtlas({ onNavigate }) {
-  const [activeModelId, setActiveModelId] = useState(anatomyModels[0].modelId);
+  const [atlasData, setAtlasData] = useState(null);
+  useEffect(() => {
+    let cancelled = false;
+    import('../data/clinicalAtlasData').then((m) => {
+      if (!cancelled) setAtlasData(m);
+    });
+    return () => { cancelled = true; };
+  }, []);
+  const [activeModelId, setActiveModelId] = useState(
+    atlasData ? atlasData.anatomyModels[0]?.modelId ?? null : null
+  );
   const [activeHotspots, setActiveHotspots] = useState({});
   const activeModel = useMemo(
-    () => anatomyModels.find((model) => model.modelId === activeModelId) || anatomyModels[0],
-    [activeModelId]
+    () =>
+      atlasData
+        ? atlasData.anatomyModels.find((model) => model.modelId === activeModelId) ||
+          atlasData.anatomyModels[0]
+        : null,
+    [activeModelId, atlasData]
   );
-  const activeHotspot = activeHotspots[activeModel.modelId] || activeModel.hotspots[0]?.id;
+
+  if (!atlasData) {
+    return <LoadingSkeleton label="Загрузка 3D атласа…" />;
+  }
+  const activeHotspot = activeModel ? (activeHotspots[activeModel.modelId] || activeModel.hotspots[0]?.id) : null;
 
   const openModelRoute = (model) => {
     if (!model.route || !onNavigate) return;
@@ -58,12 +72,12 @@ function Clinical3DAtlas({ onNavigate }) {
             <span className="service-mini-kicker">Coverage</span>
             <div className="service-hero-stats">
               <div className="service-hero-stat">
-                <span className="service-hero-stat-value">{anatomyModels.length}</span>
+                <span className="service-hero-stat-value">{atlasData.anatomyModels.length}</span>
                 <span className="service-hero-stat-label">моделей</span>
               </div>
               <div className="service-hero-stat">
                 <span className="service-hero-stat-value">
-                  {anatomyModels.reduce((sum, model) => sum + model.hotspots.length, 0)}
+                  {atlasData.anatomyModels.reduce((sum, model) => sum + model.hotspots.length, 0)}
                 </span>
                 <span className="service-hero-stat-label">hotspots</span>
               </div>
@@ -76,7 +90,7 @@ function Clinical3DAtlas({ onNavigate }) {
           <div className="service-hero-panel">
             <span className="service-mini-kicker">Assistant layer</span>
             <div className="clinical-assistant-stack">
-              {clinicalAssistantCards.map((card) => (
+              {atlasData.clinicalAssistantCards.map((card) => (
                 <article key={card.id} className="clinical-assistant-card">
                   <strong>{card.title}</strong>
                   <p>{card.text}</p>
@@ -89,7 +103,7 @@ function Clinical3DAtlas({ onNavigate }) {
 
       <div className="clinical-atlas-layout">
         <aside className="clinical-atlas-rail" aria-label="Модели атласа">
-          {anatomyModels.map((model) => (
+          {atlasData.anatomyModels.map((model) => (
             <button
               key={model.modelId}
               type="button"
@@ -166,7 +180,7 @@ function Clinical3DAtlas({ onNavigate }) {
           </div>
         </div>
         <div className="icd-coverage-grid">
-          {icdCoverageTargets.map((target) => (
+          {atlasData.icdCoverageTargets.map((target) => (
             <div key={target.range} className={`icd-coverage-card status-${target.status}`}>
               <span>{target.range}</span>
               <strong>{target.label}</strong>

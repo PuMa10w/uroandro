@@ -1,6 +1,14 @@
-import { allDiseases } from './index';
 import { enrichDiseaseGuidelines } from './guidelineEnrichment';
 import { applyClinicalContentEnrichment } from './clinicalContentEnrichment';
+
+// Ленивый доступ к 3.2MB allDiseases — не тянем в критический путь
+let _allDiseasesPromise = null;
+function getAllDiseases() {
+  if (!_allDiseasesPromise) {
+    _allDiseasesPromise = import('./index').then((m) => m.allDiseases);
+  }
+  return _allDiseasesPromise;
+}
 
 const loadedModules = new Map();
 const loadPromises = new Map();
@@ -212,20 +220,22 @@ export function preloadDiseaseData(diseaseId) {
     return Promise.resolve(null);
   }
 
-  const promise = loader()
-    .then((module) => {
-      const diseaseMeta = allDiseases.find((item) => item.id === diseaseId) || {};
-      const data = enrichDiseaseGuidelines(
-        applyClinicalContentEnrichment({
-          ...diseaseMeta,
-          ...module.default,
-          id: diseaseId,
-        })
-      );
-      loadedModules.set(diseaseId, data);
-      loadPromises.delete(diseaseId);
-      return data;
-    })
+  const promise = getAllDiseases()
+    .then((allDiseases) =>
+      loader().then((module) => {
+        const diseaseMeta = allDiseases.find((item) => item.id === diseaseId) || {};
+        const data = enrichDiseaseGuidelines(
+          applyClinicalContentEnrichment({
+            ...diseaseMeta,
+            ...module.default,
+            id: diseaseId,
+          })
+        );
+        loadedModules.set(diseaseId, data);
+        loadPromises.delete(diseaseId);
+        return data;
+      })
+    )
     .catch(() => {
       loadPromises.delete(diseaseId);
       return null;
@@ -236,11 +246,12 @@ export function preloadDiseaseData(diseaseId) {
 }
 
 export function preloadSectionDiseases(section, subsection) {
-  const diseases = allDiseases.filter(
-    (d) => d.section === section && (!subsection || d.subsection === subsection)
-  );
-
-  return Promise.all(diseases.map((d) => preloadDiseaseData(d.id)));
+  return getAllDiseases().then((allDiseases) => {
+    const diseases = allDiseases.filter(
+      (d) => d.section === section && (!subsection || d.subsection === subsection)
+    );
+    return Promise.all(diseases.map((d) => preloadDiseaseData(d.id)));
+  });
 }
 
 export function preloadDiseaseBatch(diseaseIds) {

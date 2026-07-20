@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "updated_at": "2026-07-19T15:43:13.840Z",
+  "updated_at": "2026-07-20T08:28:08.705Z",
   "visual_iPhone_gate_v23": {
     "name": "visual_iPhone_gate_v23",
     "status": "pass",
@@ -175,7 +175,7 @@
             "top": 143,
             "left": 22,
             "right": 298,
-            "bottom": 180,
+            "bottom": 181,
             "width": 277,
             "height": 37
           },
@@ -979,10 +979,10 @@
             "height": 0
           },
           "title": {
-            "top": 129,
+            "top": 132,
             "left": 22,
             "right": 298,
-            "bottom": 204,
+            "bottom": 207,
             "width": 277,
             "height": 75
           },
@@ -1156,10 +1156,10 @@
             "height": 0
           },
           "title": {
-            "top": 129,
+            "top": 132,
             "left": 22,
             "right": 298,
-            "bottom": 278,
+            "bottom": 282,
             "width": 277,
             "height": 150
           },
@@ -1215,10 +1215,10 @@
             "height": 0
           },
           "title": {
-            "top": 129,
+            "top": 132,
             "left": 22,
             "right": 298,
-            "bottom": 241,
+            "bottom": 244,
             "width": 277,
             "height": 112
           },
@@ -1313,7 +1313,7 @@
     }
   ],
   "inheritedV22": {
-    "updated_at": "2026-07-19T15:42:36.316Z",
+    "updated_at": "2026-07-20T08:27:42.300Z",
     "status": "pass",
     "checkedRoutes": 25,
     "checkedViewports": 6

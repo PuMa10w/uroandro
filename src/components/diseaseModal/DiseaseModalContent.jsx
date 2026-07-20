@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 import SafeClinicalMarkup from '../SafeClinicalMarkup';
-import { diseaseById } from '../../data';
 import { buildFollowUpFallback, buildRedFlagsFallback } from '../../data/clinicalFallbacks';
 import { asArray, buildLifestyleFallback } from './normalizeDisease';
 
@@ -882,6 +882,12 @@ export default function DiseaseModalContent({
   onClose,
   onNavigateToDisease,
 }) {
+  const [lazyDiseaseById, setLazyDiseaseById] = useState(null);
+  useEffect(() => {
+    let cancelled = false;
+    import('../../data').then((m) => { if (!cancelled) setLazyDiseaseById(m.diseaseById); });
+    return () => { cancelled = true; };
+  }, []);
   switch (activeTab) {
     case 'overview':
       return (
@@ -932,12 +938,13 @@ export default function DiseaseModalContent({
           {renderWhenToRefer(normalizedDisease)}
           {normalizedDisease.relatedIds &&
             normalizedDisease.relatedIds.length > 0 &&
-            onNavigateToDisease && (
+            onNavigateToDisease &&
+            lazyDiseaseById && (
               <>
                 <h3>Связанные нозологии</h3>
                 <div className="related-diseases">
                   {normalizedDisease.relatedIds.map((rid, i) => {
-                    const relatedDisease = diseaseById[rid];
+                    const relatedDisease = lazyDiseaseById && lazyDiseaseById[rid];
                     if (!relatedDisease) return null;
                     return (
                       <button

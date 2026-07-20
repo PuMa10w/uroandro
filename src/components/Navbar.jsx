@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react'
 import PropTypes from 'prop-types';
 import { useDarkMode, useSearchHistory } from '../hooks/useLocalStorage';
 import { trackSearch, trackSearchSelect, trackSymptomRoute } from '../utils/analytics';
-import { searchDiseases } from '../data';
 import {
   IconSearch,
   IconMoon,
@@ -506,21 +505,22 @@ const Navbar = ({
 
     setSearchLoading(true);
 
-    // Используем статический импорт searchDiseases (работает с моками в тестах)
-    const results = searchDiseases(debouncedQuery) || [];
+    // Ленивый импорт данных — выносим 2MB data-urology из критического пути
+    import('../data')
+      .then((dataModule) => {
+        if (cancelled) return;
+        const results = dataModule.searchDiseases(debouncedQuery) || [];
 
-    // Трекинг поиска (синхронно, до асинхронной загрузки препаратов)
-    trackSearch(debouncedQuery, results.length);
+        // Трекинг поиска
+        trackSearch(debouncedQuery, results.length);
 
-    // Устанавливаем результаты болезней сразу (синхронно)
-    const diseaseResults = results.slice(0, 15);
-    setSearchResults(diseaseResults);
-    setSearchLoading(false);
+        const diseaseResults = results.slice(0, 15);
+        setSearchResults(diseaseResults);
+        setSearchLoading(false);
 
-    // Поиск по препаратам (динамический импорт для code splitting)
-    import('../data/drugReferenceData.js')
-      .then((drugModule) => {
-        if (!cancelled) {
+        // Поиск по препаратам (динамический импорт)
+        return import('../data/drugReferenceData.js').then((drugModule) => {
+          if (cancelled) return;
           const drugList = drugModule.drugList || [];
           const matchedDrugs = drugList
             .filter((drug) => {
@@ -539,7 +539,7 @@ const Navbar = ({
               icd: drug.className || '',
               section: 'drugs',
               subsection: null,
-              icon: '💊',
+              icon: '',
               isDrug: true,
               drugAliases: drug.aliases || [],
               drugIndications: drug.indications || '',
@@ -547,12 +547,10 @@ const Navbar = ({
 
           const combinedResults = [...diseaseResults, ...matchedDrugs];
           setSearchResults(combinedResults);
-        }
+        });
       })
       .catch(() => {
-        if (!cancelled) {
-          // Если загрузка препаратов упала — результаты болезней уже есть
-        }
+        if (!cancelled) setSearchLoading(false);
       });
 
     return () => {

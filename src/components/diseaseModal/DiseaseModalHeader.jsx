@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { diseaseIcons } from '../diseaseIcons';
 import { getHeaderTags } from '../../utils/cardMetadata';
-import { sectionNames, subsectionLabels } from '../../data';
+import { sectionNames, subsectionLabels } from '../../data/navigationMeta';
 import ExportDiseaseCard from '../ExportDiseaseCard';
 
 const getLeadText = (disease) => {

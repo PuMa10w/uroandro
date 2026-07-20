@@ -10,7 +10,6 @@ import { getDiseaseModalTabs, DEFAULT_TAB } from './diseaseModal/tabs';
 import DiseaseModalHeader from './diseaseModal/DiseaseModalHeader';
 import DiseaseModalTabs from './diseaseModal/DiseaseModalTabs';
 import DiseaseModalContent from './diseaseModal/DiseaseModalContent';
-import { preloadDiseaseBatch } from '../data/lazyData';
 
 const DRAG_CLOSE_THRESHOLD = 96;
 const IPHONE_SHELL_MAX_WIDTH = 940;
@@ -164,7 +163,9 @@ const DiseaseModal = ({
       adjacentIds.push(allDiseases[currentIndex + 1]?.id);
     }
 
-    preloadDiseaseBatch(adjacentIds);
+    import('../data/lazyData').then((m) => {
+      m.preloadDiseaseBatch(adjacentIds);
+    });
   }, [allDiseases, currentIndex]);
 
   useEffect(() => {

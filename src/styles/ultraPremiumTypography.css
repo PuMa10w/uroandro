@@ -1,0 +1,236 @@
+/* ============================================================
+   ULTRA-PREMIUM TYPOGRAPHY LAYER (2026)
+   Centralised, additive. Elevates typographic rhythm across
+   EVERY page via fluid scales, feature settings and editorial
+   detail. Safe: only refines existing tokens, never relayouts.
+   Imported AFTER medicalTypography.css in App.jsx.
+   ============================================================ */
+
+:root {
+  /* Fluid display scale — replaces fixed 36/48px section titles.
+     Scales smoothly from 360px phones to 4K without breakpoints. */
+  --fs-eyebrow: clamp(0.7rem, 0.68rem + 0.1vw, 0.78rem);
+  --fs-h6: clamp(0.82rem, 0.8rem + 0.1vw, 0.9rem);
+  --fs-h5: clamp(0.95rem, 0.9rem + 0.25vw, 1.08rem);
+  --fs-h4: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --fs-h3: clamp(1.35rem, 1.2rem + 0.9vw, 1.85rem);
+  --fs-h2: clamp(1.7rem, 1.4rem + 1.6vw, 2.7rem);
+  --fs-h1: clamp(2.3rem, 1.6rem + 3.4vw, 4.6rem);
+  --fs-section: clamp(1.85rem, 1.45rem + 2vw, 3.1rem);
+  --fs-hero: clamp(2.6rem, 1.4rem + 5.6vw, 5.6rem);
+
+  /* Editorial measure + rhythm tokens */
+  --measure-prose: 66ch;
+  --leading-tight: 1.08;
+  --leading-snug: 1.25;
+  --leading-body: 1.72;
+  --tracking-display: -0.025em;
+  --tracking-tight: -0.015em;
+  --tracking-label: 0.14em;
+}
+
+/* ─── Font feature settings: premium text rendering ───────
+   Manrope / Playfair optical & stylistic sets, tabular nums
+   for clinical figures, old-style-friendly spacing. */
+html {
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'ss01' 1, 'cv11' 1;
+  font-variant-ligatures: common-ligatures contextual;
+  -webkit-font-kerning: normal;
+  font-kerning: normal;
+}
+
+/* Numeric tabular alignment for clinical data, doses, stats */
+.temperature,
+.dose,
+.stat-value,
+.badge,
+.kpi,
+[data-numeric],
+.tabular,
+.modal-body td:not(:first-child),
+.premium-clinical-table td:not(:first-child),
+.calculator-result,
+.sperm-tree-node {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: 'tnum' 1, 'lnum' 1;
+}
+
+/* ─── Fluid heading hierarchy ───────────────────────────── */
+h1 {
+  font-size: var(--fs-h1);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+}
+h2 {
+  font-size: var(--fs-h2);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+}
+h3 {
+  font-size: var(--fs-h3);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+}
+h4 {
+  font-size: var(--fs-h4);
+  line-height: 1.35;
+}
+h5 {
+  font-size: var(--fs-h5);
+}
+h6 {
+  font-size: var(--fs-h6);
+  letter-spacing: var(--tracking-label);
+}
+
+/* Section / page titles go fluid (override the 36–48px locks
+   that were equal on every viewport). */
+.section-title,
+.page-title,
+.disease-section-title {
+  font-size: var(--fs-section);
+  line-height: 1.04;
+  letter-spacing: var(--tracking-tight);
+}
+.home-workbench-title,
+.landing-hero-title,
+.hero-title,
+.aurora-text {
+  font-size: var(--fs-hero);
+  line-height: 0.98;
+  letter-spacing: var(--tracking-display);
+}
+
+/* ─── Eyebrow / kicker — already styled, tighten scale ─── */
+.eyebrow,
+.section-eyebrow,
+.page-eyebrow,
+.home-panel-kicker,
+.card-kicker,
+.destination-kicker,
+.service-eyebrow {
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-label);
+}
+
+/* ─── Body rhythm — comfortable clinical reading ───────── */
+p {
+  line-height: var(--leading-body);
+  text-wrap: pretty;
+}
+.content-block p,
+.modal-body p,
+.service-page-shell p {
+  max-width: var(--measure-prose);
+}
+
+/* Vertical paragraph rhythm (no double margins) */
+.content-block > p + p,
+.modal-body > p + p,
+.section-body > p + p {
+  margin-top: 1.05rem;
+}
+
+/* Hanging punctuation for editorial polish */
+.content-block,
+.modal-body,
+.section-body {
+  hanging-punctuation: first last;
+}
+
+/* ─── Editorial drop cap on the lead paragraph ───────────
+   Premium long-form touch: first letter of the opening
+   clinical paragraph becomes a large gradient initial. */
+.modal-body .content-block > p:first-of-type::first-letter,
+.content-block > p.lead:first-of-type::first-letter,
+.modal-tabpanel > p:first-of-type::first-letter {
+  initial-letter: 3;
+  -webkit-initial-letter: 3;
+  font-family: var(--font-display);
+  font-weight: 700;
+  float: left;
+  line-height: 0.72;
+  padding: 0.06em 0.12em 0 0;
+  margin-right: 0.04em;
+  background: var(--gradient-aurora-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Fallback for browsers without initial-letter support */
+@supports not ((initial-letter: 3) or (-webkit-initial-letter: 3)) {
+  .modal-body .content-block > p:first-of-type::first-letter,
+  .content-block > p.lead:first-of-type::first-letter,
+  .modal-tabpanel > p:first-of-type::first-letter {
+    font-size: 3.1em;
+    line-height: 0.8;
+    float: left;
+    padding: 0.02em 0.1em 0 0;
+    margin-top: 0.04em;
+  }
+}
+
+/* ─── Gradient-underline links inside clinical content ─── */
+.content-block a:not(.btn):not(.badge),
+.modal-body a:not(.btn):not(.badge),
+.service-page-shell a:not(.btn):not(.badge) {
+  color: var(--teal-300);
+  text-decoration: none;
+  background-image: linear-gradient(90deg, currentColor, currentColor);
+  background-size: 0% 1.5px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size var(--transition-base), color var(--transition-fast);
+  padding-bottom: 1px;
+}
+.content-block a:not(.btn):not(.badge):hover,
+.modal-body a:not(.btn):not(.badge):hover,
+.service-page-shell a:not(.btn):not(.badge):hover {
+  background-size: 100% 1.5px;
+  color: var(--gold-300);
+}
+
+/* ─── Strong / emphasis polish ─────────────────────────── */
+strong,
+b {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.modal-body strong,
+.content-block strong {
+  color: var(--text-primary);
+}
+
+/* ─── Blockquote / callout typography ──────────────────── */
+blockquote,
+.callout,
+.clinical-callout {
+  border-left: 2px solid var(--teal-300);
+  padding-left: 1.1rem;
+  margin: 1.2rem 0;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+/* ─── Anchor scroll offset (sticky nav safe) ───────────── */
+:target {
+  scroll-margin-top: calc(var(--sat) + 6rem);
+}
+
+/* ─── Small-caps for clinical abbreviations already set ──
+   Just tighten the optical weight so it reads premium. */
+abbr[title] {
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+  cursor: help;
+}
+
+/* ─── Reduced motion: no drift on type ─────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .content-block a:not(.btn):not(.badge),
+  .modal-body a:not(.btn):not(.badge) {
+    transition: none;
+  }
+}

@@ -32,6 +32,42 @@ body.light-mode .home-shell::before {
   .home-shell::before { animation: none; }
 }
 
+/* ─── Mesh-gradient blobs (2026 liquid-glass trend) ──────
+   Several large, slowly drifting colour fields layered behind
+   the ambient wash. Adds organic, "alive" depth without JS.
+   Sits below ::before (z-index -2) and never intercepts input. */
+.home-shell::after {
+  content: '';
+  position: fixed;
+  inset: -25%;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(34% 30% at 22% 28%, rgba(77, 227, 194, 0.16), transparent 60%),
+    radial-gradient(30% 26% at 78% 22%, rgba(139, 124, 246, 0.14), transparent 58%),
+    radial-gradient(36% 30% at 60% 78%, rgba(242, 200, 121, 0.12), transparent 62%),
+    radial-gradient(28% 24% at 38% 62%, rgba(77, 227, 194, 0.10), transparent 56%);
+  filter: blur(40px) saturate(135%);
+  animation: meshDrift 38s var(--ease-out-expo) infinite alternate;
+  will-change: transform;
+}
+@keyframes meshDrift {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+  33%  { transform: translate3d(3%, -2.5%, 0) rotate(2deg) scale(1.05); }
+  66%  { transform: translate3d(-2.5%, 2%, 0) rotate(-1.5deg) scale(1.03); }
+  100% { transform: translate3d(2%, 3%, 0) rotate(1deg) scale(1.07); }
+}
+body.light-mode .home-shell::after {
+  background:
+    radial-gradient(34% 30% at 22% 28%, rgba(13, 148, 136, 0.10), transparent 60%),
+    radial-gradient(30% 26% at 78% 22%, rgba(109, 90, 224, 0.08), transparent 58%),
+    radial-gradient(36% 30% at 60% 78%, rgba(201, 138, 45, 0.07), transparent 62%),
+    radial-gradient(28% 24% at 38% 62%, rgba(13, 148, 136, 0.06), transparent 56%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-shell::after { animation: none; }
+}
+
 /* ─── Hero typography ───────────────────────────────────── */
 .home-workbench-title {
   font-family: var(--font-display);

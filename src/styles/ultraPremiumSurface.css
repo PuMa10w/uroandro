@@ -1,0 +1,177 @@
+/* ============================================================
+   ULTRA-PREMIUM SURFACE LAYER (2026)
+   Refined glass edges + hover elevation. Builds on
+   ultraPremiumEnhance.css (which owns the aurora-border ring on
+   ::after) — we do NOT redeclare ::after here so the brand edge
+   survives. Instead we add a top hairline highlight and elevate
+   the hover state with a live glow + brightness lift.
+   Additive, reduced-motion & touch guarded.
+   ============================================================ */
+
+/* ─── Shared card surface prep ─────────────────────────── */
+.subsection-card,
+.premium-card,
+.service-card,
+.disease-card,
+.tool-section,
+.calculator-card,
+.drug-card,
+.theme-card,
+.guideline-card,
+.home-destination-card,
+.meta-rule-card,
+.meta-diet-card,
+.sitemap-item,
+.favorite-card,
+.emergency-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base),
+    background var(--transition-base),
+    filter var(--transition-base);
+  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Top hairline highlight — premium glass edge (does not touch
+   the ::after aurora border owned by ultraPremiumEnhance). */
+.subsection-card::before,
+.premium-card::before,
+.service-card::before,
+.disease-card::before,
+.tool-section::before,
+.calculator-card::before,
+.drug-card::before,
+.theme-card::before,
+.guideline-card::before,
+.home-destination-card::before,
+.meta-rule-card::before,
+.meta-diet-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), transparent 22%);
+  opacity: 0.7;
+}
+
+/* Elevate on hover — deeper lift + brand glow (aurora border
+   ring from ultraPremiumEnhance stays; we add a live sheen via
+   brightness + stronger glow). */
+.subsection-card:hover,
+.premium-card:hover,
+.service-card:hover,
+.disease-card:hover,
+.tool-section:hover,
+.calculator-card:hover,
+.drug-card:hover,
+.theme-card:hover,
+.guideline-card:hover,
+.home-destination-card:hover,
+.meta-rule-card:hover,
+.meta-diet-card:hover,
+.sitemap-item:hover,
+.favorite-card:hover,
+.emergency-card:hover {
+  transform: translateY(-5px);
+  filter: brightness(1.04);
+  box-shadow:
+    var(--shadow-card-hover),
+    var(--glow-teal),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border-color: transparent;
+}
+
+/* Keep interactive content above the hairline layer */
+.subsection-card > *,
+.premium-card > *,
+.service-card > *,
+.disease-card > *,
+.tool-section > *,
+.calculator-card > *,
+.drug-card > *,
+.theme-card > *,
+.guideline-card > *,
+.home-destination-card > *,
+.meta-rule-card > *,
+.meta-diet-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── Refined glass panels (modals, sheets, toolbars) ──── */
+.glass-premium,
+.modal-glass,
+.nav-dropdown,
+.hero-search-results {
+  background-image:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.05), transparent 40%),
+    var(--glass-premium-bg, rgba(9, 20, 36, 0.88));
+}
+
+/* ─── Touch devices: kill transforms, keep tint ────────── */
+@media (hover: none) and (pointer: coarse) {
+  .subsection-card:hover,
+  .premium-card:hover,
+  .service-card:hover,
+  .disease-card:hover,
+  .tool-section:hover,
+  .calculator-card:hover,
+  .drug-card:hover,
+  .theme-card:hover,
+  .guideline-card:hover,
+  .home-destination-card:hover,
+  .meta-rule-card:hover,
+  .meta-diet-card:hover {
+    transform: none;
+    filter: none;
+  }
+  .subsection-card:active,
+  .premium-card:active,
+  .service-card:active,
+  .disease-card:active,
+  .tool-section:active,
+  .calculator-card:active,
+  .drug-card:active,
+  .theme-card:active {
+    transform: scale(0.985);
+    transition: transform 0.1s ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subsection-card,
+  .premium-card,
+  .service-card,
+  .disease-card,
+  .tool-section,
+  .calculator-card,
+  .drug-card,
+  .theme-card,
+  .guideline-card,
+  .home-destination-card,
+  .meta-rule-card,
+  .meta-diet-card {
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .subsection-card:hover,
+  .premium-card:hover,
+  .service-card:hover,
+  .disease-card:hover,
+  .tool-section:hover,
+  .calculator-card:hover,
+  .drug-card:hover,
+  .theme-card:hover,
+  .guideline-card:hover,
+  .home-destination-card:hover,
+  .meta-rule-card:hover,
+  .meta-diet-card:hover {
+    transform: none;
+    filter: none;
+  }
+}

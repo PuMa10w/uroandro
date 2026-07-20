@@ -280,7 +280,7 @@ describe('DiseaseModal', () => {
     expect(onNavigate).toHaveBeenCalledWith(-1);
   });
 
-  it('prefetches adjacent diseases on open', () => {
+  it('prefetches adjacent diseases on open', async () => {
     render(
       <DiseaseModal
         disease={baseDisease}
@@ -296,7 +296,9 @@ describe('DiseaseModal', () => {
       />
     );
 
-    expect(mockPreloadDiseaseBatch).toHaveBeenCalledWith(['prev', 'next']);
+    await waitFor(() => {
+      expect(mockPreloadDiseaseBatch).toHaveBeenCalledWith(['prev', 'next']);
+    });
   });
 
   it('locks body scroll while modal is mounted', () => {

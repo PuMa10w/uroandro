@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-31T17:19:33.067Z",
-  "totalDiseases": 184,
-  "qualityReady": 184,
+  "generatedAt": "2026-07-20T18:04:30.453Z",
+  "totalDiseases": 187,
+  "qualityReady": 186,
   "highPriorityGaps": 0,
-  "needsEditorialPass": 0,
+  "needsEditorialPass": 1,
   "waveAOpen": 0,
   "waveBOpen": 0,
-  "waveCOpen": 0,
+  "waveCOpen": 1,
   "missingBlockCounts": {
     "diagnostic_algorithm": 0,
     "differential_depth": 0,

@@ -35,6 +35,7 @@ andrology,sexual,chronic-bacterial-prostatitis,Хронический бакте
 andrology,sexual,chronic-prostatitis-cpps,Хронический простатит / СХТБ,N41.1,chronicProstatitisCPPSData.js,B,,traceable,quality-ready,content-lead,2026-05-29
 andrology,sexual,funiculitis,Фуникулит,N49.2,funiculitisData.js,B,,traceable,quality-ready,content-lead,2026-05-29
 andrology,sexual,peyronie,Болезнь Пейрони,N48.6,peyronieData.js,B,,traceable,quality-ready,content-lead,2026-05-29
+metaphylaxis,,metastasis-mkd,Метафилактика мочекаменной болезни,N20-N23,metastasisMkdData.js,B,,traceable,quality-ready,content-lead,2026-05-29
 pediatric,,hydrocele,Гидроцеле,N43,hydroceleData.js,B,,traceable,quality-ready,content-lead,2026-05-29
 pediatric,,hypospadias,Гипоспадия,Q54,hypospadiasData.js,B,,traceable,quality-ready,content-lead,2026-05-29
 pediatric,,phimosis,Фимоз,N47,phimosisData.js,B,,traceable,quality-ready,content-lead,2026-05-29
@@ -114,6 +115,7 @@ andrology,sexual,testicular-atrophy,Атрофия яичка,N50.0,testicularAt
 pediatric,,enuresis,Энурез (ночное недержание),F98.0,enuresisData.js,C,,traceable,quality-ready,content-lead,2026-06-12
 pediatric,,spermatocele,Сперматоцеле,N50.3,spermatoceleData.js,C,,traceable,quality-ready,content-lead,2026-06-12
 urology,functional,bladder-outlet-obstruction,Обструкция выхода мочевого пузыря,N32.0,bladderOutletObstructionData.js,C,,traceable,quality-ready,content-lead,2026-06-12
+urology,functional,catheter-complication-mechanical,Механическое осложнение катетера,T83.5,catheterComplicationData.js,C,,traceable,quality-ready,content-lead,2026-06-12
 urology,functional,nocturia,Ноктурия,R35.1,nocturiaData.js,C,,traceable,quality-ready,content-lead,2026-06-12
 urology,functional,pollakiuria,Поллакиурия,R35.0,pollakiuriaData.js,C,,traceable,quality-ready,content-lead,2026-06-12
 urology,functional,seminal-vesicle-disease,Заболевания семенных пузырьков,N50.0,seminalVesicleData.js,C,,traceable,quality-ready,content-lead,2026-06-12
@@ -148,6 +150,7 @@ urology,nephrology,nephroptosis,Нефроптоз,N28.8,nephroptosisData.js,C,,
 urology,nephrology,nephrotic-syndrome,Нефротический синдром,N04,nephroticSyndromeData.js,C,,traceable,quality-ready,content-lead,2026-06-12
 urology,nephrology,papillary-necrosis,Папиллярный некроз,N17.0,papillaryNecrosisData.js,C,,traceable,quality-ready,content-lead,2026-06-12
 urology,nephrology,polycystic-kidney,Поликистозная болезнь почек,Q61.2,polycysticKidneyData.js,C,,traceable,quality-ready,content-lead,2026-06-12
+urology,nephrology,post-traumatic-renal-changes,Посттравматические изменения почечной ткани,N16,,C,module_file,traceable,needs-editorial-pass,content-lead,2026-06-12
 urology,nephrology,renal-abscess,Абсцесс почки,N15.1,renalAbscessData.js,C,,traceable,quality-ready,content-lead,2026-06-12
 urology,nephrology,renal-angiomyolipoma,Ангиомиолипома почки,D30.0,renalAngiomyolipomaData.js,C,,traceable,quality-ready,content-lead,2026-06-12
 urology,nephrology,renal-artery-stenosis,Стеноз почечной артерии,I70.1,renalArteryStenosisData.js,C,,traceable,quality-ready,content-lead,2026-06-12

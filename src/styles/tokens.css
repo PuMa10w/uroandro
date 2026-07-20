@@ -80,6 +80,19 @@
   --radius-2xl: 22px;
   --radius-full: 999px;
 
+  /* ===== Z-index scale (was referenced via var(--z-*) in 50+ places
+     but NEVER defined → resolved to `auto`, which broke the floating
+     navbar's stacking so the page-content overlay intercepted clicks
+     on the "Ещё разделы"/"Инструменты" dropdowns). Now fixed. */
+  --z-base: 1;
+  --z-sticky: 100;
+  --z-fixed: 1000;       /* floating navbar, bottom-nav, mobile-shell-nav */
+  --z-dropdown: 1100;    /* navbar dropdown menus */
+  --z-search: 1150;      /* search dialog */
+  --z-modal: 1200;       /* disease / generic modal */
+  --z-toast: 1400;       /* toasts, scroll-top */
+  --z-tooltip: 1500;     /* tooltips, debug panel */
+
   /* ===== Typographic scale (single source of truth) =====
      Previously referenced via var(--font-*) in 50+ places but
      NEVER defined → browser fell back to default 16px. Now fixed. */

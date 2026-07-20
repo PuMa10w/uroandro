@@ -1159,6 +1159,7 @@ function ToolsSectionExport({ showDrugs, showGlossary, onNavigate }) {
     >
       <div className="premium-tools-hero">
         <span className="service-eyebrow">Clinical questionnaires</span>
+        <h2 className="section-title">Опросники</h2>
         <p>
           Премиум-таблицы для быстрого заполнения, мгновенного подсчёта и понятного результата по
           урологии и андрологии.

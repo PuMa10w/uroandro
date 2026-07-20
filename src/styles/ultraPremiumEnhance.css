@@ -149,3 +149,82 @@
     transform: none;
   }
 }
+
+/* ─── Matter depth: page-level aurora wash ────────────────
+   Adds a subtle radial aurora wash behind page content so the
+   dark surface feels layered rather than flat black. Purely
+   cosmetic — sits at z-0, never intercepts pointer. */
+[role="region"],
+main > section,
+.service-page-shell {
+  position: relative;
+}
+[role="region"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(77, 227, 194, 0.05), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 85% 30%, rgba(139, 124, 246, 0.04), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 15% 70%, rgba(242, 200, 121, 0.03), transparent 70%);
+}
+[role="region"] > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Icon micro-interaction on subsection cards ─────────── */
+.subsection-card .subsection-icon,
+.subsection-card [class*="icon"] {
+  transition: transform var(--transition-base);
+  display: inline-block;
+}
+.subsection-card:hover .subsection-icon,
+.subsection-card:hover [class*="icon"] {
+  transform: scale(1.12) rotate(-2deg);
+}
+
+/* ─── Aurora text drop-shadow for legibility ──────────────
+   Aurora-clip text can look thin on light theme; a faint
+   drop-shadow keeps it readable without breaking the gradient. */
+.section-title,
+.page-title {
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
+}
+body.light-mode .section-title,
+body.light-mode .page-title {
+  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.3));
+}
+
+/* ─── Premium prose rhythm in modal clinical content ──────
+   Slightly larger lead, tighter measure, hanging lists. */
+.modal-body p + p {
+  margin-top: 0.9rem;
+}
+.modal-body ul,
+.modal-body ol {
+  padding-left: 0;
+  list-style-position: hanging;
+}
+.modal-body li::marker {
+  color: var(--teal-300);
+}
+
+/* ─── Subtle table polish (differential dx tables) ───────── */
+.premium-clinical-table {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.premium-clinical-table th {
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: var(--font-xs);
+}
+.premium-clinical-table tr {
+  transition: background var(--transition-fast);
+}
+.premium-clinical-table tbody tr:hover {
+  background: rgba(77, 227, 194, 0.04);
+}

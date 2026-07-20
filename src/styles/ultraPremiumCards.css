@@ -1,0 +1,45 @@
+/* ============================================================
+   ULTRA-PREMIUM CARDS — unify interior cards with home
+   Thin static gradient border on interior cards so they read
+   as part of the same design family as the home destination
+   cards. Builds on ultraPremiumSurface.css hover (aurora ring
+   from ultraPremiumEnhance stays). No !important, additive.
+   Imported AFTER ultraPremiumSurface.css in App.jsx.
+   ============================================================ */
+
+.subsection-card,
+.disease-card,
+.tool-section,
+.calculator-card,
+.meta-rule-card,
+.meta-diet-card,
+.favorite-card,
+.emergency-card,
+.sitemap-item,
+.sitemap-service-item {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bg-card-solid, #0d1626), var(--bg-card-solid, #0d1626)) padding-box,
+    linear-gradient(135deg, rgba(77, 227, 194, 0.18), rgba(139, 124, 246, 0.10) 50%, rgba(242, 200, 121, 0.16)) border-box;
+}
+
+body.light-mode .subsection-card,
+body.light-mode .disease-card,
+body.light-mode .tool-section,
+body.light-mode .calculator-card,
+body.light-mode .meta-rule-card,
+body.light-mode .meta-diet-card,
+body.light-mode .favorite-card,
+body.light-mode .emergency-card,
+body.light-mode .sitemap-item,
+body.light-mode .sitemap-service-item {
+  background:
+    linear-gradient(#ffffff, #fbfdff) padding-box,
+    linear-gradient(135deg, rgba(13, 148, 136, 0.28), rgba(109, 90, 224, 0.12) 50%, rgba(201, 138, 45, 0.24)) border-box;
+}
+
+/* Keep the subsection icon / title optically centered */
+.subsection-card .subsection-icon {
+  font-size: 2rem;
+  line-height: 1;
+}

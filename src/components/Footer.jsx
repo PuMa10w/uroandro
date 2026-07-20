@@ -59,6 +59,16 @@ const Footer = ({ onNavigate, activeSection }) => {
           Российские рекомендации
         </a>
       </div>
+      <div className="footer-guideline-badges" aria-label="Источники рекомендаций">
+        <span className="footer-guideline-badge">EAU</span>
+        <span className="footer-guideline-badge">AUA</span>
+        <span className="footer-guideline-badge">РКР</span>
+        <span className="footer-guideline-badge">NICE</span>
+      </div>
+      <p className="footer-disclaimer">
+        Информация носит справочный характер и основана на клинических рекомендациях EAU, AUA,
+        РКР. Не заменяет очную консультацию специалиста.
+      </p>
       <p className="footer-copyright">
         © 2026 UroMed by PuMa10w — Справочник по доказательной медицине
       </p>

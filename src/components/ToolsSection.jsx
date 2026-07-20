@@ -895,6 +895,7 @@ const glossaryTerms = [
 function DrugReference() {
   const [search, setSearch] = useState('');
   const [activeRisk, setActiveRisk] = useState('all');
+  const [expanded, setExpanded] = useState(null); // null = only first group open by default
 
   const grouped = useMemo(() => {
     const map = premiumDrugList.reduce((acc, item) => {
@@ -1025,80 +1026,93 @@ function DrugReference() {
       </div>
 
       {Object.keys(filteredGroups).length > 0 ? (
-        Object.entries(filteredGroups).map(([group, items]) => (
-          <div key={group} className="drug-group">
-            <div className="drug-group-title">
-              {group} <span className="drug-group-count">{items.length}</span>
-            </div>
-            <div className="drug-list">
-              {items.map((drug) => (
-                <div
-                  key={drug.name}
-                  className="drug-card"
-                  data-clinical-task={getDrugClinicalTask(drug)}
-                  data-monitoring-priority={getDrugMonitoringPriority(drug)}
-                >
-                  <div className="drug-card-topline">
-                    <div>
-                      <h3 className="drug-card-name">{drug.name}</h3>
-                      <div className="drug-card-group">{drug.className || drug.group}</div>
+        Object.entries(filteredGroups).map(([group, items], gi) => {
+          const isOpen = expanded === null ? gi === 0 : expanded === group;
+          return (
+            <div key={group} className={`drug-group ${isOpen ? 'is-open' : ''}`}>
+              <button
+                type="button"
+                className="drug-group-title"
+                aria-expanded={isOpen}
+                onClick={() =>
+                  setExpanded((prev) => (prev === group ? null : group))
+                }
+              >
+                {group} <span className="drug-group-count">{items.length}</span>
+                <span className="drug-group-chevron" aria-hidden="true">▾</span>
+              </button>
+              {isOpen && (
+                <div className="drug-list">
+                  {items.map((drug) => (
+                    <div
+                      key={drug.name}
+                      className="drug-card"
+                      data-clinical-task={getDrugClinicalTask(drug)}
+                      data-monitoring-priority={getDrugMonitoringPriority(drug)}
+                    >
+                      <div className="drug-card-topline">
+                        <div>
+                          <h3 className="drug-card-name">{drug.name}</h3>
+                          <div className="drug-card-group">{drug.className || drug.group}</div>
+                        </div>
+                        <span className="drug-class-badge">{drug.group}</span>
+                      </div>
+                      {drug.tags?.length > 0 && (
+                        <div className="drug-tag-row">
+                          {drug.tags.slice(0, 5).map((tag) => (
+                            <span key={tag} className="drug-tag">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      <div className="drug-card-details">
+                        <div className="drug-detail">
+                          <span className="drug-detail-label">Режим / ориентир</span>
+                          <div className="drug-detail-value">{drug.dose}</div>
+                        </div>
+                        <div className="drug-detail">
+                          <span className="drug-detail-label">Показания</span>
+                          <div className="drug-detail-value">{drug.indications}</div>
+                        </div>
+                        <div className="drug-detail positive">
+                          <span className="drug-detail-label">Положительная фармакодинамика</span>
+                          <div className="drug-detail-value">{drug.positivePharmacodynamics}</div>
+                        </div>
+                        <div className="drug-detail negative">
+                          <span className="drug-detail-label">
+                            Риски / отрицательная фармакодинамика
+                          </span>
+                          <div className="drug-detail-value">{drug.negativePharmacodynamics}</div>
+                        </div>
+                        <div className="drug-detail">
+                          <span className="drug-detail-label">Мониторинг</span>
+                          <div className="drug-detail-value">{drug.monitoring}</div>
+                        </div>
+                        <div className="drug-detail">
+                          <span className="drug-detail-label">ХБП / renal-dose</span>
+                          <div className="drug-detail-value">{drug.ckdAdjustment}</div>
+                        </div>
+                        <div className="drug-detail">
+                          <span className="drug-detail-label">Фертильность</span>
+                          <div className="drug-detail-value">{drug.fertilityImpact}</div>
+                        </div>
+                        <div className="drug-detail">
+                          <span className="drug-detail-label">Взаимодействия</span>
+                          <div className="drug-detail-value">{drug.interactions}</div>
+                        </div>
+                        <div className="drug-detail">
+                          <span className="drug-detail-label">Ограничения</span>
+                          <div className="drug-detail-value">{drug.contraindications}</div>
+                        </div>
+                      </div>
                     </div>
-                    <span className="drug-class-badge">{drug.group}</span>
-                  </div>
-                  {drug.tags?.length > 0 && (
-                    <div className="drug-tag-row">
-                      {drug.tags.slice(0, 5).map((tag) => (
-                        <span key={tag} className="drug-tag">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                  <div className="drug-card-details">
-                    <div className="drug-detail">
-                      <span className="drug-detail-label">Режим / ориентир</span>
-                      <div className="drug-detail-value">{drug.dose}</div>
-                    </div>
-                    <div className="drug-detail">
-                      <span className="drug-detail-label">Показания</span>
-                      <div className="drug-detail-value">{drug.indications}</div>
-                    </div>
-                    <div className="drug-detail positive">
-                      <span className="drug-detail-label">Положительная фармакодинамика</span>
-                      <div className="drug-detail-value">{drug.positivePharmacodynamics}</div>
-                    </div>
-                    <div className="drug-detail negative">
-                      <span className="drug-detail-label">
-                        Риски / отрицательная фармакодинамика
-                      </span>
-                      <div className="drug-detail-value">{drug.negativePharmacodynamics}</div>
-                    </div>
-                    <div className="drug-detail">
-                      <span className="drug-detail-label">Мониторинг</span>
-                      <div className="drug-detail-value">{drug.monitoring}</div>
-                    </div>
-                    <div className="drug-detail">
-                      <span className="drug-detail-label">ХБП / renal-dose</span>
-                      <div className="drug-detail-value">{drug.ckdAdjustment}</div>
-                    </div>
-                    <div className="drug-detail">
-                      <span className="drug-detail-label">Фертильность</span>
-                      <div className="drug-detail-value">{drug.fertilityImpact}</div>
-                    </div>
-                    <div className="drug-detail">
-                      <span className="drug-detail-label">Взаимодействия</span>
-                      <div className="drug-detail-value">{drug.interactions}</div>
-                    </div>
-                    <div className="drug-detail">
-                      <span className="drug-detail-label">Ограничения</span>
-                      <div className="drug-detail-value">{drug.contraindications}</div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
-              ))}
+              )}
             </div>
-          </div>
-        ))
+          );
+        })
       ) : (
         <p className="service-empty-state">
           Ничего не найдено. Попробуйте искать по эффекту: «эрекция», «QT», «камни», «задержка

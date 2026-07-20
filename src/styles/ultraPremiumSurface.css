@@ -114,7 +114,80 @@
     var(--glass-premium-bg, rgba(9, 20, 36, 0.88));
 }
 
-/* ─── Touch devices: kill transforms, keep tint ────────── */
+/* ─── Theme toggle micro-interaction ──────────────────── */
+.theme-toggle svg {
+  transition: transform var(--transition-base), color var(--transition-fast);
+}
+.theme-toggle:hover svg {
+  transform: rotate(22deg) scale(1.08);
+}
+.theme-toggle.is-dark svg {
+  color: var(--gold-300);
+}
+.theme-toggle.is-light svg {
+  color: var(--teal-300);
+}
+.theme-toggle:active svg {
+  transform: scale(0.92);
+}
+/* ─── Mobile bottom navigation polish ─────────────────── */
+.bottom-nav {
+  border-top: 0.5px solid var(--surface-glass-border);
+  background: var(--surface-glass-strong);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+}
+.bottom-nav-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+.bottom-nav-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  padding: 0.5rem 0.25rem 0.4rem;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+.bottom-nav-btn:active {
+  transform: scale(0.94);
+}
+.bottom-nav-btn.text-teal,
+.bottom-nav-btn.text-danger {
+  color: var(--teal-300);
+}
+.bottom-nav-btn.text-danger {
+  color: var(--rose-300, #ff5c8a);
+}
+.bottom-nav-btn.text-teal::after,
+.bottom-nav-btn.text-danger::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--gradient-aurora-text);
+  box-shadow: var(--glow-teal);
+}
+.bottom-nav-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+.bottom-nav-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
 @media (hover: none) and (pointer: coarse) {
   .subsection-card:hover,
   .premium-card:hover,

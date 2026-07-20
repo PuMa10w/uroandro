@@ -1,0 +1,104 @@
+/* ============================================================
+   ULTRA-PREMIUM DRUGS — accordion + card polish
+   Turns the 300k-px unpaginated drug list into a sane,
+   premium accordion (one group open at a time by default).
+   Imported AFTER ultraPremiumSurface.css in App.jsx.
+   ============================================================ */
+
+.drug-reference .drug-group {
+  border: 1px solid var(--surface-glass-border);
+  border-radius: var(--radius-2xl, 22px);
+  background: var(--surface-glass);
+  overflow: hidden;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+.drug-reference .drug-group.is-open {
+  border-color: var(--surface-glass-border-strong);
+  box-shadow: var(--shadow-soft);
+}
+
+.drug-group-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  padding: 0.95rem 1.15rem;
+  font-family: var(--font-display);
+  font-size: var(--font-lg, 1.25rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  background: transparent;
+  border: 0;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.drug-group-title:hover {
+  background: rgba(77, 227, 194, 0.06);
+  color: var(--teal-300);
+}
+.drug-group-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  padding: 0 0.5rem;
+  border-radius: var(--radius-full, 999px);
+  background: rgba(77, 227, 194, 0.14);
+  color: var(--teal-300);
+  font-family: var(--font-sans);
+  font-size: var(--font-xs, 0.75rem);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.drug-group-chevron {
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  transition: transform var(--transition-base);
+}
+.drug-group.is-open .drug-group-chevron {
+  transform: rotate(180deg);
+  color: var(--teal-300);
+}
+
+.drug-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 0.85rem;
+  padding: 0 1.15rem 1.15rem;
+  animation: drugListIn 0.4s var(--ease-out-expo, ease) both;
+}
+@keyframes drugListIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Drug card refinement (reuse surface gradient-border language) */
+.drug-card {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bg-card-solid, #0d1626), var(--bg-card-solid, #0d1626)) padding-box,
+    linear-gradient(135deg, rgba(77,227,194,.18), rgba(139,124,246,.10) 50%, rgba(242,200,121,.16)) border-box;
+}
+body.light-mode .drug-card {
+  background:
+    linear-gradient(#ffffff, #fbfdff) padding-box,
+    linear-gradient(135deg, rgba(13,148,136,.28), rgba(109,90,224,.12) 50%, rgba(201,138,45,.24)) border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drug-list { animation: none; }
+  .drug-group-chevron { transition: none; }
+}
+
+/* Mobile: single column, tighter */
+@media (max-width: 640px) {
+  .drug-list {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    padding: 0 0.85rem 0.9rem;
+  }
+}

@@ -1,0 +1,115 @@
+/* ============================================================
+   ULTRA-PREMIUM FOOTER
+   Elevates the thin footer into a designed surface: brand
+   gradient wordmark, guideline badges, disclaimer. Matches
+   the glass/aurora language of the rest of the system.
+   Imported AFTER ultraPremiumSurface.css in App.jsx.
+   ============================================================ */
+
+.footer {
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+  padding: clamp(1.75rem, 3.5vw, 3rem) max(1rem, env(safe-area-inset-left)) clamp(2rem, 4vw, 3.25rem);
+  border-top: 0.5px solid var(--surface-glass-border);
+  background:
+    radial-gradient(80% 140% at 50% 0%, rgba(77, 227, 194, 0.05), transparent 70%),
+    var(--bg-secondary);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+}
+
+.footer-brand-lockup {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.footer-brand-lockup span:first-child {
+  background: var(--gradient-aurora-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.footer-brand-lockup span:last-child {
+  color: var(--text-secondary);
+}
+
+.footer-guideline-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.85rem 0 0.5rem;
+}
+.footer-guideline-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-full, 999px);
+  border: 0.5px solid var(--surface-glass-border-strong);
+  background: var(--surface-glass);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--teal-300);
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+.footer-guideline-badge:hover {
+  border-color: rgba(77, 227, 194, 0.4);
+  background: rgba(77, 227, 194, 0.08);
+}
+
+.footer-disclaimer {
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  max-width: 56ch;
+  margin-top: 0.5rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+}
+.footer-link-btn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  transition: color var(--transition-fast);
+}
+.footer-link-btn:hover {
+  color: var(--teal-300);
+}
+.footer-sep {
+  width: 1px;
+  height: 0.9rem;
+  background: var(--surface-glass-border-strong);
+}
+
+.footer-external-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+.footer-external-links a {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+.footer-external-links a:hover {
+  color: var(--gold-300);
+}
+
+.footer-copyright {
+  margin-top: 0.9rem;
+  font-size: 0.72rem;
+  color: var(--text-disabled);
+}

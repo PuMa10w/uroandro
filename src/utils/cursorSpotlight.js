@@ -7,6 +7,9 @@
  * adds per-card listeners. Skips entirely on touch devices.
  */
 export function initCursorSpotlight() {
+  // jsdom compatibility — matchMedia may not exist in tests
+  if (typeof matchMedia !== 'function') return;
+
   // Skip on touch devices — no pointer, no benefit
   if (matchMedia('(hover: none) and (pointer: coarse)').matches) return;
 

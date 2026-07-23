@@ -1,0 +1,1030 @@
+/* ============================================================
+   MEGA-PREMIUM ENHANCEMENT LAYER (v2 — 2026)
+   The ultimate visual polish strip. Additive only.
+   Covers: cursor spotlight, animated borders, premium scrollbars,
+   staggered entrances, section dividers, premium selections,
+   enhanced focus rings, iPhone 16 Pro safe areas, and more.
+   ============================================================ */
+
+/* ─── CSS Custom Properties for @property animations ─────── */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --spotlight-x {
+  syntax: '<percentage>';
+  initial-value: 50%;
+  inherits: false;
+}
+
+@property --spotlight-y {
+  syntax: '<percentage>';
+  initial-value: 50%;
+  inherits: false;
+}
+
+@property --aurora-phase {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* ─── Animated gradient border on hover (conic rotation) ─── */
+.disease-card,
+.subsection-card,
+.tool-section,
+.calculator-card,
+.drug-card,
+.favorite-card,
+.emergency-card,
+.home-destination-card,
+.service-card,
+.premium-card,
+.sitemap-item,
+.meta-rule-card,
+.meta-diet-card {
+  --border-angle: 0deg;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(var(--bg-card-solid, #0d1626), var(--bg-card-solid, #0d1626)) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      rgba(77, 227, 194, 0.0),
+      rgba(77, 227, 194, 0.3),
+      rgba(139, 124, 246, 0.2),
+      rgba(242, 200, 121, 0.25),
+      rgba(77, 227, 194, 0.0)
+    ) border-box;
+  transition:
+    --border-angle 0.8s ease,
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    filter var(--transition-base);
+}
+
+body.light-mode .disease-card,
+body.light-mode .subsection-card,
+body.light-mode .tool-section,
+body.light-mode .calculator-card,
+body.light-mode .drug-card,
+body.light-mode .favorite-card,
+body.light-mode .emergency-card,
+body.light-mode .home-destination-card,
+body.light-mode .service-card,
+body.light-mode .premium-card,
+body.light-mode .sitemap-item,
+body.light-mode .meta-rule-card,
+body.light-mode .meta-diet-card {
+  background:
+    linear-gradient(#ffffff, #fbfdff) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      rgba(13, 148, 136, 0.0),
+      rgba(13, 148, 136, 0.35),
+      rgba(109, 90, 224, 0.2),
+      rgba(201, 138, 45, 0.3),
+      rgba(13, 148, 136, 0.0)
+    ) border-box;
+}
+
+.disease-card:hover,
+.subsection-card:hover,
+.tool-section:hover,
+.calculator-card:hover,
+.drug-card:hover,
+.favorite-card:hover,
+.emergency-card:hover,
+.home-destination-card:hover,
+.service-card:hover,
+.premium-card:hover,
+.sitemap-item:hover,
+.meta-rule-card:hover,
+.meta-diet-card:hover {
+  --border-angle: 360deg;
+}
+
+/* ─── Cursor spotlight (radial glow follows pointer) ─────── */
+.disease-card,
+.subsection-card,
+.tool-section,
+.calculator-card,
+.drug-card,
+.favorite-card,
+.emergency-card,
+.home-destination-card,
+.premium-card,
+.service-card,
+.sitemap-item {
+  --spotlight-x: 50%;
+  --spotlight-y: 50%;
+  background-image:
+    radial-gradient(
+      600px circle at var(--spotlight-x) var(--spotlight-y),
+      rgba(77, 227, 194, 0.06),
+      transparent 40%
+    ),
+    linear-gradient(var(--bg-card-solid, #0d1626), var(--bg-card-solid, #0d1626));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+body.light-mode .disease-card,
+body.light-mode .subsection-card,
+body.light-mode .tool-section,
+body.light-mode .calculator-card,
+body.light-mode .drug-card,
+body.light-mode .favorite-card,
+body.light-mode .emergency-card,
+body.light-mode .home-destination-card,
+body.light-mode .premium-card,
+body.light-mode .service-card,
+body.light-mode .sitemap-item {
+  background-image:
+    radial-gradient(
+      600px circle at var(--spotlight-x) var(--spotlight-y),
+      rgba(13, 148, 136, 0.05),
+      transparent 40%
+    ),
+    linear-gradient(#ffffff, #fbfdff);
+}
+
+/* ─── Premium Scrollbar ──────────────────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(77, 227, 194, 0.2) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(77, 227, 194, 0.2);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(77, 227, 194, 0.35);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+body.light-mode * {
+  scrollbar-color: rgba(13, 148, 136, 0.15) transparent;
+}
+
+body.light-mode ::-webkit-scrollbar-thumb {
+  background: rgba(13, 148, 136, 0.18);
+}
+
+body.light-mode ::-webkit-scrollbar-thumb:hover {
+  background: rgba(13, 148, 136, 0.3);
+}
+
+/* ─── Premium Text Selection ─────────────────────────────── */
+::selection {
+  background: rgba(77, 227, 194, 0.25);
+  color: var(--text-primary);
+}
+
+::-moz-selection {
+  background: rgba(77, 227, 194, 0.25);
+  color: var(--text-primary);
+}
+
+body.light-mode ::selection {
+  background: rgba(13, 148, 136, 0.2);
+}
+
+/* ─── Staggered Grid Entrance ────────────────────────────── */
+.disease-grid .disease-card,
+.cards-grid .disease-card {
+  animation: megaCardIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.disease-grid .disease-card:nth-child(1),
+.cards-grid .disease-card:nth-child(1) { animation-delay: 0ms; }
+.disease-grid .disease-card:nth-child(2),
+.cards-grid .disease-card:nth-child(2) { animation-delay: 50ms; }
+.disease-grid .disease-card:nth-child(3),
+.cards-grid .disease-card:nth-child(3) { animation-delay: 100ms; }
+.disease-grid .disease-card:nth-child(4),
+.cards-grid .disease-card:nth-child(4) { animation-delay: 150ms; }
+.disease-grid .disease-card:nth-child(5),
+.cards-grid .disease-card:nth-child(5) { animation-delay: 200ms; }
+.disease-grid .disease-card:nth-child(6),
+.cards-grid .disease-card:nth-child(6) { animation-delay: 250ms; }
+.disease-grid .disease-card:nth-child(7),
+.cards-grid .disease-card:nth-child(7) { animation-delay: 300ms; }
+.disease-grid .disease-card:nth-child(8),
+.cards-grid .disease-card:nth-child(8) { animation-delay: 350ms; }
+.disease-grid .disease-card:nth-child(9),
+.cards-grid .disease-card:nth-child(9) { animation-delay: 400ms; }
+.disease-grid .disease-card:nth-child(10),
+.cards-grid .disease-card:nth-child(10) { animation-delay: 450ms; }
+.disease-grid .disease-card:nth-child(11),
+.cards-grid .disease-card:nth-child(11) { animation-delay: 500ms; }
+.disease-grid .disease-card:nth-child(12),
+.cards-grid .disease-card:nth-child(12) { animation-delay: 550ms; }
+
+@keyframes megaCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Kill stagger on touch devices — no perceived benefit, saves paint */
+@media (hover: none) and (pointer: coarse) {
+  .disease-grid .disease-card,
+  .cards-grid .disease-card {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .disease-grid .disease-card,
+  .cards-grid .disease-card {
+    animation: none;
+  }
+}
+
+/* ─── Enhanced Focus Rings (premium teal glow) ───────────── */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px rgba(77, 227, 194, 0.35);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px rgba(77, 227, 194, 0.35);
+}
+
+@media (prefers-color-scheme: light) {
+  body.light-mode *:focus-visible,
+  body.light-mode button:focus-visible,
+  body.light-mode a:focus-visible,
+  body.light-mode input:focus-visible {
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px rgba(13, 148, 136, 0.3);
+  }
+}
+
+/* ─── Premium Section Divider ────────────────────────────── */
+.section-title::after,
+.page-title::after {
+  content: '';
+  display: block;
+  width: clamp(3rem, 8vw, 6rem);
+  height: 2px;
+  margin-top: 0.6rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--teal-300, #4de3c2), rgba(139, 124, 246, 0.3), transparent);
+  opacity: 0.7;
+}
+
+/* ─── Section Hero Enhanced ──────────────────────────────── */
+.service-page-hero,
+.service-page-intro {
+  position: relative;
+  padding-bottom: 1.2rem;
+}
+
+.service-page-hero::after,
+.service-page-intro::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(77, 227, 194, 0.2) 20%,
+    rgba(139, 124, 246, 0.15) 50%,
+    rgba(242, 200, 121, 0.18) 80%,
+    transparent
+  );
+}
+
+/* ─── Navbar Active Indicator ────────────────────────────── */
+.navbar-section-btn.active,
+.tabs button.active,
+.tab.active,
+.sort-btn.active {
+  position: relative;
+}
+
+.navbar-section-btn.active::after,
+.tabs button.active::after,
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gradient-primary, linear-gradient(90deg, #3dd6bd, #087f7b));
+  box-shadow: 0 0 8px rgba(77, 227, 194, 0.3);
+}
+
+/* ─── Premium Badge / Pill Polish ────────────────────────── */
+.footer-guideline-badge,
+.service-hero-trust-pill,
+.home-workbench-status span,
+.drug-group-count {
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-guideline-badge::before,
+.service-hero-trust-pill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  transition: left 0.5s ease;
+}
+
+.footer-guideline-badge:hover::before,
+.service-hero-trust-pill:hover::before {
+  left: 100%;
+}
+
+/* ─── Sort Controls Toolbar Premium ──────────────────────── */
+.sort-controls {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: nowrap;
+  padding: 0.3rem;
+  border-radius: var(--radius-full, 999px);
+  background: rgba(20, 27, 40, 0.6);
+  border: 0.5px solid rgba(120, 150, 180, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  margin-bottom: 0.8rem;
+}
+
+.sort-btn {
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-full, 999px);
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.sort-btn:hover {
+  color: var(--text-primary);
+  background: rgba(77, 227, 194, 0.06);
+}
+
+.sort-btn.active {
+  background: rgba(77, 227, 194, 0.14);
+  color: var(--teal-300, #4de3c2);
+  box-shadow: 0 2px 8px rgba(77, 227, 194, 0.12);
+}
+
+body.light-mode .sort-controls {
+  background: rgba(245, 247, 250, 0.8);
+  border-color: rgba(73, 98, 128, 0.1);
+}
+
+body.light-mode .sort-btn.active {
+  background: rgba(13, 148, 136, 0.12);
+  color: #0d9488;
+}
+
+/* ─── Pathway Recommendations Premium ────────────────────── */
+.pathway-recommendations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+
+.pathway-recommendation-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.55rem 0.85rem;
+  border: 0.5px solid rgba(77, 227, 194, 0.18);
+  border-radius: var(--radius-lg, 12px);
+  background: rgba(77, 227, 194, 0.04);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.pathway-recommendation-btn:hover {
+  background: rgba(77, 227, 194, 0.1);
+  border-color: rgba(77, 227, 194, 0.35);
+  transform: translateY(-1px);
+}
+
+.pathway-recommendation-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.pathway-recommendation-meta {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+body.light-mode .pathway-recommendation-btn {
+  border-color: rgba(13, 148, 136, 0.15);
+  background: rgba(13, 148, 136, 0.03);
+}
+
+body.light-mode .pathway-recommendation-btn:hover {
+  background: rgba(13, 148, 136, 0.08);
+  border-color: rgba(13, 148, 136, 0.3);
+}
+
+/* ─── Disease Card ICD Badge ─────────────────────────────── */
+.disease-card-icd,
+.disease-icd-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.5rem;
+  border-radius: var(--radius-full, 999px);
+  border: 0.5px solid rgba(139, 124, 246, 0.25);
+  background: rgba(139, 124, 246, 0.08);
+  color: rgba(180, 168, 255, 0.9);
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+}
+
+body.light-mode .disease-card-icd,
+body.light-mode .disease-icd-badge {
+  border-color: rgba(109, 90, 224, 0.2);
+  background: rgba(109, 90, 224, 0.06);
+  color: #6d5ae0;
+}
+
+/* ─── Disease Card Tag Polish ────────────────────────────── */
+.disease-card-tag,
+.disease-card .tag,
+.disease-card .card-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-full, 999px);
+  border: 0.5px solid rgba(77, 227, 194, 0.15);
+  background: rgba(77, 227, 194, 0.05);
+  color: var(--teal-300, #4de3c2);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+/* ─── Empty State Enhancement ────────────────────────────── */
+.no-data,
+.service-empty-state,
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: clamp(2.5rem, 6vw, 4.5rem) 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  border: 1.5px dashed rgba(120, 150, 180, 0.15);
+  border-radius: var(--radius-2xl, 22px);
+  background: rgba(20, 27, 40, 0.3);
+}
+
+.no-data::before,
+.service-empty-state::before,
+.empty-state::before {
+  content: '📋';
+  font-size: 2.5rem;
+  opacity: 0.4;
+  filter: grayscale(0.5);
+}
+
+body.light-mode .no-data,
+body.light-mode .service-empty-state,
+body.light-mode .empty-state {
+  border-color: rgba(73, 98, 128, 0.12);
+  background: rgba(245, 247, 250, 0.4);
+}
+
+/* ─── Premium Divider / Separator ────────────────────────── */
+.premium-divider {
+  height: 1px;
+  border: 0;
+  margin: 1.5rem 0;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(77, 227, 194, 0.2),
+    rgba(139, 124, 246, 0.12),
+    transparent
+  );
+}
+
+/* ─── Footer Enhancement ─────────────────────────────────── */
+.footer {
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(77, 227, 194, 0.35),
+    rgba(139, 124, 246, 0.25),
+    rgba(242, 200, 121, 0.2),
+    transparent
+  );
+}
+
+.footer-brand-lockup {
+  position: relative;
+}
+
+.footer-brand-lockup::after {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  margin-top: 0.35rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--teal-300, #4de3c2), rgba(242, 200, 121, 0.4));
+  opacity: 0.6;
+}
+
+/* ─── Loading State Enhancement ──────────────────────────── */
+.skeleton-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+  animation: megaShimmer 2s ease-in-out infinite;
+}
+
+@keyframes megaShimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* ─── Breadcrumb Premium ─────────────────────────────────── */
+.breadcrumb-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.55rem 0;
+  margin-bottom: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-item {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0.2rem 0;
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb-item:hover {
+  color: var(--teal-300, #4de3c2);
+}
+
+.breadcrumb-current {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.breadcrumb-sep {
+  color: var(--text-disabled);
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+/* ─── Quick-Access Action Buttons (Workbench) ────────────── */
+.home-workbench-actions .clinical-os-action,
+.quick-action-chips button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.home-workbench-actions .clinical-os-action::before,
+.quick-action-chips button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(135deg,
+    rgba(77, 227, 194, 0.0),
+    rgba(77, 227, 194, 0.08) 50%,
+    rgba(139, 124, 246, 0.06) 100%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.home-workbench-actions .clinical-os-action:hover::before,
+.quick-action-chips button:hover::before {
+  opacity: 1;
+}
+
+/* ─── Navbar Dropdown Advanced ───────────────────────────── */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(77, 227, 194, 0.3),
+    rgba(139, 124, 246, 0.2),
+    transparent
+  );
+}
+
+/* ─── Search Results Enhancement ─────────────────────────── */
+.hero-search-results {
+  position: relative;
+}
+
+.hero-search-results::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(77, 227, 194, 0.25),
+    transparent
+  );
+}
+
+/* ─── Bottom Nav Micro-Animation ─────────────────────────── */
+.bottom-nav-btn {
+  transition: color var(--transition-fast), transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bottom-nav-btn:active {
+  transform: scale(0.88);
+}
+
+/* ─── Drug Group Accordion Enhancement ───────────────────── */
+.drug-group {
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.drug-group.is-open {
+  transform: scale(1.005);
+}
+
+/* ─── Calculate Card Enhancement ─────────────────────────── */
+.calculator-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.calculator-card .calculator-icon,
+.calculator-card .calc-icon {
+  transition: transform var(--transition-base), filter var(--transition-base);
+}
+
+.calculator-card:hover .calculator-icon,
+.calculator-card:hover .calc-icon {
+  transform: scale(1.1) rotate(-3deg);
+}
+
+/* ─── iPhone 16 Pro / Dynamic Island Optimizations ───────── */
+@supports (padding-top: env(safe-area-inset-top)) {
+  /* Extra top padding for devices with Dynamic Island */
+  @media (width: 440px) and (height: 956px),
+         (width: 402px) and (height: 874px),
+         (width: 430px) and (height: 932px),
+         (width: 393px) and (height: 852px),
+         (width: 390px) and (height: 844px),
+         screen and (min-device-width: 430px) and (max-device-width: 432px) and (min-device-height: 930px) {
+    .navbar {
+      padding-top: calc(env(safe-area-inset-top) + 2px);
+    }
+
+    .modal-content {
+      padding-top: env(safe-area-inset-top);
+    }
+
+    .tabs-shell {
+      top: calc(env(safe-area-inset-top) + 3.8rem);
+    }
+
+    .bottom-nav {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  }
+}
+
+/* ─── iPhone StandBy / Landscape Mode Polish ─────────────── */
+@media (orientation: landscape) and (max-height: 500px) {
+  .navbar {
+    padding-top: max(0.4rem, env(safe-area-inset-top));
+  }
+
+  .home-workbench-title {
+    font-size: clamp(1.4rem, 1.1rem + 1.5vw, 2.2rem);
+  }
+
+  .bottom-nav {
+    display: none;
+  }
+}
+
+/* ─── Premium Card Loading State ─────────────────────────── */
+.disease-card.is-loading {
+  pointer-events: none;
+  position: relative;
+}
+
+.disease-card.is-loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(20, 27, 40, 0.4);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+/* ─── Modal Premium Header Gradient ──────────────────────── */
+.modal-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(180deg,
+    rgba(77, 227, 194, 0.04) 0%,
+    rgba(139, 124, 246, 0.02) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Glass Depth Enhancement ────────────────────────────── */
+.glass-premium,
+.modal-glass,
+.nav-dropdown {
+  background-image:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.06), transparent 35%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 50%);
+}
+
+/* ─── Aurora Animated Background Enhancement ─────────────── */
+.home-shell::before {
+  --aurora-phase: 0deg;
+  animation: auroraDrift 26s var(--ease-out-expo) infinite alternate,
+             auroraPhaseShift 40s linear infinite;
+}
+
+@keyframes auroraPhaseShift {
+  0%   { --aurora-phase: 0deg; filter: hue-rotate(0deg) blur(0px); }
+  50%  { --aurora-phase: 180deg; filter: hue-rotate(8deg) blur(1px); }
+  100% { --aurora-phase: 360deg; filter: hue-rotate(0deg) blur(0px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-shell::before {
+    animation: none;
+  }
+}
+
+/* ─── Hero Title Enhanced Glow ───────────────────────────── */
+.home-workbench-title {
+  text-shadow: 0 0 60px rgba(77, 227, 194, 0.12),
+               0 0 120px rgba(77, 227, 194, 0.06);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+body.light-mode .home-workbench-title {
+  filter: none;
+  text-shadow: none;
+}
+
+/* ─── Guidelines Section Enhancement ─────────────────────── */
+.guideline-card,
+.home-guideline-card {
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(var(--bg-card-solid, #0d1626), var(--bg-card-solid, #0d1626)) padding-box,
+    conic-gradient(
+      from var(--border-angle, 0deg),
+      rgba(77, 227, 194, 0.0),
+      rgba(77, 227, 194, 0.25),
+      rgba(139, 124, 246, 0.15),
+      rgba(242, 200, 121, 0.2),
+      rgba(77, 227, 194, 0.0)
+    ) border-box;
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    --border-angle 0.8s ease;
+}
+
+.guideline-card:hover,
+.home-guideline-card:hover {
+  --border-angle: 360deg;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover), var(--glow-teal);
+}
+
+/* ─── Guidelines Accents ─────────────────────────────────── */
+.guideline-card[data-accent="eau"],
+.home-guideline-card[data-accent="eau"],
+.guideline-card.eau {
+  --guide-accent: rgba(0, 100, 180, 0.15);
+  --guide-accent-strong: rgba(0, 100, 180, 0.3);
+}
+
+.guideline-card[data-accent="aua"],
+.home-guideline-card[data-accent="aua"],
+.guideline-card.aua {
+  --guide-accent: rgba(200, 50, 50, 0.12);
+  --guide-accent-strong: rgba(200, 50, 50, 0.25);
+}
+
+.guideline-card[data-accent="rkr"],
+.home-guideline-card[data-accent="rkr"],
+.guideline-card.rkr {
+  --guide-accent: rgba(0, 80, 170, 0.12);
+  --guide-accent-strong: rgba(0, 80, 170, 0.25);
+}
+
+.guideline-card::before,
+.home-guideline-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(circle at 15% 15%, var(--guide-accent, rgba(77, 227, 194, 0.05)), transparent 65%);
+  opacity: 0.6;
+  transition: opacity var(--transition-base);
+}
+
+.guideline-card:hover::before,
+.home-guideline-card:hover::before {
+  opacity: 1;
+}
+
+/* ─── Scroll-to-Top Button Enhancement ───────────────────── */
+.scroll-top-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full, 999px);
+  border: 0.5px solid rgba(77, 227, 194, 0.2);
+  background: rgba(20, 27, 40, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--teal-300, #4de3c2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-top-btn:hover {
+  background: rgba(77, 227, 194, 0.12);
+  border-color: rgba(77, 227, 194, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), var(--glow-teal);
+}
+
+.scroll-top-btn:active {
+  transform: scale(0.92);
+}
+
+/* ─── Quick Access Route Buttons (Home) ──────────────────── */
+.home-quick-access button,
+.quick-access-btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.home-quick-access button:hover,
+.quick-access-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.home-quick-access button:active,
+.quick-access-btn:active {
+  transform: scale(0.97);
+}
+
+/* ─── Enhanced Modal Tab Indicator ───────────────────────── */
+.tabs button.active,
+.tab.active,
+.modal-tabs button.active {
+  position: relative;
+  color: var(--teal-300, #4de3c2);
+}
+
+.tabs button.active::after,
+.tab.active::after,
+.modal-tabs button.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--teal-300, #4de3c2), rgba(139, 124, 246, 0.5));
+  box-shadow: 0 0 8px rgba(77, 227, 194, 0.3);
+}
+
+/* ─── Premium Toast/Notification ─────────────────────────── */
+.toast {
+  border: 0.5px solid rgba(77, 227, 194, 0.2);
+  background: rgba(20, 27, 40, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  border-radius: var(--radius-xl, 16px);
+}
+
+/* ─── Utility: Reduced Motion ────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

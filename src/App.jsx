@@ -7,6 +7,7 @@ import './styles/v23ClinicalWorkbench.css';
 import './styles/premium-flagship.css';
 import './styles/medicalTypography.css';
 import './styles/ultraPremiumEnhance.css';
+import './styles/ultraPremiumMega.css';
 import './styles/home-wow.css';
 import './styles/ultraPremiumTypography.css';
 import './styles/ultraPremiumAmbient.css';
@@ -26,6 +27,7 @@ import useAppNavigationState from './hooks/useAppNavigationState';
 import ErrorBoundary from './components/ErrorBoundary';
 import { trackModal } from './utils/analytics';
 import { IconBack, IconHome, IconStar, IconArrowUp } from './icons';
+import { initCursorSpotlight } from './utils/cursorSpotlight';
 
 // Module-level memo so the (large) data/index.js metadata module is imported
 // only once across all disease opens, instead of on every navigation.
@@ -54,6 +56,9 @@ function App() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Init cursor spotlight for premium card hover glow (desktop only)
+  useEffect(() => { initCursorSpotlight(); }, []);
 
   // Scroll-aware mobile nav bar
   const lastScrollY = useRef(0);

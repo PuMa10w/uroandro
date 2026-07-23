@@ -252,7 +252,7 @@ const DiseaseSection = React.memo(
             {sortedData.map((disease, index) => (
               <div
                 key={disease.id}
-                className="disease-card"
+                className={`disease-card${loadingDiseaseId === disease.id ? ' is-loading' : ''}`}
                 onClick={() => handleCardClick(disease, index)}
                 onMouseEnter={() => handleCardPrefetch(disease.id)}
                 onFocus={() => handleCardPrefetch(disease.id)}

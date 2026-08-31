@@ -1,0 +1,110 @@
+/* ============================================================
+   ULTRA-PREMIUM WAVE 4 — hero panels, breadcrumbs, modal tabs
+   Additive polish for interior page headers and modal chrome.
+   Imported AFTER ultraPremiumInteractive.css.
+   ============================================================ */
+
+/* ─── Breadcrumbs — quiet glass strip ──────────────────── */
+.breadcrumb-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1.1rem;
+  margin: 0.4rem auto 0;
+  width: min(100%, var(--up-section-max-width, 74rem));
+  border-radius: var(--radius-full, 999px);
+  border: 0.5px solid var(--surface-glass-border);
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  font-size: var(--font-sm, 0.875rem);
+}
+.breadcrumb-item {
+  color: var(--text-muted);
+  font-weight: 500;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+.breadcrumb-item:hover { color: var(--teal-300); }
+.breadcrumb-current { color: var(--text-secondary); font-weight: 600; }
+.breadcrumb-sep { color: var(--text-disabled); opacity: 0.7; }
+
+/* ─── Service hero panels — aurora glass ───────────────── */
+.service-page-hero {
+  position: relative;
+}
+.service-hero-panel {
+  border: 0.5px solid var(--surface-glass-border-strong);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.05), transparent 45%),
+    var(--surface-glass-strong, rgba(8, 16, 30, 0.92));
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+.service-hero-panel:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover), var(--glow-teal);
+}
+.service-hero-stat-value {
+  font-variant-numeric: tabular-nums;
+  background: var(--gradient-aurora-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-weight: 800;
+}
+.service-hero-trust-pill {
+  transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+}
+.service-hero-trust-pill:hover {
+  border-color: rgba(77, 227, 194, 0.4);
+  background: rgba(77, 227, 194, 0.08);
+  transform: translateY(-1px);
+}
+
+/* ─── Modal tabs — segmented premium control ───────────── */
+.tabs-shell .tab,
+.modal-overlay .tabs button {
+  position: relative;
+  transition: color var(--transition-fast), background var(--transition-fast),
+    border-color var(--transition-fast), transform var(--transition-fast);
+}
+.tabs-shell .tab:hover,
+.modal-overlay .tabs button:hover {
+  color: var(--teal-300);
+  transform: translateY(-1px);
+}
+.modal-title {
+  letter-spacing: -0.02em;
+}
+
+/* ─── Guideline source cards — badge accent ────────────── */
+.guideline-source-card {
+  border: 1px solid var(--surface-glass-border);
+  border-radius: var(--radius-lg, 12px);
+  background: var(--surface-glass);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.guideline-source-card:hover {
+  border-color: rgba(77, 227, 194, 0.3);
+  box-shadow: var(--shadow-soft);
+}
+.guideline-source-link {
+  color: var(--teal-300);
+  font-weight: 600;
+  font-size: var(--font-sm, 0.875rem);
+  text-decoration: none;
+}
+.guideline-source-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-hero-panel:hover { transform: none; }
+  .service-hero-trust-pill:hover { transform: none; }
+  .tabs-shell .tab:hover { transform: none; }
+}

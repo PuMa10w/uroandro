@@ -1,0 +1,142 @@
+/* ============================================================
+   ULTRA-PREMIUM INTERACTIVE LAYER (Wave 3)
+   Page transitions (blur-in), FAQ accordion, calculator result
+   panels, clinical tables, emergency cards. All additive,
+   token-driven, reduced-motion + touch guarded.
+   Imported AFTER ultraPremiumDrugs.css in App.jsx.
+   ============================================================ */
+
+/* ─── Page transition: blur-in depth (2026 trend) ──────── */
+@keyframes pageBlurIn {
+  from { opacity: 0; transform: translateY(10px); filter: blur(6px); }
+  to   { opacity: 1; transform: none; filter: blur(0); }
+}
+.page-content {
+  animation: pageBlurIn 0.5s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) both;
+}
+
+/* ─── FAQ accordion — tactile reveal ───────────────────── */
+.faq-item {
+  border: 1px solid var(--surface-glass-border);
+  border-radius: var(--radius-lg, 12px);
+  background: var(--surface-glass);
+  overflow: hidden;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+.faq-item + .faq-item { margin-top: 0.6rem; }
+.faq-item:hover { border-color: var(--surface-glass-border-strong); }
+.faq-item[open] {
+  border-color: rgba(77, 227, 194, 0.3);
+  background: rgba(77, 227, 194, 0.04);
+}
+.faq-question {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.05rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: var(--font-sm, 0.875rem);
+  color: var(--text-primary);
+  list-style: none;
+  user-select: none;
+  transition: color var(--transition-fast);
+}
+.faq-question::-webkit-details-marker { display: none; }
+.faq-question::after {
+  content: '+';
+  margin-left: auto;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--teal-300);
+  transition: transform var(--transition-base);
+}
+.faq-item[open] .faq-question::after { transform: rotate(45deg); }
+.faq-item[open] .faq-question { color: var(--teal-300); }
+.faq-answer {
+  padding: 0 1.05rem 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  animation: faqReveal 0.3s var(--ease-out-expo, ease) both;
+}
+@keyframes faqReveal {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ─── Calculator result panels — premium verdict ───────── */
+.result-panel,
+.premium-result-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-2xl, 22px);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.04), transparent 45%),
+    var(--surface-glass-strong, rgba(8, 16, 30, 0.92));
+  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.result-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 12%; right: 12%;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--teal-300), transparent);
+  opacity: 0.75;
+}
+.result-panel .result-value,
+.result-panel strong {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Clinical tables — zebra-free premium rows ────────── */
+.premium-clinical-table,
+.styled-table {
+  border-radius: var(--radius-lg, 12px);
+  overflow: hidden;
+  border: 1px solid var(--surface-glass-border);
+}
+.premium-clinical-table thead th {
+  background: rgba(77, 227, 194, 0.08);
+  color: var(--text-primary);
+  font-size: var(--font-xs, 0.75rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--surface-glass-border-strong);
+}
+.premium-clinical-table tbody td {
+  border-bottom: 1px solid var(--surface-glass-border);
+  transition: background var(--transition-fast);
+}
+.premium-clinical-table tbody tr:last-child td { border-bottom: 0; }
+.premium-clinical-table tbody tr:hover td {
+  background: rgba(77, 227, 194, 0.045);
+}
+
+/* ─── Emergency cards — red-flag urgency accent ────────── */
+.emergency-card {
+  border: 1px solid var(--surface-glass-border);
+  border-radius: var(--radius-2xl, 22px);
+  background: var(--surface-glass);
+  transition: transform var(--transition-base), box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+.emergency-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 92, 138, 0.35);
+  box-shadow: var(--shadow-card-hover), 0 0 32px rgba(255, 92, 138, 0.12);
+}
+.emergency-card-header {
+  border-top: 3px solid transparent;
+}
+
+/* ─── Reduced motion / touch guards ────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .page-content { animation: none; }
+  .faq-answer { animation: none; }
+  .emergency-card:hover { transform: none; }
+}
+@media (hover: none) and (pointer: coarse) {
+  .emergency-card:hover { transform: none; }
+}

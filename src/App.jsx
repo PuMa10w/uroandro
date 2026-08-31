@@ -15,6 +15,8 @@ import './styles/ultraPremiumSurface.css';
 import './styles/ultraPremiumCards.css';
 import './styles/ultraPremiumDrugs.css';
 import './styles/ultraPremiumFooter.css';
+import './styles/ultraPremiumInteractive.css';
+import './styles/ultraPremiumWave4.css';
 import BottomNav from './components/ui/BottomNav';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';

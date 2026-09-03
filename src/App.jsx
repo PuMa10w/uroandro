@@ -17,6 +17,7 @@ import './styles/ultraPremiumDrugs.css';
 import './styles/ultraPremiumFooter.css';
 import './styles/ultraPremiumInteractive.css';
 import './styles/ultraPremiumWave4.css';
+import './styles/ultraPremiumIphone15.css';
 import BottomNav from './components/ui/BottomNav';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';

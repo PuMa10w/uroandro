@@ -150,7 +150,7 @@ urology,nephrology,nephroptosis,Нефроптоз,N28.8,nephroptosisData.js,C,,
 urology,nephrology,nephrotic-syndrome,Нефротический синдром,N04,nephroticSyndromeData.js,C,,traceable,quality-ready,content-lead,2026-06-12
 urology,nephrology,papillary-necrosis,Папиллярный некроз,N17.0,papillaryNecrosisData.js,C,,traceable,quality-ready,content-lead,2026-06-12
 urology,nephrology,polycystic-kidney,Поликистозная болезнь почек,Q61.2,polycysticKidneyData.js,C,,traceable,quality-ready,content-lead,2026-06-12
-urology,nephrology,post-traumatic-renal-changes,Посттравматические изменения почечной ткани,N16,,C,module_file,traceable,needs-editorial-pass,content-lead,2026-06-12
+urology,nephrology,post-traumatic-renal-changes,Посттравматические изменения почечной ткани,N16,postTraumaticRenalChangesData.js,C,,traceable,quality-ready,content-lead,2026-06-12
 urology,nephrology,renal-abscess,Абсцесс почки,N15.1,renalAbscessData.js,C,,traceable,quality-ready,content-lead,2026-06-12
 urology,nephrology,renal-angiomyolipoma,Ангиомиолипома почки,D30.0,renalAngiomyolipomaData.js,C,,traceable,quality-ready,content-lead,2026-06-12
 urology,nephrology,renal-artery-stenosis,Стеноз почечной артерии,I70.1,renalArteryStenosisData.js,C,,traceable,quality-ready,content-lead,2026-06-12

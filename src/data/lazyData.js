@@ -131,6 +131,7 @@ const lazyLoadMap = new Map(
     'post-prostatectomy-incontinence': () => import('./postProstatectomyIncontinenceData.js'),
     'postprocedural-urethral-stricture': () => import('./postproceduralUrethralStrictureData.js'),
     'posterior-urethral-valves': () => import('./posteriorUrethralValvesData.js'),
+    'post-traumatic-renal-changes': () => import('./postTraumaticRenalChangesData.js'),
     'post-vasectomy-pain': () => import('./postVasectomyPainData.js'),
     'premature-ejaculation': () => import('./prematureEjaculationData.js'),
     'psychogenic-ed': () => import('./psychogenicEdData.js'),

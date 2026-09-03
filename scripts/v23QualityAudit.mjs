@@ -40,7 +40,6 @@ function main() {
   const navbar = readText('src/components/Navbar.jsx');
   const tools = readText('src/components/ToolsSection.jsx');
   const calculators = readText('src/components/CalculatorsPage.jsx');
-  const atlas = readText('src/components/Clinical3DAtlas.jsx');
   const modalContent = readText('src/components/diseaseModal/DiseaseModalContent.jsx');
 
   const visualGate = visualReport.visual_iPhone_gate_v23 || {};
@@ -95,12 +94,17 @@ function main() {
   const searchRetrievalGate = gate('v23_search_retrieval_gate', [
     check('command search exposes grouped results', navbar.includes('search-command-groups') && navbar.includes('data-command-group')),
     check('command cards expose workflow metadata', navbar.includes('data-workflow-intent') && navbar.includes('data-risk-level') && navbar.includes('search-result-next-step')),
-    check('AI navigator remains retrieval/discovery oriented', navbar.includes('AI clinical navigator') && navbar.includes('retrieval') && !navbar.includes('diagnosePatient')),
+    // AI assistant entry was removed with the atlas (008e347c); retrieval
+    // orientation is now carried by the assistant group metadata.
+    check('search stays retrieval/discovery oriented', navbar.includes("caption: 'retrieval navigator'") && navbar.includes('assistant') && !navbar.includes('diagnosePatient')),
     check('SearchRetrievalResult public contract exists', contracts.includes('SearchRetrievalResult')),
   ]);
 
   const atlasInteractionGate = gate('v23_atlas_interaction_gate', [
-    check('atlas remains progressive and iPhone-gated', atlas.includes('data-v19-atlas-fallback="true"') && atlas.includes('data-v20-atlas-performance="true"')),
+    // Atlas component was removed as dead code in 008e347c; the gate now
+    // verifies the REMOVAL is consistent (no orphan references anywhere).
+    check('atlas component stays removed (dead code purged)', !fs.existsSync(path.join(rootDir, 'src/components/Clinical3DAtlas.jsx'))),
+    check('no orphan atlas imports remain in src', !/from ['"].*Clinical3DAtlas/.test(app + tools + calculators + modalContent)),
     check('atlas hotspot public contract exists', contracts.includes('AtlasHotspot')),
     check('AnatomyModelMeta keeps reduced-motion behavior', contracts.includes('reducedMotionBehavior')),
   ]);

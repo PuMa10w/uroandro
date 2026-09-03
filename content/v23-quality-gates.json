@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "updated_at": "2026-05-31T17:24:40.597Z",
+  "updated_at": "2026-09-03T07:45:23.970Z",
   "v23_iphone_geometry_gate": {
     "name": "v23_iphone_geometry_gate",
     "status": "pass",
@@ -71,8 +71,8 @@
       {
         "label": "all disease cards remain quality-ready",
         "status": "pass",
-        "qualityReady": 184,
-        "totalDiseases": 184
+        "qualityReady": 187,
+        "totalDiseases": 187
       },
       {
         "label": "ICD coverage remains green",
@@ -139,7 +139,7 @@
         "status": "pass"
       },
       {
-        "label": "AI navigator remains retrieval/discovery oriented",
+        "label": "search stays retrieval/discovery oriented",
         "status": "pass"
       },
       {
@@ -153,7 +153,11 @@
     "status": "pass",
     "checks": [
       {
-        "label": "atlas remains progressive and iPhone-gated",
+        "label": "atlas component stays removed (dead code purged)",
+        "status": "pass"
+      },
+      {
+        "label": "no orphan atlas imports remain in src",
         "status": "pass"
       },
       {

@@ -774,7 +774,7 @@ test.describe('iPhone premium layout smoke', () => {
     await page.locator('.search-toggle').first().click();
     await expect(page.locator('.search-dropdown').first()).toBeVisible();
 
-    for (const query of ['QT', 'камни', 'ЭД', 'спермограмма', '3D', 'AI']) {
+    for (const query of ['QT', 'камни', 'ЭД', 'спермограмма', 'ПСА', 'колика']) {
       await page.locator('.search-input').first().fill(query);
       await page.waitForTimeout(320);
 

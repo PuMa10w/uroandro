@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "updated_at": "2026-07-20T09:41:38.699Z",
+  "updated_at": "2026-09-03T07:34:48.805Z",
   "visual_iPhone_gate_v23": {
     "name": "visual_iPhone_gate_v23",
     "status": "pass",
@@ -89,10 +89,10 @@
             "height": 122
           },
           "title": {
-            "top": 1732,
+            "top": 1756,
             "left": 22,
             "right": 298,
-            "bottom": 2047,
+            "bottom": 2071,
             "width": 277,
             "height": 315
           },
@@ -127,12 +127,12 @@
             "height": 122
           },
           "title": {
-            "top": 143,
+            "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 181,
+            "bottom": 257,
             "width": 277,
-            "height": 37
+            "height": 49
           },
           "modal": null,
           "tabs": null,
@@ -172,12 +172,12 @@
             "height": 122
           },
           "title": {
-            "top": 143,
+            "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 180,
+            "bottom": 257,
             "width": 277,
-            "height": 37
+            "height": 49
           },
           "modal": null,
           "tabs": null,
@@ -217,12 +217,12 @@
             "height": 122
           },
           "title": {
-            "top": 129,
+            "top": 196,
             "left": 22,
             "right": 298,
-            "bottom": 241,
+            "bottom": 319,
             "width": 277,
-            "height": 112
+            "height": 124
           },
           "modal": null,
           "tabs": null,
@@ -262,12 +262,12 @@
             "height": 122
           },
           "title": {
-            "top": 183,
+            "top": 250,
             "left": 37,
             "right": 283,
-            "bottom": 249,
+            "bottom": 328,
             "width": 246,
-            "height": 66
+            "height": 78
           },
           "modal": null,
           "tabs": null,
@@ -306,7 +306,14 @@
             "width": 297,
             "height": 122
           },
-          "title": null,
+          "title": {
+            "top": 260,
+            "left": 51,
+            "right": 269,
+            "bottom": 309,
+            "width": 219,
+            "height": 49
+          },
           "modal": null,
           "tabs": null,
           "quickbar": null,
@@ -345,12 +352,12 @@
             "height": 122
           },
           "title": {
-            "top": 188,
+            "top": 255,
             "left": 40,
             "right": 280,
-            "bottom": 255,
+            "bottom": 334,
             "width": 241,
-            "height": 67
+            "height": 79
           },
           "modal": null,
           "tabs": null,
@@ -390,12 +397,12 @@
             "height": 122
           },
           "title": {
-            "top": 197,
+            "top": 264,
             "left": 40,
             "right": 280,
-            "bottom": 309,
+            "bottom": 387,
             "width": 240,
-            "height": 112
+            "height": 124
           },
           "modal": null,
           "tabs": null,
@@ -511,12 +518,12 @@
             "height": 122
           },
           "title": {
-            "top": 197,
+            "top": 264,
             "left": 40,
             "right": 280,
-            "bottom": 272,
+            "bottom": 350,
             "width": 240,
-            "height": 75
+            "height": 86
           },
           "modal": null,
           "tabs": null,
@@ -556,12 +563,12 @@
             "height": 122
           },
           "title": {
-            "top": 163,
+            "top": 230,
             "left": 22,
             "right": 298,
-            "bottom": 201,
+            "bottom": 279,
             "width": 277,
-            "height": 37
+            "height": 49
           },
           "modal": null,
           "tabs": null,
@@ -601,12 +608,12 @@
             "height": 122
           },
           "title": {
-            "top": 132,
+            "top": 199,
             "left": 63,
             "right": 257,
-            "bottom": 169,
+            "bottom": 248,
             "width": 194,
-            "height": 37
+            "height": 49
           },
           "modal": null,
           "tabs": null,
@@ -646,12 +653,12 @@
             "height": 122
           },
           "title": {
-            "top": 132,
+            "top": 199,
             "left": 22,
             "right": 298,
-            "bottom": 207,
+            "bottom": 285,
             "width": 277,
-            "height": 75
+            "height": 86
           },
           "modal": null,
           "tabs": null,
@@ -691,12 +698,12 @@
             "height": 122
           },
           "title": {
-            "top": 129,
+            "top": 196,
             "left": 22,
             "right": 298,
-            "bottom": 204,
+            "bottom": 282,
             "width": 277,
-            "height": 75
+            "height": 86
           },
           "modal": null,
           "tabs": null,
@@ -736,12 +743,12 @@
             "height": 0
           },
           "title": {
-            "top": 129,
+            "top": 196,
             "left": 22,
             "right": 298,
-            "bottom": 241,
+            "bottom": 319,
             "width": 277,
-            "height": 112
+            "height": 124
           },
           "modal": {
             "top": 0,
@@ -795,12 +802,12 @@
             "height": 0
           },
           "title": {
-            "top": 129,
+            "top": 196,
             "left": 22,
             "right": 298,
-            "bottom": 241,
+            "bottom": 319,
             "width": 277,
-            "height": 112
+            "height": 124
           },
           "modal": {
             "top": 0,
@@ -854,12 +861,12 @@
             "height": 0
           },
           "title": {
-            "top": 129,
+            "top": 196,
             "left": 22,
             "right": 298,
-            "bottom": 204,
+            "bottom": 282,
             "width": 277,
-            "height": 75
+            "height": 86
           },
           "modal": {
             "top": 0,
@@ -913,12 +920,12 @@
             "height": 0
           },
           "title": {
-            "top": 129,
+            "top": 196,
             "left": 22,
             "right": 298,
-            "bottom": 204,
+            "bottom": 282,
             "width": 277,
-            "height": 75
+            "height": 86
           },
           "modal": {
             "top": 0,
@@ -972,12 +979,12 @@
             "height": 0
           },
           "title": {
-            "top": 129,
+            "top": 196,
             "left": 22,
             "right": 298,
-            "bottom": 204,
+            "bottom": 282,
             "width": 277,
-            "height": 75
+            "height": 86
           },
           "modal": {
             "top": 0,
@@ -1031,12 +1038,12 @@
             "height": 0
           },
           "title": {
-            "top": 129,
+            "top": 196,
             "left": 22,
             "right": 298,
-            "bottom": 241,
+            "bottom": 319,
             "width": 277,
-            "height": 112
+            "height": 124
           },
           "modal": {
             "top": 0,
@@ -1090,12 +1097,12 @@
             "height": 0
           },
           "title": {
-            "top": 132,
+            "top": 196,
             "left": 22,
             "right": 298,
-            "bottom": 393,
+            "bottom": 469,
             "width": 277,
-            "height": 262
+            "height": 274
           },
           "modal": {
             "top": 0,
@@ -1149,12 +1156,12 @@
             "height": 0
           },
           "title": {
-            "top": 129,
+            "top": 196,
             "left": 22,
             "right": 298,
-            "bottom": 278,
+            "bottom": 357,
             "width": 277,
-            "height": 150
+            "height": 161
           },
           "modal": {
             "top": 0,
@@ -1208,12 +1215,12 @@
             "height": 0
           },
           "title": {
-            "top": 129,
+            "top": 196,
             "left": 22,
             "right": 298,
-            "bottom": 241,
+            "bottom": 319,
             "width": 277,
-            "height": 112
+            "height": 124
           },
           "modal": {
             "top": 0,
@@ -1267,12 +1274,12 @@
             "height": 0
           },
           "title": {
-            "top": 129,
+            "top": 196,
             "left": 22,
             "right": 298,
-            "bottom": 241,
+            "bottom": 319,
             "width": 277,
-            "height": 112
+            "height": 124
           },
           "modal": {
             "top": 0,

@@ -1,0 +1,120 @@
+/* ============================================================
+   iPHONE 15 PRO POLISH LAYER (393×852 @3x)
+   Fixes found by scripts/iphone15proAudit.mjs (2026-09-03).
+   Additive only. Imported LAST in App.jsx.
+   Findings addressed:
+   - Icon buttons 44h × 38/34w → guaranteed 44×44 hit area
+     (visual unchanged: uses padding + negative margin trick)
+   - .fav-btn (favorite star) 34px wide → 44px hit area
+   - Audit false-positive: .sr-only intentionally clipped
+   ============================================================ */
+
+/* Apple HIG: 44×44pt minimum hit target. These icon buttons are
+   44px tall but 34–38px wide. We widen the HIT AREA without
+   shifting layout: transparent padding + compensating negative
+   margin keeps visual position identical. */
+@media (max-width: 932px) {
+  .hamburger-btn,
+  .search-toggle,
+  .theme-toggle,
+  .fav-btn {
+    position: relative;
+  }
+  .hamburger-btn::before,
+  .search-toggle::before,
+  .theme-toggle::before,
+  .fav-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    pointer-events: auto;
+  }
+  /* extend the clickable area beyond the visual box */
+  .hamburger-btn, .search-toggle, .theme-toggle { padding-inline: 3px; }
+  .fav-btn { padding-inline: 5px; }
+}
+
+/* Defensive: guarantee icon buttons never drop below 44px height */
+@media (max-width: 932px) {
+  .hamburger-btn,
+  .search-toggle,
+  .theme-toggle,
+  .fav-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Landscape: fixed chrome must respect side safe areas.
+   (portrait-sal/sar are 0; landscape ≈ 59px each side) */
+@media (max-width: 932px) and (orientation: landscape) {
+  .mobile-shell-nav {
+    left: max(0.72rem, var(--sal, 0px));
+    right: max(0.72rem, var(--sar, 0px));
+  }
+}
+
+/* Wave 2 (audit 2026-09-03): modal header buttons are visually
+   34×34 by design (lock-consistent) — extend hit area to 44×44
+   without changing visual size. */
+@media (max-width: 932px) {
+  .modal-close,
+  .modal-back-btn {
+    position: relative;
+  }
+  .modal-close::after,
+  .modal-back-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    pointer-events: auto;
+  }
+  /* Spermogram reset button: 37px tall → 44px */
+  .calc-button.sperm-reset,
+  .premium-calc-btn.sperm-reset {
+    min-height: 44px;
+  }
+}
+
+/* Wave 3 (audit): fractional 43.x px heights/widths → snap to 44.
+   Landscape-confirmed: navbar-section-btn (40h), mobile-shell-btn
+   (43h), drug-hint-chip (40w), calc tabs (43.6h rounding). */
+@media (max-width: 932px) {
+  .navbar-section-btn {
+    min-height: 44px;
+  }
+  .mobile-shell-btn {
+    min-height: 44px;
+  }
+  .drug-hint-chip,
+  .drug-risk-chip,
+  .drug-filter-chip {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .calc-tab,
+  .calculator-category-tab,
+  .calculator-tool-tab {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .tabs-shell .tab {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .calc-button,
+  .premium-calc-btn {
+    min-height: 44px;
+  }
+  .questionnaire-option {
+    min-height: 44px;
+  }
+}

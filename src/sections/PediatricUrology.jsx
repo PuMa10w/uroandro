@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import DiseaseSection from '../components/DiseaseSection';
-import { getSectionDiseasesByIds } from '../data/sectionData';
+import { getSectionDiseases } from '../data/sectionData';
 
 const PediatricUrology = ({
   favorites,
@@ -11,7 +11,7 @@ const PediatricUrology = ({
 }) => {
   const data = useMemo(
     () =>
-      getSectionDiseasesByIds([
+      getSectionDiseases('pediatric', null, [
         'enuresis',
         'phimosis',
         'hydrocele',
@@ -20,7 +20,7 @@ const PediatricUrology = ({
         'spermatocele',
         'balanoposthitis',
         'cryptorchidism',
-      ]),
+      ], ['balanoposthitis', 'cryptorchidism']),
     []
   );
 

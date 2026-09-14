@@ -896,6 +896,13 @@ export default function DiseaseModalContent({
           {renderQuickSummary(normalizedDisease)}
           <h3>Определение</h3>
           <p>{normalizedDisease.definition}</p>
+          {normalizedDisease.definitionKeyPoints?.length > 0 && (
+            <ul className="definition-keypoints">
+              {normalizedDisease.definitionKeyPoints.map((point, i) => (
+                <li key={i}>{point}</li>
+              ))}
+            </ul>
+          )}
           <h3>Эпидемиология</h3>
           <p>{normalizedDisease.epidemiology}</p>
           <h3>Этиология и факторы риска</h3>

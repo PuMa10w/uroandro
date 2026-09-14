@@ -291,7 +291,6 @@ const DiseaseModal = ({
     <div
       className="modal-overlay"
       onClick={onClose}
-      onKeyDown={(e) => e.key === 'Enter' && onClose()}
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"

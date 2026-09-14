@@ -121,6 +121,8 @@ async function preparePage(page, baseUrl, route) {
 }
 
 async function getMetrics(page) {
+  // Guard: a navigation/reload can leave the document without a body for a tick.
+  await page.waitForFunction(() => Boolean(document.body), null, { timeout: 5000 }).catch(() => {});
   return page.evaluate((markers) => {
     const rect = (selector) => {
       const element = document.querySelector(selector);
@@ -199,7 +201,7 @@ async function getMetrics(page) {
     const visibleNavbar = navbarStyle
       ? navbarStyle.display !== 'none' && navbarStyle.visibility !== 'hidden' && Number(navbarStyle.opacity) > 0.05
       : false;
-    const bodyText = document.body.innerText || '';
+    const bodyText = document.body?.innerText || '';
 
     return {
       innerWidth: window.innerWidth,

@@ -7,9 +7,11 @@
    ============================================================ */
 
 /* ─── Page transition: blur-in depth (2026 trend) ──────── */
+/* No transform here on purpose: animating translateY on the page shell
+   shifts layout metrics (contentTop) and can make the first paint jump. */
 @keyframes pageBlurIn {
-  from { opacity: 0; transform: translateY(10px); filter: blur(6px); }
-  to   { opacity: 1; transform: none; filter: blur(0); }
+  from { opacity: 0; filter: blur(6px); }
+  to   { opacity: 1; filter: blur(0); }
 }
 .page-content {
   animation: pageBlurIn 0.5s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) both;

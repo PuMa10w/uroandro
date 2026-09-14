@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import '../styles/servicePages.css';
+import DiseaseSection from './DiseaseSection';
+import { getSectionDiseases } from '../data/sectionData';
 
 const diets = [
   {
@@ -56,8 +58,16 @@ const generalRules = [
   },
 ];
 
-const MetaphylaxisPage = () => {
+const MetaphylaxisPage = ({
+  favorites = {},
+  onToggleFavorite,
+  onCloseDisease,
+  viewHistory = [],
+  selectedDiseaseId = null,
+  onNavigate,
+}) => {
   const [activeDiet, setActiveDiet] = useState(null);
+  const clinicalCards = useMemo(() => getSectionDiseases('metaphylaxis'), []);
 
   return (
     <section className="section metastaphylaxis-page service-page-shell">
@@ -165,6 +175,20 @@ const MetaphylaxisPage = () => {
             </div>
           );
         })()}
+
+      {clinicalCards.length > 0 && (
+        <DiseaseSection
+          data={clinicalCards}
+          title="Клиническая карточка"
+          subtitle="Полная нозология с диагностикой, лечением и наблюдением"
+          favorites={favorites}
+          onToggleFavorite={onToggleFavorite}
+          onNavigate={onNavigate}
+          selectedDiseaseId={selectedDiseaseId}
+          viewHistory={viewHistory}
+          onCloseDisease={onCloseDisease}
+        />
+      )}
     </section>
   );
 };

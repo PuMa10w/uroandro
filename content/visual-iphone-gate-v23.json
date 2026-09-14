@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "updated_at": "2026-09-03T07:34:48.805Z",
+  "updated_at": "2026-09-14T13:05:50.652Z",
   "visual_iPhone_gate_v23": {
     "name": "visual_iPhone_gate_v23",
     "status": "pass",
@@ -89,10 +89,10 @@
             "height": 122
           },
           "title": {
-            "top": 1756,
+            "top": 1768,
             "left": 22,
             "right": 298,
-            "bottom": 2071,
+            "bottom": 2083,
             "width": 277,
             "height": 315
           },
@@ -127,10 +127,10 @@
             "height": 122
           },
           "title": {
-            "top": 208,
+            "top": 218,
             "left": 22,
             "right": 298,
-            "bottom": 257,
+            "bottom": 267,
             "width": 277,
             "height": 49
           },
@@ -172,10 +172,10 @@
             "height": 122
           },
           "title": {
-            "top": 208,
+            "top": 218,
             "left": 22,
             "right": 298,
-            "bottom": 257,
+            "bottom": 267,
             "width": 277,
             "height": 49
           },
@@ -217,10 +217,10 @@
             "height": 122
           },
           "title": {
-            "top": 196,
+            "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 319,
+            "bottom": 331,
             "width": 277,
             "height": 124
           },
@@ -262,10 +262,10 @@
             "height": 122
           },
           "title": {
-            "top": 250,
+            "top": 262,
             "left": 37,
             "right": 283,
-            "bottom": 328,
+            "bottom": 340,
             "width": 246,
             "height": 78
           },
@@ -307,10 +307,10 @@
             "height": 122
           },
           "title": {
-            "top": 260,
+            "top": 272,
             "left": 51,
             "right": 269,
-            "bottom": 309,
+            "bottom": 321,
             "width": 219,
             "height": 49
           },
@@ -352,10 +352,10 @@
             "height": 122
           },
           "title": {
-            "top": 255,
+            "top": 267,
             "left": 40,
             "right": 280,
-            "bottom": 334,
+            "bottom": 346,
             "width": 241,
             "height": 79
           },
@@ -397,10 +397,10 @@
             "height": 122
           },
           "title": {
-            "top": 264,
+            "top": 276,
             "left": 40,
             "right": 280,
-            "bottom": 387,
+            "bottom": 399,
             "width": 240,
             "height": 124
           },
@@ -518,10 +518,10 @@
             "height": 122
           },
           "title": {
-            "top": 264,
+            "top": 276,
             "left": 40,
             "right": 280,
-            "bottom": 350,
+            "bottom": 362,
             "width": 240,
             "height": 86
           },
@@ -563,10 +563,10 @@
             "height": 122
           },
           "title": {
-            "top": 230,
+            "top": 242,
             "left": 22,
             "right": 298,
-            "bottom": 279,
+            "bottom": 291,
             "width": 277,
             "height": 49
           },
@@ -608,10 +608,10 @@
             "height": 122
           },
           "title": {
-            "top": 199,
+            "top": 211,
             "left": 63,
             "right": 257,
-            "bottom": 248,
+            "bottom": 260,
             "width": 194,
             "height": 49
           },
@@ -642,7 +642,7 @@
         "documentScrollWidth": 320,
         "bodyScrollWidth": 320,
         "hasModal": false,
-        "diseaseCardCount": 0,
+        "diseaseCardCount": 1,
         "rects": {
           "navbar": {
             "top": 7,
@@ -653,10 +653,10 @@
             "height": 122
           },
           "title": {
-            "top": 199,
+            "top": 211,
             "left": 22,
             "right": 298,
-            "bottom": 285,
+            "bottom": 297,
             "width": 277,
             "height": 86
           },
@@ -698,10 +698,10 @@
             "height": 122
           },
           "title": {
-            "top": 196,
+            "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 282,
+            "bottom": 294,
             "width": 277,
             "height": 86
           },
@@ -732,7 +732,7 @@
         "documentScrollWidth": 320,
         "bodyScrollWidth": 320,
         "hasModal": true,
-        "diseaseCardCount": 6,
+        "diseaseCardCount": 7,
         "rects": {
           "navbar": {
             "top": 0,
@@ -743,10 +743,10 @@
             "height": 0
           },
           "title": {
-            "top": 196,
+            "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 319,
+            "bottom": 331,
             "width": 277,
             "height": 124
           },
@@ -791,7 +791,7 @@
         "documentScrollWidth": 320,
         "bodyScrollWidth": 320,
         "hasModal": true,
-        "diseaseCardCount": 23,
+        "diseaseCardCount": 32,
         "rects": {
           "navbar": {
             "top": 0,
@@ -802,10 +802,10 @@
             "height": 0
           },
           "title": {
-            "top": 196,
+            "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 319,
+            "bottom": 331,
             "width": 277,
             "height": 124
           },
@@ -861,10 +861,10 @@
             "height": 0
           },
           "title": {
-            "top": 196,
+            "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 282,
+            "bottom": 294,
             "width": 277,
             "height": 86
           },
@@ -920,10 +920,10 @@
             "height": 0
           },
           "title": {
-            "top": 196,
+            "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 282,
+            "bottom": 294,
             "width": 277,
             "height": 86
           },
@@ -979,10 +979,10 @@
             "height": 0
           },
           "title": {
-            "top": 196,
+            "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 282,
+            "bottom": 294,
             "width": 277,
             "height": 86
           },
@@ -1027,7 +1027,7 @@
         "documentScrollWidth": 320,
         "bodyScrollWidth": 320,
         "hasModal": true,
-        "diseaseCardCount": 25,
+        "diseaseCardCount": 29,
         "rects": {
           "navbar": {
             "top": 0,
@@ -1038,10 +1038,10 @@
             "height": 0
           },
           "title": {
-            "top": 196,
+            "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 319,
+            "bottom": 331,
             "width": 277,
             "height": 124
           },
@@ -1086,7 +1086,7 @@
         "documentScrollWidth": 320,
         "bodyScrollWidth": 320,
         "hasModal": true,
-        "diseaseCardCount": 23,
+        "diseaseCardCount": 24,
         "rects": {
           "navbar": {
             "top": 0,
@@ -1097,10 +1097,10 @@
             "height": 0
           },
           "title": {
-            "top": 196,
+            "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 469,
+            "bottom": 481,
             "width": 277,
             "height": 274
           },
@@ -1156,10 +1156,10 @@
             "height": 0
           },
           "title": {
-            "top": 196,
+            "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 357,
+            "bottom": 369,
             "width": 277,
             "height": 161
           },
@@ -1204,7 +1204,7 @@
         "documentScrollWidth": 320,
         "bodyScrollWidth": 320,
         "hasModal": true,
-        "diseaseCardCount": 13,
+        "diseaseCardCount": 12,
         "rects": {
           "navbar": {
             "top": 0,
@@ -1215,10 +1215,10 @@
             "height": 0
           },
           "title": {
-            "top": 196,
+            "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 319,
+            "bottom": 331,
             "width": 277,
             "height": 124
           },
@@ -1274,10 +1274,10 @@
             "height": 0
           },
           "title": {
-            "top": 196,
+            "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 319,
+            "bottom": 331,
             "width": 277,
             "height": 124
           },

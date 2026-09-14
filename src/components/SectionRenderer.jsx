@@ -91,7 +91,12 @@ export default function SectionRenderer({
   if (activeSection === 'sitemap') return renderLazyPage(SitemapPage, { onNavigate });
   if (activeSection === 'calculators') return renderLazyPage(CalculatorsPage, { onNavigate });
   if (activeSection === 'surgery') return renderLazyPage(SurgeryPage, { onNavigate });
-  if (activeSection === 'metaphylaxis') return renderLazyPage(MetaphylaxisPage);
+  if (activeSection === 'metaphylaxis')
+    return renderLazyPage(MetaphylaxisPage, {
+      ...sectionProps,
+      selectedDiseaseId,
+      onNavigate,
+    });
   if (activeSection === 'humor') return renderLazyPage(UroHumorPage);
   if (activeSection === 'games') return renderLazyPage(GamesPage);
 

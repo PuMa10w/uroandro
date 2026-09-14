@@ -5,6 +5,48 @@ export const asArray = (value) => {
   return [];
 };
 
+/**
+ * Coerce ANY registry value into a renderable string.
+ * Data modules are not uniform: some ship `definition` as a string, others as
+ * { text, keyPoints } — rendering the object directly crashes React with
+ * "Objects are not valid as a React child" and blanks the whole card.
+ */
+export const asText = (value, fallback = '') => {
+  if (value === null || value === undefined) return fallback;
+  if (typeof value === 'string') return value;
+  if (typeof value === 'number' || typeof value === 'boolean') return String(value);
+  if (Array.isArray(value)) {
+    const joined = value.map((item) => asText(item)).filter(Boolean).join(' ');
+    return joined || fallback;
+  }
+  if (typeof value === 'object') {
+    const candidate =
+      value.text ??
+      value.desc ??
+      value.description ??
+      value.summary ??
+      value.note ??
+      value.value ??
+      value.label ??
+      value.title;
+    return asText(candidate, fallback);
+  }
+  return fallback;
+};
+
+/** Array of strings from any shape (strings, objects with text, keyPoints maps). */
+export const asTextArray = (value) => {
+  if (!value) return [];
+  if (Array.isArray(value)) return value.map((item) => asText(item)).filter(Boolean);
+  if (typeof value === 'string') return [value];
+  if (typeof value === 'object') {
+    if (Array.isArray(value.keyPoints)) return value.keyPoints.map((item) => asText(item)).filter(Boolean);
+    if (Array.isArray(value.items)) return value.items.map((item) => asText(item)).filter(Boolean);
+    return Object.values(value).map((item) => asText(item)).filter(Boolean);
+  }
+  return [];
+};
+
 const asObjectArray = (value) => {
   if (!value) return [];
   if (Array.isArray(value)) return value;
@@ -549,11 +591,15 @@ const normalizeUltrasound = (value, disease) => {
 export const normalizeDisease = (disease) => {
   return {
     ...disease,
-    tags: asArray(disease.tags),
-    etiology: asArray(disease.etiology),
-    symptoms: asArray(disease.symptoms),
-    complications: asArray(disease.complications),
-    differentialDiagnosis: asArray(disease.differentialDiagnosis),
+    definition: asText(disease.definition),
+    definitionKeyPoints: asTextArray(disease?.definition?.keyPoints),
+    pathogenesis: asText(disease.pathogenesis),
+    epidemiologyRaw: disease.epidemiology,
+    tags: asTextArray(disease.tags),
+    etiology: asTextArray(disease.etiology),
+    symptoms: asTextArray(disease.symptoms),
+    complications: asTextArray(disease.complications),
+    differentialDiagnosis: asTextArray(disease.differentialDiagnosis),
     redFlags: Array.isArray(disease.redFlags)
       ? disease.redFlags.map((item) => (typeof item === 'string' ? { text: item } : item))
       : [],

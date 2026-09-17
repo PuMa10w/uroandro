@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "updated_at": "2026-09-14T13:05:50.652Z",
+  "updated_at": "2026-09-17T17:32:00.032Z",
   "visual_iPhone_gate_v23": {
     "name": "visual_iPhone_gate_v23",
     "status": "pass",
@@ -89,12 +89,12 @@
             "height": 122
           },
           "title": {
-            "top": 1768,
+            "top": 1951,
             "left": 22,
             "right": 298,
-            "bottom": 2083,
+            "bottom": 2284,
             "width": 277,
-            "height": 315
+            "height": 333
           },
           "modal": null,
           "tabs": null,
@@ -130,20 +130,20 @@
             "top": 218,
             "left": 22,
             "right": 298,
-            "bottom": 267,
+            "bottom": 255,
             "width": 277,
-            "height": 49
+            "height": 37
           },
           "modal": null,
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 493,
-            "left": 13,
-            "right": 307,
+            "top": 491,
+            "left": 11,
+            "right": 309,
             "bottom": 556,
-            "width": 294,
-            "height": 63
+            "width": 298,
+            "height": 65
           }
         },
         "railIssues": [],
@@ -175,20 +175,20 @@
             "top": 218,
             "left": 22,
             "right": 298,
-            "bottom": 267,
+            "bottom": 255,
             "width": 277,
-            "height": 49
+            "height": 37
           },
           "modal": null,
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 493,
-            "left": 13,
-            "right": 307,
+            "top": 491,
+            "left": 11,
+            "right": 309,
             "bottom": 556,
-            "width": 294,
-            "height": 63
+            "width": 298,
+            "height": 65
           }
         },
         "railIssues": [],
@@ -220,20 +220,20 @@
             "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 331,
+            "bottom": 295,
             "width": 277,
-            "height": 124
+            "height": 87
           },
           "modal": null,
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 493,
-            "left": 13,
-            "right": 307,
+            "top": 491,
+            "left": 11,
+            "right": 309,
             "bottom": 556,
-            "width": 294,
-            "height": 63
+            "width": 298,
+            "height": 65
           }
         },
         "railIssues": [],
@@ -273,12 +273,12 @@
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 493,
-            "left": 13,
-            "right": 307,
+            "top": 491,
+            "left": 11,
+            "right": 309,
             "bottom": 556,
-            "width": 294,
-            "height": 63
+            "width": 298,
+            "height": 65
           }
         },
         "railIssues": [],
@@ -307,23 +307,23 @@
             "height": 122
           },
           "title": {
-            "top": 272,
-            "left": 51,
-            "right": 269,
-            "bottom": 321,
-            "width": 219,
-            "height": 49
+            "top": 296,
+            "left": 86,
+            "right": 234,
+            "bottom": 333,
+            "width": 147,
+            "height": 37
           },
           "modal": null,
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 493,
-            "left": 13,
-            "right": 307,
+            "top": 491,
+            "left": 11,
+            "right": 309,
             "bottom": 556,
-            "width": 294,
-            "height": 63
+            "width": 298,
+            "height": 65
           }
         },
         "railIssues": [],
@@ -352,10 +352,10 @@
             "height": 122
           },
           "title": {
-            "top": 267,
+            "top": 266,
             "left": 40,
             "right": 280,
-            "bottom": 346,
+            "bottom": 345,
             "width": 241,
             "height": 79
           },
@@ -363,12 +363,12 @@
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 493,
-            "left": 13,
-            "right": 307,
+            "top": 491,
+            "left": 11,
+            "right": 309,
             "bottom": 556,
-            "width": 294,
-            "height": 63
+            "width": 298,
+            "height": 65
           }
         },
         "railIssues": [],
@@ -400,20 +400,20 @@
             "top": 276,
             "left": 40,
             "right": 280,
-            "bottom": 399,
+            "bottom": 363,
             "width": 240,
-            "height": 124
+            "height": 87
           },
           "modal": null,
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 493,
-            "left": 13,
-            "right": 307,
+            "top": 491,
+            "left": 11,
+            "right": 309,
             "bottom": 556,
-            "width": 294,
-            "height": 63
+            "width": 298,
+            "height": 65
           }
         },
         "railIssues": [],
@@ -446,12 +446,12 @@
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 493,
-            "left": 13,
-            "right": 307,
+            "top": 491,
+            "left": 11,
+            "right": 309,
             "bottom": 556,
-            "width": 294,
-            "height": 63
+            "width": 298,
+            "height": 65
           }
         },
         "railIssues": [],
@@ -484,12 +484,12 @@
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 493,
-            "left": 13,
-            "right": 307,
+            "top": 491,
+            "left": 11,
+            "right": 309,
             "bottom": 556,
-            "width": 294,
-            "height": 63
+            "width": 298,
+            "height": 65
           }
         },
         "railIssues": [],
@@ -521,20 +521,20 @@
             "top": 276,
             "left": 40,
             "right": 280,
-            "bottom": 362,
+            "bottom": 338,
             "width": 240,
-            "height": 86
+            "height": 62
           },
           "modal": null,
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 493,
-            "left": 13,
-            "right": 307,
+            "top": 491,
+            "left": 11,
+            "right": 309,
             "bottom": 556,
-            "width": 294,
-            "height": 63
+            "width": 298,
+            "height": 65
           }
         },
         "railIssues": [],
@@ -566,20 +566,20 @@
             "top": 242,
             "left": 22,
             "right": 298,
-            "bottom": 291,
+            "bottom": 279,
             "width": 277,
-            "height": 49
+            "height": 37
           },
           "modal": null,
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 493,
-            "left": 13,
-            "right": 307,
+            "top": 491,
+            "left": 11,
+            "right": 309,
             "bottom": 556,
-            "width": 294,
-            "height": 63
+            "width": 298,
+            "height": 65
           }
         },
         "railIssues": [],
@@ -609,22 +609,22 @@
           },
           "title": {
             "top": 211,
-            "left": 63,
-            "right": 257,
-            "bottom": 260,
-            "width": 194,
-            "height": 49
+            "left": 95,
+            "right": 225,
+            "bottom": 248,
+            "width": 131,
+            "height": 37
           },
           "modal": null,
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 493,
-            "left": 13,
-            "right": 307,
+            "top": 491,
+            "left": 11,
+            "right": 309,
             "bottom": 556,
-            "width": 294,
-            "height": 63
+            "width": 298,
+            "height": 65
           }
         },
         "railIssues": [],
@@ -656,20 +656,20 @@
             "top": 211,
             "left": 22,
             "right": 298,
-            "bottom": 297,
+            "bottom": 273,
             "width": 277,
-            "height": 86
+            "height": 62
           },
           "modal": null,
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 493,
-            "left": 13,
-            "right": 307,
+            "top": 491,
+            "left": 11,
+            "right": 309,
             "bottom": 556,
-            "width": 294,
-            "height": 63
+            "width": 298,
+            "height": 65
           }
         },
         "railIssues": [],
@@ -701,20 +701,20 @@
             "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 294,
+            "bottom": 270,
             "width": 277,
-            "height": 86
+            "height": 62
           },
           "modal": null,
           "tabs": null,
           "quickbar": null,
           "bottomNav": {
-            "top": 493,
-            "left": 13,
-            "right": 307,
+            "top": 491,
+            "left": 11,
+            "right": 309,
             "bottom": 556,
-            "width": 294,
-            "height": 63
+            "width": 298,
+            "height": 65
           }
         },
         "railIssues": [],
@@ -746,9 +746,9 @@
             "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 331,
+            "bottom": 270,
             "width": 277,
-            "height": 124
+            "height": 62
           },
           "modal": {
             "top": 0,
@@ -805,9 +805,9 @@
             "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 331,
+            "bottom": 270,
             "width": 277,
-            "height": 124
+            "height": 62
           },
           "modal": {
             "top": 0,
@@ -864,9 +864,9 @@
             "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 294,
+            "bottom": 270,
             "width": 277,
-            "height": 86
+            "height": 62
           },
           "modal": {
             "top": 0,
@@ -923,9 +923,9 @@
             "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 294,
+            "bottom": 270,
             "width": 277,
-            "height": 86
+            "height": 62
           },
           "modal": {
             "top": 0,
@@ -982,9 +982,9 @@
             "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 294,
+            "bottom": 270,
             "width": 277,
-            "height": 86
+            "height": 62
           },
           "modal": {
             "top": 0,
@@ -1041,9 +1041,9 @@
             "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 331,
+            "bottom": 270,
             "width": 277,
-            "height": 124
+            "height": 62
           },
           "modal": {
             "top": 0,
@@ -1100,9 +1100,9 @@
             "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 481,
+            "bottom": 320,
             "width": 277,
-            "height": 274
+            "height": 112
           },
           "modal": {
             "top": 0,
@@ -1159,9 +1159,9 @@
             "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 369,
+            "bottom": 270,
             "width": 277,
-            "height": 161
+            "height": 62
           },
           "modal": {
             "top": 0,
@@ -1218,9 +1218,9 @@
             "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 331,
+            "bottom": 270,
             "width": 277,
-            "height": 124
+            "height": 62
           },
           "modal": {
             "top": 0,
@@ -1277,9 +1277,9 @@
             "top": 208,
             "left": 22,
             "right": 298,
-            "bottom": 331,
+            "bottom": 295,
             "width": 277,
-            "height": 124
+            "height": 87
           },
           "modal": {
             "top": 0,

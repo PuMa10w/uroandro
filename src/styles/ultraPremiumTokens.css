@@ -270,7 +270,202 @@ button,
   }
 }
 
-/* ── 4. Модалка: прогресс не перекрывает sticky таб-рельс ───
+/* ── 5. Критические фиксы читаемости (найдено на скриншотах) ──
+   а) Логотип: lock-слой сбрасывал background-image в none, оставляя
+      -webkit-text-fill-color: transparent → «Uro» становилось невидимым
+      (в шапке читалось только «Med»). Возвращаем градиент + fallback. */
+html body .navbar-brand-uro {
+  background-image: var(--gradient-aurora-text) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent;
+}
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  html body .navbar-brand-uro {
+    -webkit-text-fill-color: inherit !important;
+    color: var(--text-primary, #e8eff8) !important;
+  }
+}
+
+/* б) Подзаголовок hero: при увеличенном (WCAG) кегле 3 строки обрезали
+      текст в середине слова. Даём запас строк на мобиле. */
+@media (max-width: 932px) {
+  html body .section-subtitle,
+  html body .service-page-hero .section-subtitle,
+  html body .drug-reference-hero p,
+  html body .section-hero-subtitle {
+    -webkit-line-clamp: 6 !important;
+    line-clamp: 6 !important;
+    overflow: visible !important;
+  }
+
+  /* в) «01Клиническая задача»: номер шага прилипал к тексту */
+  html body .drug-cockpit-index,
+  html body [class*='cockpit-index'],
+  html body .drug-cockpit-step-index,
+  html body [class*='step-index'],
+  html body [class*='step-number'] {
+    margin-right: 0.55em !important;
+    display: inline-block !important;
+  }
+
+  /* г) Нижняя панель: при 92% прозрачности под ней просвечивал контент
+        (визуальный «мусор» на прокрутке). Уплотняем + отрываем тенью. */
+  html body .mobile-shell-nav {
+    background: rgba(9, 17, 30, 0.97) !important;
+    box-shadow: 0 -8px 28px rgba(4, 9, 18, 0.5) !important;
+  }
+  html body.light-mode .mobile-shell-nav {
+    background: rgba(252, 253, 255, 0.97) !important;
+    box-shadow: 0 -8px 28px rgba(15, 35, 60, 0.12) !important;
+  }
+}
+
+/* Нижняя панель: repeat(4, 1fr) не сжимался ниже min-content,
+   из-за чего на 320px кнопки выходили за экран (v23 gate: clipped_controls).
+   minmax(0, 1fr) разрешает сжатие колонок. */
+@media (max-width: 932px) {
+  html body .mobile-shell-nav:not(.scroll-hide) {
+    /* translateX(-50%) сбрасывался другим слоем → панель уезжала
+       за правый край на 320px. Фиксируем центрирование. */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    overflow: hidden;
+  }
+  html body .mobile-shell-btn {
+    min-width: 0 !important;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  html body .mobile-shell-nav {
+    width: min(95vw, 420px) !important;
+    padding: 0.32rem !important;
+    gap: 0.2rem !important;
+  }
+  html body .mobile-shell-btn {
+    min-height: 50px !important;
+    padding: 0.4rem 0.12rem !important;
+  }
+}
+
+/* ── 6. Светлая тема: тёмные панели из тёмного слоя ──────
+   .home-workbench (App.css) имел только тёмный градиент, а его заголовок —
+   тёмный градиентный текст → в light-теме панель оставалась тёмной
+   с почти невидимым текстом (найдено на скриншоте). */
+/* Светлый фон документа: правило v23ClinicalWorkbench.css перебивалось
+   поздними слоями с тёмным градиентом (на /tools текст оставался тёмным
+   на тёмном). Возвращаем приоритет светлой теме. */
+body.light-mode,
+body.light-mode .App {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(8, 127, 123, 0.09), transparent 28%),
+    linear-gradient(180deg, #fbf7ef, #eef5f7) !important;
+  color: #182231 !important;
+}
+
+body.light-mode .home-workbench {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(238, 245, 252, 0.92)),
+    radial-gradient(circle at 12% 0%, rgba(14, 165, 163, 0.12), transparent 34%) !important;
+  border-color: rgba(15, 118, 110, 0.16) !important;
+  box-shadow: 0 18px 42px rgba(36, 54, 77, 0.1) !important;
+}
+
+body.light-mode .home-workbench-title {
+  background-image: linear-gradient(120deg, #0b1a2b 0%, #0e7490 52%, #a9752a 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+body.light-mode .home-workbench-lane,
+body.light-mode .home-workbench-status span,
+body.light-mode .home-workbench-action {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border-color: rgba(15, 118, 110, 0.14) !important;
+}
+
+/* Дерево спермограммы: узлы заданы тёмными (rgba(9,19,33,.9)) без
+   светлого варианта → в light-теме тёмный текст на тёмной карточке. */
+body.light-mode .sperm-tree-node {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(240, 246, 252, 0.9)) !important;
+  border-color: rgba(15, 118, 110, 0.16) !important;
+  box-shadow: 0 10px 26px rgba(36, 54, 77, 0.08) !important;
+}
+body.light-mode .sperm-tree-node strong,
+body.light-mode .sperm-tree-node p,
+body.light-mode .sperm-node-body,
+body.light-mode .sperm-node-body strong {
+  color: #182231 !important;
+}
+body.light-mode .sperm-node-next,
+body.light-mode .sperm-tree-linkbar {
+  background: rgba(255, 255, 255, 0.86) !important;
+  border-color: rgba(15, 118, 110, 0.16) !important;
+  color: #182231 !important;
+}
+
+/* Hero-панели сервисных страниц: тёмный фон (rgba(8,17,31,.82)) без
+   светлого варианта → заголовок с тёмным градиентом не читался. */
+body.light-mode .premium-tools-hero,
+body.light-mode .premium-calculators-hero,
+body.light-mode .clinical-os-strip,
+body.light-mode .tools-section .premium-hero {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(238, 245, 252, 0.93)) !important;
+  border-color: rgba(15, 118, 110, 0.16) !important;
+  box-shadow: 0 16px 38px rgba(36, 54, 77, 0.1) !important;
+}
+body.light-mode .premium-tools-hero .section-title,
+body.light-mode .premium-tools-hero h1,
+body.light-mode .premium-tools-hero h2,
+body.light-mode .premium-calculators-hero .section-title,
+body.light-mode .premium-calculators-hero h1 {
+  background-image: linear-gradient(120deg, #0b1a2b 0%, #0e7490 52%, #a9752a 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+body.light-mode .premium-tools-hero p,
+body.light-mode .premium-tools-hero > div strong,
+body.light-mode .premium-calculators-hero p {
+  color: #182231 !important;
+}
+/* Чипы статистики внутри hero (servicePages.css:1376) заданы светлым
+   текстом #eaf2fb на прозрачном фоне → на светлой панели исчезали. */
+body.light-mode .premium-tools-hero > div span,
+body.light-mode .premium-calculators-hero > div span {
+  color: #24344a !important;
+  background: rgba(15, 118, 110, 0.07) !important;
+  border-color: rgba(15, 118, 110, 0.18) !important;
+}
+body.light-mode .premium-tools-hero > div strong {
+  color: #0e7490 !important;
+}
+
+/* Модалка: верхний отступ был меньше высоты фиксированного таб-рельса
+   (3.72rem = 59.5px против рельса 64px) → первые строки обрезались
+   под рельсом. Даём запас. */
+@media (max-width: 932px) {
+  html body.modal-open .modal-content .modal-body {
+    padding-top: 4.85rem !important;
+  }
+}
+
+/* Нижняя панель фиксирована (70px) — контент должен иметь запас,
+   иначе последний блок уходит под неё (видно на /tools в обеих темах). */
+@media (max-width: 932px) {
+  html body .page-content {
+    padding-bottom: calc(7.5rem + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+/* ─ 4. Модалка: прогресс не перекрывает sticky таб-рельс ──
    Таб-рельс занимает 0–64px (fixed, из lock-файла); линия прогресса
    ставится под ним, поэтому слои не пересекаются. */
 html body .modal-reading-progress {

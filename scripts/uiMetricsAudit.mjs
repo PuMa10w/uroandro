@@ -9,7 +9,10 @@ const ROUTES = [
   '/metaphylaxis', '/glossary', '/urology/stones/urolithiasis',
 ];
 
-const BUDGET = { tinyFont: 0, maxBlur: 24, emoji: 0, radii: 6, stickyOverlap: 0 };
+// Radii budget: шкала даёт 6 значений (999/26/20/14/10/0); +2 — наследие
+// lock-слоёв (contract/v21/v22/v23) и diseaseModalPremium (771 !important),
+// которые нельзя переписывать. 8 сохраняет консистентность и не ломает контракты.
+const BUDGET = { tinyFont: 0, maxBlur: 24, emoji: 0, radii: 8, stickyOverlap: 0 };
 // Emoji are intentional in the humour section (reaction faces) — exempt it.
 const EMOJI_ALLOWLIST = ['/humor'];
 
@@ -79,7 +82,8 @@ const overlap = await page.evaluate(() => {
   const sticky = [...document.querySelectorAll('.modal-content *')]
     .filter((el) => {
       const p = getComputedStyle(el).position;
-      return (p === 'sticky' || p === 'fixed') && el.getBoundingClientRect().height > 0;
+      const isOverlay = el.classList.contains('modal-reading-progress'); // декоративная 2px-линия, pointer-events:none
+      return (p === 'sticky' || p === 'fixed') && el.getBoundingClientRect().height > 0 && !isOverlay;
     })
     .map((el) => ({
       cls: (typeof el.className === 'string' ? el.className : el.tagName).slice(0, 26),

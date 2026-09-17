@@ -31,3 +31,5 @@ yarn-error.log*
 # temp audit scripts & shots
 scripts/_*.mjs
 .shots/
+
+/ui-review

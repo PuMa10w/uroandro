@@ -1,0 +1,64 @@
+/* ============================================================
+   MOBILE PERF (iPhone 15 Pro pass)
+   Единый предел blur на мобиле + отключение в light-теме
+   + GPU-подсказки для стабильных 60fps.
+   Additive, импортируется после ultraPremiumTokens.css.
+   ============================================================ */
+
+@media (max-width: 932px) {
+  .navbar,
+  .mobile-shell-nav,
+  .bottom-nav,
+  .glass-premium,
+  .modal-glass,
+  .nav-dropdown,
+  .hero-search-wrapper,
+  .hero-search-results,
+  .premium-sheet,
+  .drug-command-cockpit,
+  .service-hero-panel,
+  .breadcrumb-bar,
+  .drug-search,
+  .search-dropdown,
+  .hero-search-input,
+  .hero-search-wrapper * {
+    backdrop-filter: blur(20px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  }
+}
+
+/* Light mode: убрать blur (Safari perf) */
+body.light-mode .navbar,
+body.light-mode .mobile-shell-nav,
+body.light-mode .bottom-nav,
+body.light-mode .glass-premium,
+body.light-mode .modal-glass,
+body.light-mode .nav-dropdown,
+body.light-mode .hero-search-wrapper,
+body.light-mode .hero-search-results,
+body.light-mode .breadcrumb-bar,
+body.light-mode .drug-search,
+body.light-mode .search-dropdown {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* GPU hints — только реально анимируемые слои */
+@media (prefers-reduced-motion: no-preference) and (max-width: 932px) {
+  .navbar,
+  .mobile-shell-nav,
+  .bottom-nav,
+  .modal-content {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .mobile-shell-nav,
+  .bottom-nav,
+  .modal-content {
+    transform: none !important;
+  }
+}

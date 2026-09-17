@@ -448,6 +448,15 @@ body.light-mode .premium-tools-hero > div strong {
   color: #0e7490 !important;
 }
 
+/* Плейсхолдер поиска не вмещался в поле на 393px и обрезался посреди
+   слова. Даём чуть меньший кегль и мягкое затемнение. */
+@media (max-width: 600px) {
+  html body .hero-search-input::placeholder {
+    font-size: 0.86em !important;
+    letter-spacing: -0.01em;
+  }
+}
+
 /* Модалка: верхний отступ был меньше высоты фиксированного таб-рельса
    (3.72rem = 59.5px против рельса 64px) → первые строки обрезались
    под рельсом. Даём запас. */

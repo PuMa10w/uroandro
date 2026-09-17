@@ -250,7 +250,7 @@ const LandingPage = ({ onNavigate, viewHistory = [], favorites = {} }) => {
             <IconSearch size={20} className="hero-search-icon" />
             <input
               type="text"
-              placeholder="Поиск по МКБ, диагнозу, симптому или лекарству (Например: N30)..."
+              placeholder="МКБ-10, диагноз, симптом"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="hero-search-input"

@@ -10,6 +10,8 @@ const ROUTES = [
 ];
 
 const BUDGET = { tinyFont: 0, maxBlur: 24, emoji: 0, radii: 6, stickyOverlap: 0 };
+// Emoji are intentional in the humour section (reaction faces) — exempt it.
+const EMOJI_ALLOWLIST = ['/humor'];
 
 const browser = await chromium.launch();
 const page = await browser.newPage({
@@ -36,14 +38,14 @@ for (const route of ROUTES) {
       const box = el.getBoundingClientRect();
       if (box.width === 0 || box.height === 0) continue;
       const fs = parseFloat(c.fontSize);
-      const ownText = el.childElementCount === 0 ? (el.textContent || '').trim() : '';
+      const ownText = el.childElementCount === 0 ? (el.textContent || '').replace(/[©®™]/g, '').trim() : '';
       if (fs > 0 && fs < 12 && ownText.length > 1) {
         tinyFont++;
         if (tinySamples.length < 3) {
           tinySamples.push(`${(typeof el.className === 'string' ? el.className : el.tagName).slice(0, 26)}:${fs.toFixed(1)}`);
         }
       }
-      if (ownText && /\p{Extended_Pictographic}/u.test(ownText)) {
+      if (ownText && /\p{Extended_Pictographic}/u.test(ownText) && !/^[\s©®™]*$/.test(ownText)) {
         emoji++;
         if (emojiSamples.length < 3) emojiSamples.push(ownText.slice(0, 12));
       }
@@ -64,7 +66,7 @@ for (const route of ROUTES) {
   const routeViolations = [];
   if (m.tinyFont > BUDGET.tinyFont) routeViolations.push(`tinyFont=${m.tinyFont} (${m.tinySamples.join(', ')})`);
   if (m.maxBlur > BUDGET.maxBlur) routeViolations.push(`maxBlur=${m.maxBlur}px`);
-  if (m.emoji > BUDGET.emoji) routeViolations.push(`emoji=${m.emoji} (${m.emojiSamples.join(' ')})`);
+  if (m.emoji > BUDGET.emoji && !EMOJI_ALLOWLIST.includes(route)) routeViolations.push(`emoji=${m.emoji} (${m.emojiSamples.join(' ')})`);
   if (m.radii > BUDGET.radii) routeViolations.push(`radii=${m.radii}`);
   if (routeViolations.length) violations.push({ route, violations: routeViolations });
 }

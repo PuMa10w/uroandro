@@ -2,6 +2,7 @@ import React, { lazy } from 'react';
 import PropTypes from 'prop-types';
 import LazySection from './LazySection';
 import { getSectionTitle, getSectionSubtitle, SUBSECTION_TITLES } from '../config/routes';
+import { renderIcon } from '../utils/iconMap';
 
 const LandingPage = lazy(() => import('./LandingPage'));
 const ToolsSection = lazy(() => import('./ToolsSection'));
@@ -46,7 +47,7 @@ function renderSubsectionSelector(section, onNavigate) {
             className="subsection-card"
             onClick={() => onNavigate(section, key, null, { source: 'section_subsection' })}
           >
-            <span className="subsection-icon">{data.icon}</span>
+            <span className="subsection-icon">{renderIcon(data.icon, { size: 28 })}</span>
             <h3>{data.title}</h3>
             <p>{data.desc}</p>
           </button>

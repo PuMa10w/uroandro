@@ -2,13 +2,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import useSafeAreaInsets from '../../hooks/useSafeAreaInsets';
+import { renderIcon } from '../../utils/iconMap';
 
 const ICONS = {
-  home: '🏠',
-  favorites: '★',
-  search: '🔍',
-  emergency: '🚨',
-  settings: '⚙️',
+  home: 'home',
+  favorites: 'favorites',
+  search: 'search',
+  emergency: 'emergency',
+  settings: 'settings',
 };
 
 /**
@@ -56,7 +57,7 @@ export default function BottomNav({ activeSection = 'home', onNavigate = () => {
               className={`bottom-nav-btn ${activeClass}`}
               aria-label={item.label}
             >
-              <span className="bottom-nav-icon">{item.icon}</span>
+              <span className="bottom-nav-icon">{renderIcon(item.icon, { size: 22 })}</span>
               <span className="bottom-nav-label">{item.label}</span>
             </button>
           );

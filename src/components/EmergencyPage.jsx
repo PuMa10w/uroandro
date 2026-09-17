@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/servicePages.css';
+import { renderIcon } from '../utils/iconMap';
 import ServicePageHero from './ServicePageHero';
 
 const emergencyConditions = [
@@ -191,7 +192,7 @@ const EmergencyPage = ({ onNavigate }) => {
             aria-label={`${condition.name}: нажмите для подробностей`}
           >
             <div className="emergency-card-header" style={{ borderTopColor: condition.color }}>
-              <span className="emergency-icon">{condition.icon}</span>
+              <span className="emergency-icon">{renderIcon(condition.icon, { size: 28 })}</span>
               <div>
                 <span className="service-mini-kicker">Emergency protocol</span>
                 <h3>{condition.name}</h3>

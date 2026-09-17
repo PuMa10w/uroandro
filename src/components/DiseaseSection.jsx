@@ -7,6 +7,7 @@ import { preloadDiseaseData } from '../data/lazyData';
 import { getCardDescription, getCardTags } from '../utils/cardMetadata';
 import { trackSectionPathway } from '../utils/analytics';
 import { IconStar, IconStarFilled } from '../icons';
+import { renderIcon } from '../utils/iconMap';
 
 // react-window grid currently causes runtime crashes for some sections in production;
 // keep classic grid rendering until virtualization is stabilized.
@@ -281,7 +282,7 @@ const DiseaseSection = React.memo(
                 <div className="card-header">
                   <div className="card-icon" style={{ pointerEvents: 'none' }}>
                     {diseaseIcons[disease.id] || (
-                      <span style={{ fontSize: '1.5rem' }}>{disease.icon}</span>
+                      <span style={{ display: 'inline-flex' }}>{renderIcon(disease.icon, { size: 24 })}</span>
                     )}
                   </div>
                   <div style={{ pointerEvents: 'none' }}>

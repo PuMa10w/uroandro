@@ -2,11 +2,12 @@ import React, { useState, useMemo } from 'react';
 import '../styles/servicePages.css';
 import DiseaseSection from './DiseaseSection';
 import { getSectionDiseases } from '../data/sectionData';
+import { renderIcon } from '../utils/iconMap';
 
 const diets = [
   {
     id: 'calcium-oxalate',
-    name: '🥛 Кальций-оксалатные камни',
+    name: 'Кальций-оксалатные камни',
     color: '#16c79a',
     subtitle: '70-80% всех камней',
     goal: 'Снизить оксалаты, повысить цитраты, сохранить нормальный кальций',
@@ -28,7 +29,7 @@ const diets = [
   },
   {
     id: 'urate',
-    name: '🍷 Уратные камни',
+    name: 'Уратные камни',
     color: '#f59e0b',
     subtitle: '5-10% всех камней',
     goal: 'Снизить пурины и ощелачивать мочу до pH 6.5-7.0',
@@ -77,11 +78,11 @@ const MetaphylaxisPage = ({
       </p>
 
       <div className="meta-general-rules">
-        <h3 className="meta-section-title">📋 Общие правила для всех типов камней</h3>
+        <h3 className="meta-section-title">{renderIcon('clipboard', { size: 18 })} Общие правила для всех типов камней</h3>
         <div className="meta-rules-grid">
           {generalRules.map((rule, i) => (
             <div key={i} className="meta-rule-card">
-              <span className="meta-rule-icon">{rule.icon}</span>
+              <span className="meta-rule-icon">{renderIcon(rule.icon, { size: 22 })}</span>
               <h4>{rule.title}</h4>
               <p>{rule.desc}</p>
             </div>
@@ -90,7 +91,7 @@ const MetaphylaxisPage = ({
       </div>
 
       <div className="meta-diet-selector">
-        <h3 className="meta-section-title">🍽️ Выберите тип камней</h3>
+        <h3 className="meta-section-title">{renderIcon('nutrition', { size: 18 })} Выберите тип камней</h3>
         <div className="meta-diet-grid">
           {diets.map((diet) => (
             <div
@@ -107,7 +108,7 @@ const MetaphylaxisPage = ({
               aria-pressed={activeDiet === diet.id}
               aria-label={`${diet.name}: ${diet.subtitle}`}
             >
-              <span className="meta-diet-icon">{diet.icon}</span>
+              <span className="meta-diet-icon">{renderIcon(diet.icon, { size: 24 })}</span>
               <h4 style={{ color: diet.color }}>{diet.name}</h4>
               <p>{diet.subtitle}</p>
               <p className="meta-diet-goal">{diet.goal}</p>
@@ -125,7 +126,7 @@ const MetaphylaxisPage = ({
             <div className="meta-diet-details">
               <div className="meta-diet-header" style={{ borderColor: diet.color }}>
                 <h3 style={{ color: diet.color }}>
-                  {diet.icon} {diet.name}
+                  {renderIcon(diet.icon, { size: 16 })} {diet.name}
                 </h3>
                 <p>{diet.goal}</p>
               </div>

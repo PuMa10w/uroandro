@@ -265,6 +265,133 @@ export const IconPerson = createIcon(
   </>
 );
 
+// ─── Section / clinical icon set (replaces emoji glyphs) ──
+export const IconStone = createIcon(
+  <>
+    <path d="M12 2.75l7 4.25v9.5l-7 4.25-7-4.25V7z" />
+    <path d="M9 10.5h6M12 7.5v12" />
+  </>
+);
+
+export const IconFire = createIcon(
+  <>
+    <path d="M12 21c3.9 0 6.75-2.4 6.75-6 0-4.5-4.5-6.75-4.5-11.25-2.6 1.2-4.5 3.9-4.5 6.75 0 1.1-.9 2-2 2-.75 0-1.35-.45-1.8-1.05C5.4 13.2 5.25 14.4 5.25 15c0 3.6 2.85 6 6.75 6z" />
+  </>
+);
+
+export const IconRibbon = createIcon(
+  <>
+    <path d="M12 21s-6.75-4.05-6.75-8.7A4.05 4.05 0 0112 10.2a4.05 4.05 0 016.75 2.1c0 4.65-6.75 8.7-6.75 8.7z" />
+    <path d="M9 6.75L12 3l3 3.75" />
+  </>
+);
+
+export const IconBolt = createIcon(<path d="M13.5 2.25L5.25 13.5h5.25l-1.5 8.25 8.25-11.25H12z" />);
+
+export const IconWrench = createIcon(
+  <>
+    <path d="M14.7 6.3a3.6 3.6 0 104.9 4.9l-8.1 8.1a2.55 2.55 0 01-3.6-3.6z" />
+    <path d="M14.7 6.3l3-3" />
+  </>
+);
+
+export const IconKidney = createIcon(
+  <>
+    <path d="M9.75 4.5c3.75 0 5.25 3 5.25 7.5s-1.5 7.5-5.25 7.5c-2.4 0-3.75-1.95-3.75-4.5s1.65-4.5 3.75-4.5 3 1.95 3 4.5" />
+  </>
+);
+
+export const IconAnger = createIcon(
+  <>
+    <path d="M12 3.75l8.25 14.25H3.75z" />
+    <path d="M8.25 8.25l1.5 1.5M15.75 8.25l-1.5 1.5M9.75 14.25h4.5" />
+  </>
+);
+
+export const IconDna = createIcon(
+  <>
+    <path d="M7.5 3c0 6 9 12 9 18M16.5 3c0 6-9 12-9 18" />
+    <path d="M9 7.5h6M9 16.5h6" />
+  </>
+);
+
+export const IconFlask = createIcon(
+  <>
+    <path d="M9 3h6l-1 6 4.35 9.15A1.95 1.95 0 0116.6 21H7.4a1.95 1.95 0 01-1.75-2.85L10 9z" />
+    <path d="M9 3h6M8.25 14.25h7.5" />
+  </>
+);
+
+export const IconRadiation = createIcon(
+  <>
+    <circle cx="12" cy="12" r="1.5" />
+    <path d="M12 3a9 9 0 019 9M12 21a9 9 0 01-9-9M3 12a9 9 0 019-9" />
+  </>
+);
+
+export const IconBoom = createIcon(
+  <>
+    <path d="M12 2.25l1.9 5.1 5.1.35-4 3.15 1.35 4.95L12 13.05l-4.35 2.75 1.35-4.95-4-3.15 5.1-.35z" />
+    <path d="M12 16.5v5.25M7.5 21.75h9" />
+  </>
+);
+
+export const IconWater = createIcon(
+  <>
+    <path d="M12 3s5.25 5.4 5.25 9.75A5.25 5.25 0 016.75 12.75C6.75 8.4 12 3 12 3z" />
+    <path d="M9.75 13.5a2.25 2.25 0 002.25 2.25" />
+  </>
+);
+
+export const IconSalt = createIcon(
+  <>
+    <path d="M8.25 3h7.5l1.5 18h-10.5z" />
+    <path d="M8.25 9h7.5M9.75 13.5h.01M12 16.5h.01M14.25 13.5h.01" />
+  </>
+);
+
+export const IconSalad = createIcon(
+  <>
+    <path d="M3.75 12.75h16.5a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5z" />
+    <path d="M6.75 12.75c0-3 2.25-5.25 5.25-5.25s5.25 2.25 5.25 5.25M12 7.5V4.5M9.75 19.5h4.5" />
+  </>
+);
+
+export const IconGame = createIcon(
+  <>
+    <path d="M7.5 8.25h9a4.5 4.5 0 014.5 4.5v3a2.25 2.25 0 01-4.05 1.35L15.75 15h-7.5l-1.2 2.1A2.25 2.25 0 013 15.75v-3a4.5 4.5 0 014.5-4.5z" />
+    <path d="M9 11.25h.01M12 11.25h.01M15 11.25h.01" />
+  </>
+);
+
+export const IconBook = createIcon(
+  <>
+    <path d="M6 3.75h9a3 3 0 013 3v13.5H8.25a2.25 2.25 0 01-2.25-2.25z" />
+    <path d="M6 3.75v16.5M9.75 8.25h5.25M9.75 12h5.25" />
+  </>
+);
+
+export const IconMap = createIcon(
+  <>
+    <path d="M9 3.75L3.75 6v14.25L9 18l6 2.25 5.25-2.25V3.75L15 6z" />
+    <path d="M9 3.75V18M15 6v14.25" />
+  </>
+);
+
+export const IconBaby = createIcon(
+  <>
+    <circle cx="12" cy="9" r="5.25" />
+    <path d="M9.75 8.25h.01M14.25 8.25h.01M10.5 11.25c.9.6 2.1.6 3 0M6 21c1.5-2.4 3.6-3.75 6-3.75S16.5 18.6 18 21" />
+  </>
+);
+
+export const IconSettings = createIcon(
+  <>
+    <circle cx="12" cy="12" r="2.25" />
+    <path d="M12 2.25v3M12 18.75v3M2.25 12h3M18.75 12h3M5.1 5.1l2.1 2.1M16.8 16.8l2.1 2.1M18.9 5.1l-2.1 2.1M7.2 16.8l-2.1 2.1" />
+  </>
+);
+
 export const iconsIndex = {
   IconSearch,
   IconMenu,

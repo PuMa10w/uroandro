@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/servicePages.css';
 import { sectionNames, sectionIcons } from '../data/navigationMeta';
+import { renderIcon } from '../utils/iconMap';
 
 const serviceLinks = [
   {
@@ -135,7 +136,7 @@ const SitemapPage = ({ onNavigate, allDiseases: propDiseases = [] }) => {
                 }
                 data-sitemap-service={item.id}
               >
-                <span className="sitemap-item-icon">{item.icon}</span>
+                <span className="sitemap-item-icon">{renderIcon(item.icon, { size: 20 })}</span>
                 <span className="sitemap-item-name">{item.name}</span>
                 <span className="sitemap-item-icd">{item.meta}</span>
               </button>
@@ -145,11 +146,11 @@ const SitemapPage = ({ onNavigate, allDiseases: propDiseases = [] }) => {
       )}
 
       {Object.keys(grouped).map((section) => {
-        const info = sectionInfo[section] || { name: section, icon: '📋', color: '#888' };
+        const info = sectionInfo[section] || { name: section, icon: 'clipboard', color: '#888' };
         return (
           <div key={section} className="sitemap-group">
             <h3 className="sitemap-group-title" style={{ color: info.color }}>
-              {info.icon} {info.name}
+              {renderIcon(info.icon, { size: 18 })} {info.name}
               <span className="sitemap-group-count">{grouped[section].length}</span>
             </h3>
             <div className="sitemap-list">
@@ -159,7 +160,7 @@ const SitemapPage = ({ onNavigate, allDiseases: propDiseases = [] }) => {
                   className="sitemap-item"
                   onClick={() => onNavigate(disease.section, disease.subsection, disease.id)}
                 >
-                  <span className="sitemap-item-icon">{disease.icon}</span>
+                  <span className="sitemap-item-icon">{renderIcon(disease.icon, { size: 18 })}</span>
                   <span className="sitemap-item-name">{disease.name}</span>
                   <span className="sitemap-item-icd">{disease.icd}</span>
                 </button>

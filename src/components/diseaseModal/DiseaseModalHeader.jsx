@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { diseaseIcons } from '../diseaseIcons';
+import { renderIcon } from '../../utils/iconMap';
 import { getHeaderTags } from '../../utils/cardMetadata';
 import { sectionNames, subsectionLabels } from '../../data/navigationMeta';
 
@@ -143,7 +144,7 @@ export default function DiseaseModalHeader({
         )}
         <div className="modal-header-identity">
           <div className="modal-header-icon">
-            {diseaseIcons[disease.id] || <span style={{ fontSize: '3rem' }}>{disease.icon}</span>}
+            {diseaseIcons[disease.id] || renderIcon(disease.icon, { size: 42 })}
           </div>
           <div className="modal-header-copy">
             <div className="modal-header-eyebrow">

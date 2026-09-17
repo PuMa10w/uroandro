@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/servicePages.css';
+import { renderIcon } from '../utils/iconMap';
 import ServicePageHero from './ServicePageHero';
 
 // ===== SURGERY MODAL =====
@@ -23,7 +24,7 @@ const SurgeryModal = ({ surgery, onClose }) => {
       >
         <div className="modal-header">
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <span style={{ fontSize: '3rem' }}>{surgery.icon}</span>
+            <span style={{ display: 'inline-flex' }}>{renderIcon(surgery.icon, { size: 40 })}</span>
             <div>
               <h2 className="modal-title" style={{ color: surgery.color }}>
                 {surgery.fullName}
@@ -40,7 +41,7 @@ const SurgeryModal = ({ surgery, onClose }) => {
         <div className="modal-body surgery-modal-body">
           {/* Indications */}
           <div className="surgery-section">
-            <h4 style={{ color: surgery.color }}>📋 Показания</h4>
+            <h4 style={{ color: surgery.color }}>{renderIcon('clipboard', { size: 16 })}  Показания</h4>
             <ul className="surgery-list">
               {surgery.indications.map((item, i) => (
                 <li key={i}>{item}</li>
@@ -50,7 +51,7 @@ const SurgeryModal = ({ surgery, onClose }) => {
 
           {/* Contraindications */}
           <div className="surgery-section">
-            <h4 style={{ color: '#ef4444' }}>⛔ Противопоказания</h4>
+            <h4 style={{ color: '#ef4444' }}>{renderIcon('warning', { size: 16 })}  Противопоказания</h4>
             <ul className="surgery-list">
               {surgery.contraindications.map((item, i) => (
                 <li key={i}>{item}</li>
@@ -60,7 +61,7 @@ const SurgeryModal = ({ surgery, onClose }) => {
 
           {/* Technique */}
           <div className="surgery-section">
-            <h4 style={{ color: surgery.color }}>🔪 Техника операции</h4>
+            <h4 style={{ color: surgery.color }}>{renderIcon('surgery', { size: 16 })}  Техника операции</h4>
             <div className="surgery-tech-grid">
               <div className="surgery-tech-item">
                 <strong>Анестезия:</strong> {surgery.technique.anesthesia}
@@ -91,7 +92,7 @@ const SurgeryModal = ({ surgery, onClose }) => {
 
           {/* Results */}
           <div className="surgery-section">
-            <h4 style={{ color: surgery.color }}>📊 Результаты</h4>
+            <h4 style={{ color: surgery.color }}>{renderIcon('tools', { size: 16 })}  Результаты</h4>
             <div className="surgery-results-grid">
               {Object.entries(surgery.results).map(([key, val]) => (
                 <div key={key} className="surgery-result-item">
@@ -103,7 +104,7 @@ const SurgeryModal = ({ surgery, onClose }) => {
 
           {/* Complications */}
           <div className="surgery-section">
-            <h4 style={{ color: '#ef4444' }}>⚠️ Осложнения</h4>
+            <h4 style={{ color: '#ef4444' }}>{renderIcon('warning', { size: 16 })}  Осложнения</h4>
             <table className="styled-table surgery-complications">
               <thead>
                 <tr>
@@ -138,7 +139,7 @@ const SurgeryModal = ({ surgery, onClose }) => {
 
           {/* Postop */}
           <div className="surgery-section">
-            <h4 style={{ color: surgery.color }}>📅 Послеоперационное ведение</h4>
+            <h4 style={{ color: surgery.color }}>{renderIcon('document', { size: 16 })}  Послеоперационное ведение</h4>
             <ul className="surgery-list">
               {surgery.postop.map((item, i) => (
                 <li key={i}>{item}</li>
@@ -149,7 +150,7 @@ const SurgeryModal = ({ surgery, onClose }) => {
           {/* Tips */}
           {surgery.tips && (
             <div className="surgery-tips" style={{ borderColor: surgery.color }}>
-              <strong>💡 Клинический совет:</strong> {surgery.tips}
+              <strong>{renderIcon('warning', { size: 16 })}  Клинический совет:</strong> {surgery.tips}
             </div>
           )}
 
@@ -162,7 +163,7 @@ const SurgeryModal = ({ surgery, onClose }) => {
               className="surgery-video-link"
               style={{ borderColor: surgery.color }}
             >
-              🎬 Видео операции на YouTube
+              {renderIcon('document', { size: 16 })} Видео операции на YouTube
             </a>
           )}
         </div>
@@ -1969,7 +1970,7 @@ const SurgeryPage = ({ onNavigate }) => {
             role="tab"
             aria-selected={activeCategory === cat.id}
           >
-            <span className="surgery-tab-icon">{cat.icon}</span>
+            <span className="surgery-tab-icon">{renderIcon(cat.icon, { size: 18 })}</span>
             <span>{cat.label}</span>
           </button>
         ))}
@@ -1990,7 +1991,7 @@ const SurgeryPage = ({ onNavigate }) => {
             aria-pressed={selectedId === s.id}
           >
             <div className="surgery-card-header" style={{ borderTopColor: s.color }}>
-              <span className="surgery-icon">{s.icon}</span>
+              <span className="surgery-icon">{renderIcon(s.icon, { size: 22 })}</span>
               <div>
                 <h3 className="surgery-card-title">{s.name}</h3>
                 <p className="surgery-card-full">{s.fullName}</p>
